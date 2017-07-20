@@ -75,7 +75,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.rrozhkov.easykin.gui.service.ServiceWindow</mainClass>
+                            <mainClass>ru.rrozhkov.easykin.service.gui.ServiceWindow</mainClass>
                         </manifest>
                     </archive>
 			<includes>
@@ -199,5 +199,12 @@
         <scope>system</scope>
         <systemPath>${project.basedir}/lib/easykin.fin-${version}.jar</systemPath>
     </dependency>
-  </dependencies>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.service</groupId>
+        <artifactId>easykin.service</artifactId>
+        <version>${version}</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/easykin.service-${version}.jar</systemPath>
+    </dependency>
+</dependencies>
 </project>

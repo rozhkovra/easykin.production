@@ -4,19 +4,17 @@ import java.util.Collection;
 
 import javax.swing.JPanel;
 
-import ru.rrozhkov.easykin.auto.gui.auto.style.impl.custom.ServiceStyle;
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.auto.gui.auto.AutoPanel;
-import ru.rrozhkov.easykin.auto.gui.auto.CarForm;
 import ru.rrozhkov.easykin.gui.style.impl.custom.*;
 import ru.rrozhkov.easykin.gui.task.TaskEditor;
-import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcStyle;
 import ru.rrozhkov.lib.gui.Table;
 import ru.rrozhkov.lib.gui.TablePanel;
 

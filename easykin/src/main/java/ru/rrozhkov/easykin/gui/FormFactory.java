@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.auto.gui.auto.service.AutoServiceForm;
 import ru.rrozhkov.easykin.gui.doc.DocForm;
 import ru.rrozhkov.easykin.gui.payment.PaymentForm;
 import ru.rrozhkov.easykin.gui.person.PersonForm;
-import ru.rrozhkov.easykin.gui.service.ServiceCalcForm;
+import ru.rrozhkov.easykin.service.gui.ServiceCalcForm;
 import ru.rrozhkov.easykin.gui.task.CommentForm;
 import ru.rrozhkov.easykin.gui.task.TaskEditor;
 import ru.rrozhkov.easykin.gui.task.TaskForm;

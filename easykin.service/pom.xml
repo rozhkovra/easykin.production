@@ -14,5 +14,19 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.lib</groupId>
+      <artifactId>easykin.lib</artifactId>
+      <version>${version}</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/easykin.lib-${version}.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.model</groupId>
+      <artifactId>easykin.model</artifactId>
+      <version>${version}</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/easykin.model-${version}.jar</systemPath>
+    </dependency>
   </dependencies>
 </project>

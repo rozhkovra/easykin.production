@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
-import ru.rrozhkov.easykin.gui.util.ImageUtil;
+import ru.rrozhkov.lib.gui.util.ImageUtil;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 
