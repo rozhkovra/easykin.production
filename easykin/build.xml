@@ -1,0 +1,10 @@
+﻿<project default="compile">
+    <target name="compile" depends="clean">
+        <javac srcdir="src/main/java" destdir="target/classes" encoding="UTF-8"/>
+    </target>
+    <target name="clean">
+  	<delete includeemptydirs="true">
+    		<fileset dir="target/classes" includes="**/*"/>
+  	</delete>
+    </target>
+</project>
