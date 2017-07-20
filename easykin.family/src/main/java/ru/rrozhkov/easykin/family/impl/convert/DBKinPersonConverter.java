@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.family.impl.convert;
+package ru.rrozhkov.easykin.family.impl.convert;
 
 import java.sql.ResultSet;
 

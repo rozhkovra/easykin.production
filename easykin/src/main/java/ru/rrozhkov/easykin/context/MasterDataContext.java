@@ -6,6 +6,7 @@ import ru.rrozhkov.easykin.data.impl.PaymentDataProvider;
 import ru.rrozhkov.easykin.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.db.impl.PersonHandler;
+import ru.rrozhkov.easykin.family.impl.filter.KinFilterFactory;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.auto.ICar;
 import ru.rrozhkov.easykin.model.auto.service.IService;
@@ -13,7 +14,7 @@ import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
-import ru.rrozhkov.easykin.model.family.impl.filter.KinFilterFactory;
+
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 

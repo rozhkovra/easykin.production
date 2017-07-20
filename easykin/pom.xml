@@ -206,5 +206,12 @@
         <scope>system</scope>
         <systemPath>${project.basedir}/lib/easykin.service-${version}.jar</systemPath>
     </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.family</groupId>
+        <artifactId>easykin.family</artifactId>
+        <version>${version}</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/easykin.family-${version}.jar</systemPath>
+    </dependency>
 </dependencies>
 </project>

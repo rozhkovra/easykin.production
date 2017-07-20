@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.family.impl.filter;
+package ru.rrozhkov.easykin.family.impl.filter;
 
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
