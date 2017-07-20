@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.auto.service.impl.filter;
+package ru.rrozhkov.easykin.auto.service.impl.filter;
 
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.lib.filter.IFilter;

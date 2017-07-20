@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.fin.payment.impl.filter;
+package ru.rrozhkov.easykin.fin.payment.impl.filter;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.lib.filter.IFilter;

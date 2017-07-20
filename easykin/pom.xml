@@ -192,5 +192,12 @@
         <scope>system</scope>
         <systemPath>${project.basedir}/lib/easykin.auto-${version}.jar</systemPath>
     </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.fin</groupId>
+        <artifactId>easykin.fin</artifactId>
+        <version>${version}</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/easykin.fin-${version}.jar</systemPath>
+    </dependency>
   </dependencies>
 </project>

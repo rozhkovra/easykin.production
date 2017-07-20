@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.auto.service.impl.filter;
+package ru.rrozhkov.easykin.auto.service.impl.filter;
 
 import java.util.Date;
 
