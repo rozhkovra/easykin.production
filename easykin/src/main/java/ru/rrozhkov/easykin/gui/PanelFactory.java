@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.auto.gui.auto.AutoPanel;
+import ru.rrozhkov.easykin.family.gui.style.impl.custom.FamilyStyle;
 import ru.rrozhkov.easykin.gui.style.impl.custom.*;
 import ru.rrozhkov.easykin.gui.task.TaskEditor;
 import ru.rrozhkov.easykin.model.category.ICategory;

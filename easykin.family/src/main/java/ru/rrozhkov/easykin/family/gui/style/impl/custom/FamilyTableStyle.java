@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.gui.style.impl.custom;
+package ru.rrozhkov.easykin.family.gui.style.impl.custom;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
