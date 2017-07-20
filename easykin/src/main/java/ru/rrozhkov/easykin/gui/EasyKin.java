@@ -2,9 +2,8 @@ package ru.rrozhkov.easykin.gui;
 
 import ru.rrozhkov.easykin.auth.AuthManager;
 import ru.rrozhkov.easykin.context.EasyKinContext;
-import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.db.impl.HSQLDBServer;
-import ru.rrozhkov.easykin.gui.auth.AuthDialog;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -44,7 +43,7 @@ public class EasyKin
     }
 
     public static void restart(){
-        if(AuthManager.authDialog(easyKinWindow)==IGUIEditor.CODE_OK)
+        if(AuthManager.authDialog(easyKinWindow)== IGUIEditor.CODE_OK)
             start();
     }
 

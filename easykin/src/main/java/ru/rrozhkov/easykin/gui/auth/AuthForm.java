@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.gui.auth;
 
 import ru.rrozhkov.easykin.auth.AuthManager;
-import ru.rrozhkov.easykin.gui.Form;
-import ru.rrozhkov.easykin.gui.IGUIEditor;
-import ru.rrozhkov.easykin.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.Form;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import javax.swing.*;
 import java.awt.*;

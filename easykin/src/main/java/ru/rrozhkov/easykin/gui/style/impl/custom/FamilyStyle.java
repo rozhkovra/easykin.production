@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.gui.style.impl.custom;
 
-import ru.rrozhkov.easykin.gui.style.ICollectionConverter;
-import ru.rrozhkov.easykin.gui.style.IStyle;
-import ru.rrozhkov.easykin.gui.style.ITableStyle;
+import ru.rrozhkov.lib.gui.style.ICollectionConverter;
+import ru.rrozhkov.lib.gui.style.IStyle;
+import ru.rrozhkov.lib.gui.style.ITableStyle;
 import ru.rrozhkov.easykin.model.person.IPerson;
 
 public class FamilyStyle implements IStyle<IPerson> {

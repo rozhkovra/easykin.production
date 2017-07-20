@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.gui.style.impl.custom;
 
 import static ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory.getCalculator;
-import ru.rrozhkov.easykin.gui.style.impl.CollectionConverter;
+import ru.rrozhkov.lib.gui.style.impl.CollectionConverter;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.util.ServiceCalcUtil;

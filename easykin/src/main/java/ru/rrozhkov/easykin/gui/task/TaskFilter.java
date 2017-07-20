@@ -2,9 +2,9 @@ package ru.rrozhkov.easykin.gui.task;
 
 import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.context.IContext;
-import ru.rrozhkov.easykin.gui.Form;
-import ru.rrozhkov.easykin.gui.IGUIEditor;
-import ru.rrozhkov.easykin.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.Form;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.filter.PriorityFilter;

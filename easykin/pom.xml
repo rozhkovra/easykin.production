@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin</groupId>
   <artifactId>easykin</artifactId>
   <packaging>jar</packaging>
-  <version>5.0.3</version>
+  <version>6.0.0</version>
   <name>easykin</name>
   <url>http://maven.apache.org</url>
 
@@ -184,6 +184,13 @@
         <version>${version}</version>
         <scope>system</scope>
         <systemPath>${project.basedir}/lib/easykin.model-${version}.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.auto</groupId>
+        <artifactId>easykin.auto</artifactId>
+        <version>${version}</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/easykin.auto-${version}.jar</systemPath>
     </dependency>
   </dependencies>
 </project>

@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.gui.style.impl.custom;
 
-import ru.rrozhkov.easykin.gui.style.impl.CollectionConverter;
+import ru.rrozhkov.lib.gui.style.impl.CollectionConverter;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.lib.util.DateUtil;
 

@@ -4,9 +4,10 @@ import java.util.Collection;
 
 import javax.swing.JPanel;
 
+import ru.rrozhkov.easykin.auto.gui.auto.style.impl.custom.ServiceStyle;
 import ru.rrozhkov.easykin.context.MasterDataContext;
-import ru.rrozhkov.easykin.gui.auto.AutoPanel;
-import ru.rrozhkov.easykin.gui.auto.CarForm;
+import ru.rrozhkov.easykin.auto.gui.auto.AutoPanel;
+import ru.rrozhkov.easykin.auto.gui.auto.CarForm;
 import ru.rrozhkov.easykin.gui.style.impl.custom.*;
 import ru.rrozhkov.easykin.gui.task.TaskEditor;
 import ru.rrozhkov.easykin.model.auto.service.IService;
@@ -16,6 +17,8 @@ import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.lib.gui.Table;
+import ru.rrozhkov.lib.gui.TablePanel;
 
 public class PanelFactory {
 	private static JPanel createFamilyPanel(EasyKinWindow parent, Collection<IKinPerson> collection){		
@@ -23,9 +26,6 @@ public class PanelFactory {
 	}
 	private static JPanel createChildPanel(EasyKinWindow parent, Collection<IKinPerson> collection){
 		return new TablePanel(parent, new Table(collection, new FamilyStyle()));
-	}
-	public static JPanel createAutoServicePanel(EasyKinWindow parent, Collection<IService> services){
-		return new TablePanel(parent, new Table(services, new ServiceStyle()));
 	}
 	private static JPanel createHomePanel(EasyKinWindow parent, Collection<ITask> tasks) {
 		return new TablePanel(parent, new Table(tasks, new TaskStyle()));
@@ -48,11 +48,8 @@ public class PanelFactory {
 	private static JPanel createDocPanel(EasyKinWindow parent, Collection<IDoc> collection) {
 		return new TablePanel(parent, new Table(collection, new DocStyle()));
 	}
-	public static JPanel createCarPanel(MasterDataContext context) {
-		return new CarForm(context.car());
-	}
 	private static JPanel createAutoPanel(EasyKinWindow parent, MasterDataContext context) {
-		return new AutoPanel(parent, context);
+		return new AutoPanel(parent, context.car(), context.services());
 	}
 	public static JPanel createTaskCommentPanel(TaskEditor taskEditor, Collection<IComment> comments){
 		return new TablePanel(taskEditor, new Table(comments, new CommentStyle()));

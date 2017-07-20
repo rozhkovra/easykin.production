@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.gui.service;
 
-import ru.rrozhkov.easykin.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 

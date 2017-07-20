@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.gui.auth;
 
-import ru.rrozhkov.easykin.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
 
 import javax.swing.*;

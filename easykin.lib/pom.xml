@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.lib</groupId>
   <artifactId>easykin.lib</artifactId>
   <packaging>jar</packaging>
-  <version>5.0.3</version>
+  <version>6.0.0</version>
   <name>easykin.lib</name>
   <url>http://maven.apache.org</url>
   <dependencies>

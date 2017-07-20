@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.context.IContext;
 import ru.rrozhkov.easykin.gui.task.TaskFilter;
 import ru.rrozhkov.easykin.model.category.ICategory;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;
 

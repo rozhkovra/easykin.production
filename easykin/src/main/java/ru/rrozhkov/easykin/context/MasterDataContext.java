@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.context;
 
 import ru.rrozhkov.easykin.auth.AuthManager;
+import ru.rrozhkov.easykin.auto.data.impl.stat.StaticServiceHistoryDataProvider;
 import ru.rrozhkov.easykin.data.impl.PaymentDataProvider;
 import ru.rrozhkov.easykin.data.impl.stat.StaticServiceCalcDataProvider;
-import ru.rrozhkov.easykin.data.impl.stat.StaticServiceHistoryDataProvider;
 import ru.rrozhkov.easykin.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.db.impl.PersonHandler;

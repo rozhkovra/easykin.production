@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import ru.rrozhkov.easykin.gui.service.util.CalcUtil;
-import ru.rrozhkov.easykin.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 
 public class GazPanel extends Panel{ 

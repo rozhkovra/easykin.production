@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.gui;
 
 import ru.rrozhkov.easykin.context.MasterDataContext;
-import ru.rrozhkov.easykin.gui.auto.service.AutoServiceEditor;
-import ru.rrozhkov.easykin.gui.auto.service.AutoServiceForm;
+import ru.rrozhkov.easykin.auto.gui.auto.service.AutoServiceEditor;
+import ru.rrozhkov.easykin.auto.gui.auto.service.AutoServiceForm;
 import ru.rrozhkov.easykin.gui.doc.DocForm;
 import ru.rrozhkov.easykin.gui.payment.PaymentForm;
 import ru.rrozhkov.easykin.gui.person.PersonForm;
@@ -18,6 +18,7 @@ import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;
 

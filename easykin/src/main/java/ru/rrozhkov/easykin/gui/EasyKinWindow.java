@@ -4,9 +4,10 @@ import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
-import ru.rrozhkov.easykin.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.gui.util.ImageUtil;
 import ru.rrozhkov.easykin.model.category.ICategory;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -18,7 +19,7 @@ import java.awt.event.KeyEvent;
 
 import static ru.rrozhkov.easykin.gui.PanelFactory.createPanel;
 
-public class EasyKinWindow extends JFrame implements IGUIEditor{
+public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane;
 	private EasyKinContext context;

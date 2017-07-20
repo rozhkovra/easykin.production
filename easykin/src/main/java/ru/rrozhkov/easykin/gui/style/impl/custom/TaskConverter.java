@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.gui.style.impl.custom;
 import java.util.LinkedList;
 import java.util.List;
 
-import ru.rrozhkov.easykin.gui.style.impl.CollectionConverter;
+import ru.rrozhkov.lib.gui.style.impl.CollectionConverter;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.lib.util.DateUtil;
 
