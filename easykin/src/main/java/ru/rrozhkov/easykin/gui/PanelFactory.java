@@ -16,6 +16,8 @@ import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcStyle;
+import ru.rrozhkov.easykin.task.gui.style.impl.custom.CommentStyle;
+import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskStyle;
 import ru.rrozhkov.lib.gui.Table;
 import ru.rrozhkov.lib.gui.TablePanel;
 

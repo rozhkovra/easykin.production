@@ -8,8 +8,8 @@ import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.person.impl.convert.PersonInsertConverter;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Status;
-import ru.rrozhkov.easykin.model.task.impl.convert.TaskInsertConverter;
-import ru.rrozhkov.easykin.model.task.impl.filter.TaskFilterFactory;
+import ru.rrozhkov.easykin.task.impl.convert.TaskInsertConverter;
+import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
 import java.io.*;

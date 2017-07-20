@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.db.impl.CommentHandler;
 import ru.rrozhkov.easykin.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.model.task.comment.impl.filter.CommentFilterFactory;
+import ru.rrozhkov.easykin.task.comment.impl.filter.CommentFilterFactory;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
@@ -46,7 +46,7 @@ public class TaskBuilder {
 			Collection<IComment> comments = CommentHandler.select();
 			for(ITask task : tasks){
 				task.comments().clear();
-				task.comments().addAll(FilterUtil.filter(comments,CommentFilterFactory.createTaskFilter(task.getId())));
+				task.comments().addAll(FilterUtil.filter(comments, CommentFilterFactory.createTaskFilter(task.getId())));
 			}
 			return tasks;
 		} catch (SQLException e) {

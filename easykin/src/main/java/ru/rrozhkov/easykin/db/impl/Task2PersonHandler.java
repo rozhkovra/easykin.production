@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.db.impl;
 
 import ru.rrozhkov.easykin.model.task.ITask2Person;
-import ru.rrozhkov.easykin.model.task.impl.convert.DBTask2PersonConverter;
-import ru.rrozhkov.easykin.model.task.impl.convert.T2PMapConverter;
+import ru.rrozhkov.easykin.task.impl.convert.DBTask2PersonConverter;
+import ru.rrozhkov.easykin.task.impl.convert.T2PMapConverter;
 
 import java.sql.SQLException;
 import java.util.Collection;

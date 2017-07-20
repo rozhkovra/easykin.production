@@ -7,8 +7,8 @@ import java.util.Map;
 
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Status;
-import ru.rrozhkov.easykin.model.task.impl.convert.DBTaskConverter;
-import ru.rrozhkov.easykin.model.task.impl.convert.TaskMapConverter;
+import ru.rrozhkov.easykin.task.impl.convert.DBTaskConverter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskMapConverter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.util.DateUtil;
 
