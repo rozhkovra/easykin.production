@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.gui.task;
 
 import ru.rrozhkov.easykin.auth.AuthManager;
 import ru.rrozhkov.easykin.context.MasterDataContext;
-import ru.rrozhkov.easykin.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;

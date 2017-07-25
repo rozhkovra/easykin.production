@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.ws.task;
 
-import ru.rrozhkov.easykin.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.ws.bean.TaskBean;
 import ru.rrozhkov.easykin.ws.convert.WSConverterFactory;
 

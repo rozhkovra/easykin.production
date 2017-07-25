@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.db.impl;
+package ru.rrozhkov.easykin.task.db.impl;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -10,6 +10,7 @@ import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.task.impl.convert.DBTaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskMapConverter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.db.impl.DBManager;
 import ru.rrozhkov.lib.util.DateUtil;
 
 public class TaskHandler {
@@ -39,16 +40,16 @@ public class TaskHandler {
 			+ " STATUSID="+Status.status(Status.CLOSE)+" WHERE ID=#id#";
 
 
-	public static Collection<ITask> select() throws SQLException{
-		return EasyKinDBManager.instance().select(select, new DBTaskConverter());
+	public static Collection<ITask> select() throws Exception{
+		return DBManager.instance().select(select, new DBTaskConverter());
 	}
 
-	public static Collection<ITask> selectForPerson(int id) throws SQLException{
-		return EasyKinDBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), new DBTaskConverter());
+	public static Collection<ITask> selectForPerson(int id) throws Exception {
+		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), new DBTaskConverter());
 	}
 
-	public static ITask selectTask(int taskId) throws SQLException{
-		Collection<ITask> tasks = EasyKinDBManager.instance().select(selectTask.replace("#id#", String.valueOf(taskId)), new DBTaskConverter());
+	public static ITask selectTask(int taskId) throws Exception {
+		Collection<ITask> tasks = DBManager.instance().select(selectTask.replace("#id#", String.valueOf(taskId)), new DBTaskConverter());
 		if(tasks!=null && !tasks.isEmpty())
 			return CollectionUtil.get(tasks,0);
 		return null;
@@ -57,9 +58,9 @@ public class TaskHandler {
 	public static int insert(ITask task) throws SQLException{
 		try {
 			Map<String, Object> map = new TaskMapConverter().convert(task);
-			int id = EasyKinDBManager.instance().nextId(TABLENAME);
+			int id = DBManager.instance().nextId(TABLENAME);
 			map.put("id", id);
-			EasyKinDBManager.instance().insert(insert,map);
+			DBManager.instance().insert(insert,map);
 			return id;
 		} catch (Exception e) { 
 			throw new SQLException(e); 
@@ -69,7 +70,7 @@ public class TaskHandler {
 	public static int update(ITask task) throws SQLException{
 		try {
 			Map<String, Object> map = new TaskMapConverter().convert(task);
-			int count = EasyKinDBManager.instance().update(update, map);
+			int count = DBManager.instance().update(update, map);
 			return count;
 		} catch (Exception e) { 
 			throw new SQLException(e); 
@@ -79,7 +80,7 @@ public class TaskHandler {
 	public static int close(ITask task) throws SQLException{
 		try {
 			Map<String, Object> map = new TaskMapConverter().convert(task);
-			int count = EasyKinDBManager.instance().update(close, map);
+			int count = DBManager.instance().update(close, map);
 			return count;
 		} catch (Exception e) { 
 			throw new SQLException(e); 

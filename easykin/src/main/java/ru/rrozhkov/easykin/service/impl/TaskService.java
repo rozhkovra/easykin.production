@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.service.impl;
 
 import ru.rrozhkov.easykin.db.impl.Task2PersonHandler;
-import ru.rrozhkov.easykin.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 

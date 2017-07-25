@@ -1,5 +1,8 @@
 package ru.rrozhkov.lib.db.impl;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,17 +10,45 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Properties;
 
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.convert.IConverter;
 import ru.rrozhkov.lib.db.IDBManager;
+import ru.rrozhkov.lib.db.impl.exception.NotFoundDBPropertiesException;
 
-public abstract class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
+public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 	protected static IDBManager dbManager;
     private Connection connection;
+	private static final String jdbcProperties = "jdbc.properties";
 	private static String nextId = "SELECT MAX(ID)+1 AS ID FROM #table#";
 	private static String deleteAll = "DELETE FROM #table#";
-    
+	private String connectPath;
+	private String user;
+	private String pass;
+
+	public DBManager(String connectPath, String user, String pass) {
+		this.connectPath = connectPath;
+		this.user = user;
+		this.pass = pass;
+	}
+
+	public static IDBManager instance() throws Exception {
+		if(dbManager==null){
+			Properties property=new Properties();
+			try {
+				URL iconUrl = IDBManager.class.getResource("/"+jdbcProperties);
+				property.load(iconUrl.openStream());
+			} catch (IOException e) {
+				throw new NotFoundDBPropertiesException(e);
+			}
+			String connectionPath = property.getProperty("connectionPath");
+			String user = property.getProperty("user");
+			String pass = property.getProperty("pass");
+			dbManager = new DBManager(connectionPath, user, pass);
+		}
+		return dbManager;
+	}
     /* (non-Javadoc)
 	 * @see ru.rrozhkov.lib.db.impl.IDBManager#nextId(java.lang.String)
 	 */
@@ -152,9 +183,15 @@ public abstract class DBManager implements IDBManager<ResultSet,Map<String,Objec
 		return false;
 	}
 
-    protected abstract String getConnectPath();
+    protected String getConnectPath(){
+		return this.connectPath;
+	}
+	
+    protected String getUser(){
+		return this.user;
+	}
 
-    protected abstract String getUser();
-
-    protected abstract String getPass();
+    protected String getPass(){
+		return this.pass;
+	}
 }

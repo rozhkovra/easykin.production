@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.auth.AuthManager;
 import ru.rrozhkov.easykin.auto.data.impl.stat.StaticServiceHistoryDataProvider;
 import ru.rrozhkov.easykin.data.impl.PaymentDataProvider;
 import ru.rrozhkov.easykin.db.impl.CategoryHandler;
-import ru.rrozhkov.easykin.db.impl.KinPersonHandler;
+import ru.rrozhkov.easykin.family.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.db.impl.PersonHandler;
 import ru.rrozhkov.easykin.family.impl.filter.KinFilterFactory;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
@@ -23,7 +23,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
-import ru.rrozhkov.easykin.model.task.impl.TaskBuilder;
+import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.lib.collection.CollectionUtil;
@@ -31,7 +31,6 @@ import ru.rrozhkov.lib.data.impl.SingleCollectionDataProvider;
 import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +68,7 @@ public class MasterDataContext implements IContext{
 			this.calcServices = new StaticServiceCalcDataProvider().getData();
 			this.payments = new PaymentDataProvider(this).getData();
 			this.docs = CollectionUtil.create();
-		}catch(SQLException e){
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		initCategoryData();

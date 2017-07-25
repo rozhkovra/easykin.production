@@ -8,7 +8,7 @@ import ru.rrozhkov.easykin.gui.PanelFactory;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.model.task.impl.TaskBuilder;
+import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 
 import javax.swing.*;
