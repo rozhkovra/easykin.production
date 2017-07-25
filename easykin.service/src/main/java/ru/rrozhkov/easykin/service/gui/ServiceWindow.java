@@ -12,7 +12,7 @@ public class ServiceWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public ServiceWindow(JPanel panel) throws HeadlessException {
-		super("EasyKin ??????????? - ???????????? ??????");
+		super("EasyKin Калькулятор - Коммунальные услуги");
 		setIconImage(ImageUtil.imageByPath(this.getClass(), "/icon/service.png"));
 		setContentPane(panel);
     	setExtendedState(ServiceWindow.MAXIMIZED_BOTH);
