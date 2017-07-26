@@ -5,7 +5,7 @@
 <%@ page import="ru.rrozhkov.lib.filter.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.*"%>
 <%@ page import="ru.rrozhkov.lib.collection.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.task.impl.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>

@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.web</groupId>
   <artifactId>easykin.web</artifactId>
   <packaging>war</packaging>
-  <version>5.0.3</version>
+  <version>6.0.1</version>
   <name>easykin.web</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -14,6 +14,46 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.lib</groupId>
+      <artifactId>easykin.lib</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.model</groupId>
+      <artifactId>easykin.model</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.auto</groupId>
+      <artifactId>easykin.auto</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.fin</groupId>
+      <artifactId>easykin.fin</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.service</groupId>
+      <artifactId>easykin.service</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.family</groupId>
+      <artifactId>easykin.family</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.task</groupId>
+      <artifactId>easykin.task</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin</groupId>
+      <artifactId>easykin</artifactId>
+      <version>${version}</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -21,6 +61,26 @@
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
     <finalName>easykin.web</finalName>
