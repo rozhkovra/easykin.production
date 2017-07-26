@@ -65,35 +65,6 @@
     	</build>
 </profile>
 <profile>
-	<id>easykin-service</id>
-	<build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>ru.rrozhkov.easykin.service.gui.ServiceWindow</mainClass>
-                        </manifest>
-                    </archive>
-			<includes>
-				<include>ru/rrozhkov/easykin/gui/service/**</include>
-				<include>ru/rrozhkov/easykin/gui/image/**</include>
-				<include>ru/rrozhkov/easykin/gui/util/**</include>
-				<include>ru/rrozhkov/easykin/model/service/**</include>
-				<include>ru/rrozhkov/easykin/model/fin/**</include>
-				<include>ru/rrozhkov/easykin/util/**</include>
-				<include>icon/**</include>
-			</includes>
-			<finalName>easykin-service-${version}</finalName>
-                </configuration>
-            </plugin>
-        </plugins>
-    	</build>
-</profile>
-<profile>
 	<id>easykin</id>
 	<build>
         <plugins>
