@@ -1,23 +1,24 @@
-package ru.rrozhkov.easykin.gui.task;
+package ru.rrozhkov.easykin.task.gui;
 
-import ru.rrozhkov.easykin.auth.AuthManager;
-import ru.rrozhkov.easykin.context.MasterDataContext;
-import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
-import ru.rrozhkov.easykin.model.category.convert.ArrayCategoryConverter;
+import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
-import ru.rrozhkov.easykin.service.impl.TaskService;
+import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.task.impl.convert.ArrayCategoryConverter;
+import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.gui.Form;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 
 public class TaskForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -32,15 +33,13 @@ public class TaskForm extends Form {
 	private Component doneButton;
 	
 	private ITask task;
-	private MasterDataContext context;
 	
-	public TaskForm(MasterDataContext context, IGUIEditor parent) {
-		this(context, parent, TaskFactory.newTask());
+	public TaskForm(IGUIEditor parent) {
+		this(parent, TaskFactory.newTask());
 	}
 
-	public TaskForm(MasterDataContext context, IGUIEditor parent, ITask task) {
+	public TaskForm(IGUIEditor parent, ITask task) {
 		super(parent);
-		this.context = context;
 		this.task = task;
 		fill();
 	}
@@ -95,8 +94,12 @@ public class TaskForm extends Form {
 	
 	private JComboBox getPriorityComboBox(){
 		if(priorityComboBox == null){
-			priorityComboBox = new JComboBox(context.priorities());
-			priorityComboBox.setSelectedIndex(Priority.priority(task.getPriority())-1);
+			priorityComboBox = new JComboBox(new Priority[]{
+					Priority.IMPOTANT_FAST,
+					Priority.IMPOTANT_NOFAST,
+					Priority.SIMPLE
+			});
+			priorityComboBox.setSelectedIndex(Priority.priority(task.getPriority()) - 1);
 			if(task.getStatus().isClose())
 				priorityComboBox.setEditable(false);
 		}
@@ -114,7 +117,13 @@ public class TaskForm extends Form {
 	}
 	
 	private String[] categories() {
-		return new ArrayCategoryConverter().convert(context.categories());
+		Collection<ICategory> collection = CollectionUtil.create();
+		try {
+			collection = CategoryHandler.select();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ArrayCategoryConverter().convert(collection);
 	}
 
 	private Component getNameLabel(){
@@ -159,7 +168,6 @@ public class TaskForm extends Form {
 					}catch(Exception ex){
 						ex.printStackTrace();
 					}
-					context.init();
 					parent.refresh();
 				}
 
@@ -176,19 +184,20 @@ public class TaskForm extends Form {
 		if(!validateData())
 			return;
 		try{
-			AuthManager authManager = AuthManager.instance();
-			if(task.getId()==-1) {
-				TaskService.create(authManager.signedPerson().getId(), task);
-			}else
+//			AuthManager authManager = AuthManager.instance();
+//			if(task.getId()==-1) {
+//				TaskService.create(authManager.signedPerson().getId(), task);
+//			}else
+			if(task.getId()!=-1) {
 				TaskHandler.update(task);
+			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		context.init();
 		parent.refresh();
 	}
 
 	protected boolean validateData() {
-		return !"".equals(task.getName()) && AuthManager.instance()!=null;
+		return !"".equals(task.getName());
 	}
 }

@@ -1,7 +1,7 @@
-package ru.rrozhkov.easykin.db.impl;
+package ru.rrozhkov.easykin.task.db.impl;
 
 import ru.rrozhkov.easykin.model.category.ICategory;
-import ru.rrozhkov.easykin.model.category.convert.DBCategoryConverter;
+import ru.rrozhkov.easykin.task.impl.convert.DBCategoryConverter;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.util.Collection;

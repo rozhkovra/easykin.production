@@ -1,6 +1,5 @@
-package ru.rrozhkov.easykin.gui.task;
+package ru.rrozhkov.easykin.task.gui;
 
-import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -16,15 +15,13 @@ public class CommentForm extends Form {
 	private JTextField textField;
 	private Component textLabel;
 	private IComment comment;
-	private MasterDataContext context;
 
-	public CommentForm(MasterDataContext context, IGUIEditor parent, int taskId) {
-		this(context, parent, TaskFactory.newComment(taskId));
+	public CommentForm(IGUIEditor parent, int taskId) {
+		this(parent, TaskFactory.newComment(taskId));
 	}
 
-	public CommentForm(MasterDataContext context, IGUIEditor parent, IComment comment) {
+	public CommentForm(IGUIEditor parent, IComment comment) {
 		super(parent);
-		this.context = context;
 		this.comment = comment;
 		fill();
 	}
@@ -68,7 +65,6 @@ public class CommentForm extends Form {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		context.init();
 		parent.refresh();
 	}
 

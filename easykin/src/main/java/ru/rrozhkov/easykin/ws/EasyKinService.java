@@ -1,10 +1,12 @@
 package ru.rrozhkov.easykin.ws;
 
+import ru.rrozhkov.easykin.Module;
+import ru.rrozhkov.easykin.auth.AuthManager;
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.model.category.ICategory;
-import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.ws.bean.CategoryBean;
 import ru.rrozhkov.easykin.ws.bean.PaymentBean;
 import ru.rrozhkov.easykin.ws.bean.PersonBean;
@@ -44,7 +46,7 @@ public class EasyKinService {
 		MasterDataContext context = new MasterDataContext();
 		context.init();
 		Collection<TaskBean> beans = CollectionUtil.create();
-		for(ITask task : context.tasks()){
+		for(ITask task : (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson())){
 			beans.add(WSConverterFactory.task().convert(task));
 		}
 		return beans;
@@ -54,9 +56,9 @@ public class EasyKinService {
 		MasterDataContext context = new MasterDataContext();
 		context.init();
 		Collection<PaymentBean> beans = CollectionUtil.create();
-		for(IPayment payment : context.payments()){
-			beans.add(WSConverterFactory.payment().convert(payment));
-		}
+//		for(IPayment payment : context.payments()){
+//			beans.add(WSConverterFactory.payment().convert(payment));
+//		}
 		return beans;
 	}
 

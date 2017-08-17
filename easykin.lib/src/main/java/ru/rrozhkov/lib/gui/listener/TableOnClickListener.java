@@ -16,6 +16,6 @@ public class TableOnClickListener implements ListSelectionListener {
 	}
 
 	public void valueChanged(ListSelectionEvent arg0) {
-		main.edit(table.getSelectedRow());
+		main.edit(table.currentData());
 	}
 }

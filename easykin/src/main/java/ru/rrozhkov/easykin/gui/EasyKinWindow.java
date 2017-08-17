@@ -42,13 +42,12 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         getContentPane().add(getTabbedPanel(), BorderLayout.SOUTH);
     }
 
- 	public void edit(int index){
+ 	public void edit(Object obj){
         closeEditor(IGUIEditor.CODE_CANCEL);
 
-        Object obj = context.masterData().getObjByIndex(index);
+        JPanel editor = FormFactory.getFormPanel(context.masterData(), this, obj);
         JPanel content = new JPanel(new BorderLayout());
-        JPanel formPanel = FormFactory.getFormPanel(context.masterData(), this, obj);
-        content.add(formPanel,BorderLayout.NORTH);
+        content.add(editor,BorderLayout.NORTH);
         Container main = (Container)getContentPane().getComponent(1);
         main.setLayout(new GridLayout(1, 2));
         main.add(main.getComponent(0));
@@ -70,7 +69,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     }
 
     public void add() {
-        edit(-1);
+        edit(null);
     }
 
     public void closeEditor(int code) {

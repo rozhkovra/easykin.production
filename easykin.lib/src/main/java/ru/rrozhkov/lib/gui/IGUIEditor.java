@@ -6,7 +6,7 @@ package ru.rrozhkov.lib.gui;
 public interface IGUIEditor {
     int CODE_OK = 1;
     int CODE_CANCEL = 2;
-    void edit(int index);
+    void edit(Object obj);
     void add();
     void closeEditor(int code);
     void refresh();

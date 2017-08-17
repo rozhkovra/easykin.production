@@ -1,8 +1,10 @@
 package ru.rrozhkov.lib.gui;
 
+import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.style.IStyle;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import javax.swing.JTable;
 
@@ -32,5 +34,9 @@ public class Table extends JTable{
 	@Override
 	public String getColumnName(int col) {
 	    return style.tableStyle().getColumnNames()[col];
+	}
+
+	public Object currentData(){
+		return CollectionUtil.get(data, getSelectedRow());
 	}
 }

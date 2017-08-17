@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.db.impl;
+package ru.rrozhkov.easykin.task.db.impl;
 
 import ru.rrozhkov.easykin.model.task.ITask2Person;
 import ru.rrozhkov.easykin.task.impl.convert.DBTask2PersonConverter;

@@ -1,7 +1,5 @@
-package ru.rrozhkov.easykin.gui.task;
+package ru.rrozhkov.easykin.task.gui;
 
-import ru.rrozhkov.easykin.context.EasyKinContext;
-import ru.rrozhkov.easykin.context.IContext;
 import ru.rrozhkov.easykin.task.impl.filter.PriorityFilter;
 import ru.rrozhkov.easykin.task.impl.filter.StatusFilter;
 import ru.rrozhkov.lib.gui.Form;
@@ -22,11 +20,9 @@ public class TaskFilter extends Form {
 	private JComboBox statusComboBox;
 	private Component priorityLabel;
 	private Component statusLabel;
-	private IContext context;
 
-	public TaskFilter(IContext context, IGUIEditor parent){
+	public TaskFilter(IGUIEditor parent){
 		super(parent);
-		this.context = context;
 		fill();
 	}
 	
@@ -44,7 +40,11 @@ public class TaskFilter extends Form {
 		if(priorityComboBox == null){
 			priorityComboBox = new JComboBox();
 			priorityComboBox.addItem("----");
-			for(Priority priority : ((EasyKinContext)context).masterData().priorities()){
+			for(Priority priority : new Priority[]{
+					Priority.IMPOTANT_FAST,
+					Priority.IMPOTANT_NOFAST,
+					Priority.SIMPLE
+			}){
 				priorityComboBox.addItem(priority);
 			}
 
@@ -56,7 +56,10 @@ public class TaskFilter extends Form {
 		if(statusComboBox == null){
 			statusComboBox = new JComboBox();
 			statusComboBox.addItem("----");
-			for(Status status : ((EasyKinContext)context).masterData().statuses()){
+			for(Status status : new Status[]{
+					Status.OPEN,
+					Status.CLOSE
+			}){
 				statusComboBox.addItem(status);
 			}
 		}
@@ -76,15 +79,13 @@ public class TaskFilter extends Form {
 	}
 
 	protected void ok() {
-		if(context!=null) {
-			EasyKinContext easyKinContext = (EasyKinContext) context;
-			Collection<IFilter> filters = CollectionUtil.create();
+//		EasyKinContext easyKinContext = (EasyKinContext) context;
+		Collection<IFilter> filters = CollectionUtil.create();
 			if(statusComboBox.getSelectedIndex()!=0)
 				filters.add(new StatusFilter(Status.status(statusComboBox.getSelectedIndex())));
 			if(priorityComboBox.getSelectedIndex()!=0)
 				filters.add(new PriorityFilter(Priority.priority(priorityComboBox.getSelectedIndex())));
-			easyKinContext.masterData().filter(filters);
-		}
+//			easyKinContext.masterData().filter(filters);
 		parent.refresh();
 		parent.closeEditor(IGUIEditor.CODE_OK);
 	}

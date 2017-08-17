@@ -1,8 +1,9 @@
 package ru.rrozhkov.easykin.gui;
 
+import ru.rrozhkov.easykin.Module;
 import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.context.IContext;
-import ru.rrozhkov.easykin.gui.task.TaskFilter;
+import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 
@@ -13,13 +14,12 @@ import javax.swing.*;
  */
 public class FilterFormFactory {
 
-    public static JPanel task(IContext context, IGUIEditor parent) {
-        return new TaskFilter(context, parent);
-    }
     public static JPanel getFilterFormPanel(IContext context, IGUIEditor parent) {
         ICategory category = ((EasyKinContext)context).masterData().currentCategory();
         if(category.getId()==1){
-            return task(context, parent);
+            if(ModuleManager.exist(Module.TASK)) {
+                return (JPanel)ModuleManager.invoke(Module.TASK, "createFilter", parent);
+            }
         }else if(category.getId()==2){
             return person(context, parent);
         }else if(category.getId()==3){
@@ -33,9 +33,13 @@ public class FilterFormFactory {
         }else if(category.getId()==7){
             return doc(context, parent);
         }else if(category.getId()==8){
-            return task(context, parent);
+            if(ModuleManager.exist(Module.TASK)) {
+                return (JPanel)ModuleManager.invoke(Module.TASK, "createFilter", parent);
+            }
         }else if(category.getId()==9){
-            return task(context, parent);
+            if(ModuleManager.exist(Module.TASK)) {
+                return (JPanel)ModuleManager.invoke(Module.TASK, "createFilter", parent);
+            }
         }else if(category.getId()==10){
             return serviceCalc(context, parent);
         }

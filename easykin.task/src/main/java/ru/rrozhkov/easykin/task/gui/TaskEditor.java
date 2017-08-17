@@ -1,15 +1,12 @@
-package ru.rrozhkov.easykin.gui.task;
+package ru.rrozhkov.easykin.task.gui;
 
-import ru.rrozhkov.easykin.context.MasterDataContext;
-import ru.rrozhkov.easykin.gui.EasyKinWindow;
-import ru.rrozhkov.easykin.gui.FormFactory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.easykin.gui.PanelFactory;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+
+import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,47 +15,45 @@ import java.awt.event.ActionListener;
 
 public class TaskEditor extends JPanel implements IGUIEditor{
 	private ITask task;
-	private MasterDataContext context;
-	private EasyKinWindow parent;
+	private IGUIEditor parent;
 	private Component addButton;
 
-	public TaskEditor(MasterDataContext context, EasyKinWindow parent, ITask task) {
+	public TaskEditor(IGUIEditor parent, ITask task) {
 		super();
 		this.task = task;
-		this.context = context;
 		this.parent = parent;
 		fill();
 	}
-	public TaskEditor(MasterDataContext context, EasyKinWindow parent) {
-		this(context, parent, null);
+	public TaskEditor(IGUIEditor parent) {
+		this(parent, null);
 	}
 
 	private void fill(){
 		removeAll();
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(FormFactory.createTaskForm(context, parent, task));
+		add(GUIFactory.createTaskForm(parent, task));
 		add(getAddButton());
 		getAddButton().setEnabled(true);
 		if(task!=null)
-			add(PanelFactory.createTaskCommentPanel(this, task.comments()));
+			add(GUIFactory.createTaskCommentPanel(this, task.comments()));
 		validate();
 	}
 
-	public void edit(int index){
+	public void edit(Object obj){
 		if(getComponentCount()>3)
 			return;
 		if(task==null)
 			return;
-		IComment comment =  null;
-		if (task.comments().size()>0 && index!=-1)
-			comment = CollectionUtil.get(task.comments(), index);
-		add(FormFactory.createCommentForm(context, this, comment, task.getId()));
+		IComment comment = null;
+		if (obj!=null)
+			comment = (IComment)obj;
+		add(GUIFactory.createCommentForm(this, comment, task.getId()));
 		getAddButton().setEnabled(false);
 		validate();
 	}
 
 	public void add() {
-		edit(-1);
+		edit(null);
 	}
 
 	public void closeEditor(int code) {

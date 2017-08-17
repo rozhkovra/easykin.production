@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.category.convert;
+package ru.rrozhkov.easykin.task.impl.convert;
 
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.lib.convert.IConverter;

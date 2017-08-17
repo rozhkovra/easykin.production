@@ -6,7 +6,7 @@
       <principalLanguage id="en" customLocalizationFile="" />
     </languages>
   </application>
-  <executable name="EasyKinService-6.0.1" type="2" iconSet="true" iconFile="F:/temp/EasyKin/easykin.service/icon/service.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" amd64="false">
+  <executable name="EasyKinService-7.0.0" type="2" iconSet="true" iconFile="F:/temp/EasyKin/easykin.service/icon/service.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" amd64="false">
     <messageSet />
     <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" companyName="" productVersion="" />
   </executable>
@@ -23,10 +23,10 @@
       <envVar name="JDK_HOME" />
     </searchSequence>
     <classPath>
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/lib/easykin.lib/6.0.1/easykin.lib-6.0.1.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/model/easykin.model/6.0.1/easykin.model-6.0.1.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/fin/easykin.fin/6.0.1/easykin.fin-6.0.1.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/service/easykin.service/6.0.1/easykin.service-6.0.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/lib/easykin.lib/7.0.0/easykin.lib-7.0.0.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/model/easykin.model/7.0.0/easykin.model-7.0.0.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/fin/easykin.fin/7.0.0/easykin.fin-7.0.0.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/service/easykin.service/7.0.0/easykin.service-7.0.0.jar" failOnError="false" />
     </classPath>
     <nativeLibraryDirectories />
   </java>

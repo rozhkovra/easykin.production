@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.category.convert;
+package ru.rrozhkov.easykin.task.impl.convert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

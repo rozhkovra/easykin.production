@@ -22,7 +22,7 @@ public class TaskFactory{
 		return TaskFactory.createTask(-1, "", new Date(), new Date(), Priority.priority(Priority.SIMPLE)
 				, 1, "", null, Status.status(Status.OPEN));
 	}
-	
+
 	public static IComment createComment(int id, String text, Date date, int taskId) {
 		return new Comment(id, text, date, taskId);
 	}

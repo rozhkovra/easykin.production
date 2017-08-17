@@ -19,7 +19,7 @@ public class AuthWindow extends JFrame implements IGUIEditor {
         this.finished = false;
     }
 
-    public void edit(int index) {
+    public void edit(Object obj) {
 
     }
 

@@ -19,7 +19,7 @@ public class AuthDialog extends JDialog implements IGUIEditor {
         getContentPane().add(new AuthForm(this));
     }
 
-    public void edit(int index) {
+    public void edit(Object obj) {
 
     }
 
