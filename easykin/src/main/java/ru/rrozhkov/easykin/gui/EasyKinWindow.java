@@ -145,12 +145,6 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         menuButtons.add(filterButton);
 
         ImageIcon dumpIcon = ImageUtil.scaleImage(70, 70, ImageManager.dump(getClass()));
-        Component dumpButton = GuiUtil.button(dumpIcon,new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                DumpManager.dump(context.masterData());
-            }
-        });
-//        menuButtons.add(dumpButton);
 
         return menuButtons;
     }

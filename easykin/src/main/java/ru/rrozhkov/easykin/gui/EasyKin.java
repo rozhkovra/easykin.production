@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.auth.AuthManager;
 import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.HSQLDBServer;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;

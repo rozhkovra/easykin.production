@@ -1,13 +1,13 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.Module;
-import ru.rrozhkov.easykin.auth.AuthManager;
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.gui.style.impl.custom.DocStyle;
 import ru.rrozhkov.easykin.gui.style.impl.custom.PaymentStyle;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.person.IPerson;
+import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.Table;
 import ru.rrozhkov.lib.gui.TablePanel;

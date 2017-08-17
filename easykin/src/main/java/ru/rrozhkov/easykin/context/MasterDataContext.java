@@ -1,13 +1,11 @@
 package ru.rrozhkov.easykin.context;
 
 import ru.rrozhkov.easykin.data.impl.PaymentDataProvider;
-import ru.rrozhkov.easykin.db.impl.PersonHandler;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
-import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
@@ -18,7 +16,6 @@ import java.util.Map;
 
 public class MasterDataContext implements IContext{
 	private Collection<ICategory> categories;
-	private Collection<IPerson> persons;
 	private Collection<IPayment> payments;
 	private Collection<IDoc> docs;
 	private Map<Integer, Collection> categoryData = new HashMap<Integer, Collection>();
@@ -30,7 +27,6 @@ public class MasterDataContext implements IContext{
 	public void init(){
 		try{
 			this.categories = CategoryHandler.select();
-			this.persons = PersonHandler.select();
 			this.payments = new PaymentDataProvider().getData();
 			this.docs = CollectionUtil.create();
 		}catch(Exception e){
@@ -71,10 +67,6 @@ public class MasterDataContext implements IContext{
 
 	public Collection<ICategory> categories() {
 		return categories;
-	}
-
-	public Collection<IPerson> persons() {
-		return persons;
 	}
 
 	public Collection<IPayment> payments() {

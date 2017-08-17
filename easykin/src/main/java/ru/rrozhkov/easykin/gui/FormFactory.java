@@ -1,14 +1,13 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.Module;
+
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.gui.doc.DocForm;
 import ru.rrozhkov.easykin.gui.payment.PaymentForm;
-import ru.rrozhkov.easykin.gui.person.PersonForm;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
-import ru.rrozhkov.easykin.model.person.IPerson;
+import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 
@@ -20,13 +19,6 @@ public class FormFactory {
 			return new PaymentForm(parent,(IPayment)obj);
 		return new PaymentForm(parent);
 	}
-
-	private static JPanel createPersonForm(IGUIEditor parent, Object obj) {
-		if(obj!=null && obj instanceof IPerson)
-			return new PersonForm(parent,(IPerson)obj);
-		return new JPanel();
-	}
-
 	private static JPanel createDocForm(IGUIEditor parent, Object obj) {
 		if(obj!=null && obj instanceof IDoc)
 			return new DocForm(parent,(IDoc)obj);
@@ -44,10 +36,12 @@ public class FormFactory {
 				else
 					return (JPanel)ModuleManager.invoke(Module.TASK, "createEditor", parent);
 			}
-		}else if(category.getId()==2){
-			return createPersonForm(parent, obj);
-		}else if(category.getId()==3){
-			return createPersonForm(parent,obj);
+		}else if(category.getId()==2
+				|| category.getId()==3){
+			if(ModuleManager.exist(Module.PERSON)) {
+				if(obj!=null)
+					return (JPanel)ModuleManager.invoke(Module.PERSON, "createEditor", parent, obj);
+			}
 		}else if(category.getId()==4){
 			if(ModuleManager.exist(Module.AUTO)) {
 				if(obj!=null)
