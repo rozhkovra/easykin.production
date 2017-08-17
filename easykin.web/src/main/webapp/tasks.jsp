@@ -1,4 +1,7 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
+<%@ page import="ru.rrozhkov.easykin.auth.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
@@ -40,7 +43,7 @@
 	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 
 	int i = 0;
-	Collection<ITask> tasks = context.tasks();
+	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson());
 	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	if(categoryId!=-1 && categoryId!=9){			

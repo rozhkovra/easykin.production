@@ -17,7 +17,7 @@
 	}
 %><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a></td><%	
 
-	for(Status status : context.statuses()){
+	for(Status status : new Status[]{Status.OPEN,Status.CLOSE}){
         if (status.equals(Status.status(statusId)) && statusId!=-1){
         	tdStyle="font-size:25px;font-weight:bold;";
 	    } else {  

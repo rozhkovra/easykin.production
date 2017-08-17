@@ -18,7 +18,7 @@
 %><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a></td><%	
 
 
-	for(Priority priority : context.priorities()){
+	for(Priority priority : new Priority[]{Priority.IMPOTANT_FAST,Priority.IMPOTANT_NOFAST,Priority.SIMPLE}){
         if (priority.equals(Priority.priority(priorityId)) && priorityId!=-1){
         	tdStyle="font-size:25px;font-weight:bold;";
 	    } else {  

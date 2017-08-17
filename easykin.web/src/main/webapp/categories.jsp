@@ -1,4 +1,7 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
+<%@ page import="ru.rrozhkov.easykin.auth.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
@@ -19,7 +22,7 @@
 	String urlParameters = "session="+session.getId()+"&statusId="+statusId+"&priorityId="+priorityId;
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 
-	Collection<ITask> tasks = context.tasks();
+	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson());
 	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
     if(statusId!=-1){
     	Status status = Status.status(statusId);
