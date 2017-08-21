@@ -17,6 +17,12 @@ public class ContextUtil {
 		}
 		return null;
 	}
+	public static String getCurrentModule(JTabbedPane tabs){
+		int index = tabs.getSelectedIndex();
+		if(index==-1)
+			return null;
+		return tabs.getTitleAt(index);
+	}
 	public static int getCurrentTab(MasterDataContext context, JTabbedPane tabs){
 		ICategory category = context.currentCategory();
 		if(category==null)

@@ -23,6 +23,15 @@ public class PanelFactory {
 		return new TablePanel(parent, new Table(collection, new DocStyle()));
 	}
 
+	public static JPanel createPanel(String module, IGUIEditor parent){
+		if(ModuleManager.exist(module)){
+			JPanel panel = (JPanel)ModuleManager.invoke(module, "createPanel", parent);
+			if(panel==null)
+				panel = new JPanel();
+			return panel;
+		}
+		return new JPanel();
+	}
 	public static JPanel createPanel(IGUIEditor parent, MasterDataContext context, ICategory category){
 		IPerson person = AuthManager.instance().signedPerson();
 		if(category.getId()==1
@@ -51,7 +60,7 @@ public class PanelFactory {
 			return createDocPanel(parent, context.docs());
 		}else if(category.getId()==9){
 			if(ModuleManager.exist(Module.TASK)) {
-				return (JPanel)ModuleManager.invoke(Module.TASK, "createPanel", parent, person);
+				return (JPanel)ModuleManager.invoke(Module.TASK, "createPanel", parent);
 			}
 		}else if(category.getId()==10){
 			if(ModuleManager.exist(Module.SERVICE)){

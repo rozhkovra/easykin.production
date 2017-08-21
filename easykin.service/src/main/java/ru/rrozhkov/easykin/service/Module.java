@@ -21,7 +21,7 @@ public class Module {
         Collection collection = new StaticServiceCalcDataProvider().getData();
         return new TablePanel(parent, new Table(collection, new ServiceCalcStyle()));
     }
-    public static JPanel createEditor(ICalculation calc){
+    public static JPanel createEditor(IGUIEditor parent, ICalculation calc){
         if(calc!=null)
             return new ServiceCalcForm((ServiceCalc)calc);
         return new JPanel();

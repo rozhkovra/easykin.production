@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.task;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.GUIFactory;
 import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskStyle;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
@@ -20,8 +21,9 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    public static JPanel createPanel(IGUIEditor parent, IPerson person){
+    public static JPanel createPanel(IGUIEditor parent){
         Collection collection;
+        IPerson person = AuthManager.instance().signedPerson();
         if(person!=null)
             collection = TaskBuilder.build(person.getId());
         else

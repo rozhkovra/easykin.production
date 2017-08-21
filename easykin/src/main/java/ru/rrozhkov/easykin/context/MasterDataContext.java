@@ -20,6 +20,7 @@ public class MasterDataContext implements IContext{
 	private Collection<IDoc> docs;
 	private Map<Integer, Collection> categoryData = new HashMap<Integer, Collection>();
 	private ICategory currentCategory;
+	private String module;
 
 	public MasterDataContext() {
 	}
@@ -41,6 +42,13 @@ public class MasterDataContext implements IContext{
 
 	public ICategory currentCategory(){
 		return this.currentCategory;
+	}
+	public void chooseModule(String module) {
+		this.module = module;
+	}
+
+	public String currentModule(){
+		return this.module;
 	}
 
 	private void initCategoryData() {

@@ -9,11 +9,14 @@ public class CollectionUtil {
 	}
 	
 	public static <T> Collection<T> copy(Collection<T> collection){
-		return new LinkedList<T>(collection);
+		Collection<T> newCollection = list();
+		newCollection.addAll(collection);
+		return newCollection;
 	}
 
 	public static <T> Collection<T> merge2copy(Collection<T> collection, T obj){
-		Collection<T> newCollection = new LinkedList<T>(collection);
+		Collection<T> newCollection = list();
+		newCollection.addAll(collection);
 		newCollection.add(obj);
 		return newCollection;
 	}
@@ -36,4 +39,12 @@ public class CollectionUtil {
 		return ((List<T>)collectoin).get(index);
 
 	}
+	public static <T> Collection<T> create(T... objects){
+		Collection<T> newCollection = list();
+		for(T obj : objects){
+			newCollection.add(obj);
+		}
+		return newCollection;
+	}
+
 }

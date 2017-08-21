@@ -25,6 +25,15 @@ public class FormFactory {
 		return new JPanel();
 	}
 
+	public static JPanel getFormPanel(String module, IGUIEditor parent, Object obj) {
+		if(ModuleManager.exist(module)) {
+			if(obj!=null)
+				return (JPanel)ModuleManager.invoke(module, "createEditor", parent, obj);
+			else
+				return (JPanel)ModuleManager.invoke(module, "createEditor", parent);
+		}
+		return new JPanel();
+	}
 	public static JPanel getFormPanel(MasterDataContext context, IGUIEditor parent, Object obj) {
 		ICategory category = context.currentCategory();
 		if(category.getId()==1

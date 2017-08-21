@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
+import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.lib.gui.util.ImageUtil;
 import ru.rrozhkov.easykin.model.category.ICategory;
@@ -45,7 +46,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
  	public void edit(Object obj){
         closeEditor(IGUIEditor.CODE_CANCEL);
 
-        JPanel editor = FormFactory.getFormPanel(context.masterData(), this, obj);
+        JPanel editor = FormFactory.getFormPanel(context.masterData().currentModule(),this, obj);
         JPanel content = new JPanel(new BorderLayout());
         content.add(editor,BorderLayout.NORTH);
         Container main = (Container)getContentPane().getComponent(1);
@@ -93,18 +94,22 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             tabbedPane = new JTabbedPane();
             tabbedPane.addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-                    context.masterData().chooseCategory(ContextUtil.getCurrentCategory(context.masterData(), getTabbedPane(false)));
+//                    context.masterData().chooseCategory(ContextUtil.getCurrentCategory(context.masterData(), getTabbedPane(false)));
+                    context.masterData().chooseModule(ContextUtil.getCurrentModule(getTabbedPane(false)));
                 }
             });
         }
         if(reload){
-            int currentIndex = ContextUtil.getCurrentTab(context.masterData(), getTabbedPane(false));
+//            int currentIndex = ContextUtil.getCurrentTab(context.masterData(), getTabbedPane(false));
             tabbedPane.removeAll();
-            for(ICategory category : context.masterData().categories()) {
-                tabbedPane.addTab(category.getName(), createPanel(this, context.masterData(), category));
+//            for(ICategory category : context.masterData().categories()) {
+//                tabbedPane.addTab(category.getName(), createPanel(this, context.masterData(), category));
+//            }
+//            if(currentIndex!=-1)
+//                tabbedPane.setSelectedIndex(currentIndex);
+            for(String module : ModuleManager.activeModules()) {
+                tabbedPane.addTab(module, createPanel(module, this));
             }
-            if(currentIndex!=-1)
-                tabbedPane.setSelectedIndex(currentIndex);
         }
         return tabbedPane;
     }

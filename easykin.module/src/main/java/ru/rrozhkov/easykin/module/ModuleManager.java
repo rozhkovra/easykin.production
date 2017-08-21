@@ -12,6 +12,9 @@ import java.util.Collection;
  */
 public class ModuleManager {
     public static final String ROOT = "ru.rrozhkov.easykin";
+    public static Collection<String> activeModules(){
+        return CollectionUtil.create(Module.AUTO,Module.FAMILY,Module.FIN,Module.TASK,Module.SERVICE);
+    }
     private static String module(String module){
         return ROOT+"." + module + ".Module";
     }
@@ -33,6 +36,8 @@ public class ModuleManager {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
+        if (method==null)
+            return null;
         try {
             return method.invoke(null, params);
         } catch (IllegalAccessException e) {
