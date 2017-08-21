@@ -1,7 +1,6 @@
 package ru.rrozhkov.easykin.task.gui;
 
 
-import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;

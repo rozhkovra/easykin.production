@@ -5,9 +5,11 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.task.impl.convert.ArrayCategoryConverter;
+import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -184,11 +186,10 @@ public class TaskForm extends Form {
 		if(!validateData())
 			return;
 		try{
-//			AuthManager authManager = AuthManager.instance();
-//			if(task.getId()==-1) {
-//				TaskService.create(authManager.signedPerson().getId(), task);
-//			}else
-			if(task.getId()!=-1) {
+			AuthManager authManager = AuthManager.instance();
+			if(task.getId()==-1) {
+				TaskService.create(authManager.signedPerson().getId(), task);
+			}else {
 				TaskHandler.update(task);
 			}
 		}catch(Exception ex){

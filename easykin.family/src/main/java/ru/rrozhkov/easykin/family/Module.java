@@ -3,7 +3,10 @@ package ru.rrozhkov.easykin.family;
 import ru.rrozhkov.easykin.family.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.family.gui.style.impl.custom.FamilyStyle;
 import ru.rrozhkov.easykin.family.impl.filter.KinFilterFactory;
+import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
+import ru.rrozhkov.easykin.model.person.IPerson;
+import ru.rrozhkov.easykin.person.gui.PersonForm;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.Table;
@@ -36,5 +39,8 @@ public class Module {
             e.printStackTrace();
         }
         return null;
+    }
+    public static JPanel createEditor(IGUIEditor parent, IKinPerson person){
+        return new PersonForm(parent,person);
     }
 }

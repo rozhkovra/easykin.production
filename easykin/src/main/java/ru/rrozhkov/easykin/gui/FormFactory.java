@@ -38,9 +38,9 @@ public class FormFactory {
 			}
 		}else if(category.getId()==2
 				|| category.getId()==3){
-			if(ModuleManager.exist(Module.PERSON)) {
+			if(ModuleManager.exist(Module.FAMILY)) {
 				if(obj!=null)
-					return (JPanel)ModuleManager.invoke(Module.PERSON, "createEditor", parent, obj);
+					return (JPanel)ModuleManager.invoke(Module.FAMILY, "createEditor", parent, obj);
 			}
 		}else if(category.getId()==4){
 			if(ModuleManager.exist(Module.AUTO)) {
