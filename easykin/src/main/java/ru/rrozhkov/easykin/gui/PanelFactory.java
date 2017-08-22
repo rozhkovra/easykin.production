@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.gui;
 
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.gui.style.impl.custom.DocStyle;
-import ru.rrozhkov.easykin.gui.style.impl.custom.PaymentStyle;
+import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentStyle;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.module.Module;

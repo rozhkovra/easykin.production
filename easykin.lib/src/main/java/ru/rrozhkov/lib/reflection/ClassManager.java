@@ -26,4 +26,7 @@ public class ClassManager {
     public static Method method(Class clazz, String methodName, Class[] types) throws NoSuchMethodException {
         return clazz.getMethod(methodName, types);
     }
+    public static Method method(Class clazz, String methodName) throws NoSuchMethodException {
+        return clazz.getMethod(methodName);
+    }
 }

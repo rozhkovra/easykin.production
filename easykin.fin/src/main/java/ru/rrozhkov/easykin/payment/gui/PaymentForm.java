@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.gui.payment;
+package ru.rrozhkov.easykin.payment.gui;
 
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;

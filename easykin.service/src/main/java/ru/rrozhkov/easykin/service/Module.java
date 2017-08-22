@@ -1,8 +1,9 @@
 package ru.rrozhkov.easykin.service;
 
+import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.service.calc.impl.convert.ServiceCalcConverter;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.ServiceCalcForm;
 import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcStyle;
@@ -25,5 +26,8 @@ public class Module {
         if(calc!=null)
             return new ServiceCalcForm((ServiceCalc)calc);
         return new JPanel();
+    }
+    public static Collection<IPayment> payments(){
+        return new ServiceCalcConverter().convert(new StaticServiceCalcDataProvider().getData());
     }
 }

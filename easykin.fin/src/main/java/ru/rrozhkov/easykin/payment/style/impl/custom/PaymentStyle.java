@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.gui.style.impl.custom;
+package ru.rrozhkov.easykin.payment.style.impl.custom;
 
 import ru.rrozhkov.lib.gui.style.ICollectionConverter;
 import ru.rrozhkov.lib.gui.style.IStyle;

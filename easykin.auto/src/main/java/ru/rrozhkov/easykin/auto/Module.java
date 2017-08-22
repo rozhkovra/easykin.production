@@ -3,8 +3,10 @@ package ru.rrozhkov.easykin.auto;
 import ru.rrozhkov.easykin.auto.data.impl.stat.StaticServiceHistoryDataProvider;
 import ru.rrozhkov.easykin.auto.gui.auto.AutoPanel;
 import ru.rrozhkov.easykin.auto.gui.auto.service.AutoServiceEditor;
+import ru.rrozhkov.easykin.auto.service.impl.convert.ServiceConverter;
 import ru.rrozhkov.easykin.model.auto.ICar;
 import ru.rrozhkov.easykin.model.auto.service.IService;
+import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.lib.data.impl.SingleCollectionDataProvider;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -28,5 +30,9 @@ public class Module {
     }
     public static JPanel createEditor(IGUIEditor parent){
         return new AutoServiceEditor(parent);
+    }
+    public static Collection<IPayment> payments(){
+        SingleCollectionDataProvider<IService, ICar> autoProvider = new StaticServiceHistoryDataProvider();
+        return new ServiceConverter().convert(autoProvider.getData());
     }
 }

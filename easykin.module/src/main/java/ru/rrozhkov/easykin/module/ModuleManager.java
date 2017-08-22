@@ -47,7 +47,25 @@ public class ModuleManager {
         }
         return null;
     }
-
+    public static Object invoke(String module, String methodName){
+        Class clazz = ModuleManager.clazz(module);
+        Method method = null;
+        try {
+            method = ClassManager.method(clazz, methodName);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        if (method==null)
+            return null;
+        try {
+            return method.invoke(null);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     private static Class getInterface(Class<? extends Object> aClass) {
         Class clazz = aClass;
         while(clazz.getInterfaces().length==0){

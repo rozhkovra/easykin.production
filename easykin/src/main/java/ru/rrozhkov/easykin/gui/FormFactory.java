@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.gui;
 
 import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.gui.doc.DocForm;
-import ru.rrozhkov.easykin.gui.payment.PaymentForm;
+import ru.rrozhkov.easykin.payment.gui.PaymentForm;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;

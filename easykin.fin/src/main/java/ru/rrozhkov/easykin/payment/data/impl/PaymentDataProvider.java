@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.data.impl;
+package ru.rrozhkov.easykin.payment.data.impl;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.lib.data.impl.CollectionDataProvider;

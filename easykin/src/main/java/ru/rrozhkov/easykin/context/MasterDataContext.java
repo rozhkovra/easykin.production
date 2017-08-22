@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.context;
 
-import ru.rrozhkov.easykin.data.impl.PaymentDataProvider;
+import ru.rrozhkov.easykin.payment.data.impl.PaymentDataProvider;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.doc.IDoc;
