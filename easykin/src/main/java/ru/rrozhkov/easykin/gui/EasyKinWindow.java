@@ -5,10 +5,9 @@ import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
 import ru.rrozhkov.easykin.module.ModuleManager;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.lib.gui.util.ImageUtil;
-import ru.rrozhkov.easykin.model.category.ICategory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -102,9 +101,6 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         if(reload){
 //            int currentIndex = ContextUtil.getCurrentTab(context.masterData(), getTabbedPane(false));
             tabbedPane.removeAll();
-//            for(ICategory category : context.masterData().categories()) {
-//                tabbedPane.addTab(category.getName(), createPanel(this, context.masterData(), category));
-//            }
 //            if(currentIndex!=-1)
 //                tabbedPane.setSelectedIndex(currentIndex);
             for(String module : ModuleManager.activeModules()) {

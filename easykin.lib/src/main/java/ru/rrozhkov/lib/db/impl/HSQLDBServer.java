@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.db.impl;
+package ru.rrozhkov.lib.db.impl;
 
 import org.hsqldb.server.Server;
 
