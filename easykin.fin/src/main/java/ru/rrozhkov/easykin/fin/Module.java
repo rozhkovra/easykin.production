@@ -1,6 +1,9 @@
 package ru.rrozhkov.easykin.fin;
 
+import ru.rrozhkov.easykin.model.fin.payment.IPayment;
+import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.module.ModuleManager;
+import ru.rrozhkov.easykin.payment.gui.PaymentForm;
 import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentStyle;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -22,5 +25,9 @@ public class Module {
                 collection.addAll(payments);
         }
         return new TablePanel(parent, new Table(collection, new PaymentStyle()));
+    }
+
+    public static JPanel createEditor(IGUIEditor parent, IPayment payment){
+        return new PaymentForm(parent,payment);
     }
 }
