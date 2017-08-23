@@ -62,6 +62,8 @@ public class ServiceCalcTableStyle extends TableStyle<ServiceCalc>  {
 	    table.getColumnModel().getColumn(9).setMaxWidth(100);
 	    table.getColumnModel().getColumn(10).setMinWidth(70);
 	    table.getColumnModel().getColumn(10).setMaxWidth(100);
+		table.getColumnModel().getColumn(11).setMinWidth(150);
+		table.getColumnModel().getColumn(11).setMaxWidth(150);
 	}
 	
 	@Override

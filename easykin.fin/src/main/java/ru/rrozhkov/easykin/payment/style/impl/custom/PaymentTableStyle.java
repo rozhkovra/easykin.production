@@ -24,11 +24,12 @@ public class PaymentTableStyle extends TableStyle<IPayment> {
 	    table.getColumnModel().getColumn(0).setMaxWidth(50);
 	    table.getColumnModel().getColumn(1).setMinWidth(150);
 	    table.getColumnModel().getColumn(1).setMaxWidth(200);
-		table.getColumnModel().getColumn(2).setMinWidth(300);
+		table.getColumnModel().getColumn(2).setMinWidth(600);
 	    table.getColumnModel().getColumn(3).setMinWidth(100);
 	    table.getColumnModel().getColumn(3).setMaxWidth(100);
-	    table.getColumnModel().getColumn(4).setMinWidth(100);
-	    table.getColumnModel().getColumn(4).setMaxWidth(100);
+	    table.getColumnModel().getColumn(4).setMinWidth(150);
+	    table.getColumnModel().getColumn(4).setMaxWidth(150);
+		table.setRowHeight(30);
 	}
 
 	@Override
@@ -43,6 +44,8 @@ public class PaymentTableStyle extends TableStyle<IPayment> {
 				} else {
 					c.setBackground(ColorManager.open());
 				}
+				c.setFont(c.getFont().deriveFont(Font.PLAIN,18));
+				setHorizontalAlignment(getColumnAlignment()[column]);
 				return c;
 			}
 
