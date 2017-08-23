@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
+import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
@@ -93,19 +94,18 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             tabbedPane = new JTabbedPane();
             tabbedPane.addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-//                    context.masterData().chooseCategory(ContextUtil.getCurrentCategory(context.masterData(), getTabbedPane(false)));
                     context.masterData().chooseModule(ContextUtil.getCurrentModule(getTabbedPane(false)));
                 }
             });
         }
         if(reload){
-//            int currentIndex = ContextUtil.getCurrentTab(context.masterData(), getTabbedPane(false));
             tabbedPane.removeAll();
-//            if(currentIndex!=-1)
-//                tabbedPane.setSelectedIndex(currentIndex);
             for(String module : ModuleManager.activeModules()) {
-                tabbedPane.addTab(module, createPanel(module, this));
+                tabbedPane.addTab(Module.name(module), createPanel(module, this));
             }
+            int currentIndex = ContextUtil.getCurrentTab(context.masterData().currentModule());
+            if(currentIndex!=-1)
+                tabbedPane.setSelectedIndex(currentIndex);
         }
         return tabbedPane;
     }

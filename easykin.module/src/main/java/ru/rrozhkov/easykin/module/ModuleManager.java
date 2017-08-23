@@ -13,7 +13,7 @@ import java.util.Collection;
 public class ModuleManager {
     public static final String ROOT = "ru.rrozhkov.easykin";
     public static Collection<String> activeModules(){
-        return CollectionUtil.create(Module.AUTO,Module.FAMILY,Module.FIN,Module.TASK,Module.SERVICE);
+        return CollectionUtil.create(Module.TASK,Module.FIN,Module.SERVICE,Module.AUTO,Module.FAMILY);
     }
     private static String module(String module){
         return ROOT+"." + module + ".Module";
@@ -21,15 +21,12 @@ public class ModuleManager {
     public static boolean exist(String module){
         return ClassManager.exist(module(module));
     }
-    public static Class clazz(String module){
-        return ClassManager.clazz(module(module));
-    }
     public static Object invoke(String module, String methodName, Object... params){
         Collection<Class> clazzs = CollectionUtil.create();
         for (Object obj : params){
             clazzs.add(getInterface(obj.getClass()));
         }
-        Class clazz = ModuleManager.clazz(module);
+        Class clazz = ClassManager.clazz(module(module));
         Method method = null;
         try {
             method = ClassManager.method(clazz, methodName, clazzs.toArray(new Class[clazzs.size()]));
@@ -48,7 +45,7 @@ public class ModuleManager {
         return null;
     }
     public static Object invoke(String module, String methodName){
-        Class clazz = ModuleManager.clazz(module);
+        Class clazz = ClassManager.clazz(module(module));
         Method method = null;
         try {
             method = ClassManager.method(clazz, methodName);

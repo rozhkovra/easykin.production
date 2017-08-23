@@ -1,5 +1,8 @@
 package ru.rrozhkov.easykin.module;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by rrozhkov on 8/14/2017.
  */
@@ -23,4 +26,31 @@ public class Module {
     // Third level
     public static final String GOVERNMENT = "covernment";
     public static final String MEDICAL = "medical";
+
+    public static final Map<String, String> module2name = new HashMap<String, String>() {
+        {
+            put(AUTO, "Машина");
+            put(PERSON, "Человек");
+            put(FAMILY, "Семья");
+            put(FIN, "Финансы");
+            put(SERVICE, "Коммунальные услуги");
+            put(TASK, "Задачи");
+        }
+    };
+    public static final Map<String, String> name2module = new HashMap<String, String>() {
+        {
+            put("Машина", AUTO);
+            put("Человек", PERSON);
+            put("Семья", FAMILY);
+            put("Финансы", FIN);
+            put("Коммунальные услуги", SERVICE);
+            put("Задачи", TASK);
+        }
+    };
+    public static String name(String module){
+        return module2name.get(module);
+    }
+    public static String mod(String name){
+        return name2module.get(name);
+    }
 }
