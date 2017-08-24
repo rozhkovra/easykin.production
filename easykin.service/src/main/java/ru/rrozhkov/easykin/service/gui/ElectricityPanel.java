@@ -30,9 +30,7 @@ public class ElectricityPanel extends Panel{
 	}
 
 	private void fill() {
-		setLayout(new GridLayout(8, 2));
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		setLayout(new GridLayout(7, 2));
 		add(getCalcTypeLabel());
 		add(GuiUtil.labelEmpty());
 		add(getPrevMesureLabel()); 

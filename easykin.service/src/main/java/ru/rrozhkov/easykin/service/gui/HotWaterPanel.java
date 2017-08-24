@@ -30,11 +30,11 @@ public class HotWaterPanel extends Panel{
 	}
 
 	private void fill() {
-		setLayout(new GridLayout(7,2));
-		add(GuiUtil.labelEmpty());
+		setLayout(new GridLayout(7, 2));
+
 		add(getCalcTypeLabel());
-		add(getItogoLabel()); 
-		add(getPrevMesureLabel()); 
+		add(GuiUtil.labelEmpty());
+		add(getPrevMesureLabel());
 		add(getPrevMesureField()); 
 		add(getCurrentMesureLabel()); 
 		add(getCurrentMesureField()); 
@@ -42,6 +42,8 @@ public class HotWaterPanel extends Panel{
 		add(getRateField()); 
 		add(getOdnLabel()); 
 		add(getOdnField());
+		add(GuiUtil.labelEmpty());
+		add(getItogoLabel());
 		refresh();
 	}
 	

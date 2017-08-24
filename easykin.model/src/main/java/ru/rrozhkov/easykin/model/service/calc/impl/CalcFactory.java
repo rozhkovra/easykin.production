@@ -54,8 +54,8 @@ public class CalcFactory {
 	public static ICalculation createEmptyServiceCalc() {
 		return createServiceCalc(DateUtil.parse("01.01.2017"),
 				Arrays.asList(
-						createDefaultCalc(WATER, MoneyFactory.create(0.00), false)
-						, createDefaultCalc(HOTWATER, MoneyFactory.create(0.00), false)
+						createWaterCalc(0,0,0,0,MoneyFactory.create(0.0),MoneyFactory.create(),MoneyFactory.create(),false)
+						, createHotWaterCalc(0,0,MoneyFactory.create(0.0),MoneyFactory.create(0.0),false)
 						, createElectricityCalc(0, 0, MoneyFactory.create(3.56), MoneyFactory.create(0.0), false)
 						, createGazCalc(0.0, 0.0, MoneyFactory.create(80.06), false)
 						, createDefaultCalc(HEATING, MoneyFactory.create(0.00), false)
