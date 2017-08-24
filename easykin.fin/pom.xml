@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.fin</groupId>
   <artifactId>easykin.fin</artifactId>
   <packaging>jar</packaging>
-  <version>7.0.0</version>
+  <version>7.0.1</version>
   <name>easykin.fin</name>
   <url>http://maven.apache.org</url>
   <dependencies>
