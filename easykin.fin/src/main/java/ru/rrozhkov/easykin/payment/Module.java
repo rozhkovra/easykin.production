@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.payment;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
+import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.payment.gui.PaymentForm;
 import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentStyle;
@@ -31,5 +32,14 @@ public class Module {
 
     public static JPanel createEditor(IGUIEditor parent, IPayment payment){
         return new PaymentForm(parent,payment);
+    }
+    public static Collection payments(){
+        Collection collection = CollectionUtil.create();
+        for(String module : ModuleManager.activeModules()) {
+            Collection payments = (Collection) ModuleManager.invoke(module, "payments");
+            if(payments!=null)
+                collection.addAll(payments);
+        }
+        return FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT));
     }
 }

@@ -1,7 +1,7 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
-<%@ page import="ru.rrozhkov.easykin.auth.*"%>
+<%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>

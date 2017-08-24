@@ -1,6 +1,7 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <table width="100%">
@@ -12,11 +13,15 @@
 <th>Дата</th>
 </tr>
 <%
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 
 	int i = 0;
-	Collection<IPayment> payments = context.dataForCategory(categoryId);
+	Collection<IPayment> payments = null;
+	if (categoryId==6){
+		payments = (Collection<IPayment>)ModuleManager.invoke(Module.PAYMENT, "payments");
+	} else if (categoryId==5){
+		payments = (Collection<IPayment>)ModuleManager.invoke(Module.FIN, "finance");
+	}
 	for(IPayment payment : payments){
 		String tdStyle = "height:30px;font-size:20px;";
 		String color = "";

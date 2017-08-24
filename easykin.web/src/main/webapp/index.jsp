@@ -1,7 +1,7 @@
 <%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
-<%@ page import="ru.rrozhkov.easykin.auth.*"%>
+<%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <html>

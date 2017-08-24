@@ -32,4 +32,13 @@ public class Module {
     public static JPanel createEditor(IGUIEditor parent, IPayment payment){
         return new PaymentForm(parent,payment);
     }
+    public static Collection finance(){
+        Collection collection = CollectionUtil.create();
+        for(String module : ModuleManager.activeModules()) {
+            Collection payments = (Collection) ModuleManager.invoke(module, "payments");
+            if(payments!=null)
+                collection.addAll(payments);
+        }
+        return FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.PLAN));
+    }
 }
