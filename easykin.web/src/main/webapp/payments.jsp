@@ -18,7 +18,7 @@
 	int i = 0;
 	Collection<IPayment> payments = null;
 	if (categoryId==6){
-		payments = (Collection<IPayment>)ModuleManager.invoke(Module.PAYMENT, "payments");
+		payments = (Collection<IPayment>)ModuleManager.invoke(Module.PAYMENT, "finance");
 	} else if (categoryId==5){
 		payments = (Collection<IPayment>)ModuleManager.invoke(Module.FIN, "finance");
 	}
