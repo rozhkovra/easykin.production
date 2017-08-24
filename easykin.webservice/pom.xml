@@ -14,5 +14,15 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.task</groupId>
+      <artifactId>easykin.task</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.module</groupId>
+      <artifactId>easykin.module</artifactId>
+      <version>${version}</version>
+    </dependency>
   </dependencies>
 </project>

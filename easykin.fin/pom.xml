@@ -24,5 +24,10 @@
       <artifactId>easykin.model</artifactId>
       <version>${version}</version>
     </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.module</groupId>
+      <artifactId>easykin.module</artifactId>
+      <version>${version}</version>
+    </dependency>
   </dependencies>
 </project>

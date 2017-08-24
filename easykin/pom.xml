@@ -153,23 +153,13 @@
         <version>${version}</version>
     </dependency>
     <dependency>
-        <groupId>ru.rrozhkov.easykin.auto</groupId>
-        <artifactId>easykin.auto</artifactId>
+        <groupId>ru.rrozhkov.easykin.module</groupId>
+        <artifactId>easykin.module</artifactId>
         <version>${version}</version>
     </dependency>
     <dependency>
-        <groupId>ru.rrozhkov.easykin.fin</groupId>
-        <artifactId>easykin.fin</artifactId>
-        <version>${version}</version>
-    </dependency>
-    <dependency>
-        <groupId>ru.rrozhkov.easykin.service</groupId>
-        <artifactId>easykin.service</artifactId>
-        <version>${version}</version>
-    </dependency>
-    <dependency>
-        <groupId>ru.rrozhkov.easykin.family</groupId>
-        <artifactId>easykin.family</artifactId>
+        <groupId>ru.rrozhkov.easykin.person</groupId>
+        <artifactId>easykin.person</artifactId>
         <version>${version}</version>
     </dependency>
     <dependency>
