@@ -30,8 +30,8 @@ public class DumpManager {
         for (ICategory category : masterDataContext.categories())
             builder.append(converter.convert(category)+";");
         PersonInsertConverter pConverter = new PersonInsertConverter();
-//        for (IPerson person : masterDataContext.persons())
-//            builder.append(pConverter.convert(person)+";");
+        for (IPerson person : (Collection<IPerson>) ModuleManager.invoke(Module.PERSON, "persons"))
+            builder.append(pConverter.convert(person)+";");
         TaskInsertConverter tConverter = new TaskInsertConverter();
         for (ITask task : FilterUtil.filter((Collection<ITask>) ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson()), TaskFilterFactory.status(Status.OPEN)))
             builder.append(tConverter.convert(task)+";");

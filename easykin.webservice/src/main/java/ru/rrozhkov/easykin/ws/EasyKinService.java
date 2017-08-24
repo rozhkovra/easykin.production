@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.ws;
 
 import ru.rrozhkov.easykin.model.category.ICategory;
+import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.module.Module;
@@ -51,9 +52,9 @@ public class EasyKinService {
 	@WebMethod
 	public Collection<PaymentBean> payments() {
 		Collection<PaymentBean> beans = CollectionUtil.create();
-//		for(IPayment payment : context.payments()){
-//			beans.add(WSConverterFactory.payment().convert(payment));
-//		}
+		for(IPayment payment : (Collection<IPayment>)ModuleManager.invoke(Module.PAYMENT, "finance")){
+			beans.add(WSConverterFactory.payment().convert(payment));
+		}
 		return beans;
 	}
 

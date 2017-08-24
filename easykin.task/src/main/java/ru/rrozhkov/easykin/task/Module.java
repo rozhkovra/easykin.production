@@ -32,17 +32,6 @@ public class Module {
             collection = TaskBuilder.build();
         return new TablePanel(parent, new Table(collection, new TaskStyle()));
     }
-    public static JPanel createPanelForCategory(IGUIEditor parent, IPerson person, ICategory category){
-        Collection collection;
-        if(person!=null)
-            collection = TaskBuilder.build(person.getId());
-        else
-            collection = TaskBuilder.build();
-        if(category!=null)
-            collection = FilterUtil.filter(collection, new CategoryFilter(category));
-        return new TablePanel(parent, new Table(collection, new TaskStyle()));
-    }
-
     public static JPanel createEditor(IGUIEditor parent){
         return GUIFactory.createTaskEditor(parent, null);
     }

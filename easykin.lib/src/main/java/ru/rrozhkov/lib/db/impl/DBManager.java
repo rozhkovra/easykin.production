@@ -1,21 +1,16 @@
 package ru.rrozhkov.lib.db.impl;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Properties;
-
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.convert.IConverter;
 import ru.rrozhkov.lib.db.IDBManager;
 import ru.rrozhkov.lib.db.impl.exception.NotFoundDBPropertiesException;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Properties;
 
 public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 	protected static IDBManager dbManager;
