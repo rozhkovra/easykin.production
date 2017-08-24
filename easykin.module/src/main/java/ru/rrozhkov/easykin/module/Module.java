@@ -33,6 +33,7 @@ public class Module {
             put(PERSON, "Человек");
             put(FAMILY, "Семья");
             put(FIN, "Финансы");
+            put(PAYMENT, "Платежи");
             put(SERVICE, "Коммунальные услуги");
             put(TASK, "Задачи");
         }
@@ -43,6 +44,7 @@ public class Module {
             put("Человек", PERSON);
             put("Семья", FAMILY);
             put("Финансы", FIN);
+            put("Платежи", PAYMENT);
             put("Коммунальные услуги", SERVICE);
             put("Задачи", TASK);
         }

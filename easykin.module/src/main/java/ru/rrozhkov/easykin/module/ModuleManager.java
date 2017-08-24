@@ -13,7 +13,7 @@ import java.util.Collection;
 public class ModuleManager {
     public static final String ROOT = "ru.rrozhkov.easykin";
     public static Collection<String> activeModules(){
-        return CollectionUtil.create(Module.TASK,Module.FIN,Module.SERVICE,Module.AUTO,Module.FAMILY);
+        return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.SERVICE,Module.AUTO,Module.FAMILY);
     }
     private static String module(String module){
         return ROOT+"." + module + ".Module";

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.fin;
+package ru.rrozhkov.easykin.payment;
 
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
@@ -26,7 +26,7 @@ public class Module {
             if(payments!=null)
                 collection.addAll(payments);
         }
-        return new TablePanel(parent, new Table(FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.PLAN)), new PaymentStyle()));
+        return new TablePanel(parent, new Table(FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT)), new PaymentStyle()));
     }
 
     public static JPanel createEditor(IGUIEditor parent, IPayment payment){
