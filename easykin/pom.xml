@@ -167,5 +167,25 @@
         <artifactId>easykin.task</artifactId>
         <version>${version}</version>
     </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.fin</groupId>
+        <artifactId>easykin.fin</artifactId>
+        <version>${version}</version>
+    </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.service</groupId>
+        <artifactId>easykin.service</artifactId>
+        <version>${version}</version>
+    </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.family</groupId>
+        <artifactId>easykin.family</artifactId>
+        <version>${version}</version>
+    </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.auto</groupId>
+        <artifactId>easykin.auto</artifactId>
+        <version>${version}</version>
+    </dependency>
 </dependencies>
 </project>
