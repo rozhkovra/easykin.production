@@ -29,7 +29,10 @@ public class TaskFactory{
 	public static IComment newComment(int taskId) {
 		return new Comment(-1, "", new Date(), taskId);
 	}
-	public static ITask2Person createT2P(int id, int personId, int taskId) {
+	public static ITask2Person createTask2Person(int id, int personId, int taskId) {
 		return new Task2Person(id, personId, taskId);
+	}
+	public static ITask2Payment createTask2Payment(int id, int paymentId, int taskId) {
+		return new Task2Payment(id, paymentId, taskId);
 	}
 }

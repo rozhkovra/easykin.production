@@ -11,7 +11,7 @@ public class DBTask2PersonConverter implements IConverter<ResultSet, ITask2Perso
 
 	public ITask2Person convert(ResultSet result){
 		try{
-			return TaskFactory.createT2P(result.getInt("id"), result.getInt("person"), result.getInt("task"));
+			return TaskFactory.createTask2Person(result.getInt("id"), result.getInt("person"), result.getInt("task"));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

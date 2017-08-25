@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.task;
 
-import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
@@ -8,8 +7,7 @@ import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.GUIFactory;
 import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskStyle;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
-import ru.rrozhkov.easykin.task.impl.convert.TaskPaymentConverter;
-import ru.rrozhkov.easykin.task.impl.filter.CategoryFilter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskPaymentCollectionConverter;
 import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -55,6 +53,6 @@ public class Module {
             collection = TaskBuilder.build(person.getId());
         else
             collection = TaskBuilder.build();
-        return new TaskPaymentConverter().convert(collection);
+        return new TaskPaymentCollectionConverter().convert(collection);
     }
 }

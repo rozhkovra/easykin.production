@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.payment;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
-import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.payment.gui.PaymentForm;
 import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentStyle;

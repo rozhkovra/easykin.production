@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by rrozhkov on 3/6/2017.
  */
-public class T2PMapConverter implements IConverter<ITask2Person, Map<String, Object>> {
+public class Task2PersonMapConverter implements IConverter<ITask2Person, Map<String, Object>> {
 
     public Map<String, Object> convert(ITask2Person t2p) {
         Map<String, Object> map = new HashMap<String, Object>();
