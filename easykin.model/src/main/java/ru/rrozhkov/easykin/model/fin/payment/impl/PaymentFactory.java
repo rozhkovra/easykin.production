@@ -32,4 +32,7 @@ public class PaymentFactory {
 	public static IPayment createPayment(PaymentCategory category, String comment, Money amount, Date date, PaymentStatus status){
 		return new Payment(category, comment,amount,date,status);
 	}
+	public static IPayment createPayment(int id, PaymentCategory category, String comment, Money amount, Date date, PaymentStatus status){
+		return new Payment(id, category, comment,amount,date,status);
+	}
 }

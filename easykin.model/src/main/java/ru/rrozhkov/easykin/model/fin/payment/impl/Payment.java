@@ -8,6 +8,7 @@ import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import java.util.Date;
 
 public class Payment implements IPayment {
+	protected int id;
 	protected PaymentCategory category;
 	protected String comment;
 	protected Money amount;
@@ -20,6 +21,15 @@ public class Payment implements IPayment {
 		this.amount = amount;
 		this.date = date;
 		this.status = status;
+	}
+
+	public Payment(int id, PaymentCategory category, String comment, Money amount, Date date, PaymentStatus status) {
+		this(category, comment, amount, date, status);
+		this.id = id;
+	}
+
+	public int getId() {
+		return 0;
 	}
 
 	public PaymentCategory getCategory() {
