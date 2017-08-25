@@ -74,10 +74,10 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 	public <T> Collection<T> select(String select, IConverter<ResultSet,T> converter) throws SQLException {
 		ResultSet result = null;
 		try {
-			Collection<T> collection = CollectionUtil.<T>create();
+			Collection<T> collection = CollectionUtil.create();
 			result = executeQuery(select);
 			while(result.next()){
-				collection.add((T)converter.convert(result));
+				collection.add(converter.convert(result));
 			}
 			return collection;
 		} catch (Exception e) { 

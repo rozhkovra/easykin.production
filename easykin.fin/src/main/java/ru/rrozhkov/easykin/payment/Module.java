@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.module.ModuleManager;
+import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
 import ru.rrozhkov.easykin.payment.gui.PaymentForm;
 import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentStyle;
 import ru.rrozhkov.lib.collection.CollectionUtil;
@@ -26,6 +27,11 @@ public class Module {
             if(payments!=null)
                 collection.addAll(payments);
         }
+        try {
+            collection.addAll(PaymentHandler.select());
+        }catch(Exception e){
+
+        }
         return new TablePanel(parent, new Table(FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT)), new PaymentStyle()));
     }
 
@@ -38,6 +44,11 @@ public class Module {
             Collection payments = (Collection) ModuleManager.invoke(module, "payments");
             if(payments!=null)
                 collection.addAll(payments);
+        }
+        try {
+            collection.addAll(PaymentHandler.select());
+        }catch(Exception e){
+
         }
         return FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT));
     }
