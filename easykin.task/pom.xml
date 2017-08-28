@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.task</groupId>
   <artifactId>easykin.task</artifactId>
   <packaging>jar</packaging>
-  <version>7.0.1</version>
+  <version>7.0.2</version>
   <name>easykin.task</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -27,6 +27,11 @@
     <dependency>
       <groupId>ru.rrozhkov.easykin.person</groupId>
       <artifactId>easykin.person</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ru.rrozhkov.easykin.fin</groupId>
+      <artifactId>easykin.fin</artifactId>
       <version>${version}</version>
     </dependency>
   </dependencies>

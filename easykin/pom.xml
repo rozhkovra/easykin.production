@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin</groupId>
   <artifactId>easykin</artifactId>
   <packaging>jar</packaging>
-  <version>7.0.1</version>
+  <version>7.0.2</version>
   <name>easykin</name>
   <url>http://maven.apache.org</url>
 
