@@ -21,7 +21,7 @@ public class PaymentMapConverter implements IConverter<IPayment, Map<String, Obj
 		map.put("createdate", DateUtil.formatSql(payment.getDate()));
 		map.put("categoryid", PaymentCategory.category(payment.getCategory()));
 		map.put("statusid", PaymentStatus.status(payment.getStatus()));
-		map.put("amount", payment.getAmount());
+		map.put("amount", payment.getAmount().getValue());
 		return map;
 	}
 
