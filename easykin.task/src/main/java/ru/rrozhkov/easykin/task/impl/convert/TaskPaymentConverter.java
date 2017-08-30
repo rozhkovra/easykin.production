@@ -11,6 +11,6 @@ import ru.rrozhkov.lib.convert.IConverter;
  */
 public class TaskPaymentConverter  implements IConverter<ITask, IPayment> {
     public IPayment convert(ITask entry) {
-        return PaymentFactory.createTaskPayment(entry.getName(), TaskUtil.extractAmount(entry), entry.getStatus().isClose() ? entry.getCloseDate() : entry.getPlanDate(), entry.getStatus());
+        return PaymentFactory.createTaskPayment(TaskUtil.extractComment(entry), TaskUtil.extractAmount(entry), entry.getStatus().isClose() ? entry.getCloseDate() : entry.getPlanDate(), entry.getStatus());
     }
 }
