@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.context.EasyKinContext;
+import ru.rrozhkov.easykin.context.MasterDataContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
@@ -23,12 +23,12 @@ import static ru.rrozhkov.easykin.gui.PanelFactory.createPanel;
 public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane;
-	private EasyKinContext context;
+	private MasterDataContext context;
 
-	public EasyKinWindow(EasyKinContext context) throws HeadlessException {
+	public EasyKinWindow() throws HeadlessException {
 		super(ContextUtil.title());
         setIconImage(ImageManager.logo(this.getClass()));
-		this.context = context;
+		this.context = new MasterDataContext();
         fill();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +46,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
  	public void edit(Object obj){
         closeEditor(IGUIEditor.CODE_CANCEL);
 
-        JPanel editor = FormFactory.getFormPanel(context.masterData().currentModule(),this, obj);
+        JPanel editor = FormFactory.getFormPanel(context.currentModule(),this, obj);
         JPanel content = new JPanel(new BorderLayout());
         content.add(editor,BorderLayout.NORTH);
         Container main = (Container)getContentPane().getComponent(1);
@@ -85,7 +85,6 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
 
     public void refresh() {
         super.repaint();
-        context.init();
         getTabbedPane(true);
     }
 
@@ -94,7 +93,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             tabbedPane = new JTabbedPane();
             tabbedPane.addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-                    context.masterData().chooseModule(ContextUtil.getCurrentModule(getTabbedPane(false)));
+                    context.chooseModule(ContextUtil.getCurrentModule(getTabbedPane(false)));
                 }
             });
         }
@@ -103,7 +102,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             for(String module : ModuleManager.activeModules()) {
                 tabbedPane.addTab(Module.name(module), createPanel(module, this));
             }
-            int currentIndex = ContextUtil.getCurrentTab(context.masterData().currentModule());
+            int currentIndex = ContextUtil.getCurrentTab(context.currentModule());
             if(currentIndex!=-1)
                 tabbedPane.setSelectedIndex(currentIndex);
         }
@@ -138,14 +137,12 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         menuButtons.add(refreshButton);
 
         ImageIcon filterIcon = ImageUtil.scaleImage(70, 70, ImageManager.filter(getClass()));
-        Component filterButton = GuiUtil.button(filterIcon,new ActionListener() {
+        Component filterButton = GuiUtil.button(filterIcon, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 filter();
             }
         });
         menuButtons.add(filterButton);
-
-        ImageIcon dumpIcon = ImageUtil.scaleImage(70, 70, ImageManager.dump(getClass()));
 
         return menuButtons;
     }
@@ -192,7 +189,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         JMenuItem dumpItem = new JMenuItem("Выгрузить данные");
         dumpItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                DumpManager.dump(context.masterData());
+                DumpManager.dump();
             }
         });
 

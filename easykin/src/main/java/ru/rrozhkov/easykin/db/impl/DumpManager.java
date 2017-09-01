@@ -12,6 +12,7 @@ import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.payment.impl.convert.PaymentInsertConverter;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.person.impl.convert.PersonInsertConverter;
+import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.task.impl.convert.CategoryInsertConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskInsertConverter;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
@@ -26,11 +27,15 @@ import java.util.Collection;
 public class DumpManager {
     public static final String STORAGE = "F:/temp/EasyKin";
 
-    public static void dump(MasterDataContext masterDataContext){
+    public static void dump(){
         StringBuilder builder = new StringBuilder();
         CategoryInsertConverter converter = new CategoryInsertConverter();
-        for (ICategory category : masterDataContext.categories())
-            builder.append(converter.convert(category)+";");
+        try {
+            for (ICategory category : CategoryHandler.select())
+                builder.append(converter.convert(category)+";");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         PersonInsertConverter pConverter = new PersonInsertConverter();
         for (IPerson person : (Collection<IPerson>) ModuleManager.invoke(Module.PERSON, "persons"))
             builder.append(pConverter.convert(person)+";");

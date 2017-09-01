@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.lib.db.impl.HSQLDBServer;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -28,11 +27,9 @@ public class EasyKin
     public static void start() {
         if(easyKinWindow!=null)
             easyKinWindow.dispose();
-        final EasyKinContext context = new EasyKinContext();
-        context.init();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                easyKinWindow = new EasyKinWindow(context);
+                easyKinWindow = new EasyKinWindow();
                 easyKinWindow.addWindowListener(new WindowAdapter() {
                     public void windowClosing(WindowEvent e) {
                         close();
