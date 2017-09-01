@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.service.gui.color;
+package ru.rrozhkov.lib.gui.color;
 
 import java.awt.*;
 
