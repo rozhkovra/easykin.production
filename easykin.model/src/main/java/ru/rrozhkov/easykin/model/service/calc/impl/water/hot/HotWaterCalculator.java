@@ -11,9 +11,8 @@ public class HotWaterCalculator extends Calculator {
 
 	public HotWaterResult calculate() {
 		HotWaterCalc calc = (HotWaterCalc)getCalc();
-		double hotDelta = calc.getCurrentMesure()-calc.getPrevMesure();
+		double hotDelta = (calc.getCurrentMesure()+calc.getCurrentMesure2())-(calc.getPrevMesure()+calc.getPrevMesure2());
 		Money hotSum = MoneyFactory.create(calc.getRate()).multiply(hotDelta);
-		Money sum = hotSum.add(calc.getOdn());
-		return new HotWaterResult(hotDelta, hotSum, sum);
+		return new HotWaterResult(hotDelta, hotSum, hotSum);
 	}
 }

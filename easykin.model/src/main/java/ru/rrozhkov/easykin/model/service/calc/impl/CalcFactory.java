@@ -19,15 +19,15 @@ import java.util.Date;
 import static ru.rrozhkov.easykin.model.service.calc.CalculationType.*;
 
 public class CalcFactory {
-	public static ICalculation createWaterCalc(int coldPrevMesure, int coldCurrentMesure
-			, int hotPrevMesure, int hotCurrentMesure, Money inRate, Money outRate, Money odn, boolean isPaid) {
-		return new WaterCalc(coldPrevMesure, coldCurrentMesure, hotPrevMesure
-				, hotCurrentMesure, inRate, outRate, odn, isPaid);
+	public static ICalculation createWaterCalc(int coldPrevMesure, int coldCurrentMesure, int coldPrevMesure2, int coldCurrentMesure2
+			, int hotPrevMesure, int hotCurrentMesure, int hotPrevMesure2, int hotCurrentMesure2, Money inRate, Money outRate, boolean isPaid) {
+		return new WaterCalc(coldPrevMesure, coldCurrentMesure, coldPrevMesure2, coldCurrentMesure2, hotPrevMesure
+				, hotCurrentMesure, hotPrevMesure2, hotCurrentMesure2,inRate, outRate, isPaid);
 	}
 	
-	public static ICalculation createHotWaterCalc(int hotPrevMesure, int hotCurrentMesure
-								, Money rate, Money odn, boolean isPaid) {
-		return new HotWaterCalc(hotPrevMesure, hotCurrentMesure,rate, odn, isPaid);
+	public static ICalculation createHotWaterCalc(int hotPrevMesure, int hotCurrentMesure, int hotPrevMesure2, int hotCurrentMesure2
+								, Money rate, boolean isPaid) {
+		return new HotWaterCalc(hotPrevMesure, hotCurrentMesure, hotPrevMesure2, hotCurrentMesure2, rate,  isPaid);
 	}
 
 	public static ICalculation createElectricityCalc(int prevMesure, int currentMesure
@@ -54,8 +54,8 @@ public class CalcFactory {
 	public static ICalculation createEmptyServiceCalc() {
 		return createServiceCalc(DateUtil.parse("01.01.2017"),
 				Arrays.asList(
-						createWaterCalc(0,0,0,0,MoneyFactory.create(0.0),MoneyFactory.create(),MoneyFactory.create(),false)
-						, createHotWaterCalc(0,0,MoneyFactory.create(0.0),MoneyFactory.create(0.0),false)
+						createWaterCalc(0,0,0,0,0,0,0,0,MoneyFactory.create(),MoneyFactory.create(),false)
+						, createHotWaterCalc(0,0,0,0,MoneyFactory.create(0.0),false)
 						, createElectricityCalc(0, 0, MoneyFactory.create(3.56), MoneyFactory.create(0.0), false)
 						, createGazCalc(0.0, 0.0, MoneyFactory.create(80.06), false)
 						, createDefaultCalc(HEATING, MoneyFactory.create(0.00), false)
