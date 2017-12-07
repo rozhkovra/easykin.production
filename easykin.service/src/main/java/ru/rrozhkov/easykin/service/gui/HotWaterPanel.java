@@ -60,7 +60,7 @@ public class HotWaterPanel extends Panel{
 	public JTextField getPrevMesureField(){
 		if(prevMesureField == null){
 			prevMesureField = new JTextField(5);
-			String text = String.valueOf(((HotWaterCalc)calc).getPrevMesure());
+			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure());
 			prevMesureField.setText(text);
 			prevMesureField.getDocument().addDocumentListener(this);
 		}
@@ -80,7 +80,7 @@ public class HotWaterPanel extends Panel{
 	public JTextField getCurrentMesureField(){
 		if(currentMesureField == null){
 			currentMesureField = new JTextField(5);
-			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMesure());
+			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure());
 			currentMesureField.setText(text);
 			currentMesureField.getDocument().addDocumentListener(this);
 		}
@@ -156,8 +156,8 @@ public class HotWaterPanel extends Panel{
 	@Override
 	public void updateBean() {
 		HotWaterCalc bean = (HotWaterCalc)getCalc();
-		bean.setPrevMesure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
-		bean.setCurrentMesure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
+		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
+		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
 		bean.setPrevMesure2(CalcUtil.doubleNUllOrEmpty(getPrevMesureField2().getText()));
 		bean.setCurrentMesure2(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField2().getText()));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));

@@ -14,7 +14,7 @@ public abstract class Panel extends JPanel implements DocumentListener {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel itogoLabel = null;
-	private ICalculator calculator;
+	protected ICalculator calculator;
 	protected Calculation calc; 
 	protected Panel parent;
 	public Panel(Panel parent, Calculation calc) {

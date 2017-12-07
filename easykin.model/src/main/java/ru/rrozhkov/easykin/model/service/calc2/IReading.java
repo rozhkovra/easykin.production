@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by rrozhkov on 11/1/2017.
  */
-public interface IReading {
+public interface IReading<T> {
     Date getDate();
-    Collection getMeasures();
+    Collection<T> getMeasures();
 }

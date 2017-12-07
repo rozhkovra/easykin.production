@@ -10,7 +10,7 @@ public class GazCalculator extends Calculator {
 
 	public GazResult calculate() {
 		GazCalc calcBean = (GazCalc)getCalc(); 
-		double delta = calcBean.getCurrentMesure()-calcBean.getPrevMesure();
+		double delta = calcBean.getCurrentMeasure()-calcBean.getPrevMeasure();
 		return  new GazResult(delta, MoneyFactory.create(calcBean.getRate()).multiply(delta));
 	}
 }

@@ -49,7 +49,7 @@ public class ElectricityPanel extends Panel{
 	public JTextField getPrevMesureField(){
 		if(prevMesureField == null){
 			prevMesureField = new JTextField(5);
-			String text = String.valueOf(((ElectricityCalc)calc).getPrevMesure());
+			String text = String.valueOf(((ElectricityCalc)calc).getPrevMeasure());
 			prevMesureField.setText(text);
 			prevMesureField.getDocument().addDocumentListener(this);
 			if(calc.isPaid())
@@ -61,7 +61,7 @@ public class ElectricityPanel extends Panel{
 	public JTextField getCurrentMesureField(){
 		if(currentMesureField == null){
 			currentMesureField = new JTextField(5);
-			String text = String.valueOf(((ElectricityCalc)calc).getCurrentMesure());			
+			String text = String.valueOf(((ElectricityCalc)calc).getCurrentMeasure());
 			currentMesureField.setText(text);
 			currentMesureField.getDocument().addDocumentListener(this);
 			if(calc.isPaid())
@@ -121,8 +121,8 @@ public class ElectricityPanel extends Panel{
 	@Override
 	public void updateBean() {
 		ElectricityCalc bean = (ElectricityCalc)getCalc();
-		bean.setPrevMesure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
-		bean.setCurrentMesure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
+		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
+		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
 		bean.setOdn(CalcUtil.moneyNUllOrEmpty(getOdnField().getText()));
 	}

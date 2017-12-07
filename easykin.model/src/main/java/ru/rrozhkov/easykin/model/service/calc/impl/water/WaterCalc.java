@@ -28,10 +28,10 @@ public class WaterCalc extends DoubleSimpleCalc {
 	}
 	
 	public double getColdPrevMesure() {
-		return getPrevMesure();
+		return getPrevMeasure();
 	}
 	public double getColdCurrentMesure() {
-		return getCurrentMesure();
+		return getCurrentMeasure();
 	}
 	public double getColdPrevMesure2() {
 		return getPrevMesure2();
@@ -52,10 +52,10 @@ public class WaterCalc extends DoubleSimpleCalc {
 		return outRate;
 	}
 	public void setColdPrevMesure(double coldPrevMesure) {
-		setPrevMesure(coldPrevMesure);
+		setPrevMeasure(coldPrevMesure);
 	}
 	public void setColdCurrentMesure(double coldCurrentMesure) {
-		setCurrentMesure(coldCurrentMesure);
+		setCurrentMeasure(coldCurrentMesure);
 	}
 	public void setHotPrevMesure(double hotPrevMesure) {
 		this.hotPrevMesure = hotPrevMesure;
