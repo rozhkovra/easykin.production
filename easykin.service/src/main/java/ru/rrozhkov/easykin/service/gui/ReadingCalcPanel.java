@@ -17,12 +17,11 @@ public class ReadingCalcPanel extends Panel {
     }
 
     private void fill() {
-        setLayout(new GridLayout(((ServiceCalc)calc).calcs().size(), 1));
+        setLayout(new GridLayout(((ServiceCalc)calc).calcs().size()+2, 1));
         for(ICalculation bean : ((ServiceCalc)calc).calcs()){
             add(ShortPanelFactory.getPanel(this, bean));
         }
         refresh();
-        add(GuiUtil.labelEmpty());
         add(GuiUtil.labelEmpty());
         add(getItogoLabel());
     }
