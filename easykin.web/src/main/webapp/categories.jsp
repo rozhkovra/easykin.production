@@ -1,4 +1,3 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
@@ -9,14 +8,13 @@
 <%@ page import="ru.rrozhkov.lib.filter.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.*"%>
 <%@ page import="ru.rrozhkov.lib.collection.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.db.impl.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <div id="category">
 <table border="0">
 <%
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
-
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
 	String urlParameters = "session="+session.getId()+"&statusId="+statusId+"&priorityId="+priorityId;
@@ -42,7 +40,7 @@
 	%><tr><td style="<%=tdStyle%>"><a href="index.jsp?<%=urlParameters%>">Все</a> <b>(<%=tasks.size()%>)</b></td></tr><%
 			
 
-	for(ICategory category : context.categories()){
+	for(ICategory category : CategoryHandler.select()){
 		int taskCount = 0;
 		taskCount = FilterUtil.filter(tasks, TaskFilterFactory.category(category)).size();
         if (category.getId()==categoryId){

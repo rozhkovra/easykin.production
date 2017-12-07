@@ -1,4 +1,3 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.easykin.person.auth.*"%>

@@ -1,4 +1,3 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>

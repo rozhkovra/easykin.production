@@ -11,7 +11,6 @@
     </div>
     <div id="checkboxes" align="left">
 <%
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	String urlParameters = "session="+session.getId()+"&categoryId="+categoryId+"&statusId="+statusId;

@@ -1,4 +1,3 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="java.util.*"%>
@@ -56,14 +55,6 @@
 	<col width="200"/>
 	<col width="200"/>
 	<col/>
-<%
-	if(session.getAttribute("masterDataContext")==null){
-		session.setAttribute("masterDataContext", new MasterDataContext());
-	}
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
-    context.init();
-
-%>
 <tr height="50px">
 <td colspan="2">
 <jsp:include page="status.jsp"/>

@@ -1,10 +1,8 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <table border="0">
 <tr>
 <%
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	String urlParameters = "session="+session.getId()+"&categoryId="+categoryId+"&statusId="+statusId;

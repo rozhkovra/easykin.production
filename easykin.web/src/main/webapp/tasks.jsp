@@ -1,4 +1,3 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
@@ -40,8 +39,6 @@
   <col width="150"/>
   <col width="120"/>
 <%
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
-
 	int i = 0;
 	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson());
 	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
