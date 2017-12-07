@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.family</groupId>
   <artifactId>easykin.family</artifactId>
   <packaging>jar</packaging>
-  <version>7.0.3</version>
+  <version>7.0.4</version>
   <name>easykin.family</name>
   <url>http://maven.apache.org</url>
   <dependencies>

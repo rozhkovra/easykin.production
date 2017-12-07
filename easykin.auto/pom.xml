@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.auto</groupId>
   <artifactId>easykin.auto</artifactId>
   <packaging>jar</packaging>
-  <version>7.0.3</version>
+  <version>7.0.4</version>
   <name>easykin.auto</name>
   <url>http://maven.apache.org</url>
   <dependencies>
