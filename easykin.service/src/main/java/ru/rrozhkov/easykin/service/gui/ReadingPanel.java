@@ -18,9 +18,12 @@ public class ReadingPanel extends JPanel {
     }
 
     private void fill() {
-        setLayout(new GridLayout(1, reading.getMeasures().size()*2));
+        setLayout(new GridLayout(2, reading.getMeasures().size()));
         for(IMeasure measure : reading.getMeasures()){
             add(new Label(String.valueOf(measure.getType())));
+
+        }
+        for(IMeasure measure : reading.getMeasures()){
             add(new TextField(measure.getValue().toString()));
         }
     }

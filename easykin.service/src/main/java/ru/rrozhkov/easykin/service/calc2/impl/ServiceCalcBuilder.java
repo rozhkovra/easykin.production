@@ -2,9 +2,9 @@ package ru.rrozhkov.easykin.service.calc2.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
+import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
-import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
@@ -31,6 +31,10 @@ public class ServiceCalcBuilder {
         calculations.add(getElectricityCalc(oldReading.getMeasures(), newReading.getMeasures()));
         calculations.add(getWaterCalc(oldReading.getMeasures(), newReading.getMeasures()));
         calculations.add(getHotWaterCalc(oldReading.getMeasures(), newReading.getMeasures()));
+        calculations.add(getAntennaCalc());
+        calculations.add(getIntercomCalc());
+        calculations.add(getHeatingCalc());
+        calculations.add(getRepairCalc());
         return CalcFactory.createServiceCalc(newReading.getDate(), calculations);
     }
 
@@ -66,7 +70,7 @@ public class ServiceCalcBuilder {
                 hotRate = (Money)rate.getValue();
             }
         }
-        return CalcFactory.createHotWaterCalc(hotWater1Prev,hotWater1Curr,hotWater2Prev,hotWater2Curr,hotRate,false);
+        return CalcFactory.createHotWaterCalc(hotWater1Prev, hotWater1Curr, hotWater2Prev, hotWater2Curr, hotRate, false);
 
     }
 
@@ -148,6 +152,46 @@ public class ServiceCalcBuilder {
                 electricityRate = (Money)rate.getValue();
             }
         }
-        return CalcFactory.createElectricityCalc(electricityPrev,electricityCurr,electricityRate,MoneyFactory.create(),false);
+        return CalcFactory.createElectricityCalc(electricityPrev, electricityCurr, electricityRate, MoneyFactory.create(), false);
+    }
+
+    public ICalculation getAntennaCalc() {
+        Money money = MoneyFactory.create();
+        for(IRate rate : rates) {
+            if(rate.getType().isAntenna()) {
+                money = (Money)rate.getValue();
+            }
+        }
+        return CalcFactory.createDefaultCalc(CalculationType.ANTENNA, money, false);
+    }
+
+    public ICalculation getIntercomCalc() {
+        Money money = MoneyFactory.create();
+        for(IRate rate : rates) {
+            if(rate.getType().isIntercom()) {
+                money = (Money)rate.getValue();
+            }
+        }
+        return CalcFactory.createDefaultCalc(CalculationType.INTERCOM,money,false);
+    }
+
+    public ICalculation getHeatingCalc() {
+        Money money = MoneyFactory.create();
+        for(IRate rate : rates) {
+            if(rate.getType().isHeating()) {
+                money = (Money)rate.getValue();
+            }
+        }
+        return CalcFactory.createDefaultCalc(CalculationType.HEATING,money,false);
+    }
+
+    public ICalculation getRepairCalc() {
+        Money money = MoneyFactory.create();
+        for(IRate rate : rates) {
+            if(rate.getType().isRepair()) {
+                money = (Money)rate.getValue();
+            }
+        }
+        return CalcFactory.createDefaultCalc(CalculationType.REPAIR,money,false);
     }
 }

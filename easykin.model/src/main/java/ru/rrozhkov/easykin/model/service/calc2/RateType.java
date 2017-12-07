@@ -8,7 +8,11 @@ public enum RateType {
     GAZ("Газ"),
     WATERIN("Вода подача"),
     WATEROUT("Водоотведение"),
-    HOTWATER("Горячая вода");
+    HOTWATER("Горячая вода"),
+    ANTENNA("Антенна"),
+    INTERCOM("Домофон"),
+    REPAIR("Кап.ремонт"),
+    HEATING("Отопление");
 
     private final String name;
 
@@ -24,5 +28,8 @@ public enum RateType {
     public boolean isWaterIn() {return this==WATERIN;}
     public boolean isWaterOut() {return this==WATEROUT;}
     public boolean isHotWater() {return this==HOTWATER;}
-
+    public boolean isAntenna() {return this==ANTENNA;}
+    public boolean isIntercom() {return this==INTERCOM;}
+    public boolean isHeating() {return this==HEATING;}
+    public boolean isRepair() {return this==REPAIR;}
 }
