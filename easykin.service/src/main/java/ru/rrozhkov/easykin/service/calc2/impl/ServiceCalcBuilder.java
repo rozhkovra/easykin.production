@@ -1,7 +1,6 @@
 package ru.rrozhkov.easykin.service.calc2.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
@@ -44,7 +43,7 @@ public class ServiceCalcBuilder {
         int hotWater1Curr = 0;
         int hotWater2Prev = 0;
         int hotWater2Curr = 0;
-        Money hotRate = MoneyFactory.create();
+        Money hotRate = Money.ZERO;
         for(IMeasure measure : newMeasures) {
             if(measure.getType().isHotWater()) {
                 int hotWater = (Integer)measure.getValue();
@@ -67,7 +66,7 @@ public class ServiceCalcBuilder {
         }
         for(IRate rate : rates) {
             if(rate.getType().isHotWater()) {
-                hotRate = (Money)rate.getValue();
+                hotRate = Money.valueOf(rate.getValue());
             }
         }
         return CalcFactory.createHotWaterCalc(hotWater1Prev, hotWater1Curr, hotWater2Prev, hotWater2Curr, hotRate, false);
@@ -84,8 +83,8 @@ public class ServiceCalcBuilder {
         int hotWater1Curr = 0;
         int hotWater2Prev = 0;
         int hotWater2Curr = 0;
-        Money inRate = MoneyFactory.create();
-        Money outRate = MoneyFactory.create();
+        Money inRate = Money.ZERO;
+        Money outRate = Money.ZERO;
         for(IMeasure measure : newMeasures) {
             if(measure.getType().isColdWater()) {
                 int coldWater = (Integer)measure.getValue();
@@ -122,9 +121,9 @@ public class ServiceCalcBuilder {
         }
         for(IRate rate : rates) {
             if(rate.getType().isWaterIn()) {
-                inRate = (Money)rate.getValue();
+                inRate = Money.valueOf(rate.getValue());
             } else if(rate.getType().isWaterOut()) {
-                outRate = (Money)rate.getValue();
+                outRate = Money.valueOf(rate.getValue());
             }
         }
         return CalcFactory.createWaterCalc(coldWater1Prev, coldWater1Curr, coldWater2Prev, coldWater2Curr,
@@ -136,7 +135,7 @@ public class ServiceCalcBuilder {
                                             Collection<IMeasure> newMeasures) {
         int electricityPrev = 0;
         int electricityCurr = 0;
-        Money electricityRate = MoneyFactory.create();
+        Money electricityRate = Money.ZERO;
         for(IMeasure measure : newMeasures) {
             if(measure.getType().isElectricity()) {
                 electricityCurr = (Integer)measure.getValue();
@@ -149,47 +148,47 @@ public class ServiceCalcBuilder {
         }
         for(IRate rate : rates) {
             if(rate.getType().isElectricity()) {
-                electricityRate = (Money)rate.getValue();
+                electricityRate = Money.valueOf(rate.getValue());
             }
         }
-        return CalcFactory.createElectricityCalc(electricityPrev, electricityCurr, electricityRate, MoneyFactory.create(), false);
+        return CalcFactory.createElectricityCalc(electricityPrev, electricityCurr, electricityRate, Money.ZERO, false);
     }
 
     public ICalculation getAntennaCalc() {
-        Money money = MoneyFactory.create();
+        Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isAntenna()) {
-                money = (Money)rate.getValue();
+                money = Money.valueOf(rate.getValue());
             }
         }
         return CalcFactory.createDefaultCalc(CalculationType.ANTENNA, money, false);
     }
 
     public ICalculation getIntercomCalc() {
-        Money money = MoneyFactory.create();
+        Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isIntercom()) {
-                money = (Money)rate.getValue();
+                money = Money.valueOf(rate.getValue());
             }
         }
         return CalcFactory.createDefaultCalc(CalculationType.INTERCOM,money,false);
     }
 
     public ICalculation getHeatingCalc() {
-        Money money = MoneyFactory.create();
+        Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isHeating()) {
-                money = (Money)rate.getValue();
+                money = Money.valueOf(rate.getValue());
             }
         }
         return CalcFactory.createDefaultCalc(CalculationType.HEATING,money,false);
     }
 
     public ICalculation getRepairCalc() {
-        Money money = MoneyFactory.create();
+        Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isRepair()) {
-                money = (Money)rate.getValue();
+                money = Money.valueOf(rate.getValue());
             }
         }
         return CalcFactory.createDefaultCalc(CalculationType.REPAIR,money,false);

@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.auto.gui.auto.service;
 
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
+import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -27,7 +28,7 @@ public class AutoServiceForm extends Form {
 	}
 	
 	public AutoServiceForm(IGUIEditor parent) {
-		this(parent, ServiceFactory.createService("", MoneyFactory.create(), new Date()));
+		this(parent, ServiceFactory.createService("", Money.ZERO, new Date()));
 	}
 	
 	protected void fill(){

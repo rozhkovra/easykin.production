@@ -20,7 +20,7 @@ public class TaskUtil {
 			int index = text.indexOf('$');
 			int lastIndex = text.lastIndexOf('$');
 			String value = text.substring(index+1, lastIndex);
-			return MoneyFactory.create(Double.valueOf(value));
+			return Money.valueOf(value);
 		}
 		return null;
 	}

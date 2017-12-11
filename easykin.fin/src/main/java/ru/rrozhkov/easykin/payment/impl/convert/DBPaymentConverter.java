@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.payment.impl.convert;
 
-import ru.rrozhkov.easykin.model.fin.MoneyFactory;
+import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentCategory;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
@@ -15,7 +15,7 @@ public class DBPaymentConverter implements IConverter<ResultSet,IPayment> {
 	public IPayment convert(ResultSet result){
 		try{
 			return PaymentFactory.createPayment(result.getInt("id"), PaymentCategory.category(result.getInt("categoryid"))
-					, result.getString("comment"), MoneyFactory.create(result.getDouble("amount"))
+					, result.getString("comment"), Money.valueOf(result.getDouble("amount"))
 					, result.getDate("createdate"), PaymentStatus.status(result.getInt("statusid")));
 		}catch(SQLException e){
 			e.printStackTrace();

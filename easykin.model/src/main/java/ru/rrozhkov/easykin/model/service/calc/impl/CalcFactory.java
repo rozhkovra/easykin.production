@@ -54,15 +54,15 @@ public class CalcFactory {
 	public static ICalculation createEmptyServiceCalc() {
 		return createServiceCalc(DateUtil.parse("01.01.2017"),
 				Arrays.asList(
-						createWaterCalc(0,0,0,0,0,0,0,0,MoneyFactory.create(),MoneyFactory.create(),false)
-						, createHotWaterCalc(0,0,0,0,MoneyFactory.create(0.0),false)
-						, createElectricityCalc(0, 0, MoneyFactory.create(3.56), MoneyFactory.create(0.0), false)
-						, createGazCalc(0.0, 0.0, MoneyFactory.create(80.06), false)
-						, createDefaultCalc(HEATING, MoneyFactory.create(0.00), false)
-						, createDefaultCalc(REPAIR, MoneyFactory.create(0.00), false)
-						, createDefaultCalc(ANTENNA, MoneyFactory.create(0.00), false)
-						, createDefaultCalc(INTERCOM, MoneyFactory.create(40.00), false)
-						, createDefaultCalc(HOUSE, MoneyFactory.create(0.00), false)
+						createWaterCalc(0,0,0,0,0,0,0,0,Money.ZERO,Money.ZERO,false)
+						, createHotWaterCalc(0,0,0,0,Money.ZERO,false)
+						, createElectricityCalc(0, 0, Money.valueOf(3.56), Money.valueOf(0.0), false)
+						, createGazCalc(0.0, 0.0, Money.valueOf(80.06), false)
+						, createDefaultCalc(HEATING, Money.ZERO, false)
+						, createDefaultCalc(REPAIR, Money.ZERO, false)
+						, createDefaultCalc(ANTENNA, Money.ZERO, false)
+						, createDefaultCalc(INTERCOM, Money.valueOf(40.00), false)
+						, createDefaultCalc(HOUSE, Money.ZERO, false)
 				)
 		);
 	}
