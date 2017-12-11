@@ -1,7 +1,6 @@
 package ru.rrozhkov.easykin.model.service.calc.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
@@ -10,7 +9,6 @@ import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 import ru.rrozhkov.lib.util.DateUtil;
-
 
 import java.util.Arrays;
 import java.util.Collection;

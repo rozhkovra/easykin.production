@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.service.calc2.impl;
+package ru.rrozhkov.easykin.model.service.calc2.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
@@ -12,33 +12,24 @@ import ru.rrozhkov.lib.collection.CollectionUtil;
 import java.util.Collection;
 
 /**
- * Created by rrozhkov on 12/7/2017.
+ * Created by rrozhkov on 12/11/2017.
  */
-public class ServiceCalcBuilder {
-    protected IReading<IMeasure> newReading;
-    protected IReading<IMeasure> oldReading;
-    protected Collection<IRate> rates;
-
-    public ServiceCalcBuilder(IReading<IMeasure> newReading, IReading<IMeasure> oldReading, Collection<IRate> rates) {
-        this.newReading = newReading;
-        this.oldReading = oldReading;
-        this.rates = rates;
-    }
-
-    public ICalculation build() {
+public class Calc2Factory {
+    public static ICalculation createServiceCalc(IReading newReading, IReading oldReading, Collection<IRate> rates) {
         Collection<ICalculation> calculations = CollectionUtil.create();
-        calculations.add(getElectricityCalc(oldReading.getMeasures(), newReading.getMeasures()));
-        calculations.add(getWaterCalc(oldReading.getMeasures(), newReading.getMeasures()));
-        calculations.add(getHotWaterCalc(oldReading.getMeasures(), newReading.getMeasures()));
-        calculations.add(getAntennaCalc());
-        calculations.add(getIntercomCalc());
-        calculations.add(getHeatingCalc());
-        calculations.add(getRepairCalc());
+        calculations.add(Calc2Factory.createElectricityCalc(oldReading.getMeasures(), newReading.getMeasures(), rates));
+        calculations.add(Calc2Factory.createWaterCalc(oldReading.getMeasures(), newReading.getMeasures(), rates));
+        calculations.add(Calc2Factory.createHotWaterCalc(oldReading.getMeasures(), newReading.getMeasures(), rates));
+        calculations.add(Calc2Factory.createAntennaCalc(rates));
+        calculations.add(Calc2Factory.createIntercomCalc(rates));
+        calculations.add(Calc2Factory.createHeatingCalc(rates));
+        calculations.add(Calc2Factory.createRepairCalc(rates));
         return CalcFactory.createServiceCalc(newReading.getDate(), calculations);
     }
 
-    private ICalculation getHotWaterCalc(Collection<IMeasure> oldMeasures,
-                                      Collection<IMeasure> newMeasures) {
+    public static ICalculation createHotWaterCalc(Collection<IMeasure> oldMeasures,
+                                                  Collection<IMeasure> newMeasures,
+                                                  Collection<IRate> rates) {
         int hotWater1Prev = 0;
         int hotWater1Curr = 0;
         int hotWater2Prev = 0;
@@ -73,8 +64,8 @@ public class ServiceCalcBuilder {
 
     }
 
-    private ICalculation getWaterCalc(Collection<IMeasure> oldMeasures,
-                                      Collection<IMeasure> newMeasures) {
+    public static ICalculation createWaterCalc(Collection<IMeasure> oldMeasures,
+                                               Collection<IMeasure> newMeasures, Collection<IRate> rates) {
         int coldWater1Prev = 0;
         int coldWater1Curr = 0;
         int coldWater2Prev = 0;
@@ -131,8 +122,8 @@ public class ServiceCalcBuilder {
 
     }
 
-    private ICalculation getElectricityCalc(Collection<IMeasure> oldMeasures,
-                                            Collection<IMeasure> newMeasures) {
+    public static ICalculation createElectricityCalc(Collection<IMeasure> oldMeasures,
+                                                     Collection<IMeasure> newMeasures, Collection<IRate> rates) {
         int electricityPrev = 0;
         int electricityCurr = 0;
         Money electricityRate = Money.ZERO;
@@ -154,7 +145,7 @@ public class ServiceCalcBuilder {
         return CalcFactory.createElectricityCalc(electricityPrev, electricityCurr, electricityRate, Money.ZERO, false);
     }
 
-    public ICalculation getAntennaCalc() {
+    public static ICalculation createAntennaCalc(Collection<IRate> rates) {
         Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isAntenna()) {
@@ -164,33 +155,33 @@ public class ServiceCalcBuilder {
         return CalcFactory.createDefaultCalc(CalculationType.ANTENNA, money, false);
     }
 
-    public ICalculation getIntercomCalc() {
+    public static ICalculation createIntercomCalc(Collection<IRate> rates) {
         Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isIntercom()) {
                 money = Money.valueOf(rate.getValue());
             }
         }
-        return CalcFactory.createDefaultCalc(CalculationType.INTERCOM,money,false);
+        return CalcFactory.createDefaultCalc(CalculationType.INTERCOM, money, false);
     }
 
-    public ICalculation getHeatingCalc() {
+    public static ICalculation createHeatingCalc(Collection<IRate> rates) {
         Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isHeating()) {
                 money = Money.valueOf(rate.getValue());
             }
         }
-        return CalcFactory.createDefaultCalc(CalculationType.HEATING,money,false);
+        return CalcFactory.createDefaultCalc(CalculationType.HEATING, money, false);
     }
 
-    public ICalculation getRepairCalc() {
+    public static ICalculation createRepairCalc(Collection<IRate> rates) {
         Money money = Money.ZERO;
         for(IRate rate : rates) {
             if(rate.getType().isRepair()) {
                 money = Money.valueOf(rate.getValue());
             }
         }
-        return CalcFactory.createDefaultCalc(CalculationType.REPAIR,money,false);
+        return CalcFactory.createDefaultCalc(CalculationType.REPAIR, money, false);
     }
 }
