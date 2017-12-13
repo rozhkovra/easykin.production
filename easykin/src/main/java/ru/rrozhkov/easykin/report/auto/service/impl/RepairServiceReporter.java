@@ -13,7 +13,7 @@ public class RepairServiceReporter extends ServiceReporter {
 	}
 
 	public Money getDetailsSum() {
-		Money value = Money.ZERO;
+		Money value = Money.valueOf(0.00);
 		for(IService service : FilterUtil.<IService>filter(history.getServices(), filters)){
 			value.add(RepairUtil.getDetailsPrice(service));
 		}						

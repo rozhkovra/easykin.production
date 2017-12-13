@@ -12,7 +12,7 @@ public class ServiceCalculator extends Calculator {
 
 	public ServiceResult calculate() {
 		ServiceCalc calcBean = (ServiceCalc)getCalc();
-		Money itogo = Money.ZERO;
+		Money itogo = Money.valueOf(0.00);
 		for(ICalculation calc : calcBean.calcs()){
 			Calculation bean = (Calculation)calc;
 			itogo.add(getCalculator(bean).calculate().getResult());

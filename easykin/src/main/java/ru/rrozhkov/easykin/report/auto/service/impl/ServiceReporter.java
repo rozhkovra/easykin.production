@@ -14,7 +14,7 @@ public class ServiceReporter extends FilteredReporter {
 	}
 	
 	public Money getSum() {
-		Money value = Money.ZERO;
+		Money value = Money.valueOf(0.00);
 		for(IService service : FilterUtil.<IService>filter(history.getServices(), filters)){
 			value.add(service.getPrice());
 		}						

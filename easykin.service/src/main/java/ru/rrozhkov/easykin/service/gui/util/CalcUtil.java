@@ -7,6 +7,6 @@ public class CalcUtil {
 		return !"".equals(text)?Double.valueOf(text):0.0;
 	}
 	public static Money moneyNUllOrEmpty(String text){
-		return !"".equals(text)? Money.valueOf(text):Money.ZERO;
+		return !"".equals(text)? Money.valueOf(text):Money.valueOf(0.00);
 	}
 }

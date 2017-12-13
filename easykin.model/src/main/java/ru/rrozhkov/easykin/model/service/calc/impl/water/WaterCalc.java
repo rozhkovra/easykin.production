@@ -17,7 +17,7 @@ public class WaterCalc extends DoubleSimpleCalc {
 					 double hotPrevMesure, double hotCurrentMesure,
 					 double hotPrevMesure2, double hotCurrentMesure2,
 					 Money inRate, Money outRate, boolean isPaid) {
-		super(coldPrevMesure, coldCurrentMesure, coldPrevMesure2, coldCurrentMesure2, Money.ZERO, isPaid);
+		super(coldPrevMesure, coldCurrentMesure, coldPrevMesure2, coldCurrentMesure2, Money.valueOf(0.00), isPaid);
 		this.hotPrevMesure = hotPrevMesure;
 		this.hotCurrentMesure = hotCurrentMesure;
 		this.hotPrevMesure2 = hotPrevMesure2;

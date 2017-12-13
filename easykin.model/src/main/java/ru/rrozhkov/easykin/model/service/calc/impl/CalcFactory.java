@@ -52,15 +52,15 @@ public class CalcFactory {
 	public static ICalculation createEmptyServiceCalc() {
 		return createServiceCalc(DateUtil.parse("01.01.2017"),
 				Arrays.asList(
-						createWaterCalc(0,0,0,0,0,0,0,0,Money.ZERO,Money.ZERO,false)
-						, createHotWaterCalc(0,0,0,0,Money.ZERO,false)
+						createWaterCalc(0,0,0,0,0,0,0,0,Money.valueOf(0.00),Money.valueOf(0.00),false)
+						, createHotWaterCalc(0,0,0,0,Money.valueOf(0.00),false)
 						, createElectricityCalc(0, 0, Money.valueOf(3.56), Money.valueOf(0.0), false)
 						, createGazCalc(0.0, 0.0, Money.valueOf(80.06), false)
-						, createDefaultCalc(HEATING, Money.ZERO, false)
-						, createDefaultCalc(REPAIR, Money.ZERO, false)
-						, createDefaultCalc(ANTENNA, Money.ZERO, false)
+						, createDefaultCalc(HEATING, Money.valueOf(0.00), false)
+						, createDefaultCalc(REPAIR, Money.valueOf(0.00), false)
+						, createDefaultCalc(ANTENNA, Money.valueOf(0.00), false)
 						, createDefaultCalc(INTERCOM, Money.valueOf(40.00), false)
-						, createDefaultCalc(HOUSE, Money.ZERO, false)
+						, createDefaultCalc(HOUSE, Money.valueOf(0.00), false)
 				)
 		);
 	}

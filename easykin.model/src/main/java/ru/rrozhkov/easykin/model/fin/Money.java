@@ -3,8 +3,6 @@ package ru.rrozhkov.easykin.model.fin;
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 
 public class Money {
-	public static Money ZERO = new Money();
-	public static Money ONE = new Money(1.0);
 	double value;
 	
 	public Money() {

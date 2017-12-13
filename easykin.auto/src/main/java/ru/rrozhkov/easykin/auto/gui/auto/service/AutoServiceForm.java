@@ -28,7 +28,7 @@ public class AutoServiceForm extends Form {
 	}
 	
 	public AutoServiceForm(IGUIEditor parent) {
-		this(parent, ServiceFactory.createService("", Money.ZERO, new Date()));
+		this(parent, ServiceFactory.createService("", Money.valueOf(0.00), new Date()));
 	}
 	
 	protected void fill(){

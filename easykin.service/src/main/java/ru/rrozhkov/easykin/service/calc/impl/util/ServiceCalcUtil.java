@@ -22,7 +22,7 @@ public class ServiceCalcUtil {
 	}
 	
 	public static Money getPaidSum(ServiceCalc entry){
-		Money sum = Money.ZERO;
+		Money sum = Money.valueOf(0.00);
 		for(ICalculation calc : entry.calcs()){
 			if(calc.isPaid())
 				sum.add(getCalculator(calc).calculate().getResult());
@@ -31,7 +31,7 @@ public class ServiceCalcUtil {
 	}
 	
 	public static Money getNoPaidSum(ServiceCalc entry){
-		Money sum = Money.ZERO;
+		Money sum = Money.valueOf(0.00);
 		for(ICalculation calc : entry.calcs()){
 			if(!calc.isPaid())
 				sum.add(getCalculator(calc).calculate().getResult());

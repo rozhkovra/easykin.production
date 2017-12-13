@@ -34,7 +34,7 @@ public class Calc2Factory {
         int hotWater1Curr = 0;
         int hotWater2Prev = 0;
         int hotWater2Curr = 0;
-        Money hotRate = Money.ZERO;
+        Money hotRate = Money.valueOf(0.00);
         for(IMeasure measure : newMeasures) {
             if(measure.getType().isHotWater()) {
                 int hotWater = (Integer)measure.getValue();
@@ -74,8 +74,8 @@ public class Calc2Factory {
         int hotWater1Curr = 0;
         int hotWater2Prev = 0;
         int hotWater2Curr = 0;
-        Money inRate = Money.ZERO;
-        Money outRate = Money.ZERO;
+        Money inRate = Money.valueOf(0.00);
+        Money outRate = Money.valueOf(0.00);
         for(IMeasure measure : newMeasures) {
             if(measure.getType().isColdWater()) {
                 int coldWater = (Integer)measure.getValue();
@@ -126,7 +126,7 @@ public class Calc2Factory {
                                                      Collection<IMeasure> newMeasures, Collection<IRate> rates) {
         int electricityPrev = 0;
         int electricityCurr = 0;
-        Money electricityRate = Money.ZERO;
+        Money electricityRate = Money.valueOf(0.00);
         for(IMeasure measure : newMeasures) {
             if(measure.getType().isElectricity()) {
                 electricityCurr = (Integer)measure.getValue();
@@ -142,11 +142,11 @@ public class Calc2Factory {
                 electricityRate = Money.valueOf(rate.getValue());
             }
         }
-        return CalcFactory.createElectricityCalc(electricityPrev, electricityCurr, electricityRate, Money.ZERO, false);
+        return CalcFactory.createElectricityCalc(electricityPrev, electricityCurr, electricityRate, Money.valueOf(0.00), false);
     }
 
     public static ICalculation createAntennaCalc(Collection<IRate> rates) {
-        Money money = Money.ZERO;
+        Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isAntenna()) {
                 money = Money.valueOf(rate.getValue());
@@ -156,7 +156,7 @@ public class Calc2Factory {
     }
 
     public static ICalculation createIntercomCalc(Collection<IRate> rates) {
-        Money money = Money.ZERO;
+        Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isIntercom()) {
                 money = Money.valueOf(rate.getValue());
@@ -166,7 +166,7 @@ public class Calc2Factory {
     }
 
     public static ICalculation createHeatingCalc(Collection<IRate> rates) {
-        Money money = Money.ZERO;
+        Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isHeating()) {
                 money = Money.valueOf(rate.getValue());
@@ -176,7 +176,7 @@ public class Calc2Factory {
     }
 
     public static ICalculation createRepairCalc(Collection<IRate> rates) {
-        Money money = Money.ZERO;
+        Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isRepair()) {
                 money = Money.valueOf(rate.getValue());

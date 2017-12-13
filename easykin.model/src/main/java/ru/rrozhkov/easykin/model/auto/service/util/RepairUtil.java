@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.model.fin.Money;
 
 public class RepairUtil {
 	public static Money getDetailsPrice(IService service){
-		Money sum = Money.ZERO;
+		Money sum = Money.valueOf(0.00);
 		for (IService detail : service.services()) {
 			sum.add(detail.getPrice());
 		}
