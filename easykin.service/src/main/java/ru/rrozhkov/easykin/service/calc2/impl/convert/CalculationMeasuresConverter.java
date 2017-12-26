@@ -20,12 +20,12 @@ public class CalculationMeasuresConverter implements
     public Collection<IMeasure> convert(ICalculation entry) {
         Collection<IMeasure> measures = CollectionUtil.create();
         if(entry instanceof ElectricityCalc) {
-            measures.add(new Measure(null, MeasureType.ELECTRICITY,((ElectricityCalc)entry).getCurrentMeasure()));
+            measures.add(new Measure(MeasureType.ELECTRICITY,((ElectricityCalc)entry).getCurrentMeasure()));
         }else if (entry instanceof WaterCalc) {
-            measures.add(new Measure(null, MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMesure()));
-            measures.add(new Measure(null, MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMesure2()));
-            measures.add(new Measure(null, MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMesure()));
-            measures.add(new Measure(null, MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMesure2()));
+            measures.add(new Measure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMesure()));
+            measures.add(new Measure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMesure2()));
+            measures.add(new Measure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMesure()));
+            measures.add(new Measure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMesure2()));
         }
         return measures;
     }

@@ -11,8 +11,8 @@ import java.awt.*;
  * Created by rrozhkov on 12/7/2017.
  */
 public class ReadingCalcPanel extends Panel {
-    public ReadingCalcPanel(Calculation calc) {
-        super(null, calc);
+    public ReadingCalcPanel(Panel parent, Calculation calc) {
+        super(parent, calc);
         fill();
     }
 
@@ -29,5 +29,16 @@ public class ReadingCalcPanel extends Panel {
     @Override
     public void updateBean() {
 
+    }
+
+    @Override
+    public void updateUI() {
+        super.updateUI();
+        for(Component component : getComponents()) {
+            if(component instanceof Panel) {
+                Panel panel = (Panel)component;
+                panel.updateUI();
+            }
+        }
     }
 }

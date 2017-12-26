@@ -33,16 +33,22 @@ public class WaterCalc extends DoubleSimpleCalc {
 		return getCurrentMeasure();
 	}
 	public double getColdPrevMesure2() {
-		return getPrevMesure2();
+		return getPrevMeasure2();
 	}
 	public double getColdCurrentMesure2() {
-		return getCurrentMesure2();
+		return getCurrentMeasure2();
 	}
 	public double getHotPrevMesure() {
 		return hotPrevMesure;
 	}
 	public double getHotCurrentMesure() {
 		return hotCurrentMesure;
+	}
+	public double getHotPrevMesure2() {
+		return hotPrevMesure2;
+	}
+	public double getHotCurrentMesure2() {
+		return hotCurrentMesure2;
 	}
 	public Money getInRate() {
 		return inRate;
@@ -68,23 +74,17 @@ public class WaterCalc extends DoubleSimpleCalc {
 	public void setOutRate(Money outRate) {
 		this.outRate = outRate;
 	}
-	public double getHotPrevMesure2() {
-		return hotPrevMesure2;
-	}
 	public void setHotPrevMesure2(double hotPrevMesure2) {
 		this.hotPrevMesure2 = hotPrevMesure2;
-	}
-	public double getHotCurrentMesure2() {
-		return hotCurrentMesure2;
 	}
 	public void setHotCurrentMesure2(double hotCurrentMesure2) {
 		this.hotCurrentMesure2 = hotCurrentMesure2;
 	}
 	public void setColdPrevMesure2(double coldPrevMesure) {
-		setPrevMesure2(coldPrevMesure);
+		setPrevMeasure2(coldPrevMesure);
 	}
 	public void setColdCurrentMesure2(double coldCurrentMesure) {
-		setCurrentMesure2(coldCurrentMesure);
+		setCurrentMeasure2(coldCurrentMesure);
 	}
 
 	public CalculationType getType() {

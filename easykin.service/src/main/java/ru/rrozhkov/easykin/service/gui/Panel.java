@@ -6,49 +6,27 @@ import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
 
-public abstract class Panel extends JPanel implements DocumentListener {
+public abstract class Panel extends GUIPanel{
 
 	private static final long serialVersionUID = 1L;
 	private JLabel itogoLabel = null;
 	protected ICalculator calculator;
-	protected Calculation calc; 
-	protected Panel parent;
+	protected Calculation calc;
 	public Panel(Panel parent, Calculation calc) {
-		super();
+		super(parent);
 		this.calc = calc;
-		this.parent = parent;
 		this.calculator = CalculatorFactory.getCalculator(calc);
 	}
 
-	public void insertUpdate(DocumentEvent e) {
-		refresh();
-	}
-
-	public void removeUpdate(DocumentEvent e) {
-		refresh();
-	}
-
-	public void changedUpdate(DocumentEvent e) {
-		refresh();
-	}
-
-	public void refresh() {
-		updateBean();
-		updateUI();
-		if(parent!=null)
-			parent.refresh();
-
-	}
 	@Override
 	public void updateUI() {
 		super.updateUI();
 		if(calculator!=null)
 			getItogoLabel().setText(FormatUtil.formatMoney(calculator.calculate().getResult()));
 	}
+
 	public JLabel getItogoLabel(){
 		if(itogoLabel == null){
 			itogoLabel  = new JLabel("");
@@ -63,5 +41,4 @@ public abstract class Panel extends JPanel implements DocumentListener {
 	public Calculation getCalc(){
 		return calc;
 	}
-	abstract public void updateBean();
 }
