@@ -10,6 +10,6 @@ public class DefaultCalculator extends Calculator {
 
 	public DefaultResult calculate() {
 		DefaultCalc calcBean = (DefaultCalc)getCalc();
-		return new DefaultResult(calcBean.getSum());
+		return new DefaultResult(calcBean.getPrice());
 	}
 }

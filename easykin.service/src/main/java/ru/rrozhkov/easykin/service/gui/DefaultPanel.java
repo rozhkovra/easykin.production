@@ -36,7 +36,7 @@ public class DefaultPanel extends Panel {
 	public JTextField getSumField(){
 		if(sumField == null){
 			sumField = new JTextField(10);
-			String sum = FormatUtil.formatEditMoney(((DefaultCalc)calc).getSum());
+			String sum = FormatUtil.formatEditMoney(((DefaultCalc)calc).getPrice());
 			sumField.setText(sum);
 			sumField.getDocument().addDocumentListener(this);
 			if(calc.isPaid())
@@ -52,6 +52,6 @@ public class DefaultPanel extends Panel {
 	@Override
 	public void updateBean() {
 		DefaultCalc bean = (DefaultCalc)getCalc();
-		bean.setSum(CalcUtil.moneyNUllOrEmpty(getSumField().getText()));
+		bean.setPrice(CalcUtil.moneyNUllOrEmpty(getSumField().getText()));
 	}
 }

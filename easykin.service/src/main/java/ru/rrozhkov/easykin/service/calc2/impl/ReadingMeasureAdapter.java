@@ -1,15 +1,18 @@
-package ru.rrozhkov.easykin.model.service.calc2.impl;
+package ru.rrozhkov.easykin.service.calc2.impl;
 
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
+import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
+import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureTypeFilter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.filter.util.FilterUtil;
 
 import java.util.Collection;
 
 /**
  * Created by rrozhkov on 12/25/2017.
  */
-public class ReadingMeasureFacade {
+public class ReadingMeasureAdapter {
     protected Collection<IMeasure> measures;
     protected double coldMeasure;
     protected double coldMeasure2;
@@ -17,7 +20,7 @@ public class ReadingMeasureFacade {
     protected double hotMeasure2;
     protected int electricityMeasure;
 
-    public ReadingMeasureFacade(IReading<IMeasure> reading) {
+    public ReadingMeasureAdapter(IReading reading) {
         this.measures = CollectionUtil.copy(reading.getMeasures());
         this.coldMeasure = 0.0;
         this.coldMeasure2 = 0.0;
@@ -77,5 +80,9 @@ public class ReadingMeasureFacade {
             }
         }
         return electricityMeasure;
+    }
+
+    public Collection<IMeasure> getMeasuresByType(MeasureType... types) {
+        return FilterUtil.filter(measures, new MeasureTypeFilter(types));
     }
 }

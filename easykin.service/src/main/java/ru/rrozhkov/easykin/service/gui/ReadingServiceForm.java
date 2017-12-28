@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
-import ru.rrozhkov.easykin.model.service.calc2.impl.ReadingMeasureFacade;
+import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.CalcReadingConverter;
 
 import java.awt.*;
@@ -35,7 +35,7 @@ public class ReadingServiceForm extends Panel {
 
     @Override
     public void updateBean() {
-        ReadingMeasureFacade readingMeasureFacade = new ReadingMeasureFacade(reading);
+        ReadingMeasureAdapter readingMeasureFacade = new ReadingMeasureAdapter(reading);
         for(ICalculation calculation : ((ServiceCalc)calc).calcs()) {
             if(calculation.getType().isWater()) {
                 WaterCalc waterCalc = (WaterCalc)calculation;

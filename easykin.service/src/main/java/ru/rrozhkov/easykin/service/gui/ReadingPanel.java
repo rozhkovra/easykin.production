@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by rrozhkov on 11/28/2017.
  */
 public class ReadingPanel extends GUIPanel {
-    protected IReading<IMeasure> reading;
+    protected IReading reading;
     protected Map<IMeasure,JTextField> fields;
 
     public ReadingPanel(Panel parent, IReading reading) {
