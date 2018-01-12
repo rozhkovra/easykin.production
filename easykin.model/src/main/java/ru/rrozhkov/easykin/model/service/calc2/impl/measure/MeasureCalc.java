@@ -14,8 +14,8 @@ public class MeasureCalc extends RateCalc {
     Collection<IMeasure> oldMeasures;
     Collection<IMeasure> newMeasures;
 
-    public MeasureCalc(Collection<IMeasure> oldMeasures,Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
-        super(CalculationType.WATER, rate, isPaid);
+    public MeasureCalc(CalculationType type, Collection<IMeasure> oldMeasures,Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
+        super(type, rate, isPaid);
         this.oldMeasures = oldMeasures;
         this.newMeasures = newMeasures;
     }

@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.convert.ServiceCalcConverter;
+import ru.rrozhkov.easykin.service.data.impl.stat.StaticReadingDataProvider;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.ReadingServiceForm;
 import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcStyle;
@@ -19,12 +20,13 @@ import java.util.Collection;
  */
 public class Module {
     public static JPanel createPanel(IGUIEditor parent){
-        Collection collection = new StaticServiceCalcDataProvider().getData();
+        Collection collection =
+//                StaticReadingDataProvider.calcs();
+        new StaticServiceCalcDataProvider().getData();
         return new TablePanel(parent, new Table(collection, new ServiceCalcStyle()));
     }
 
     public static JPanel createEditor(IGUIEditor parent, ICalculation calc){
-
         if(calc!=null) {
             return new ReadingServiceForm((ServiceCalc)calc);
         }

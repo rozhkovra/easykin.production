@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.model.service.calc2.impl.gaz;
 
 import ru.rrozhkov.easykin.model.fin.Money;
+import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 
@@ -11,6 +12,6 @@ import java.util.Collection;
  */
 public class GazCalc extends MeasureCalc{
     public GazCalc(Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
-        super(oldMeasures, newMeasures, rate, isPaid);
+        super(CalculationType.GAZ,oldMeasures, newMeasures, rate, isPaid);
     }
 }
