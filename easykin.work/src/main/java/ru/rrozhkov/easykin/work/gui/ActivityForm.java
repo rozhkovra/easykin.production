@@ -203,7 +203,7 @@ public class ActivityForm extends Form {
 			if(activity.getId()==-1) {
 				ActivityHandler.insert(activity);
 			}else {
-				//TODO update activity
+				ActivityHandler.update(activity);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();

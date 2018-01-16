@@ -24,6 +24,10 @@ public class ActivityHandler {
 			+" WHERE PERSONID=#person#"
 			+" ORDER BY "+TABLENAME+".ACTDATE desc";
 
+	public static String update = "UPDATE "+TABLENAME+" SET ACTDATE='#date#', PERSONID=#personId#, ACTTIME=#time#,"
+			+" TASKTYPE='#taskType#', NAME='#name#', RELEASETYPE='#releaseType#', DESC='#desc#' WHERE ID=#id#";
+
+
 	public static Collection<IActivity> select() throws Exception {
 		return DBManager.instance().select(select,new DBActivityConverter());
 	}
@@ -39,6 +43,16 @@ public class ActivityHandler {
 			map.put("id", id);
 			DBManager.instance().insert(insert,map);
 			return id;
+		} catch (Exception e) {
+			throw new SQLException(e);
+		}
+	}
+
+	public static int update(IActivity activity) throws SQLException{
+		try {
+			Map<String, Object> map = new ActivityMapConverter().convert(activity);
+			int count = DBManager.instance().update(update, map);
+			return count;
 		} catch (Exception e) {
 			throw new SQLException(e);
 		}

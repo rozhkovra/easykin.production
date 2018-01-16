@@ -40,7 +40,7 @@ public class ActivityTableStyle extends TableStyle<IActivity>  {
 		table.getColumnModel().getColumn(6).setMaxWidth(200);
 		table.getColumnModel().getColumn(7).setMinWidth(200);
 		table.getColumnModel().getColumn(7).setPreferredWidth(250);
-		table.getColumnModel().getColumn(7).setMaxWidth(300);
+		table.getColumnModel().getColumn(7).setMaxWidth(500);
 		table.setRowHeight(40);
 	}
 
