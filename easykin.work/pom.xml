@@ -7,8 +7,8 @@
     <groupId>ru.rrozhkov.easykin.work</groupId>
     <artifactId>easykin.work</artifactId>
     <packaging>jar</packaging>
-    <version>8.0.1</version>
-    <name>easykin.task</name>
+    <version>8.1.0</version>
+    <name>easykin.work</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>

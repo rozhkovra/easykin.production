@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.ws</groupId>
   <artifactId>easykin.webservice</artifactId>
   <packaging>jar</packaging>
-  <version>8.0.1</version>
+  <version>8.1.0</version>
   <name>easykin.webservice</name>
   <url>http://maven.apache.org</url>
   <dependencies>
