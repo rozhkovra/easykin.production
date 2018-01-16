@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exe4j version="4.6" transformSequenceNumber="1">
-  <directoryPresets config="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/8.1.0" />
+  <directoryPresets config="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/8.1.1" />
   <application name="EasyKin" distributionSourceDir="F:/temp/EasyKin/easykin/exe">
     <languages>
       <principalLanguage id="en" customLocalizationFile="" />
     </languages>
   </application>
-  <executable name="EasyKin-8.1.0" type="2" iconSet="true" iconFile="F:/temp/EasyKin/easykin/icon/logo.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" amd64="false">
+  <executable name="EasyKin-8.1.1" type="2" iconSet="true" iconFile="F:/temp/EasyKin/easykin/icon/logo.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" amd64="false">
     <messageSet />
     <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" companyName="" productVersion="" />
   </executable>
@@ -23,18 +23,18 @@
       <envVar name="JDK_HOME" />
     </searchSequence>
     <classPath>
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/lib/easykin.lib/8.1.0/easykin.lib-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/model/easykin.model/8.1.0/easykin.model-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/fin/easykin.fin/8.1.0/easykin.fin-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/task/easykin.task/8.1.0/easykin.task-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/service/easykin.service/8.1.0/easykin.service-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/family/easykin.family/8.1.0/easykin.family-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/auto/easykin.auto/8.1.0/easykin.auto-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/easykin/8.1.0/easykin-8.1.0.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/lib/easykin.lib/8.1.1/easykin.lib-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/model/easykin.model/8.1.1/easykin.model-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/fin/easykin.fin/8.1.1/easykin.fin-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/task/easykin.task/8.1.1/easykin.task-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/service/easykin.service/8.1.1/easykin.service-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/family/easykin.family/8.1.1/easykin.family-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/auto/easykin.auto/8.1.1/easykin.auto-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/easykin/8.1.1/easykin-8.1.1.jar" failOnError="false" />
       <archive location="C:/Users/RRozhkov/.m2/repository/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/module/easykin.module/8.1.0/easykin.module-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/8.1.0/easykin.person-8.1.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/work/easykin.work/8.1.0/easykin.work-8.1.0.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/module/easykin.module/8.1.1/easykin.module-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/8.1.1/easykin.person-8.1.1.jar" failOnError="false" />
+      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/work/easykin.work/8.1.1/easykin.work-8.1.1.jar" failOnError="false" />
     </classPath>
     <nativeLibraryDirectories />
   </java>
