@@ -36,6 +36,7 @@ public class Module {
             put(PAYMENT, "Платежи");
             put(SERVICE, "Коммунальные услуги");
             put(TASK, "Задачи");
+            put(WORK, "Работа");
         }
     };
     public static final Map<String, String> name2module = new HashMap<String, String>() {
@@ -47,6 +48,7 @@ public class Module {
             put("Платежи", PAYMENT);
             put("Коммунальные услуги", SERVICE);
             put("Задачи", TASK);
+            put("Работа", WORK);
         }
     };
     public static String name(String module){

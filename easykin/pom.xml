@@ -187,5 +187,10 @@
         <artifactId>easykin.auto</artifactId>
         <version>${version}</version>
     </dependency>
+    <dependency>
+        <groupId>ru.rrozhkov.easykin.work</groupId>
+        <artifactId>easykin.work</artifactId>
+        <version>${version}</version>
+    </dependency>
 </dependencies>
 </project>
