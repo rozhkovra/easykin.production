@@ -60,7 +60,7 @@
 <jsp:include page="status.jsp"/>
 </td>
 <td align="right">
-<jsp:include page="priorities_multiselect.jsp"/>
+<!--jsp:include page="priorities_multiselect.jsp"/-->
 <jsp:include page="priorities.jsp"/>
 </td>
 </tr>
@@ -74,6 +74,8 @@
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	if (categoryId==5 || categoryId==6){
 %><jsp:include page="payments.jsp"/><%
+	}else if(categoryId==8){
+%><jsp:include page="work.jsp"/><%
 	}else{
 %>
 <jsp:include page="tasks.jsp"/>

@@ -1,8 +1,6 @@
 package ru.rrozhkov.easykin.work;
 
-import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
 import ru.rrozhkov.easykin.work.gui.ActivityForm;
 import ru.rrozhkov.easykin.work.gui.style.impl.custom.ActivityStyle;
 import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
@@ -38,9 +36,9 @@ public class Module {
         return new JPanel();
     }
 
-    public static Collection activites(IPerson person){
+    public static Collection activities(){
         try {
-            return ActivityHandler.select();
+            return ActivityBuilder.build();
         } catch (Exception e) {
             e.printStackTrace();
         }
