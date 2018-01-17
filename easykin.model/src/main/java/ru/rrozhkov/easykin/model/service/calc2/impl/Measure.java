@@ -7,12 +7,20 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
  * Created by rrozhkov on 11/1/2017.
  */
 public class Measure implements IMeasure{
+    protected int id;
+    protected int readingId;
     protected MeasureType type;
     protected Object value;
 
     public Measure(MeasureType type, Object value) {
         this.type = type;
         this.value = value;
+    }
+
+    public Measure(int id, int readingId, MeasureType type, Object value) {
+        this(type, value);
+        this.id = id;
+        this.readingId = readingId;
     }
 
     public MeasureType getType() {
@@ -25,5 +33,13 @@ public class Measure implements IMeasure{
 
     public void setValue(Object value) {
         this.value = value;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getReadingId() {
+        return readingId;
     }
 }

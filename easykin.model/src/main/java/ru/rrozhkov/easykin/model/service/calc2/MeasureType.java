@@ -22,4 +22,16 @@ public enum MeasureType {
     public boolean isGaz() {return this==GAZ;}
     public boolean isColdWater() {return this==COLDWATER;}
     public boolean isHotWater() {return this==HOTWATER;}
+
+    public static MeasureType type(String type) {
+        if(ELECTRICITY.toString().equals(type))
+            return ELECTRICITY;
+        else if(GAZ.toString().equals(type))
+                return GAZ;
+        else if(COLDWATER.toString().equals(type))
+            return COLDWATER;
+        else if(HOTWATER.toString().equals(type))
+            return HOTWATER;
+        return null;
+    }
 }

@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by rrozhkov on 11/1/2017.
  */
 public class Rate implements IRate {
+    protected int id;
     protected RateType type;
     protected Object value;
     protected Date dateFrom;
@@ -35,5 +36,9 @@ public class Rate implements IRate {
 
     public Date getDateTo() {
         return dateTo;
+    }
+
+    public int getId() {
+        return id;
     }
 }
