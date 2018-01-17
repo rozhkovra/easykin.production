@@ -12,10 +12,14 @@ import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalculator;
+import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalculator;
 
 public class CalculatorFactory {
 	public static ICalculator getCalculator(ICalculation bean){
-		if(bean instanceof GazCalc)
+		if(bean instanceof MeasureCalc)
+			return new MeasureCalculator((MeasureCalc)bean);
+		else if(bean instanceof GazCalc)
 			return new GazCalculator((GazCalc)bean);
 		else if (bean instanceof WaterCalc)
 			return new WaterCalculator((WaterCalc)bean);

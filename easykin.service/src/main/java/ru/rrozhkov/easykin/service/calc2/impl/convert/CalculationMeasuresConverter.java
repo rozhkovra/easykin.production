@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.service.calc2.impl.convert;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
@@ -20,7 +20,7 @@ public class CalculationMeasuresConverter implements
     public Collection<IMeasure> convert(ICalculation entry) {
         Collection<IMeasure> measures = CollectionUtil.create();
         if(entry instanceof ElectricityCalc) {
-            measures.add(new Measure(MeasureType.ELECTRICITY,((ElectricityCalc)entry).getCurrentMeasure()));
+            measures.addAll(((ElectricityCalc)entry).getNewMeasures());
         }else if (entry instanceof WaterCalc) {
             measures.add(new Measure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMesure()));
             measures.add(new Measure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMesure2()));

@@ -16,15 +16,15 @@ public class MeasureCalculator extends Calculator {
 
     public IResult calculate() {
         MeasureCalc mCalc = (MeasureCalc)getCalc();
-        double curr = 0.0;
-        double prev = 0.0;
+        int curr = 0;
+        int prev = 0;
         for(IMeasure measure : mCalc.getOldMeasures()) {
-            prev += (Double)measure.getValue();
+            prev += (Integer)measure.getValue();
         }
         for(IMeasure measure : mCalc.getNewMeasures()) {
-            curr += (Double)measure.getValue();
+            curr += (Integer)measure.getValue();
         }
-        double delta = curr-prev;
+        int delta = curr-prev;
         Money deltaSum = MoneyFactory.create(mCalc.getPrice()).multiply(delta);
         return new MeasureResult(delta, deltaSum, deltaSum);
     }

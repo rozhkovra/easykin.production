@@ -21,8 +21,8 @@ import java.util.Collection;
 public class Module {
     public static JPanel createPanel(IGUIEditor parent){
         Collection collection =
-//                StaticReadingDataProvider.calcs();
-        new StaticServiceCalcDataProvider().getData();
+                StaticReadingDataProvider.calcs();
+//        new StaticServiceCalcDataProvider().getData();
         return new TablePanel(parent, new Table(collection, new ServiceCalcStyle()));
     }
 
