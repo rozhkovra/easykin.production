@@ -76,6 +76,7 @@ public class ActivityForm extends Form {
 					ReleaseType.R1000,
 					ReleaseType.R1100,
 					ReleaseType.R1200,
+					ReleaseType.R1210,
 					ReleaseType.R1400,
 					ReleaseType.R1500,
 					ReleaseType.NORELEASE,

@@ -11,6 +11,7 @@ public enum ReleaseType {
     R1000("10.0.0"),
     R1100("11.0.0"),
     R1200("12.0.0"),
+    R1210("12.1.0"),
     R1400("14.0.0"),
     R1500("15.0.0"),
     NORELEASE("Вне релиза"),
@@ -41,6 +42,8 @@ public enum ReleaseType {
             return R1100;
         else if(R1200.toString().equals(str))
             return R1200;
+        else if(R1210.toString().equals(str))
+            return R1210;
         else if(R1400.toString().equals(str))
             return R1400;
         else if(R1500.toString().equals(str))
