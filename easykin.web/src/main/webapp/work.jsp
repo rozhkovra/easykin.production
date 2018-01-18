@@ -21,12 +21,18 @@
 	Date curDate = null;
 	Collection<IActivity> activities = (Collection<IActivity>)ModuleManager.invoke(Module.WORK, "activities");
 	for(IActivity activity : activities){
+		String color = "";
 		String tdStyle = "height:30px;font-size:20px;";
 		if(curDate!=null && !curDate.equals(activity.getDate())) {
+			if(daytime == 8) {
+				color = "#44e53f";
+			}else{
+				color = "#eec95e";
+			}
 %>
 <tr>
 	<td colspan="3"/>
-	<td style="<%=tdStyle%>text-align:right;font-weight:bold;"><%=daytime%></td>
+	<td bgcolor="<%=color%>" style="<%=tdStyle%>text-align:right;font-weight:bold;"><%=daytime%></td>
 	<td colspan="4"/>
 </tr>
 <%
@@ -46,10 +52,15 @@
 <%
 		daytime+=activity.getTime();
 		if(i==activities.size()) {
+			if(daytime == 8) {
+				color = "#44e53f";
+			}else{
+				color = "#eec95e";
+			}
 %>
 <tr>
 	<td colspan="3"/>
-	<td style="<%=tdStyle%>text-align:right;font-weight:bold;"><%=daytime%></td>
+	<td bgcolor="<%=color%>" style="<%=tdStyle%>text-align:right;font-weight:bold;"><%=daytime%></td>
 	<td colspan="4"/>
 </tr>
 <%
