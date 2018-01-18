@@ -12,34 +12,27 @@ import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.Table;
 import ru.rrozhkov.lib.gui.TablePanel;
+import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
     public static JPanel createPanel(IGUIEditor parent){
-        Collection collection = CollectionUtil.create();
-        for(String module : ModuleManager.activeModules()) {
-            Collection payments = (Collection) ModuleManager.invoke(module, "payments");
-            if(payments!=null)
-                collection.addAll(payments);
-        }
-        try {
-            collection.addAll(PaymentHandler.select());
-        }catch(Exception e){
-
-        }
-        return new TablePanel(parent, new Table(FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT)), new PaymentStyle()));
+        return new TablePanel(parent, new Table(finance(), new PaymentStyle()));
     }
 
     public static JPanel createEditor(IGUIEditor parent, IPayment payment){
         return new PaymentForm(parent,payment);
     }
     public static Collection finance(){
-        Collection collection = CollectionUtil.create();
+        Collection<IPayment> collection = CollectionUtil.create();
         for(String module : ModuleManager.activeModules()) {
             Collection payments = (Collection) ModuleManager.invoke(module, "payments");
             if(payments!=null)
@@ -50,6 +43,11 @@ public class Module {
         }catch(Exception e){
 
         }
+        Collections.sort((List)collection,new Comparator<IPayment>() {
+            public int compare(IPayment o1, IPayment o2) {
+                return DateUtil.formatSql(o2.getDate()).compareTo(DateUtil.formatSql(o1.getDate()));
+            }
+        });
         return FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT));
     }
 }
