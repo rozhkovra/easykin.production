@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.person</groupId>
   <artifactId>easykin.person</artifactId>
   <packaging>jar</packaging>
-  <version>8.1.1</version>
+  <version>8.1.2</version>
   <name>easykin.person</name>
   <url>http://maven.apache.org</url>
   <dependencies>
