@@ -4,7 +4,6 @@ import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.work.gui.ActivityForm;
 import ru.rrozhkov.easykin.work.gui.style.impl.custom.ActivityStyle;
 import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
-import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.Table;
 import ru.rrozhkov.lib.gui.TablePanel;
@@ -17,14 +16,8 @@ import java.util.Collection;
  */
 public class Module {
     public static JPanel createPanel(IGUIEditor parent){
-        Collection collection;
-        try {
-            collection = ActivityBuilder.build();
-            return new TablePanel(parent, new Table(collection, new ActivityStyle()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        Collection collection = activities();
+        return new TablePanel(parent, new Table(collection, new ActivityStyle()));
     }
     public static JPanel createEditor(IGUIEditor parent){
         return new ActivityForm(parent);
@@ -37,11 +30,6 @@ public class Module {
     }
 
     public static Collection activities(){
-        try {
-            return ActivityBuilder.build();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return CollectionUtil.create();
+        return ActivityBuilder.build();
     }
 }

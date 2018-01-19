@@ -22,13 +22,7 @@ import java.util.Collection;
  */
 public class Module {
     public static JPanel createPanel(IGUIEditor parent){
-        Collection collection;
-        IPerson person = AuthManager.instance().signedPerson();
-        if(person!=null)
-            collection = TaskBuilder.build(person.getId());
-        else
-            collection = TaskBuilder.build();
-        return new TablePanel(parent, new Table(collection, new TaskStyle()));
+        return new TablePanel(parent, new Table(tasks(), new TaskStyle()));
     }
     public static JPanel createEditor(IGUIEditor parent){
         return GUIFactory.createTaskEditor(parent, null);
@@ -40,6 +34,15 @@ public class Module {
         return GUIFactory.createTaskFilter(parent);
     }
 
+    public static Collection tasks(){
+        Collection collection;
+        IPerson person = AuthManager.instance().signedPerson();
+        if(person!=null)
+            collection = tasks(person);
+        else
+            collection = TaskBuilder.build();
+        return collection;
+    }
     public static Collection tasks(IPerson person){
         return TaskBuilder.build(person.getId());
     }
@@ -47,12 +50,6 @@ public class Module {
         return FilterUtil.filter(tasks(person), filter);
     }
     public static Collection<IPayment> payments(){
-        Collection collection;
-        IPerson person = AuthManager.instance().signedPerson();
-        if(person!=null)
-            collection = TaskBuilder.build(person.getId());
-        else
-            collection = TaskBuilder.build();
-        return new TaskPaymentCollectionConverter().convert(collection);
+        return new TaskPaymentCollectionConverter().convert(tasks());
     }
 }
