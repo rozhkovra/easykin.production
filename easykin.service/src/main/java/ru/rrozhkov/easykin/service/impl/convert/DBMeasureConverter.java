@@ -12,7 +12,7 @@ public class DBMeasureConverter implements IConverter<ResultSet, IMeasure> {
 
 	public IMeasure convert(ResultSet result){
 		try{
-			return new ServiceFactory().createMeasure(result.getInt("id"), result.getInt("readingid"), MeasureType.type(result.getString("measuretype")), result.getString("MEASUREVALUE"));
+			return new ServiceFactory().createMeasure(result.getInt("id"), result.getInt("readingid"), MeasureType.type(result.getString("measuretype")), Integer.valueOf(result.getString("MEASUREVALUE")));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
