@@ -20,6 +20,11 @@
   <col width="150"/>
   <col width="150"/>
   <col width="120"/>
+<tr height="50px">
+<td colspan="6">
+<jsp:include page="categories.jsp"/>
+</td>
+</tr>
 <tr>
 <th>№</th>
 <th>Описание</th>

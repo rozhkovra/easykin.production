@@ -1,5 +1,6 @@
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
   <style type="text/css">
@@ -60,21 +61,21 @@
 <jsp:include page="status.jsp"/>
 </td>
 <td align="right">
-<!--jsp:include page="priorities_multiselect.jsp"/-->
 <jsp:include page="priorities.jsp"/>
 </td>
 </tr>
 <tr>
 <td valign="top">
 <br/><br/>
-<jsp:include page="categories.jsp"/>
+<jsp:include page="modules.jsp"/>
 </td>
 <td colspan="2"  valign="top">
 <%
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-	if (categoryId==5 || categoryId==6){
+	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
+	if (Module.PAYMENT.equals(moduleId) || Module.FIN.equals(moduleId)){
 %><jsp:include page="payments.jsp"/><%
-	}else if(categoryId==8){
+	}else if(Module.WORK.equals(moduleId)){
 %><jsp:include page="work.jsp"/><%
 	}else{
 %>

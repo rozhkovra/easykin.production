@@ -1,5 +1,6 @@
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.fin.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
@@ -12,18 +13,29 @@
 <th>Дата</th>
 </tr>
 <%
-	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
+	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 
 	int i = 0;
-	Collection<IPayment> payments = null;
-	if (categoryId==6){
-		payments = (Collection<IPayment>)ModuleManager.invoke(Module.PAYMENT, "finance");
-	} else if (categoryId==5){
-		payments = (Collection<IPayment>)ModuleManager.invoke(Module.FIN, "finance");
-	}
+	Money moneyMonth = Money.valueOf(0.0);
+	String curMonth = "";
+	Collection<IPayment> payments = (Collection<IPayment>)ModuleManager.invoke(moduleId, "finance");
 	for(IPayment payment : payments){
+
 		String tdStyle = "height:30px;font-size:20px;";
 		String color = "";
+
+		if(!curMonth.equals(DateUtil.formatService(payment.getDate()))) {
+%>
+<tr>
+<td style="<%=tdStyle%>;font-weight:bold;" colspan=3><%=curMonth%></td>
+<td style="<%=tdStyle%>;font-weight:bold;"><%=moneyMonth%></td>
+<td style="<%=tdStyle%>;font-weight:bold;"></td>
+</tr>
+<%
+			curMonth = DateUtil.formatService(payment.getDate());
+			moneyMonth = Money.valueOf(0.0);
+		}
+
 		if(payment.getStatus().isFact()){
 			color = "#44e53f";
 		}else{
@@ -37,7 +49,8 @@
 <td style="<%=tdStyle%>text-align:right;"><%=payment.getAmount()%></td>
 <td style="<%=tdStyle%>text-align:center;"><%=DateUtil.format(payment.getDate())%></td>
 </tr>
-<%			
+<%
+		moneyMonth.add(payment.getAmount());
 	}
 %>
 </table>
