@@ -21,6 +21,14 @@
   <col width="150"/>
   <col width="120"/>
 <tr height="50px">
+<td colspan="2">
+<jsp:include page="status.jsp"/>
+</td>
+<td align="right" colspan="4">
+<jsp:include page="priorities.jsp"/>
+</td>
+</tr>
+<tr height="50px">
 <td colspan="6">
 <jsp:include page="categories.jsp"/>
 </td>

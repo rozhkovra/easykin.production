@@ -56,30 +56,22 @@
 	<col width="200"/>
 	<col width="200"/>
 	<col/>
-<tr height="50px">
-<td colspan="2">
-<jsp:include page="status.jsp"/>
-</td>
-<td align="right">
-<jsp:include page="priorities.jsp"/>
-</td>
-</tr>
 <tr>
 <td valign="top">
 <br/><br/>
-<jsp:include page="modules.jsp"/>
+<jsp:include page="module/modules.jsp"/>
 </td>
 <td colspan="2"  valign="top">
 <%
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 	if (Module.PAYMENT.equals(moduleId) || Module.FIN.equals(moduleId)){
-%><jsp:include page="payments.jsp"/><%
+%><jsp:include page="payment/payments.jsp"/><%
 	}else if(Module.WORK.equals(moduleId)){
-%><jsp:include page="work.jsp"/><%
+%><jsp:include page="work/work_group.jsp"/><jsp:include page="work/work.jsp"/><%
 	}else{
 %>
-<jsp:include page="tasks.jsp"/>
+<jsp:include page="task/tasks.jsp"/>
 <%}%>
 </td>
 </tr>
