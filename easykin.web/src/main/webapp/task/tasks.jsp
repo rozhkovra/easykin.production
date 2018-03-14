@@ -15,13 +15,14 @@
 <div style="overflow-y: scroll;">
 <table border="0" width="100%">
   <col width="30"/>
+  <col width="30"/>
   <col/>
   <col width="120"/>
   <col width="150"/>
   <col width="150"/>
   <col width="120"/>
 <tr height="50px">
-<td colspan="2">
+<td colspan="3">
 <jsp:include page="status.jsp"/>
 </td>
 <td align="right" colspan="4">
@@ -29,12 +30,13 @@
 </td>
 </tr>
 <tr height="50px">
-<td colspan="6">
+<td colspan="7">
 <jsp:include page="categories.jsp"/>
 </td>
 </tr>
 <tr>
 <th>№</th>
+<th>ID</th>
 <th>Описание</th>
 <th>Выполнить до</th>
 <th>Приоритет</th>
@@ -45,6 +47,7 @@
 </div>
 <div style="overflow-y: scroll;">
 <table border="0" width="100%">
+  <col width="30"/>
   <col width="30"/>
   <col/>
   <col width="120"/>
@@ -98,7 +101,8 @@
 %>
 <tr bgcolor="<%=color%>">
 <td style="<%=tdStyle%>" align="center"><%=++i%></td>
-<td style="<%=tdStyle%>"><%=task.getName()%>(<%=task.getId()%>)<br/><span style="font-size:12px;"><%=comments%></span></td>
+<td style="<%=tdStyle%>" align="center"><%=task.getId()%></td>
+<td style="<%=tdStyle%>"><%=task.getName()%><br/><span style="font-size:12px;"><%=comments%></span></td>
 <td style="<%=tdStyle%>" align="center"><%=DateUtil.format(task.getPlanDate())%></td>
 <td style="<%=tdStyle%>" align="center"><%=task.getPriority()%></td>
 <td style="<%=tdStyle%>" align="center"><%=task.getCategory().getName()%></td>
