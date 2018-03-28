@@ -1,5 +1,8 @@
 package ru.rrozhkov.easykin.module;
 
+import ru.rrozhkov.lib.gui.util.ImageUtil;
+
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,8 +54,24 @@ public class Module {
             put("Работа", WORK);
         }
     };
+
+    public static final Map<String, ImageIcon> module2icon = new HashMap<String, ImageIcon>() {
+        {
+            put(AUTO, null);
+            put(PERSON, null);
+            put(FAMILY, ImageUtil.scaleImage(25,25,ImageManager.family(getClass())));
+            put(FIN, ImageUtil.scaleImage(25,25,ImageManager.finance(getClass())));
+            put(PAYMENT, ImageUtil.scaleImage(25, 25, ImageManager.payment(getClass())));
+            put(SERVICE, ImageUtil.scaleImage(25, 25, ImageManager.service(getClass())));
+            put(TASK, ImageUtil.scaleImage(25, 25, ImageManager.tasks(getClass())));
+            put(WORK, ImageUtil.scaleImage(25, 25, ImageManager.work(getClass())));
+        }
+    };
     public static String name(String module){
         return module2name.get(module);
+    }
+    public static ImageIcon icon(String module){
+        return module2icon.get(module);
     }
     public static String mod(String name){
         return name2module.get(name);

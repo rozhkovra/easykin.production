@@ -28,4 +28,10 @@ public class ImageManager {
     public static Image service(Class clazz){
         return ImageUtil.imageByPath(clazz, "/icon/service.png");
     }
+    public static ImageIcon key(Class clazz){
+        return ImageUtil.imageIconByPath(clazz, "/icon/key.png");
+    }
+    public static ImageIcon exit(Class clazz){
+        return ImageUtil.imageIconByPath(clazz, "/icon/exit.png");
+    }
 }

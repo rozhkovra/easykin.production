@@ -100,7 +100,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         if(reload){
             tabbedPane.removeAll();
             for(String module : ModuleManager.activeModules()) {
-                tabbedPane.addTab(Module.name(module), createPanel(module, this));
+                tabbedPane.addTab(Module.name(module), Module.icon(module), createPanel(module, this));
             }
             int currentIndex = ContextUtil.getCurrentTab(context.currentModule());
             if(currentIndex!=-1)
@@ -148,7 +148,8 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     }
 
     private void createMenuBar(){
-        JMenuItem addItem = new JMenuItem("Добавить");
+        ImageIcon plusIcon = ImageUtil.scaleImage(16, 16, ImageManager.plus(this.getClass()));
+        JMenuItem addItem = new JMenuItem("Добавить",plusIcon);
         addItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.SHIFT_MASK));
         addItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -156,7 +157,8 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             }
         });
 
-        JMenuItem refreshItem = new JMenuItem("Обновить");
+        ImageIcon refreshIcon = ImageUtil.scaleImage(16, 16, ImageManager.refresh(getClass()));
+        JMenuItem refreshItem = new JMenuItem("Обновить",refreshIcon);
         refreshItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, ActionEvent.CTRL_MASK));
         refreshItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -164,7 +166,8 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             }
         });
 
-        JMenuItem filterItem = new JMenuItem("Фильтр");
+        ImageIcon filterIcon = ImageUtil.scaleImage(16, 16, ImageManager.filter(getClass()));
+        JMenuItem filterItem = new JMenuItem("Фильтр", filterIcon);
         filterItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.CTRL_MASK));
         filterItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -172,21 +175,24 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             }
         });
 
-        JMenuItem loginItem = new JMenuItem("Сменить пользователя");
+        ImageIcon keyIcon = ImageUtil.scaleImage(16, 16, ImageManager.key(getClass()));
+        JMenuItem loginItem = new JMenuItem("Сменить пользователя", keyIcon);
         loginItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 EasyKin.restart();
             }
         });
 
-        JMenuItem exitItem = new JMenuItem("Выход");
+        ImageIcon exitIcon = ImageUtil.scaleImage(16, 16, ImageManager.exit(getClass()));
+        JMenuItem exitItem = new JMenuItem("Выход",exitIcon);
         exitItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 EasyKin.close();
             }
         });
 
-        JMenuItem dumpItem = new JMenuItem("Выгрузить данные");
+        ImageIcon dumpIcon = ImageUtil.scaleImage(16, 16, ImageManager.dump(getClass()));
+        JMenuItem dumpItem = new JMenuItem("Выгрузить данные",dumpIcon);
         dumpItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 DumpManager.dump();
