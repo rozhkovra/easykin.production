@@ -69,7 +69,9 @@
 %><jsp:include page="payment/payments.jsp"/><%
 	}else if(Module.WORK.equals(moduleId)){
 %><jsp:include page="work/work_group.jsp"/><jsp:include page="work/work.jsp"/><%
-	}else{
+	}else if(Module.SERVICE.equals(moduleId)){
+     %><jsp:include page="service/service.jsp"/><%
+    }else{
 %>
 <jsp:include page="task/tasks.jsp"/>
 <%}%>
