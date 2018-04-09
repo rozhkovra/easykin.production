@@ -161,4 +161,14 @@ public class Calc2Factory {
         }
         return new RateCalc(CalculationType.GAZ, money, isPaid);
     }
+
+    public static ICalculation createHouseCalc(Collection<IRate> rates, boolean isPaid) {
+        Money money = Money.valueOf(0.00);
+        for(IRate rate : rates) {
+            if(rate.getType().isHouse()) {
+                money = Money.valueOf(rate.getValue());
+            }
+        }
+        return new RateCalc(CalculationType.HOUSE, money, isPaid);
+    }
 }

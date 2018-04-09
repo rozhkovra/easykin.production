@@ -12,6 +12,7 @@ public enum RateType {
     ANTENNA("Антенна"),
     INTERCOM("Домофон"),
     REPAIR("Кап.ремонт"),
+    HOUSE("Квартплата"),
     HEATING("Отопление");
 
     private final String name;
@@ -32,4 +33,5 @@ public enum RateType {
     public boolean isIntercom() {return this==INTERCOM;}
     public boolean isHeating() {return this==HEATING;}
     public boolean isRepair() {return this==REPAIR;}
+    public boolean isHouse() {return this==HOUSE;}
 }
