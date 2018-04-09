@@ -93,16 +93,17 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             tabbedPane = new JTabbedPane();
             tabbedPane.addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-                    context.chooseModule(ContextUtil.getCurrentModule(getTabbedPane(false)));
+                    context.chooseModule(ContextUtil.getCurrentModule(tabbedPane));
                 }
             });
         }
         if(reload){
+            int currentIndex = ContextUtil.getCurrentTab(context.currentModule());
             tabbedPane.removeAll();
             for(String module : ModuleManager.activeModules()) {
                 tabbedPane.addTab(Module.name(module), Module.icon(module), createPanel(module, this));
             }
-            int currentIndex = ContextUtil.getCurrentTab(context.currentModule());
+
             if(currentIndex!=-1)
                 tabbedPane.setSelectedIndex(currentIndex);
         }
