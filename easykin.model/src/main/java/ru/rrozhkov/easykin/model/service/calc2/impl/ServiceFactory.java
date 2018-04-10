@@ -1,8 +1,7 @@
 package ru.rrozhkov.easykin.model.service.calc2.impl;
 
-import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
-import ru.rrozhkov.easykin.model.service.calc2.IReading;
-import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
+import ru.rrozhkov.easykin.model.fin.Money;
+import ru.rrozhkov.easykin.model.service.calc2.*;
 
 import java.util.Collection;
 import java.util.Date;
@@ -19,5 +18,8 @@ public class ServiceFactory {
     }
     public IMeasure createMeasure(int id, int readingId, MeasureType type, Object value){
         return new Measure(id, readingId, type, value);
+    }
+    public IRate createRate(int id, RateType type, Object value, Date dateFrom, Date dateTo){
+        return new Rate(id, type, Money.valueOf(value), dateFrom, dateTo);
     }
 }

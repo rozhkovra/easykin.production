@@ -34,4 +34,30 @@ public enum RateType {
     public boolean isHeating() {return this==HEATING;}
     public boolean isRepair() {return this==REPAIR;}
     public boolean isHouse() {return this==HOUSE;}
+
+
+    public static RateType type(String type) {
+        if(ELECTRICITY.toString().equals(type))
+            return ELECTRICITY;
+        else if(GAZ.toString().equals(type))
+            return GAZ;
+        else if(WATERIN.toString().equals(type))
+            return WATERIN;
+        else if(WATEROUT.toString().equals(type))
+            return WATEROUT;
+        else if(HOTWATER.toString().equals(type))
+            return HOTWATER;
+        else if(ANTENNA.toString().equals(type))
+            return ANTENNA;
+        else if(INTERCOM.toString().equals(type))
+            return INTERCOM;
+        else if(REPAIR.toString().equals(type))
+            return REPAIR;
+        else if(HOUSE.toString().equals(type))
+            return HOUSE;
+        else if(HEATING.toString().equals(type))
+            return HEATING;
+
+        return null;
+    }
 }

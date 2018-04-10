@@ -22,6 +22,12 @@ public class Rate implements IRate {
         this.dateTo = dateTo;
     }
 
+    public Rate(int id, RateType type, Object value, Date dateFrom, Date dateTo) {
+        this(type,value,dateFrom,dateTo);
+        this.id = id;
+    }
+
+
     public RateType getType() {
         return type;
     }

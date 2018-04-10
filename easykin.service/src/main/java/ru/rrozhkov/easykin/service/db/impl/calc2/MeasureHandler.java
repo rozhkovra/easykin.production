@@ -23,5 +23,4 @@ public class MeasureHandler {
     public static Collection<IMeasure> selectForReading(int id) throws Exception {
         return DBManager.instance().select(selectForReading.replace("#readingid#", String.valueOf(id)), new DBMeasureConverter());
     }
-
 }
