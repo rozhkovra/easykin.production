@@ -53,7 +53,7 @@ public class Module {
         IReading oldReading = readings.get(readings.size()-1);
         IReading newReading = null;
         try {
-            newReading = (Reading)((Reading)oldReading).clone();
+            newReading = ((Reading)oldReading).clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

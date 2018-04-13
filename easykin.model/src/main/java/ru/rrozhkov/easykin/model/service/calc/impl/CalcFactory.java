@@ -50,7 +50,7 @@ public class CalcFactory {
 		return new ServiceCalc(date, beans);
 	}
 	public static ICalculation createEmptyServiceCalc() {
-		return createServiceCalc(DateUtil.parse("01.01.2017"),
+		return createServiceCalc(DateUtil.lastDayOfMonth(DateUtil.today()),
 				Arrays.asList(
 						createWaterCalc(0,0,0,0,0,0,0,0,Money.valueOf(0.00),Money.valueOf(0.00),false)
 						, createHotWaterCalc(0,0,0,0,Money.valueOf(0.00),false)

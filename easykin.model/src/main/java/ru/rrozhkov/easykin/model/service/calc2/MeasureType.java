@@ -27,7 +27,7 @@ public enum MeasureType {
         if(ELECTRICITY.toString().equals(type))
             return ELECTRICITY;
         else if(GAZ.toString().equals(type))
-                return GAZ;
+            return GAZ;
         else if(COLDWATER.toString().equals(type))
             return COLDWATER;
         else if(HOTWATER.toString().equals(type))

@@ -11,7 +11,7 @@ public class DBReadingConverter implements IConverter<ResultSet, IReading> {
 
 	public IReading convert(ResultSet result){
 		try{
-			return new ServiceFactory().createReading(result.getInt("id"), result.getDate("reddate"));
+			return ServiceFactory.createReading(result.getInt("id"), result.getDate("reddate"));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

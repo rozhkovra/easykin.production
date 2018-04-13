@@ -12,7 +12,7 @@ public class DBRateConverter implements IConverter<ResultSet, IRate> {
 
 	public IRate convert(ResultSet result){
 		try{
-			return new ServiceFactory().createRate(result.getInt("id"), RateType.type(result.getString("rateType"))
+			return ServiceFactory.createRate(result.getInt("id"), RateType.type(result.getString("rateType"))
 					, result.getString("rateValue"), result.getDate("dateFrom"),result.getDate("dateTo"));
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -17,7 +17,7 @@ public class ReadingBuilder {
 		IReading reading = null;
 		try {
 			Collection<IMeasure> measures = MeasureHandler.selectForReading(id);
-			reading = new ServiceFactory().createReading(id, date, measures);
+			reading = ServiceFactory.createReading(id, date, measures);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
