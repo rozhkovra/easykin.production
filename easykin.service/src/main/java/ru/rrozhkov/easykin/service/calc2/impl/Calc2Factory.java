@@ -11,8 +11,14 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.rate.RateCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.water.hot.HotWaterCalc;
+import ru.rrozhkov.lib.util.DateUtil;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
+
+import static ru.rrozhkov.easykin.model.service.calc.CalculationType.*;
+import static ru.rrozhkov.easykin.model.service.calc.CalculationType.HOUSE;
 
 /**
  * Created by rrozhkov on 12/11/2017.
@@ -170,5 +176,22 @@ public class Calc2Factory {
             }
         }
         return new RateCalc(CalculationType.HOUSE, money, isPaid);
+    }
+
+    public static ICalculation createEmptyServiceCalc(IReading oldReading, IReading newReading, Collection<IRate> rates) {
+        Date lastDayOfMonth = DateUtil.lastDayOfMonth(DateUtil.today());
+        return CalcFactory.createServiceCalc(lastDayOfMonth,
+                Arrays.asList(
+                        createWaterCalc(oldReading,newReading,rates,false)
+                        , createHotWaterCalc(oldReading, newReading, rates, false)
+                        , createElectricityCalc(oldReading, newReading, rates, false)
+                        , createGazCalc(rates, false)
+                        , createHeatingCalc(rates, false)
+                        , createRepairCalc(rates, false)
+                        , createAntennaCalc(rates, false)
+                        , createIntercomCalc(rates, false)
+                        , createHouseCalc(rates, false)
+                )
+        );
     }
 }

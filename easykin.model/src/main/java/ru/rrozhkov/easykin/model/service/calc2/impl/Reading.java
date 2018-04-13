@@ -40,4 +40,25 @@ public class Reading implements IReading {
     public int getId() {
         return id;
     }
+
+    @Override
+    public Reading clone() throws CloneNotSupportedException {
+        Reading reading = (Reading)super.clone();
+        reading.setId(0);
+        Collection<IMeasure> newMeasures = CollectionUtil.create();
+        for(IMeasure measure : measures) {
+            IMeasure newMeasure = (IMeasure)((Measure)measure).clone();
+            newMeasures.add(newMeasure);
+        }
+        reading.setMeasures(newMeasures);
+        return reading;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setMeasures(Collection<IMeasure> measures) {
+        this.measures = measures;
+    }
 }

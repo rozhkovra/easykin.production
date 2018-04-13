@@ -19,10 +19,18 @@ public class MeasureCalculator extends Calculator {
         int curr = 0;
         int prev = 0;
         for(IMeasure measure : mCalc.getOldMeasures()) {
-            prev += (Integer)measure.getValue();
+            if(measure.getValue() instanceof Integer) {
+                prev += (Integer) measure.getValue();
+            } else if(measure.getValue() instanceof Double) {
+                prev += (Double) measure.getValue();
+            }
         }
         for(IMeasure measure : mCalc.getNewMeasures()) {
-            curr += (Integer)measure.getValue();
+            if(measure.getValue() instanceof Integer) {
+                curr += (Integer) measure.getValue();
+            } else if(measure.getValue() instanceof Double) {
+                curr += (Double)measure.getValue();
+            }
         }
         int delta = curr-prev;
         Money deltaSum = MoneyFactory.create(mCalc.getPrice()).multiply(delta);

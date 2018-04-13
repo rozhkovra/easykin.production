@@ -42,4 +42,9 @@ public class Measure implements IMeasure{
     public int getReadingId() {
         return readingId;
     }
+
+    @Override
+    public Measure clone() throws CloneNotSupportedException {
+        return (Measure)super.clone();
+    }
 }

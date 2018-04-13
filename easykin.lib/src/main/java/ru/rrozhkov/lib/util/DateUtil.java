@@ -2,6 +2,7 @@ package ru.rrozhkov.lib.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -35,4 +36,10 @@ public class DateUtil {
 	}
 	public static Date today(){return new Date();}
 	public static String todayWeek(){return formatWeek(today());}
+	public static Date lastDayOfMonth(Date date){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
+		return cal.getTime();
+	}
 }
