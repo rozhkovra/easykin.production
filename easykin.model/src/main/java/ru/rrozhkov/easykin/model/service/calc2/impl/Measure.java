@@ -45,6 +45,12 @@ public class Measure implements IMeasure{
 
     @Override
     public Measure clone() throws CloneNotSupportedException {
-        return (Measure)super.clone();
+        Measure measure = (Measure)super.clone();
+        measure.setId(-1);
+        return measure;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
