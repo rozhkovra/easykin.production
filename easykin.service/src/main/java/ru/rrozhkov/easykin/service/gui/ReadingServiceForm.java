@@ -12,6 +12,7 @@ import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.CalcReadingConverter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import java.awt.*;
 import java.util.Collection;
@@ -34,7 +35,8 @@ public class ReadingServiceForm extends Panel {
     }
 
     private void fill() {
-        setLayout(new GridLayout(2, 1));
+        setLayout(new GridLayout(3, 1));
+        add(GuiUtil.label(((ServiceCalc) calc).getName()));
         add(readingPanel);
         add(readingCalcPanel);
     }
