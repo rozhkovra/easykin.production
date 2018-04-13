@@ -14,12 +14,14 @@ import java.util.Map;
  * Created by rrozhkov on 11/28/2017.
  */
 public class ReadingPanel extends GUIPanel {
+    private boolean isPaid;
     protected IReading reading;
     protected Map<IMeasure,JTextField> fields;
 
-    public ReadingPanel(Panel parent, IReading reading) {
+    public ReadingPanel(Panel parent, IReading reading, boolean isPaid) {
         super(parent);
         this.reading = reading;
+        this.isPaid = isPaid;
         fill();
     }
 
@@ -31,7 +33,12 @@ public class ReadingPanel extends GUIPanel {
 
         }
         for(IMeasure measure : reading.getMeasures()){
-            JTextField field = (JTextField)GuiUtil.fieldEditable(10,measure.getValue().toString());
+            JTextField field = null;
+            if (isPaid()) {
+                field = (JTextField) GuiUtil.fieldReadOnly(10, measure.getValue().toString());
+            } else {
+                field = (JTextField) GuiUtil.fieldEditable(10, measure.getValue().toString());
+            }
             Font font1 = new Font("SansSerif", Font.PLAIN, 40);
             field.setFont(font1);
             field.setHorizontalAlignment(JTextField.CENTER);
@@ -43,6 +50,10 @@ public class ReadingPanel extends GUIPanel {
 
     public IReading getReading() {
         return reading;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
     }
 
     @Override

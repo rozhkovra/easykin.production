@@ -27,7 +27,7 @@ public class ReadingServiceForm extends Panel {
     public ReadingServiceForm(ServiceCalc serviceCalcBean) {
         super(null, serviceCalcBean);
         this.reading = new CalcReadingConverter().convert((ServiceCalc) calc);
-        this.readingPanel = new ReadingPanel(this, reading);
+        this.readingPanel = new ReadingPanel(this, reading, calc.isPaid());
         // no parent for ReadingCalcPanel else recursion
         this.readingCalcPanel = new ReadingCalcPanel(null, calc);
         fill();
