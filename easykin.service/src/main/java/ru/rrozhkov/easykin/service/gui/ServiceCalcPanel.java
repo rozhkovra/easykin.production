@@ -6,10 +6,10 @@ import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 
 import java.awt.*;
 
-public class ServiceCalcForm extends Panel {
+public class ServiceCalcPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 	
-	public ServiceCalcForm(ServiceCalc serviceCalcBean) {
+	public ServiceCalcPanel(ServiceCalc serviceCalcBean) {
 		super(null, serviceCalcBean);
         fill();
 	}

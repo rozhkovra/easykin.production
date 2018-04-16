@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.service;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
@@ -37,7 +36,7 @@ public class Module {
 
     public static JPanel createEditor(IGUIEditor parent, ICalculation calc){
         if(calc!=null) {
-            return new ReadingServiceForm((ServiceCalc)calc);
+            return new ReadingServiceForm(parent, (ServiceCalc)calc);
         }
         return new JPanel();
     }
@@ -58,7 +57,7 @@ public class Module {
             e.printStackTrace();
         }
         ServiceCalc calc = (ServiceCalc) Calc2Factory.createEmptyServiceCalc(oldReading,newReading,rates);
-        return new ReadingServiceForm(calc);
+        return new ReadingServiceForm(parent, calc);
     }
 
     public static Collection<IPayment> payments(){
