@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.service.impl.filter;
+package ru.rrozhkov.easykin.service.calc2.impl.filter;
 
 import ru.rrozhkov.lib.filter.IFilter;
 

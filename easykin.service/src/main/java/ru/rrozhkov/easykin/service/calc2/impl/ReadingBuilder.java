@@ -1,11 +1,11 @@
-package ru.rrozhkov.easykin.service.impl;
+package ru.rrozhkov.easykin.service.calc2.impl;
 
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
 import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
-import ru.rrozhkov.easykin.service.impl.filter.MeasureFilterFactory;
+import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureFilterFactory;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 

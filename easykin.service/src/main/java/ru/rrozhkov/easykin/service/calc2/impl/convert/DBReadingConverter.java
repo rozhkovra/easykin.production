@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.service.impl.convert;
+package ru.rrozhkov.easykin.service.calc2.impl.convert;
 
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;

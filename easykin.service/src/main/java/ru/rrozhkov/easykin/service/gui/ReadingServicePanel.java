@@ -10,7 +10,6 @@ import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
-import ru.rrozhkov.easykin.service.calc2.impl.convert.CalcReadingConverter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
 
@@ -26,9 +25,9 @@ public class ReadingServicePanel extends Panel {
     protected GUIPanel readingPanel;
     protected IReading reading;
 
-    public ReadingServicePanel(ServiceCalc serviceCalcBean) {
+    public ReadingServicePanel(ServiceCalc serviceCalcBean, IReading reading) {
         super(null, serviceCalcBean);
-        this.reading = new CalcReadingConverter().convert((ServiceCalc) calc);
+        this.reading = reading;
         this.readingPanel = new ReadingPanel(this, reading, calc.isPaid());
         // no parent for ReadingCalcPanel else recursion
         this.readingCalcPanel = new ReadingCalcPanel(null, calc);

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.service.impl.convert;
+package ru.rrozhkov.easykin.service.calc2.impl.convert;
 
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;

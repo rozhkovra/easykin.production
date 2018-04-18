@@ -13,7 +13,7 @@ import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.db.impl.calc2.RateHandler;
 import ru.rrozhkov.easykin.service.gui.ReadingServiceForm;
 import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcStyle;
-import ru.rrozhkov.easykin.service.impl.ReadingBuilder;
+import ru.rrozhkov.easykin.service.calc2.impl.ReadingBuilder;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.Table;
