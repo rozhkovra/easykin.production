@@ -19,7 +19,9 @@
       </a>
 
       <div class="navbar-custom-menu">
-	<span><%=DateUtil.formatWeek(new Date())%></span>
+	  <span><%=DateUtil.formatWeek(new Date())%></span>
+	  <span><a href="index.jsp?signout=signout">Выйти</a></span>
+
       </div>
     </nav>
   </header>

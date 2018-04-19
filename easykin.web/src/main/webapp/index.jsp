@@ -40,6 +40,10 @@
 <div class="wrapper">
 <jsp:include page="header.jsp"/>
 <%
+	String signout = request.getParameter("signout")!=null?String.valueOf(request.getParameter("signout")):"";
+	if(!signout.isEmpty())
+	  AuthManager.instance().signOut();
+
 	String username = request.getParameter("username")!=null?String.valueOf(request.getParameter("username")):"";
 	String password = request.getParameter("password")!=null?String.valueOf(request.getParameter("password")):"";
 	if(!username.isEmpty() && !password.isEmpty())
