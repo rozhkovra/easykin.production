@@ -8,7 +8,7 @@
 %>
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Horizontal Form</h3>
+              <h3 class="box-title">Authorization</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -40,7 +40,6 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
                 <button type="submit" class="btn btn-info pull-right">Sign in</button>
               </div>
               <!-- /.box-footer -->
