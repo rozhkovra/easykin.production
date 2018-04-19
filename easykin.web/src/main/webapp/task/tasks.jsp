@@ -11,9 +11,16 @@
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<div id="tasks">
-<div style="overflow-y: scroll;">
-<table border="0" width="100%">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+<h3 class="box-title"><jsp:include page="priorities.jsp"/></h3>
+</div>
+
+<div class="box-body">
+<table id="tasks" width="100%"  class="table table-bordered table-hover">
   <col width="30"/>
   <col width="30"/>
   <col/>
@@ -21,19 +28,7 @@
   <col width="150"/>
   <col width="150"/>
   <col width="120"/>
-<tr height="50px">
-<td colspan="3">
-<jsp:include page="status.jsp"/>
-</td>
-<td align="right" colspan="4">
-<jsp:include page="priorities.jsp"/>
-</td>
-</tr>
-<tr height="50px">
-<td colspan="7">
-<jsp:include page="categories.jsp"/>
-</td>
-</tr>
+<thead>
 <tr>
 <th>№</th>
 <th>ID</th>
@@ -43,17 +38,8 @@
 <th>Категория</th>
 <th>Дата</th>
 </tr>
-</table>
-</div>
-<div style="overflow-y: scroll;">
-<table border="0" width="100%">
-  <col width="30"/>
-  <col width="30"/>
-  <col/>
-  <col width="120"/>
-  <col width="150"/>
-  <col width="150"/>
-  <col width="120"/>
+</thead>
+<tbody>
 <%
 	int i = 0;
 	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson());
@@ -75,46 +61,75 @@
 	}
 	tasks = FilterUtil.filter(tasks, filters);
 	for(ITask task : tasks){
-		String color = "";
-		String tdStyle = "height:50px;";
+		String taskClass = "";
         if(Status.CLOSE.equals(task.getStatus())){
         	if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
-        		color = "#7e7e7e";
+        		taskClass = "label bg-gray";
         	else
-        		color = "#44e53f";		        
+        		taskClass = "label bg-green";
         }else{
-        	color = "#ffffff";
-        	if(Priority.IMPOTANT_FAST.equals(task.getPriority())
-        			|| Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
-        		color = "#eec95e";
+        	taskClass  = "";
+        	if(Priority.IMPOTANT_FAST.equals(task.getPriority())){
+        		taskClass  = "label bg-yellow";
         	}
+			if(Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
+				taskClass  = "label bg-blue";
+			}
+
         }
-        if (Priority.IMPOTANT_FAST.equals(task.getPriority())){
-        	tdStyle+="font-size:20px;font-weight:bold;padding:5px;";
-	    } else {  
-	    	tdStyle+="font-size:15px;font-style:italic;padding:5px;";
-	    }
         String comments = "";
         for(IComment comment : task.comments()){
         	comments += comment.getText()+"|";
         }
 %>
-<tr bgcolor="<%=color%>">
-<td style="<%=tdStyle%>" align="center"><%=++i%></td>
-<td style="<%=tdStyle%>" align="center"><%=task.getId()%></td>
-<td style="<%=tdStyle%>"><%=task.getName()%><br/><span style="font-size:12px;"><%=comments%></span></td>
-<td style="<%=tdStyle%>" align="center"><%=DateUtil.format(task.getPlanDate())%></td>
-<td style="<%=tdStyle%>" align="center"><%=task.getPriority()%></td>
-<td style="<%=tdStyle%>" align="center"><%=task.getCategory().getName()%></td>
-<%
-	if(new Date().getTime()>task.getPlanDate().getTime() && Status.OPEN.equals(task.getStatus()))
-		tdStyle+="background-color:#7e7e7e;";
-%>
-<td style="<%=tdStyle%>" align="center"><%=DateUtil.format(task.getCreateDate())%></td>
+
+
+<tr >
+<td align="center"><%=++i%></td>
+<td align="center"><span class="<%=taskClass%>"><%=task.getId()%></span></td>
+<td ><%=task.getName()%><br/><span style="font-size:12px;"><%=comments%></span></td>
+<td align="center"><%=DateUtil.format(task.getPlanDate())%></td>
+<td align="center"><%=task.getPriority()%></td>
+<td align="center"><%=task.getCategory().getName()%></td>
+<td align="center"><%=DateUtil.format(task.getCreateDate())%></td>
 </tr>
 <%			
 	}
 %>
+</tbody>
 </table>
 </div>
 </div>
+</div>
+</div>
+</section>
+
+<!-- jQuery 3 -->
+<script src="../AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../AdminLTE/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../AdminLTE/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#tasks').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+
+  })
+</script>

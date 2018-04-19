@@ -4,7 +4,17 @@
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<table width="100%">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+
+<div class="box">
+<div class="box-header">
+</div>
+
+<div class="box-body">
+<table width="100%"  class="table table-bordered table-hover">
+<thead>
 <tr>
 <th>№</th>
 <th>Категория</th>
@@ -12,6 +22,8 @@
 <th>Сумма</th>
 <th>Дата</th>
 </tr>
+</thead>
+<tbody>
 <%
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 
@@ -37,13 +49,8 @@
 			moneyMonth = Money.valueOf(0.0);
 		}
 
-		if(payment.getStatus().isFact()){
-			color = "#44e53f";
-		}else{
-			color = "#eec95e";
-		}
 %>
-<tr bgcolor="<%=color%>">
+<tr >
 <td style="<%=tdStyle%>"><%=++i%></td>
 <td style="<%=tdStyle%>"><%=payment.getCategory()%></td>
 <td style="<%=tdStyle%>"><%=payment.getComment()%></td>
@@ -59,4 +66,10 @@
 <td style="<%=tdStyle%>;font-weight:bold;"><%=moneyMonth%></td>
 <td style="<%=tdStyle%>;font-weight:bold;"></td>
 </tr>
+</tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
+</section>

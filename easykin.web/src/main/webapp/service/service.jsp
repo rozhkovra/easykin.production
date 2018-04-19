@@ -4,7 +4,18 @@
 <%@ page import="ru.rrozhkov.easykin.model.service.calc.impl.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<table width="100%" border="1">
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">Платежи</h3>
+</div>
+
+<div class="box-body">
+<table id="services" width="100%"  class="table table-bordered table-hover">
+<thead>
 <tr>
 <th>№</th>
 <th>Период</th>
@@ -20,41 +31,49 @@
 <th>Кап.ремонт</th>
 <th>Итого</th>
 </tr>
+</thead>
+<tbody>
 <%
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 
 	int i = 0;
 	ServiceCalcConverter converter = new ServiceCalcConverter(0);
 	Collection<ServiceCalc> calcs = (Collection<ServiceCalc>)ModuleManager.invoke(moduleId, "calcs");
-	String tdStyle = "height:30px;font-size:20px;";
-	String color = "";
+	String tdStyle = "";
+	String serviceClass = "";
 
 	for(ServiceCalc calc : calcs){
 		if(calc.isPaid()){
-    		color = "#44e53f";
-    		tdStyle = "height:30px;font-size:20px;font-weight:bold;";
-    	}else{
-			color = "#eec95e";
-			tdStyle = "height:30px;font-size:20px;";
+    			serviceClass = "label bg-green";
+	    		tdStyle = "font-weight:bold;";
+    		}else{
+    			serviceClass = "label bg-yellow";
+			tdStyle = "";
 		}
 		String[] values = converter.convert(i, calc);
 %>
-<tr bgcolor="<%=color%>">
-<td style="<%=tdStyle%>text-align:center;"><%=++i%></td>
-<td style="<%=tdStyle%>"><%=values[0]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[1]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[2]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[3]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[4]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[5]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[6]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[7]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[8]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[9]%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=values[10]%></td>
+<tr>
+<td align="center"><%=++i%></td>
+<td ><span class="<%=serviceClass%>"><%=values[0]%></spen></td>
+<td align="center"><%=values[1]%></td>
+<td align="center"><%=values[2]%></td>
+<td align="center"><%=values[3]%></td>
+<td align="center"><%=values[4]%></td>
+<td align="center"><%=values[5]%></td>
+<td align="center"><%=values[6]%></td>
+<td align="center"><%=values[7]%></td>
+<td align="center"><%=values[8]%></td>
+<td align="center"><%=values[9]%></td>
+<td align="center"><%=values[10]%></td>
 <td style="<%=tdStyle%>text-align:right;"><%=values[11]%></td>
 </tr>
 <%
 	}
 %>
+</tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
+</section>
