@@ -59,9 +59,8 @@ public class HotWaterPanel extends Panel{
 	
 	public JTextField getPrevMesureField(){
 		if(prevMesureField == null){
-			prevMesureField = new JTextField(5);
 			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure());
-			prevMesureField.setText(text);
+			prevMesureField = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			prevMesureField.getDocument().addDocumentListener(this);
 		}
 		return prevMesureField;
@@ -69,9 +68,8 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getPrevMesureField2(){
 		if(prevMesureField2 == null){
-			prevMesureField2 = new JTextField(5);
 			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure2());
-			prevMesureField2.setText(text);
+			prevMesureField2 = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			prevMesureField2.getDocument().addDocumentListener(this);
 		}
 		return prevMesureField2;
@@ -79,9 +77,8 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getCurrentMesureField(){
 		if(currentMesureField == null){
-			currentMesureField = new JTextField(5);
 			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure());
-			currentMesureField.setText(text);
+			currentMesureField = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			currentMesureField.getDocument().addDocumentListener(this);
 		}
 		return currentMesureField;
@@ -89,9 +86,8 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getCurrentMesureField2(){
 		if(currentMesureField2 == null){
-			currentMesureField2 = new JTextField(5);
 			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure2());
-			currentMesureField2.setText(text);
+			currentMesureField2 = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			currentMesureField2.getDocument().addDocumentListener(this);
 		}
 		return currentMesureField2;
@@ -99,9 +95,8 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getRateField(){
 		if(rateField == null){
-			rateField = new JTextField(5);
 			String text = String.valueOf(((HotWaterCalc)calc).getRate());
-			rateField.setText(text);
+			rateField = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			rateField.getDocument().addDocumentListener(this);
 		}
 		return rateField;
@@ -109,7 +104,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getOdnField(){
 		if(odnField == null){
-			odnField = new JTextField(6);
+			odnField = (JTextField) GuiUtil.fieldCalc(5, "", calc.isPaid());
 //			String text = String.valueOf(((HotWaterCalc)calc).getOdn());
 //			odnField.setText(text);
 			odnField.getDocument().addDocumentListener(this);
@@ -119,37 +114,37 @@ public class HotWaterPanel extends Panel{
 	
 	public JLabel getPrevMesureLabel(){
 		if(prevMesureLabel == null)
-			prevMesureLabel = new JLabel(PREV_MESURE_LABEL_TEXT); 
+			prevMesureLabel = (JLabel)GuiUtil.label(PREV_MESURE_LABEL_TEXT);
 		return prevMesureLabel;
 	}
 	
 	public JLabel getCurrentMesureLabel(){
 		if(currentMesureLabel == null)
-			currentMesureLabel = new JLabel(CURRENT_MESURE_LABEL_TEXT); 
+			currentMesureLabel = (JLabel)GuiUtil.label(CURRENT_MESURE_LABEL_TEXT);
 		return currentMesureLabel;
 	}
 
 	public JLabel getPrevMesureLabel2(){
 		if(prevMesureLabel2 == null)
-			prevMesureLabel2 = new JLabel(PREV_MESURE_LABEL_TEXT2);
+			prevMesureLabel2 = (JLabel)GuiUtil.label(PREV_MESURE_LABEL_TEXT2);
 		return prevMesureLabel2;
 	}
 
 	public JLabel getCurrentMesureLabel2(){
 		if(currentMesureLabel2 == null)
-			currentMesureLabel2 = new JLabel(CURRENT_MESURE_LABEL_TEXT2);
+			currentMesureLabel2 = (JLabel)GuiUtil.label(CURRENT_MESURE_LABEL_TEXT2);
 		return currentMesureLabel2;
 	}
 
 	public JLabel getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = new JLabel(RATE_LABEL_TEXT); 
+			rateLabel = (JLabel)GuiUtil.label(RATE_LABEL_TEXT);
 		return rateLabel;
 	}
 
 	public JLabel getOdnLabel(){
 		if(odnLabel == null)
-			odnLabel = new JLabel(ODN_LABEL_TEXT); 
+			odnLabel = (JLabel)GuiUtil.label(ODN_LABEL_TEXT);
 		return odnLabel;
 	}
 

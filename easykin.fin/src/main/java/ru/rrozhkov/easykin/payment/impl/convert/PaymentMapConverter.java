@@ -3,9 +3,6 @@ package ru.rrozhkov.easykin.payment.impl.convert;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentCategory;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
-import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.model.task.Priority;
-import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.lib.convert.IConverter;
 import ru.rrozhkov.lib.util.DateUtil;
 

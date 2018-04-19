@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,14 +30,14 @@ public abstract class Panel extends GUIPanel{
 
 	public JLabel getItogoLabel(){
 		if(itogoLabel == null){
-			itogoLabel  = new JLabel("");
+			itogoLabel  = (JLabel) GuiUtil.label("");
 			itogoLabel.setFont(itogoLabel.getFont().deriveFont(Font.BOLD, 20));			
 		}
 		return itogoLabel;
 	}
 
 	public JLabel getCalcTypeLabel(){
-		return new JLabel(String.valueOf(calc.getType()));
+		return (JLabel)GuiUtil.label(String.valueOf(calc.getType()));
 	}
 	public Calculation getCalc(){
 		return calc;

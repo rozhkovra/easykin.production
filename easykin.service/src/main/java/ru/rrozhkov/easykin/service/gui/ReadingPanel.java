@@ -33,12 +33,7 @@ public class ReadingPanel extends GUIPanel {
 
         }
         for(IMeasure measure : reading.getMeasures()){
-            JTextField field = null;
-            if (isPaid()) {
-                field = (JTextField) GuiUtil.fieldReadOnly(10, measure.getValue().toString());
-            } else {
-                field = (JTextField) GuiUtil.fieldEditable(10, measure.getValue().toString());
-            }
+            JTextField field = (JTextField) GuiUtil.fieldCalc(10, measure.getValue().toString(), isPaid());;
             Font font1 = new Font("SansSerif", Font.PLAIN, 40);
             field.setFont(font1);
             field.setHorizontalAlignment(JTextField.CENTER);

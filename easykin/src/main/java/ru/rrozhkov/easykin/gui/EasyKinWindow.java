@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.context.MasterDataContext;
+import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
@@ -18,17 +18,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import static ru.rrozhkov.easykin.gui.PanelFactory.createPanel;
-
 public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane;
-	private MasterDataContext context;
+	private EasyKinContext context;
 
 	public EasyKinWindow() throws HeadlessException {
 		super(ContextUtil.title());
         setIconImage(ImageManager.logo(this.getClass()));
-		this.context = new MasterDataContext();
+		this.context = new EasyKinContext();
         fill();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,22 +44,20 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
  	public void edit(Object obj){
         closeEditor(IGUIEditor.CODE_CANCEL);
 
-        JPanel editor = FormFactory.getFormPanel(context.currentModule(),this, obj);
-        JPanel content = new JPanel(new BorderLayout());
-        content.add(editor,BorderLayout.NORTH);
-        Container main = (Container)getContentPane().getComponent(1);
-        main.setLayout(new GridLayout(1, 2));
-        main.add(main.getComponent(0));
-        main.add(content);
-        main.validate();
+        JPanel editor = GUIFactory.createEditor(context.getCurrentModule(), this, obj);
+        showForm(editor);
 	}
 
     public void filter(){
         closeEditor(IGUIEditor.CODE_OK);
 
+        JPanel formPanel = GUIFactory.createFilter(context.getCurrentModule(), this);
+        showForm(formPanel);
+    }
+
+    protected void showForm(JPanel form) {
         JPanel content = new JPanel(new BorderLayout());
-        JPanel formPanel = FilterFormFactory.getFilterFormPanel(context, this);
-        content.add(formPanel,BorderLayout.NORTH);
+        content.add(form,BorderLayout.NORTH);
         Container main = (Container)getContentPane().getComponent(1);
         main.setLayout(new GridLayout(1, 2));
         main.add(main.getComponent(0));
@@ -93,15 +89,15 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             tabbedPane = new JTabbedPane();
             tabbedPane.addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-                    context.chooseModule(ContextUtil.getCurrentModule(tabbedPane));
+                    context.setCurrentModule(ContextUtil.getCurrentModule(tabbedPane));
                 }
             });
         }
         if(reload){
-            int currentIndex = ContextUtil.getCurrentTab(context.currentModule());
+            int currentIndex = ContextUtil.getCurrentTab(context.getCurrentModule());
             tabbedPane.removeAll();
             for(String module : ModuleManager.activeModules()) {
-                tabbedPane.addTab(Module.name(module), Module.icon(module), createPanel(module, this));
+                tabbedPane.addTab(Module.name(module), Module.icon(module), GUIFactory.createPanel(module, this));
             }
 
             if(currentIndex!=-1)

@@ -45,55 +45,46 @@ public class GazPanel extends Panel{
 	
 	public JTextField getPrevMesureField(){
 		if(prevMesureField == null){
-			prevMesureField = new JTextField(5);
 			String text = String.valueOf(((GazCalc)calc).getPrevMeasure());
-			prevMesureField.setText(text);
+			prevMesureField = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			prevMesureField.getDocument().addDocumentListener(this);
-			if(calc.isPaid())
-				prevMesureField.setEditable(false);			
 		}
 		return prevMesureField;
 	}
 
 	public JTextField getCurrentMesureField(){
 		if(currentMesureField == null){
-			currentMesureField = new JTextField(5);
 			String text = String.valueOf(((GazCalc)calc).getCurrentMeasure());
-			currentMesureField.setText(text);
+			currentMesureField = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			currentMesureField.getDocument().addDocumentListener(this);
-			if(calc.isPaid())
-				currentMesureField.setEditable(false);			
 		}
 		return currentMesureField;
 	}
 	
 	public JTextField getRateField(){
 		if(rateField == null){
-			rateField = new JTextField(5);
 			String text = String.valueOf(((GazCalc)calc).getRate());
-			rateField.setText(text);
+			rateField = (JTextField) GuiUtil.fieldCalc(5, text, calc.isPaid());
 			rateField.getDocument().addDocumentListener(this);
-			if (calc.isPaid())
-				rateField.setEditable(false);			
 		}
 		return rateField;
 	}
 	
 	public JLabel getPrevMesureLabel(){
 		if(prevMesureLabel == null)
-			prevMesureLabel = new JLabel(PREV_MESURE_LABEL_TEXT); 
+			prevMesureLabel = (JLabel) GuiUtil.label(PREV_MESURE_LABEL_TEXT);
 		return prevMesureLabel;
 	}
 	
 	public JLabel getCurrentMesureLabel(){
 		if(currentMesureLabel == null)
-			currentMesureLabel = new JLabel(CURRENT_MESURE_LABEL_TEXT); 
+			currentMesureLabel = (JLabel)GuiUtil.label(CURRENT_MESURE_LABEL_TEXT);
 		return currentMesureLabel;
 	}
 	
 	public JLabel getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = new JLabel(RATE_LABEL_TEXT); 
+			rateLabel = (JLabel)GuiUtil.label(RATE_LABEL_TEXT);
 		return rateLabel;
 	}
 

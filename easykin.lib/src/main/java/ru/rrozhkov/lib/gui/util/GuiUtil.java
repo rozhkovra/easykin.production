@@ -25,7 +25,12 @@ public class GuiUtil {
         field.setText(text);
         return field;
     }
-
+    public static Component fieldCalc(int length, String text, boolean editable){
+        if (editable) {
+            return fieldEditable(length, text);
+        }
+        return fieldReadOnly(length, text);
+    }
     public static Component button(String text){
         return new JButton(text);
     }

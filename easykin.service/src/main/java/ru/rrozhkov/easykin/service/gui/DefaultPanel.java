@@ -35,18 +35,15 @@ public class DefaultPanel extends Panel {
 	
 	public JTextField getSumField(){
 		if(sumField == null){
-			sumField = new JTextField(10);
 			String sum = FormatUtil.formatEditMoney(((DefaultCalc)calc).getPrice());
-			sumField.setText(sum);
+			sumField = (JTextField) GuiUtil.fieldCalc(10, sum, calc.isPaid());
 			sumField.getDocument().addDocumentListener(this);
-			if(calc.isPaid())
-				sumField.setEditable(false);
 		}
 		return sumField;
 	}
 	public JLabel getSumLabel(){
 		if(sumLabel == null)
-			sumLabel = new JLabel("Сумма"); 
+			sumLabel = (JLabel) GuiUtil.label("Сумма");
 		return sumLabel;
 	}
 	@Override
