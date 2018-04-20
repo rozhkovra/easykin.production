@@ -17,7 +17,6 @@
 <thead>
 <tr>
 <th>№</th>
-<th>Имя</th>
 <th>Дата</th>
 <th>Часы</th>
 <th>Тип задачи</th>
@@ -53,7 +52,6 @@
 %>
 <tr>
 <td style="<%=tdStyle%>"><%=++i%></td>
-<td style="<%=tdStyle%>"><%=PersonUtil.fi(activity.getPerson())%></td>
 <td style="<%=tdStyle%>"><%=DateUtil.format(activity.getDate())%></td>
 <td style="<%=tdStyle%>text-align:right;"><%=activity.getTime()%></td>
 <td style="<%=tdStyle%>text-align:center;"><%=activity.getTaskType().toString()%></td>
