@@ -26,17 +26,13 @@
   <col/>
   <col width="120"/>
   <col width="150"/>
-  <col width="150"/>
-  <col width="120"/>
 <thead>
 <tr>
 <th>№</th>
 <th>ID</th>
 <th>Описание</th>
-<th>Выполнить до</th>
-<th>Приоритет</th>
+<th>Срок</th>
 <th>Категория</th>
-<th>Дата</th>
 </tr>
 </thead>
 <tbody>
@@ -62,6 +58,7 @@
 	tasks = FilterUtil.filter(tasks, filters);
 	for(ITask task : tasks){
 		String taskClass = "";
+		String dateClass = "";
         if(Status.CLOSE.equals(task.getStatus())){
         	if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
         		taskClass = "label bg-gray";
@@ -75,7 +72,9 @@
 			if(Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
 				taskClass  = "label bg-blue";
 			}
-
+			if (new Date().getTime()>task.getPlanDate().getTime()) {
+				dateClass = "label bg-gray";
+			}
         }
         String comments = "";
         for(IComment comment : task.comments()){
@@ -88,10 +87,8 @@
 <td align="center"><%=++i%></td>
 <td align="center"><span class="<%=taskClass%>"><%=task.getId()%></span></td>
 <td ><%=task.getName()%><br/><span style="font-size:12px;"><%=comments%></span></td>
-<td align="center"><%=DateUtil.format(task.getPlanDate())%></td>
-<td align="center"><%=task.getPriority()%></td>
+<td align="center"><span class="<%=dateClass%>"><%=DateUtil.format(task.getPlanDate())%></span></td>
 <td align="center"><%=task.getCategory().getName()%></td>
-<td align="center"><%=DateUtil.format(task.getCreateDate())%></td>
 </tr>
 <%			
 	}
