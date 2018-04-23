@@ -31,6 +31,18 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <!-- jQuery 3 -->
+  <script src="AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- ChartJS -->
+  <script src="AdminLTE/bower_components/chart.js/Chart.js"></script>
+  <!-- FastClick -->
+  <script src="AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="AdminLTE/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="AdminLTE/js/demo.js"></script>
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -66,15 +78,5 @@
 	}
 %>
 </div>
-<!-- jQuery 3 -->
-<script src="AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="AdminLTE/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="AdminLTE/js/demo.js"></script>
 </body>
 </html>
