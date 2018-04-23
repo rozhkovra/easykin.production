@@ -14,7 +14,7 @@
 </div>
 
 <div class="box-body">
-<table id="services" width="100%"  class="table table-bordered table-hover">
+<table id="services" class="table table-bordered table-hover">
 <thead>
 <tr>
 <th>№</th>
@@ -77,3 +77,18 @@
 </div>
 </div>
 </section>
+
+<!-- page script -->
+<script>
+  $(function () {
+    $('#services').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+
+  })
+</script>
