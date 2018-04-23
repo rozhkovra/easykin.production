@@ -81,14 +81,7 @@
 <!-- page script -->
 <script>
   $(function () {
-    $('#services').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
+    $('#services').DataTable()
 
   })
 </script>

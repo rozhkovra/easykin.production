@@ -20,7 +20,7 @@
 </div>
 
 <div class="box-body">
-<table id="tasks" width="100%"  class="table table-bordered table-hover">
+<table id="tasks" width="100%"  class="table table-bordered table-striped">
   <col width="30"/>
   <col width="30"/>
   <col/>
@@ -104,14 +104,6 @@
 <!-- page script -->
 <script>
   $(function () {
-    $('#tasks').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-
+    $('#tasks').DataTable()
   })
 </script>

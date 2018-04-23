@@ -13,7 +13,7 @@
 </div>
 
 <div class="box-body">
-<table width="100%"  class="table table-bordered table-hover">
+<table id="payments" class="table table-bordered table-hover">
 <thead>
 <tr>
 <th>№</th>
@@ -28,27 +28,11 @@
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 
 	int i = 0;
-	Money moneyMonth = Money.valueOf(0.0);
-	String curMonth = "";
 	Collection<IPayment> payments = (Collection<IPayment>)ModuleManager.invoke(moduleId, "finance");
 	String tdStyle = "height:30px;font-size:20px;";
 	String color = "";
 
 	for(IPayment payment : payments){
-		if(!curMonth.equals(DateUtil.formatService(payment.getDate()))) {
-			if(!moneyMonth.free()){
-%>
-<tr>
-<td style="<%=tdStyle%>;font-weight:bold;" colspan=3></td>
-<td style="<%=tdStyle%>;font-weight:bold;"><%=moneyMonth%></td>
-<td style="<%=tdStyle%>;font-weight:bold;"></td>
-</tr>
-<%
-			}
-			curMonth = DateUtil.formatService(payment.getDate());
-			moneyMonth = Money.valueOf(0.0);
-		}
-
 %>
 <tr >
 <td style="<%=tdStyle%>"><%=++i%></td>
@@ -58,14 +42,8 @@
 <td style="<%=tdStyle%>text-align:center;"><%=DateUtil.format(payment.getDate())%></td>
 </tr>
 <%
-		moneyMonth.add(payment.getAmount());
 	}
 %>
-<tr>
-<td style="<%=tdStyle%>;font-weight:bold;" colspan=3></td>
-<td style="<%=tdStyle%>;font-weight:bold;"><%=moneyMonth%></td>
-<td style="<%=tdStyle%>;font-weight:bold;"></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -73,3 +51,11 @@
 </div>
 </div>
 </section>
+
+<!-- page script -->
+<script>
+  $(function () {
+    $('#payments').DataTable()
+
+  })
+</script>
