@@ -25,8 +25,8 @@ public class GuiUtil {
         field.setText(text);
         return field;
     }
-    public static Component fieldCalc(int length, String text, boolean editable){
-        if (editable) {
+    public static Component fieldCalc(int length, String text, boolean readonly){
+        if (!readonly) {
             return fieldEditable(length, text);
         }
         return fieldReadOnly(length, text);
