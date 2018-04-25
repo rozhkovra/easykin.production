@@ -11,7 +11,6 @@ import java.util.Map;
  */
 public class Module {
     // First level
-    public static final String AUTO = "auto";
     public static final String PERSON = "person";
     public static final String FAMILY = "family";
     public static final String FIN = "fin";
@@ -20,15 +19,17 @@ public class Module {
     public static final String PAYMENT = "payment";
 
     // Second level
-    public static final String MESSAGE = "message";
-    public static final String NOTE = "note";
-    public static final String SCHOOL = "school";
     public static final String WORK = "work";
-    public static final String BABY = "baby";
+    public static final String MESSAGE = "message";
+    public static final String EMAIL = "email";
 
     // Third level
+    public static final String BABY = "baby";
+    public static final String SCHOOL = "school";
     public static final String GOVERNMENT = "covernment";
     public static final String MEDICAL = "medical";
+    public static final String AUTO = "auto";
+    public static final String NOTE = "note";
 
     public static final Map<String, String> module2name = new HashMap<String, String>() {
         {

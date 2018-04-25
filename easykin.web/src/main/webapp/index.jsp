@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Invoice</title>
+  <title>EasyKin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -43,7 +43,7 @@
   <!-- FastClick -->
   <script src="AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
   <!-- SlimScroll -->
-  <script src="../AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
   <!-- AdminLTE App -->
   <script src="AdminLTE/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
@@ -51,34 +51,35 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-	<link rel="shortcut icon" href="icon/logo.ico" />
+  <link rel="shortcut icon" href="icon/logo.ico" />
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <jsp:include page="header.jsp"/>
 <%
 	String signout = request.getParameter("signout")!=null?String.valueOf(request.getParameter("signout")):"";
-	if(!signout.isEmpty())
-	  AuthManager.instance().signOut();
+	if (!signout.isEmpty()) {
+	    AuthManager.instance().signOut();
+	}
 
 	String username = request.getParameter("username")!=null?String.valueOf(request.getParameter("username")):"";
 	String password = request.getParameter("password")!=null?String.valueOf(request.getParameter("password")):"";
-	if(!username.isEmpty() && !password.isEmpty())
+	if (!username.isEmpty() && !password.isEmpty()) {
 		AuthManager.instance().signIn(username, password);
+    }
 
-	if(!AuthManager.instance().isSignedIn()){
-		if(!username.isEmpty() && !password.isEmpty()){
+	if (!AuthManager.instance().isSignedIn()) {
+		if (!username.isEmpty() && !password.isEmpty()) {
 %><span style="color:red;">Не верно указан логин или пароль!</span>
 <%
 		}
 %>
 <jsp:include page="login.jsp"/>
 <%
-	}else{
+	} else {
 %>
 <jsp:include page="eside.jsp"/>
 <jsp:include page="main.jsp"/>
-
 <%
 	}
 %>
