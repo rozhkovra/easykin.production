@@ -13,7 +13,7 @@
 </div>
 
 <div class="box-body">
-<table id="works" width="100%"  class="table table-bordered table-hover">
+<table id="activities" class="table table-bordered table-hover">
 <thead>
 <tr>
 <th>№</th>
@@ -28,55 +28,19 @@
 <tbody>
 <%
 	int i = 0;
-	int daytime = 0;
-	Date curDate = null;
 	Collection<IActivity> activities = (Collection<IActivity>)ModuleManager.invoke(Module.WORK, "activities");
 	for(IActivity activity : activities){
-		String spanClass = "";
-		String tdStyle = "height:30px;font-size:20px;";
-		if(curDate!=null && !curDate.equals(activity.getDate())) {
-			if(daytime == 8) {
-				spanClass = "label label-success";
-			}else{
-				spanClass = "label label-warning";
-			}
 %>
 <tr>
-	<td colspan="3"/>
-	<td style="<%=tdStyle%>text-align:right;font-weight:bold;"><span class="<%=spanClass%>"><%=daytime%></span></td>
-	<td colspan="4"/>
+<td ><%=++i%></td>
+<td ><%=DateUtil.format(activity.getDate())%></td>
+<td align="right"><%=activity.getTime()%></td>
+<td align="center;"><%=activity.getTaskType().toString()%></td>
+<td align="center;"><%=activity.getName()%></td>
+<td align="center;"><%=activity.getReleaseType().toString()%></td>
+<td align="center;"><%=activity.getDesc()%></td>
 </tr>
 <%
-			daytime = 0;
-		}
-%>
-<tr>
-<td style="<%=tdStyle%>"><%=++i%></td>
-<td style="<%=tdStyle%>"><%=DateUtil.format(activity.getDate())%></td>
-<td style="<%=tdStyle%>text-align:right;"><%=activity.getTime()%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=activity.getTaskType().toString()%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=activity.getName()%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=activity.getReleaseType().toString()%></td>
-<td style="<%=tdStyle%>text-align:center;"><%=activity.getDesc()%></td>
-</tr>
-<%
-		daytime+=activity.getTime();
-		if(i==activities.size()) {
-			if(daytime == 8) {
-				spanClass = "label label-success";
-			}else{
-				spanClass = "label label-warning";
-			}
-%>
-<tr>
-	<td colspan="3"/>
-	<td style="<%=tdStyle%>text-align:right;font-weight:bold;"><span class="<%=spanClass%>"><%=daytime%></span></td>
-	<td colspan="4"/>
-</tr>
-<%
-			daytime = 0;
-		}
-		curDate = activity.getDate();
 	}
 %>
 </tbody>
@@ -86,3 +50,10 @@
 </div>
 </div>
 </section>
+
+<!-- page script -->
+<script>
+  $(function () {
+    $('#activities').DataTable()
+  })
+</script>
