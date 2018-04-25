@@ -44,11 +44,7 @@ public class TaskBuilder {
 		try {
 			Collection<ITask> tasks = TaskHandler.select();
 			Collection<IComment> comments = CommentHandler.select();
-			for(ITask task : tasks){
-				task.comments().clear();
-				task.comments().addAll(FilterUtil.filter(comments, CommentFilterFactory.createTaskFilter(task.getId())));
-			}
-			return tasks;
+			return build(tasks, comments);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return CollectionUtil.<ITask>create();
@@ -59,14 +55,18 @@ public class TaskBuilder {
 		try {
 			Collection<ITask> tasks = TaskHandler.selectForPerson(personId);
 			Collection<IComment> comments = CommentHandler.selectForPerson(personId);
-			for(ITask task : tasks){
-				task.comments().clear();
-				task.comments().addAll(FilterUtil.filter(comments,CommentFilterFactory.createTaskFilter(task.getId())));
-			}
-			return tasks;
+			return build(tasks, comments);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return CollectionUtil.<ITask>create();
 		}
+	}
+
+	public static Collection<ITask> build(Collection<ITask> tasks, Collection<IComment> comments) {
+		for(ITask task : tasks){
+			task.comments().clear();
+			task.comments().addAll(FilterUtil.filter(comments,CommentFilterFactory.createTaskFilter(task.getId())));
+		}
+		return tasks;
 	}
 }
