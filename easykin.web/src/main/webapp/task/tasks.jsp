@@ -17,6 +17,13 @@
 <div class="box">
 <div class="box-header">
 <h3 class="box-title"><jsp:include page="priorities.jsp"/></h3>
+<button type="button" class="btn btn-default pull-right" id="daterange-btn">
+	<span>
+	  <i class="fa fa-calendar"></i> Период
+	</span>
+	<i class="fa fa-caret-down"></i>
+</button>
+<!-- /.form group -->
 </div>
 
 <div class="box-body">
@@ -105,5 +112,20 @@
 <script>
   $(function () {
     $('#tasks').DataTable()
+
+	$('#daterange-btn').daterangepicker(
+	{
+	  ranges   : {
+		'Неделя' : [moment().subtract(6, 'days'), moment()],
+		'Месяц'  : [moment().startOf('month'), moment().endOf('month')],
+		'Прошлый месяц'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+	  },
+	  startDate: moment().subtract(29, 'days'),
+	  endDate  : moment()
+	},
+	function (start, end) {
+	  $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+	}
+	)
   })
 </script>
