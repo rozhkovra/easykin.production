@@ -18,13 +18,15 @@
       </ol>
     </section>
 <%
+    if(ModuleManager.activeModules().contains(moduleId)) {
 	if (Module.PAYMENT.equals(moduleId) || Module.FIN.equals(moduleId)) {
-%><jsp:include page="payment/payments.jsp"/><%
+%><jsp:include page="payment/index.jsp"/><%
 	} else if(Module.WORK.equals(moduleId)) {
-%><jsp:include page="work/work.jsp"/><%
+%><jsp:include page="work/index.jsp"/><%
 	} else if (Module.SERVICE.equals(moduleId)) {
-%><jsp:include page="service/statistics.jsp"/><jsp:include page="service/service.jsp"/><%
+%><jsp:include page="service/statistics.jsp"/><jsp:include page="service/index.jsp"/><%
     } else {
-%><jsp:include page="task/tasks.jsp"/>
-<%  }%>
+%><jsp:include page="task/index.jsp"/>
+<%  }
+    }%>
 </div>
