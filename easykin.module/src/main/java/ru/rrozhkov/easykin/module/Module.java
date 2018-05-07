@@ -22,6 +22,7 @@ public class Module {
     public static final String WORK = "work";
     public static final String MESSAGE = "message";
     public static final String EMAIL = "email";
+    public static final String DEVELOPMENT = "development";
 
     // Third level
     public static final String BABY = "baby";
