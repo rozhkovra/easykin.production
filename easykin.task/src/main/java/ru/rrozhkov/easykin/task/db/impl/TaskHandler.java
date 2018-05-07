@@ -1,17 +1,16 @@
 package ru.rrozhkov.easykin.task.db.impl;
 
+import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.model.task.Status;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.db.impl.DBManager;
+import ru.rrozhkov.lib.util.DateUtil;
+
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
-
-import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.model.task.Status;
-import ru.rrozhkov.easykin.task.impl.convert.DBTaskConverter;
-import ru.rrozhkov.easykin.task.impl.convert.TaskMapConverter;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.db.impl.DBManager;
-import ru.rrozhkov.lib.util.DateUtil;
 
 public class TaskHandler {
 	private static String TABLENAME = "TASK";
@@ -41,15 +40,15 @@ public class TaskHandler {
 
 
 	public static Collection<ITask> select() throws Exception{
-		return DBManager.instance().select(select, new DBTaskConverter());
+		return DBManager.instance().select(select, TaskConverterFactory.task());
 	}
 
 	public static Collection<ITask> selectForPerson(int id) throws Exception {
-		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), new DBTaskConverter());
+		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), TaskConverterFactory.task());
 	}
 
 	public static ITask selectTask(int taskId) throws Exception {
-		Collection<ITask> tasks = DBManager.instance().select(selectTask.replace("#id#", String.valueOf(taskId)), new DBTaskConverter());
+		Collection<ITask> tasks = DBManager.instance().select(selectTask.replace("#id#", String.valueOf(taskId)), TaskConverterFactory.task());
 		if(tasks!=null && !tasks.isEmpty())
 			return CollectionUtil.get(tasks,0);
 		return null;
@@ -57,7 +56,7 @@ public class TaskHandler {
 	
 	public static int insert(ITask task) throws SQLException{
 		try {
-			Map<String, Object> map = new TaskMapConverter().convert(task);
+			Map<String, Object> map = TaskConverterFactory.task().map(task);
 			int id = DBManager.instance().nextId(TABLENAME);
 			map.put("id", id);
 			DBManager.instance().insert(insert,map);
@@ -69,7 +68,7 @@ public class TaskHandler {
 	
 	public static int update(ITask task) throws SQLException{
 		try {
-			Map<String, Object> map = new TaskMapConverter().convert(task);
+			Map<String, Object> map = TaskConverterFactory.task().map(task);
 			int count = DBManager.instance().update(update, map);
 			return count;
 		} catch (Exception e) { 
@@ -79,7 +78,7 @@ public class TaskHandler {
 
 	public static int close(ITask task) throws SQLException{
 		try {
-			Map<String, Object> map = new TaskMapConverter().convert(task);
+			Map<String, Object> map = TaskConverterFactory.task().map(task);
 			int count = DBManager.instance().update(close, map);
 			return count;
 		} catch (Exception e) { 

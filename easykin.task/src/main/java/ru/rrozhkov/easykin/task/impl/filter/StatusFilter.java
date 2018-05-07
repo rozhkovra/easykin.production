@@ -6,11 +6,9 @@ import ru.rrozhkov.lib.filter.IFilter;
 
 public class StatusFilter implements IFilter<ITask> {
 	private Status status;
-	
-	public StatusFilter(Status status) {
+	protected StatusFilter(Status status) {
 		this.status = status;
 	}
-
 	public boolean filter(ITask obj) {
 		return status.equals(obj.getStatus());
 	}

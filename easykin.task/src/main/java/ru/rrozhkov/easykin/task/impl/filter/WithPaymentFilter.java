@@ -5,11 +5,8 @@ import ru.rrozhkov.easykin.model.task.util.TaskUtil;
 import ru.rrozhkov.lib.filter.IFilter;
 
 public class WithPaymentFilter implements IFilter<ITask> {
-	public WithPaymentFilter() {
-	}
-
+	protected WithPaymentFilter() {}
 	public boolean filter(ITask task) {
 		return TaskUtil.withPayment(task);
 	}
-
 }

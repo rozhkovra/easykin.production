@@ -17,9 +17,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
-import static ru.rrozhkov.easykin.model.service.calc.CalculationType.*;
-import static ru.rrozhkov.easykin.model.service.calc.CalculationType.HOUSE;
-
 /**
  * Created by rrozhkov on 12/11/2017.
  */

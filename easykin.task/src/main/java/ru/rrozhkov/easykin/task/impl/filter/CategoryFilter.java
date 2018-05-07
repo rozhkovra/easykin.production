@@ -6,10 +6,9 @@ import ru.rrozhkov.lib.filter.IFilter;
 
 public class CategoryFilter implements IFilter<ITask> {
 	private ICategory category;
-	public CategoryFilter(ICategory category) {
+	protected CategoryFilter(ICategory category) {
 		this.category = category;
 	}
-
 	public boolean filter(ITask task) {
 		return this.category.getId()==task.getCategory().getId();
 	}

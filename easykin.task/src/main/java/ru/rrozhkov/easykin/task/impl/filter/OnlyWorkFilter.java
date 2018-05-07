@@ -5,6 +5,7 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.lib.filter.IFilter;
 
 public class OnlyWorkFilter implements IFilter<ITask> {
+	protected OnlyWorkFilter() {}
 	public boolean filter(ITask obj) {
 		return ((Category)obj.getCategory()).isWork();
 	}

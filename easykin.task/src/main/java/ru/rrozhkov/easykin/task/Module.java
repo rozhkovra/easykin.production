@@ -7,7 +7,8 @@ import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.GUIFactory;
 import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskStyle;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
-import ru.rrozhkov.easykin.task.impl.convert.TaskPaymentCollectionConverter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -50,6 +51,6 @@ public class Module {
         return FilterUtil.filter(tasks(person), filter);
     }
     public static Collection<IPayment> payments(){
-        return new TaskPaymentCollectionConverter().convert(tasks());
+        return ((TaskConverter)TaskConverterFactory.task()).payments(tasks());
     }
 }

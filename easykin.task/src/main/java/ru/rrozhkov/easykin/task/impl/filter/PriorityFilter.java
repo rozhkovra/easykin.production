@@ -6,11 +6,7 @@ import ru.rrozhkov.lib.filter.IFilter;
 
 public class PriorityFilter implements IFilter<ITask> {
 	private Priority priority;
-	
-	public PriorityFilter(Priority priority) {
-		this.priority = priority;
-	}
-
+	protected PriorityFilter(Priority priority) {this.priority = priority;}
 	public boolean filter(ITask obj) {
 		return priority.equals(obj.getPriority());
 	}

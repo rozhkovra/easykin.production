@@ -2,6 +2,7 @@ package ru.rrozhkov.lib.db.impl;
 
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.lib.convert.IEntityConverter;
 import ru.rrozhkov.lib.db.IDBManager;
 import ru.rrozhkov.lib.db.impl.exception.NotFoundDBPropertiesException;
 
@@ -110,6 +111,27 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 
 	public int deleteAll(String tableName) throws SQLException {
 		return executeUpdate(deleteAll.replace("#table#", tableName));
+	}
+
+	public <T> Collection<T> select(String select, IEntityConverter<T> converter) throws SQLException {
+		ResultSet result = null;
+		try {
+			Collection<T> collection = CollectionUtil.create();
+			result = executeQuery(select);
+			while(result.next()){
+				collection.add(converter.entity(result));
+			}
+			return collection;
+		} catch (Exception e) {
+			throw new SQLException(e);
+		} finally {
+			try {
+				if(result!=null)
+					result.close();
+			}catch (SQLException e) {
+				throw new SQLException(e);
+			}
+		}
 	}
 
 	/* (non-Javadoc)

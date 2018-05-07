@@ -65,7 +65,7 @@ public class TaskBuilder {
 	public static Collection<ITask> build(Collection<ITask> tasks, Collection<IComment> comments) {
 		for(ITask task : tasks){
 			task.comments().clear();
-			task.comments().addAll(FilterUtil.filter(comments,CommentFilterFactory.createTaskFilter(task.getId())));
+			task.comments().addAll(FilterUtil.filter(comments,CommentFilterFactory.task(task.getId())));
 		}
 		return tasks;
 	}

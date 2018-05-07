@@ -1,8 +1,7 @@
 package ru.rrozhkov.easykin.service.db.impl.calc2;
 
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
-import ru.rrozhkov.easykin.service.calc2.impl.convert.DBReadingConverter;
-import ru.rrozhkov.easykin.service.calc2.impl.convert.ReadingMapConverter;
+import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.sql.SQLException;
@@ -23,13 +22,13 @@ public class ReadingHandler {
 
 
     public static Collection<IReading> select() throws Exception {
-        return DBManager.instance().select(select, new DBReadingConverter());
+        return DBManager.instance().select(select, ServiceConverterFactory.reading());
     }
 
 
     public static int insert(IReading reading) throws SQLException {
         try {
-            Map<String, Object> map = new ReadingMapConverter().convert(reading);
+            Map<String, Object> map = ServiceConverterFactory.reading().map(reading);
             int id = DBManager.instance().nextId(TABLENAME);
             map.put("id", id);
             DBManager.instance().insert(insert, map);

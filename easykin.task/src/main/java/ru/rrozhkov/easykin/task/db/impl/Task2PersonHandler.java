@@ -1,8 +1,7 @@
 package ru.rrozhkov.easykin.task.db.impl;
 
 import ru.rrozhkov.easykin.model.task.ITask2Person;
-import ru.rrozhkov.easykin.task.impl.convert.DBTask2PersonConverter;
-import ru.rrozhkov.easykin.task.impl.convert.Task2PersonMapConverter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.sql.SQLException;
@@ -20,11 +19,11 @@ public class Task2PersonHandler {
             +" VALUES(#id#,#person#,#task#)";
 
     public static Collection<ITask2Person> select() throws Exception {
-        return DBManager.instance().select(select, new DBTask2PersonConverter());
+        return DBManager.instance().select(select, TaskConverterFactory.task2person());
     }
     public static int insert(ITask2Person t2p) throws SQLException{
         try {
-            Map<String, Object> map = new Task2PersonMapConverter().convert(t2p);
+            Map<String, Object> map = TaskConverterFactory.task2person().map(t2p);
             int id = DBManager.instance().nextId(TABLENAME);
             map.put("id", id);
             DBManager.instance().insert(insert,map);

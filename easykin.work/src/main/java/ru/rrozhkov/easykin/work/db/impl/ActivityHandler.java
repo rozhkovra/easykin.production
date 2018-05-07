@@ -1,10 +1,7 @@
 package ru.rrozhkov.easykin.work.db.impl;
 
-import ru.rrozhkov.easykin.model.family.IKinPerson;
-import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.easykin.work.impl.convert.ActivityMapConverter;
-import ru.rrozhkov.easykin.work.impl.convert.DBActivityConverter;
+import ru.rrozhkov.easykin.work.impl.convert.WorkConverterFactory;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.sql.SQLException;
@@ -29,16 +26,16 @@ public class ActivityHandler {
 
 
 	public static Collection<IActivity> select() throws Exception {
-		return DBManager.instance().select(select,new DBActivityConverter());
+		return DBManager.instance().select(select, WorkConverterFactory.activity());
 	}
 
 	public static Collection<IActivity> selectForPerson(int id) throws Exception {
-		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), new DBActivityConverter());
+		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), WorkConverterFactory.activity());
 	}
 
 	public static int insert(IActivity activity) throws SQLException {
 		try {
-			Map<String, Object> map = new ActivityMapConverter().convert(activity);
+			Map<String, Object> map = WorkConverterFactory.activity().map(activity);
 			int id = DBManager.instance().nextId(TABLENAME);
 			map.put("id", id);
 			DBManager.instance().insert(insert,map);
@@ -50,7 +47,7 @@ public class ActivityHandler {
 
 	public static int update(IActivity activity) throws SQLException{
 		try {
-			Map<String, Object> map = new ActivityMapConverter().convert(activity);
+			Map<String, Object> map = WorkConverterFactory.activity().map(activity);
 			int count = DBManager.instance().update(update, map);
 			return count;
 		} catch (Exception e) {

@@ -1,14 +1,13 @@
 package ru.rrozhkov.easykin.task.gui;
 
-import ru.rrozhkov.easykin.task.impl.filter.PriorityFilter;
-import ru.rrozhkov.easykin.task.impl.filter.StatusFilter;
+import ru.rrozhkov.easykin.model.task.Priority;
+import ru.rrozhkov.easykin.model.task.Status;
+import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
+import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
-import ru.rrozhkov.easykin.model.task.Priority;
-import ru.rrozhkov.easykin.model.task.Status;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.filter.IFilter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,9 +81,9 @@ public class TaskFilter extends Form {
 //		EasyKinContext easyKinContext = (EasyKinContext) context;
 		Collection<IFilter> filters = CollectionUtil.create();
 			if(statusComboBox.getSelectedIndex()!=0)
-				filters.add(new StatusFilter(Status.status(statusComboBox.getSelectedIndex())));
+				filters.add(TaskFilterFactory.status(Status.status(statusComboBox.getSelectedIndex())));
 			if(priorityComboBox.getSelectedIndex()!=0)
-				filters.add(new PriorityFilter(Priority.priority(priorityComboBox.getSelectedIndex())));
+				filters.add(TaskFilterFactory.priority(Priority.priority(priorityComboBox.getSelectedIndex())));
 //			easyKinContext.masterData().filter(filters);
 		parent.refresh();
 		parent.closeEditor(IGUIEditor.CODE_OK);

@@ -6,12 +6,10 @@ import ru.rrozhkov.lib.filter.IFilter;
 
 public class StatusFilter implements IFilter<IPayment> {
 	private PaymentStatus status;
-	public StatusFilter(PaymentStatus status) {
+	protected StatusFilter(PaymentStatus status) {
 		this.status = status;
 	}
-
 	public boolean filter(IPayment obj) {
 		return status.equals(obj.getStatus());
 	}
-
 }

@@ -1,8 +1,7 @@
 package ru.rrozhkov.easykin.task.db.impl;
 
 import ru.rrozhkov.easykin.model.task.IComment;
-import ru.rrozhkov.easykin.task.impl.convert.CommentMapConverter;
-import ru.rrozhkov.easykin.task.impl.convert.DBCommentConverter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.sql.SQLException;
@@ -25,20 +24,20 @@ public class CommentHandler {
 
 
 	public static Collection<IComment> select() throws Exception {
-		return DBManager.instance().select(select, new DBCommentConverter());
+		return DBManager.instance().select(select, TaskConverterFactory.comment());
 	}
 	
 	public static Collection<IComment> selectForTask(int taskId) throws Exception {
-		return DBManager.instance().select(selectForTask.replace("#taskId#", String.valueOf(taskId)), new DBCommentConverter());
+		return DBManager.instance().select(selectForTask.replace("#taskId#", String.valueOf(taskId)), TaskConverterFactory.comment());
 	}
 	
 	public static Collection<IComment> selectForPerson(int personId) throws Exception {
-		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(personId)), new DBCommentConverter());
+		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(personId)), TaskConverterFactory.comment());
 	}
 
 	public static int insert(IComment comment) throws SQLException{
 		try {
-			Map<String, Object> map = new CommentMapConverter().convert(comment);
+			Map<String, Object> map = TaskConverterFactory.comment().map(comment);
 			int id = DBManager.instance().nextId(TABLENAME);
 			map.put("id", id);
 			DBManager.instance().insert(insert,map);
@@ -50,7 +49,7 @@ public class CommentHandler {
 
 	public static int update(IComment comment) throws SQLException{
 		try {
-			Map<String, Object> map = new CommentMapConverter().convert(comment);
+			Map<String, Object> map = TaskConverterFactory.comment().map(comment);
 			int count = DBManager.instance().update(update, map);
 			return count;
 		} catch (Exception e) {
