@@ -135,7 +135,7 @@
 	$('#daterange-btn').daterangepicker(
 	{
 	  ranges   : {
-		'Неделя' : [moment().subtract(6, 'days'), moment()],
+		'Неделя' : [moment().startOf('week'), moment().endOf('week')],
 		'Месяц'  : [moment().startOf('month'), moment().endOf('month')],
 		'Прошлый месяц'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
 	  },
