@@ -6,6 +6,8 @@ import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.lib.filter.IFilter;
 
+import java.util.Date;
+
 public class TaskFilterFactory {
 	public static IFilter<ITask> home(){
 		return new OnlyHomeFilter();
@@ -24,5 +26,11 @@ public class TaskFilterFactory {
 	}
 	public static IFilter<ITask> withPayment(){
 		return new WithPaymentFilter();
+	}
+	public static IFilter<ITask> fromDate(Date date){
+		return new FromDateFilter(date);
+	}
+	public static IFilter<ITask> toDate(Date date){
+		return new ToDateFilter(date);
 	}
 }

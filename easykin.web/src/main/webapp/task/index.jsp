@@ -62,6 +62,15 @@
 		Priority priority = Priority.priority(priorityId);
 		filters.add(TaskFilterFactory.priority(priority));
 	}
+	Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
+	if(fromDate!=null){
+		filters.add(TaskFilterFactory.fromDate(fromDate));
+	}
+	Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")):DateUtil.parse("01.01.3000");
+	if(toDate!=null){
+		filters.add(TaskFilterFactory.toDate(toDate));
+	}
+	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 	tasks = FilterUtil.filter(tasks, filters);
 	for(ITask task : tasks){
 		String taskClass = "";
@@ -107,11 +116,21 @@
 </div>
 </div>
 </section>
+<form id="taskFilter">
+<input type="hidden" id="fromDate" name="fromDate" value="<%=fromDate%>"/>
+<input type="hidden" id="toDate" name="toDate" value="<%=toDate%>"/>
+<input type="hidden" id="categoryId" name="categoryId" value="<%=categoryId%>"/>
+<input type="hidden" id="statusId" name="statusId" value="<%=statusId%>"/>
+<input type="hidden" id="priorityId" name="priorityId" value="<%=priorityId%>"/>
+<input type="hidden" id="moduleId" name="moduleId" value="<%=moduleId%>"/>
+</form>
+
 
 <!-- page script -->
 <script>
   $(function () {
     $('#tasks').DataTable()
+	$('#daterange-btn span').html('<%=DateUtil.format(fromDate)%> - <%=DateUtil.format(toDate)%>')
 
 	$('#daterange-btn').daterangepicker(
 	{
@@ -124,7 +143,10 @@
 	  endDate  : moment()
 	},
 	function (start, end) {
-	  $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+	  $('#daterange-btn span').html(start.format('DD.MM.YYYY') + ' - ' + end.format('DD.MM.YYYY'))
+	  $('#fromDate').val(start.format('DD.MM.YYYY'));
+	  $('#toDate').val(end.format('DD.MM.YYYY'));
+	  $('#taskFilter').submit();
 	}
 	)
   })
