@@ -1,4 +1,3 @@
-<%@ page import="ru.rrozhkov.easykin.context.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
@@ -8,6 +7,7 @@
 <%@ page import="ru.rrozhkov.easykin.model.person.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
+<%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.*"%>
 <%@ page import="ru.rrozhkov.lib.collection.*"%>
@@ -16,26 +16,16 @@
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
-	IPerson person = AuthManager.instance().signedPerson();
+	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
+	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
-	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-
+	Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
+	Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")):DateUtil.parse("01.01.3000");
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
-
-	MasterDataContext context = (MasterDataContext)session.getAttribute("masterDataContext");
-	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson());
-	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
-    	if(statusId!=-1){
-    		Status status = Status.status(statusId);
-	    	filters.add(TaskFilterFactory.status(status));
-	}
-   	if(priorityId!=-1){
-   		Priority priority = Priority.priority(priorityId);
-   		filters.add(TaskFilterFactory.priority(priority));
-   	}
-   	tasks = FilterUtil.filter(tasks, filters);
-
+	IPerson person = AuthManager.instance().signedPerson();
+	TaskFilterBean bean = TaskFilterFactory.bean(statusId, categoryId, priorityId,fromDate, toDate, person.getId());
+	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", bean);
 %>
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->

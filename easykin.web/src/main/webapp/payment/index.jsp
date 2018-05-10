@@ -32,7 +32,7 @@
 	String tdStyle = "height:30px;font-size:20px;";
 	String color = "";
 
-	for(IPayment payment : payments){
+	for (IPayment payment : payments) {
 %>
 <tr >
 <td style="<%=tdStyle%>"><%=++i%></td>
@@ -56,6 +56,5 @@
 <script>
   $(function () {
     $('#payments').DataTable()
-
   })
 </script>

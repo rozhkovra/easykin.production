@@ -6,7 +6,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <%
-	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 %>
     <!-- Content Header (Page header) -->

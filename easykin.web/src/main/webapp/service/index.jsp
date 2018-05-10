@@ -54,7 +54,7 @@
 %>
 <tr>
 <td align="center"><%=++i%></td>
-<td ><span class="<%=serviceClass%>"><%=values[0]%></spen></td>
+<td ><span class="<%=serviceClass%>"><%=values[0]%></span></td>
 <td align="center"><%=values[1]%></td>
 <td align="center"><%=values[2]%></td>
 <td align="center"><%=values[3]%></td>
@@ -82,6 +82,5 @@
 <script>
   $(function () {
     $('#services').DataTable()
-
   })
 </script>

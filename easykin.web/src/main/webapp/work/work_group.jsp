@@ -13,10 +13,9 @@
 <%
 	int i = 0;
 	int daytime = 0;
-	Date curDate = null;
 	Collection<IActivity> activities = (Collection<IActivity>)ModuleManager.invoke(Module.WORK, "activities");
 	Map<String, Integer> groupActivities = new HashMap<String, Integer>();
-	for(IActivity activity : activities){
+	for (IActivity activity : activities) {
 		String key = activity.getTaskType()+" "+activity.getName();
 		int time = activity.getTime();
 		if(groupActivities.containsKey(key)) {

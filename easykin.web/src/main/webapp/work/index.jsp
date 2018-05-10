@@ -38,12 +38,12 @@
 		dayTime.put(activity.getDate(), curTime);
 	}
 	for(IActivity activity : activities){
-    		String dateClass = "";
-            if(Integer.valueOf(8).equals(dayTime.get(activity.getDate()))){
-            	dateClass = "label bg-green";
-            }else{
-            	dateClass = "label bg-yellow";
-            }
+		String dateClass = "";
+		if(Integer.valueOf(8).equals(dayTime.get(activity.getDate()))){
+			dateClass = "label bg-green";
+		}else{
+			dateClass = "label bg-yellow";
+		}
 %>
 <tr>
 <td ><%=++i%></td>
