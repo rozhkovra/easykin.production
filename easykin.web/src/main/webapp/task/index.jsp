@@ -3,6 +3,7 @@
 <%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.person.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.*"%>
@@ -45,33 +46,16 @@
 <tbody>
 <%
 	int i = 0;
-	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson());
 	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
 	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-	if(categoryId!=-1 && categoryId!=9){			
-		ICategory category = CategoryFactory.create(categoryId, "");
-		filters.add(TaskFilterFactory.category(category));
-	}
 	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
-	if(statusId!=-1){			
-		Status status = Status.status(statusId);
-		filters.add(TaskFilterFactory.status(status));
-	}
 	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
-	if(priorityId!=-1){			
-		Priority priority = Priority.priority(priorityId);
-		filters.add(TaskFilterFactory.priority(priority));
-	}
 	Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
-	if(fromDate!=null){
-		filters.add(TaskFilterFactory.fromDate(fromDate));
-	}
 	Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")):DateUtil.parse("01.01.3000");
-	if(toDate!=null){
-		filters.add(TaskFilterFactory.toDate(toDate));
-	}
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
-	tasks = FilterUtil.filter(tasks, filters);
+	IPerson person = AuthManager.instance().signedPerson();
+	TaskFilterBean bean = TaskFilterFactory.bean(statusId, categoryId, priorityId,fromDate, toDate, person.getId());
+	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", bean);
 	for(ITask task : tasks){
 		String taskClass = "";
 		String dateClass = "";
@@ -136,10 +120,11 @@
 	{
 	  ranges   : {
 		'Неделя' : [moment().startOf('week'), moment().endOf('week')],
-		'Месяц'  : [moment().startOf('month'), moment().endOf('month')],
-		'Прошлый месяц'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+		[moment().format('MMMM')]  : [moment().startOf('month'), moment().endOf('month')],
+		[moment().subtract(1, 'month').format('MMMM')]  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+		[moment().add(1, 'month').format('MMMM')]  : [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')]
 	  },
-	  startDate: moment().subtract(29, 'days'),
+	  startDate: moment().subtract(10, 'days'),
 	  endDate  : moment()
 	},
 	function (start, end) {

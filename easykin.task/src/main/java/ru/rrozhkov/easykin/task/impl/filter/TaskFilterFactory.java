@@ -33,4 +33,7 @@ public class TaskFilterFactory {
 	public static IFilter<ITask> toDate(Date date){
 		return new ToDateFilter(date);
 	}
+	public static TaskFilterBean bean(int statusId, int categoryId, int priorityId, Date fromDate, Date todate, int personId) {
+		return new TaskFilterBean(statusId, categoryId, priorityId, fromDate, todate, personId);
+	}
 }

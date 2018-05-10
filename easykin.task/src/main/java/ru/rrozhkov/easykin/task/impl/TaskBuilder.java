@@ -6,6 +6,7 @@ import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.task.comment.impl.filter.CommentFilterFactory;
+import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
@@ -61,6 +62,18 @@ public class TaskBuilder {
 			return CollectionUtil.<ITask>create();
 		}
 	}
+
+	public static Collection<ITask> build(TaskFilterBean bean){
+		try {
+			Collection<ITask> tasks = TaskHandler.selectForFilter(bean);
+			Collection<IComment> comments = CommentHandler.selectForPerson(bean.getPersonId());
+			return build(tasks, comments);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return CollectionUtil.<ITask>create();
+		}
+	}
+
 
 	public static Collection<ITask> build(Collection<ITask> tasks, Collection<IComment> comments) {
 		for(ITask task : tasks){

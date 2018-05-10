@@ -9,6 +9,8 @@ import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskStyle;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.lib.filter.IFilterBean;
+import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -46,6 +48,9 @@ public class Module {
     }
     public static Collection tasks(IPerson person){
         return TaskBuilder.build(person.getId());
+    }
+    public static Collection tasks(IFilterBean bean){
+        return TaskBuilder.build((TaskFilterBean)bean);
     }
     public static Collection tasks(IPerson person, IFilter filter){
         return FilterUtil.filter(tasks(person), filter);

@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.task.db.impl;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.db.impl.DBManager;
 import ru.rrozhkov.lib.util.DateUtil;
@@ -45,6 +46,35 @@ public class TaskHandler {
 
 	public static Collection<ITask> selectForPerson(int id) throws Exception {
 		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), TaskConverterFactory.task());
+	}
+
+	public static Collection<ITask> selectForFilter(TaskFilterBean bean) throws Exception {
+		StringBuilder select = new StringBuilder();
+		select.append("SELECT ").append(TABLENAME).append(".*, CATEGORY.NAME as CATEGORYNAME FROM ").append(TABLENAME)
+				.append(" INNER JOIN CATEGORY ON ").append(TABLENAME).append(".CATEGORYID = CATEGORY.ID")
+				.append(" INNER JOIN TASK2PERSON ON TASK2PERSON.TASK = ").append(TABLENAME).append(".ID");
+		select.append(" WHERE 1=1");
+		if (bean.getStatusId()>0) {
+			select.append(" AND ").append(TABLENAME).append(".STATUSID = ").append(bean.getStatusId());
+		}
+		if (bean.getCategoryId()>0) {
+			select.append(" AND ").append(TABLENAME).append(".CATEGORYID = ").append(bean.getCategoryId());
+		}
+		if (bean.getPriorityId()>0) {
+			select.append(" AND ").append(TABLENAME).append(".PRIORITYID = ").append(bean.getPriorityId());
+		}
+		if (bean.getFromDate()!=null) {
+			select.append(" AND ").append(TABLENAME).append(".PLANDATE >= '").append(DateUtil.formatSql(bean.getFromDate())).append("'");
+		}
+		if (bean.getToDate()!=null) {
+			select.append(" AND ").append(TABLENAME).append(".PLANDATE <= '").append(DateUtil.formatSql(bean.getToDate())).append("'");
+		}
+		select.append(" ORDER BY ").append(TABLENAME).append(".STATUSID, ")
+				.append(TABLENAME).append(".PRIORITYID, ")
+				.append(TABLENAME).append(".PLANDATE, ")
+				.append(TABLENAME).append(".CATEGORYID");
+
+		return DBManager.instance().select(select.toString(), TaskConverterFactory.task());
 	}
 
 	public static ITask selectTask(int taskId) throws Exception {
