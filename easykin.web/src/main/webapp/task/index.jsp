@@ -9,6 +9,7 @@
 <%@ page import="ru.rrozhkov.lib.filter.*"%>
 <%@ page import="ru.rrozhkov.lib.collection.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
@@ -45,50 +46,15 @@
 </thead>
 <tbody>
 <%
-	int i = 0;
-	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
-	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
-	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
-	Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
-	Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")):DateUtil.parse("01.01.3000");
-	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
-	IPerson person = AuthManager.instance().signedPerson();
-	TaskFilterBean bean = TaskFilterFactory.bean(statusId, categoryId, priorityId,fromDate, toDate, person.getId());
-	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", bean);
-	for(ITask task : tasks){
-		String taskClass = "";
-		String dateClass = "";
-        if(Status.CLOSE.equals(task.getStatus())){
-        	if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
-        		taskClass = "label bg-gray";
-        	else
-        		taskClass = "label bg-green";
-        }else{
-        	taskClass  = "";
-        	if(Priority.IMPOTANT_FAST.equals(task.getPriority())){
-        		taskClass  = "label bg-yellow";
-        	}
-			if(Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
-				taskClass  = "label bg-blue";
-			}
-			if (new Date().getTime()>task.getPlanDate().getTime()) {
-				dateClass = "label bg-gray";
-			}
-        }
-        String comments = "";
-        for(IComment comment : task.comments()){
-        	comments += comment.getText()+"|";
-        }
+	Collection<TaskBean> tasks = ModuleAdapter.tasks(request);
+	for(TaskBean taskBean : tasks){
 %>
-
-
 <tr >
-<td align="center"><%=++i%></td>
-<td align="center"><span class="<%=taskClass%>"><%=task.getId()%></span></td>
-<td ><%=task.getName()%><br/><span style="font-size:12px;"><%=comments%></span></td>
-<td align="center"><span class="<%=dateClass%>"><%=DateUtil.format(task.getPlanDate())%></span></td>
-<td align="center"><%=task.getCategory().getName()%></td>
+<td align="center"><%=taskBean.getNum()%></td>
+<td align="center"><span class="<%=taskBean.getTaskClass()%>"><%=taskBean.getTask().getId()%></span></td>
+<td ><%=taskBean.getTask().getName()%><br/><span style="font-size:12px;"><%=taskBean.getComments()%></span></td>
+<td align="center"><span class="<%=taskBean.getDateClass()%>"><%=DateUtil.format(taskBean.getTask().getPlanDate())%></span></td>
+<td align="center"><%=taskBean.getTask().getCategory().getName()%></td>
 </tr>
 <%			
 	}
@@ -101,6 +67,14 @@
 </div>
 </section>
 <form id="taskFilter">
+<%
+    String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
+	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
+	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
+	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
+	Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
+	Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")): DateUtil.parse("01.01.3000");
+%>
 <input type="hidden" id="fromDate" name="fromDate" value="<%=fromDate%>"/>
 <input type="hidden" id="toDate" name="toDate" value="<%=toDate%>"/>
 <input type="hidden" id="categoryId" name="categoryId" value="<%=categoryId%>"/>
