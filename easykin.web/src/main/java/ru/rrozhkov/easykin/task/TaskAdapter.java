@@ -17,16 +17,9 @@ import java.util.Date;
 /**
  * Created by rrozhkov on 11.05.2018.
  */
-public class ModuleAdapter {
+public class TaskAdapter {
     public static Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
-        int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-        int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
-        int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
-        Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
-        Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")): DateUtil.parse("01.01.3000");
-
-        IPerson person = AuthManager.instance().signedPerson();
-        TaskFilterBean bean = TaskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
+        TaskFilterBean bean = filter(request);
         Collection<ITask> tasks = Module.tasks(bean);
         Collection<TaskBean> taskBeans = CollectionUtil.create();
         int num = 0;
@@ -57,5 +50,15 @@ public class ModuleAdapter {
             taskBeans.add(new TaskBean(++num,task,taskClass,dateClass,comments));
         }
         return taskBeans;
+    }
+
+    public static TaskFilterBean filter(javax.servlet.http.HttpServletRequest request) {
+        IPerson person = AuthManager.instance().signedPerson();
+        int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
+        int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
+        int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
+        Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
+        Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")): DateUtil.parse("01.01.3000");
+        return TaskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
     }
 }

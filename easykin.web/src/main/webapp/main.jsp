@@ -18,14 +18,18 @@
     </section>
 <%
     if(ModuleManager.activeModules().contains(moduleId)) {
-	if (Module.PAYMENT.equals(moduleId) || Module.FIN.equals(moduleId)) {
+        if (Module.PAYMENT.equals(moduleId)) {
 %><jsp:include page="payment/index.jsp"/><%
-	} else if(Module.WORK.equals(moduleId)) {
+        } else if (Module.FIN.equals(moduleId)){
+%><jsp:include page="finance/index.jsp"/><%
+        } else if(Module.WORK.equals(moduleId)) {
 %><jsp:include page="work/index.jsp"/><%
-	} else if (Module.SERVICE.equals(moduleId)) {
+        } else if (Module.SERVICE.equals(moduleId)) {
 %><jsp:include page="service/statistics.jsp"/><jsp:include page="service/index.jsp"/><%
-    } else {
+        } else {
 %><jsp:include page="task/index.jsp"/>
-<%  }
-    }%>
+<%
+      }
+    }
+%>
 </div>

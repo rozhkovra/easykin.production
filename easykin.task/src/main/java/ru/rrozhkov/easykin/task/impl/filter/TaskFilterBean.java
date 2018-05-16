@@ -1,13 +1,14 @@
 package ru.rrozhkov.easykin.task.impl.filter;
 
-import ru.rrozhkov.lib.filter.IFilterBean;
+import ru.rrozhkov.easykin.model.FilterBean;
+import ru.rrozhkov.easykin.module.Module;
 
 import java.util.Date;
 
 /**
  * Created by rrozhkov on 10.05.2018.
  */
-public class TaskFilterBean implements IFilterBean {
+public class TaskFilterBean extends FilterBean {
     private int statusId;
     private int categoryId;
     private int priorityId;
@@ -16,6 +17,7 @@ public class TaskFilterBean implements IFilterBean {
     private int personId;
 
     public TaskFilterBean(int statusId, int categoryId, int priorityId, Date fromDate, Date toDate, int personId) {
+        super(Module.TASK);
         this.statusId = statusId;
         this.categoryId = categoryId;
         this.priorityId = priorityId;

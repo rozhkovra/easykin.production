@@ -6,6 +6,7 @@
 <%@ page import="ru.rrozhkov.easykin.model.person.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.person.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.lib.filter.util.*"%>
@@ -16,16 +17,8 @@
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
-	Collection<IFilter> filters = CollectionUtil.<IFilter>create();
-	int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
-	int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
-	int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
-	Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
-	Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")):DateUtil.parse("01.01.3000");
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 	IPerson person = AuthManager.instance().signedPerson();
-	TaskFilterBean bean = TaskFilterFactory.bean(statusId, categoryId, priorityId,fromDate, toDate, person.getId());
-	Collection<ITask> tasks = (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", bean);
 %>
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -63,21 +56,15 @@
           </a>
           <ul class="treeview-menu">
 <%
-	String moduleClass = "";
 	for(String module : ModuleManager.activeModules()){
-		if(module.equals(moduleId)) {
-			moduleClass = "active";
-		} else {
-			moduleClass = "";
-		}
-%><li class="<%=moduleClass%>"><a href="index.jsp?<%="session="+session.getId()+"&priorityId="+priorityId+"&categoryId="+categoryId+"&moduleId="+module+"&statusId="+statusId%>"><i class="fa fa-circle-o"></i> <%=Module.name(module)%></a></li>
+%><li class="<%=EasyKinWebConfig.getModuleClass(request, module)%>"><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, module)%>"><i class="fa fa-circle-o"></i> <%=ru.rrozhkov.easykin.module.Module.name(module)%></a></li>
 <%
 	}
 %>
           </ul>
         </li>
 
-<%      if (Module.TASK.equals(moduleId)) {
+<%      if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
 %>
         <li class="active treeview">
           <a href="#">
@@ -87,29 +74,19 @@
             </span>
           </a>
           <ul class="treeview-menu">
-<%	String categoryClass = "";
-		if(-1 == categoryId) {
-			categoryClass = "active";
-		}
-%>		<li class="<%=categoryClass%>"><a href="index.jsp?<%="session="+session.getId()+"&priorityId="+priorityId+"&moduleId="+moduleId+"&statusId="+statusId%>"><span>Все</span></a></li>
+        <li class="<%=EasyKinWebConfig.getCategoryClass(request, -1)%>"><a href="<%=EasyKinWebConfig.getFilterUrlForCategory(request, session, -1)%>"><span>Все</span></a></li>
 <%
 	for(ICategory category : CategoryHandler.select()){
-		if(category.getId() == categoryId) {
-			categoryClass = "active";
-		} else {
-			categoryClass = "";
-		}
-		int taskCount = 0;
-		taskCount = FilterUtil.filter(tasks, TaskFilterFactory.category(category)).size();
-%>		<li class="<%=categoryClass%>"><a href="index.jsp?<%="session="+session.getId()+"&priorityId="+priorityId+"&categoryId="+category.getId()+"&moduleId="+moduleId+"&statusId="+statusId%>"><span><%=category.getName()%> (<%=taskCount%>)</span></a></li><%
+%>		<li class="<%=EasyKinWebConfig.getCategoryClass(request, category.getId())%>"><a href="<%=EasyKinWebConfig.getFilterUrlForCategory(request, session, category.getId())%>"><span><%=category.getName()%></span></a></li>
+<%
 	}
 %>
           </ul>
         </li>
         <li class="header">Статус</li>
-        <li><a href="index.jsp?<%="session="+session.getId()+"&priorityId="+priorityId+"&categoryId="+categoryId+"&moduleId="+moduleId+"&statusId=-1"%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
-	<li><a href="index.jsp?<%="session="+session.getId()+"&priorityId="+priorityId+"&categoryId="+categoryId+"&moduleId="+moduleId+"&statusId="+Status.status(Status.OPEN)%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>
-	<li><a href="index.jsp?<%="session="+session.getId()+"&priorityId="+priorityId+"&categoryId="+categoryId+"&moduleId="+moduleId+"&statusId="+Status.status(Status.CLOSE)%>"><i class="fa fa-circle-o text-green"></i> <span><%=Status.CLOSE%></span></a></li>
+        <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, -1)%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
+        <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, Status.status(Status.OPEN))%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>
+        <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, Status.status(Status.CLOSE))%>"><i class="fa fa-circle-o text-green"></i> <span><%=Status.CLOSE%></span></a></li>
 <%      }
 %>
       </ul>

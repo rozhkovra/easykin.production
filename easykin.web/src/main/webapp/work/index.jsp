@@ -1,7 +1,5 @@
 <%@ page import="ru.rrozhkov.lib.util.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.work.*"%>
-<%@ page import="ru.rrozhkov.easykin.module.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.person.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.work.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <section class="content">
@@ -27,32 +25,17 @@
 </thead>
 <tbody>
 <%
-	int i = 0;
-	Collection<IActivity> activities = (Collection<IActivity>)ModuleManager.invoke(Module.WORK, "activities");
-	Map<Date, Integer> dayTime = new HashMap<Date, Integer>();
-	for(IActivity activity : activities){
-		int curTime = activity.getTime();
-		if (dayTime.containsKey(activity.getDate())) {
-			 curTime += dayTime.get(activity.getDate());
-		}
-		dayTime.put(activity.getDate(), curTime);
-	}
-	for(IActivity activity : activities){
-		String dateClass = "";
-		if(Integer.valueOf(8).equals(dayTime.get(activity.getDate()))){
-			dateClass = "label bg-green";
-		}else{
-			dateClass = "label bg-yellow";
-		}
+	Collection<ActivityBean> activities = WorkAdapter.activities();
+	for(ActivityBean bean : activities){
 %>
 <tr>
-<td ><%=++i%></td>
-<td ><span class="<%=dateClass%>"><%=DateUtil.format(activity.getDate())%></span></td>
-<td align="right"><%=activity.getTime()%></td>
-<td align="center;"><%=activity.getTaskType().toString()%></td>
-<td align="center;"><%=activity.getName()%></td>
-<td align="center;"><%=activity.getReleaseType().toString()%></td>
-<td align="center;"><%=activity.getDesc()%></td>
+<td ><%=bean.getNum()%></td>
+<td ><span class="<%=bean.getDateClass()%>"><%=DateUtil.format(bean.getActivity().getDate())%></span></td>
+<td align="right"><%=bean.getActivity().getTime()%></td>
+<td align="center;"><%=String.valueOf(bean.getActivity().getTaskType())%></td>
+<td align="center;"><%=bean.getActivity().getName()%></td>
+<td align="center;"><%=String.valueOf(bean.getActivity().getReleaseType())%></td>
+<td align="center;"><%=bean.getActivity().getDesc()%></td>
 </tr>
 <%
 	}

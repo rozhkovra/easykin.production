@@ -26,8 +26,6 @@
 </thead>
 <tbody>
 <%
-	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
-
 	int i = 0;
 	Collection<IRate> rates = StaticReadingDataProvider.rates2018_1;
 	try {

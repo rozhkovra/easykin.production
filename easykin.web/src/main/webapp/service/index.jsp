@@ -1,7 +1,6 @@
+<%@ page import="ru.rrozhkov.easykin.service.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
-<%@ page import="ru.rrozhkov.easykin.module.*"%>
-<%@ page import="ru.rrozhkov.easykin.service.gui.style.impl.custom.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.service.calc.impl.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <section class="content">
@@ -34,38 +33,24 @@
 </thead>
 <tbody>
 <%
-	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
-
 	int i = 0;
-	ServiceCalcConverter converter = new ServiceCalcConverter(0);
-	Collection<ServiceCalc> calcs = (Collection<ServiceCalc>)ModuleManager.invoke(moduleId, "calcs");
-	String tdStyle = "";
-	String serviceClass = "";
-
-	for(ServiceCalc calc : calcs){
-		if(calc.isPaid()){
-    			serviceClass = "label bg-green";
-	    		tdStyle = "font-weight:bold;";
-    		}else{
-    			serviceClass = "label bg-yellow";
-			tdStyle = "";
-		}
-		String[] values = converter.convert(i, calc);
+	Collection<ServiceBean> beans = ServiceAdapter.services();
+	for(ServiceBean service : beans){
 %>
 <tr>
 <td align="center"><%=++i%></td>
-<td ><span class="<%=serviceClass%>"><%=values[0]%></span></td>
-<td align="center"><%=values[1]%></td>
-<td align="center"><%=values[2]%></td>
-<td align="center"><%=values[3]%></td>
-<td align="center"><%=values[4]%></td>
-<td align="center"><%=values[5]%></td>
-<td align="center"><%=values[6]%></td>
-<td align="center"><%=values[7]%></td>
-<td align="center"><%=values[8]%></td>
-<td align="center"><%=values[9]%></td>
-<td align="center"><%=values[10]%></td>
-<td style="<%=tdStyle%>text-align:right;"><%=values[11]%></td>
+<td ><span class="<%=service.getServiceClass()%>"><%=service.getName()%></span></td>
+<td align="center"><%=DateUtil.format(service.getDate())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getWater())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getHotWater())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getElectricity())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getGaz())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getHeating())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getAntenna())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getIntercom())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getHouse())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getRepair())%></td>
+<td style="<%=service.getTdStyle()%>text-align:right;"><%=FormatUtil.formatMoney(service.getItog())+(service.getNoPaid().free()?"":"/"+FormatUtil.formatMoney(service.getNoPaid()))%></td>
 </tr>
 <%
 	}
