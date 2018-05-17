@@ -1,5 +1,6 @@
-package ru.rrozhkov.easykin.gui;
+package ru.rrozhkov.easykin;
 
+import ru.rrozhkov.easykin.gui.EasyKinWindow;
 import ru.rrozhkov.lib.db.impl.HSQLDBServer;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -9,19 +10,22 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Locale;
 
-public class EasyKin 
-{
+public class EasyKin {
     static final HSQLDBServer dbServer = new HSQLDBServer("easykin", "file:data/easykin");
     static JFrame easyKinWindow;
 
     public static void main( String[] args ) {
         Locale.setDefault(new Locale("en"));
         dbServer.start();
+        auth();
+        start();
+    }
+
+    public static void auth() {
         final AuthManager authManager = AuthManager.auth();
         if (!authManager.isSignedIn()) {
             close();
         }
-        start();
     }
 
     public static void start() {

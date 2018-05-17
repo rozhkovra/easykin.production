@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.gui;
 
+import ru.rrozhkov.easykin.EasyKin;
 import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
