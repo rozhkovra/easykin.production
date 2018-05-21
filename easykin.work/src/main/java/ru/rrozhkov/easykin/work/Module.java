@@ -1,12 +1,11 @@
 package ru.rrozhkov.easykin.work;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.easykin.work.gui.ActivityForm;
+import ru.rrozhkov.easykin.work.gui.WorkGUIFactory;
 import ru.rrozhkov.easykin.work.gui.style.impl.custom.ActivityStyle;
 import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.Table;
-import ru.rrozhkov.lib.gui.TablePanel;
+import ru.rrozhkov.lib.gui.IGUIFactory;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -15,18 +14,19 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
+    private static IGUIFactory workFactory = new WorkGUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
         Collection collection = activities();
-        return new TablePanel(parent, new Table(collection, new ActivityStyle()));
+        return workFactory.createTablePanel(parent, collection, new ActivityStyle());
     }
     public static JPanel createEditor(IGUIEditor parent){
-        return new ActivityForm(parent);
+        return workFactory.createEditor(parent, null);
     }
     public static JPanel createEditor(IGUIEditor parent, IActivity activity){
-        return new ActivityForm(parent,activity);
+        return workFactory.createEditor(parent,activity);
     }
     public static JPanel createFilter(IGUIEditor parent){
-        return new JPanel();
+        return workFactory.createFilter(parent);
     }
 
     public static Collection activities(){
