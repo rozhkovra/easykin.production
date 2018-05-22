@@ -6,7 +6,6 @@ import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
-import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentStyle;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -25,7 +24,7 @@ import java.util.List;
 public class Module {
     private static IGUIFactory financeFactory = new FinanceGUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
-        return financeFactory.createTablePanel(parent, finance(), new PaymentStyle());
+        return financeFactory.createTablePanel(parent, finance());
     }
 
     public static JPanel createEditor(IGUIEditor parent, IPayment payment){

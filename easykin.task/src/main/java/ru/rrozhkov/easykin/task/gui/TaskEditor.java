@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.task.gui.style.impl.custom.CommentStyle;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
@@ -35,7 +34,7 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 		add(getAddButton());
 		getAddButton().setEnabled(true);
 		if(task!=null)
-			add(new CommentGUIFactory().createTablePanel(this, task.comments(), new CommentStyle()));
+			add(new CommentGUIFactory().createTablePanel(this, task.comments()));
 		validate();
 	}
 

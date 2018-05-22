@@ -5,7 +5,6 @@ import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.TaskGUIFactory;
-import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskStyle;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
@@ -25,7 +24,7 @@ import java.util.Collection;
 public class Module {
     private static IGUIFactory taskFactory = new TaskGUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
-        return taskFactory.createTablePanel(parent, tasks(), new TaskStyle());
+        return taskFactory.createTablePanel(parent, tasks());
     }
     public static JPanel createEditor(IGUIEditor parent){
         return taskFactory.createEditor(parent, null);

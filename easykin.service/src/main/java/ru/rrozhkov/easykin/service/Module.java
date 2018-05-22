@@ -7,7 +7,6 @@ import ru.rrozhkov.easykin.service.calc.impl.convert.ServiceCalcConverter;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticReadingDataProvider;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.Calc2GUIFactory;
-import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcStyle;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IGUIFactory;
@@ -25,7 +24,7 @@ import java.util.List;
 public class Module {
     private static IGUIFactory calc2Factory = new Calc2GUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
-        return calc2Factory.createTablePanel(parent, calcs(), new ServiceCalcStyle());
+        return calc2Factory.createTablePanel(parent, calcs());
     }
 
     public static JPanel createEditor(IGUIEditor parent, ICalculation calc){

@@ -1,8 +1,10 @@
 package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.lib.gui.*;
-import ru.rrozhkov.lib.gui.style.IStyle;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.Table;
+import ru.rrozhkov.lib.gui.TablePanel;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -20,8 +22,8 @@ public class TaskGUIFactory implements IGUIFactory {
         return new TaskFilter(parent);
     }
 
-    public JPanel createTablePanel(IGUIEditor parent, Collection data, IStyle style) {
-        return new TablePanel(parent, new Table(data, style));
+    public JPanel createTablePanel(IGUIEditor parent, Collection data) {
+        return new TablePanel(parent, new Table(new TaskTableModel(data)));
     }
 
     public JPanel createEditor(IGUIEditor parent, Object obj) {

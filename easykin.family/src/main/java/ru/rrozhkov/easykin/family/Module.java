@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.family;
 
 import ru.rrozhkov.easykin.family.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.family.gui.FamilyGUIFactory;
-import ru.rrozhkov.easykin.family.gui.style.impl.custom.FamilyStyle;
 import ru.rrozhkov.easykin.family.impl.filter.KinFilterFactory;
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
@@ -22,7 +21,7 @@ public class Module {
         Collection collection = null;
         try {
             collection = KinPersonHandler.select();
-            return familyGUIFactory.createTablePanel(parent, collection, new FamilyStyle());
+            return familyGUIFactory.createTablePanel(parent, collection);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +32,7 @@ public class Module {
         Collection collection = null;
         try {
             collection = FilterUtil.filter(KinPersonHandler.select(), KinFilterFactory.create(new KinType[]{KinType.SUN, KinType.DAUGHTER}));
-            return familyGUIFactory.createTablePanel(parent, collection, new FamilyStyle());
+            return familyGUIFactory.createTablePanel(parent, collection);
         } catch (Exception e) {
             e.printStackTrace();
         }

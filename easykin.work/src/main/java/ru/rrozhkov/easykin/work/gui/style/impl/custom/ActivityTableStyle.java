@@ -1,16 +1,12 @@
 package ru.rrozhkov.easykin.work.gui.style.impl.custom;
 
-import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.model.task.Priority;
-import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.lib.gui.color.ColorManager;
 import ru.rrozhkov.lib.gui.style.impl.TableStyle;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.util.*;
+import java.util.Collection;
 
 public class ActivityTableStyle extends TableStyle<IActivity>  {
 	public int[] getColumnAlignment() {
