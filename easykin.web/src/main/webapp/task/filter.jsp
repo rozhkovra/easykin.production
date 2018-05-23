@@ -38,9 +38,8 @@
 	{
 	  ranges   : {
 		'Неделя' : [moment().startOf('week'), moment().endOf('week')],
-		[moment().format('MMMM')]  : [moment().startOf('month'), moment().endOf('month')],
-		[moment().subtract(1, 'month').format('MMMM')]  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-		[moment().add(1, 'month').format('MMMM')]  : [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')]
+		'Месяц'  : [moment().startOf('month'), moment().endOf('month')],
+		'Год' : [moment().startOf('year'), moment().endOf('year')],
 	  },
 	  startDate: moment().subtract(10, 'days'),
 	  endDate  : moment()
