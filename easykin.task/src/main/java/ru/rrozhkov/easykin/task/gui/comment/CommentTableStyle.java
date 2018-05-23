@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.task.gui.style.impl.custom;
+package ru.rrozhkov.easykin.task.gui.comment;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;

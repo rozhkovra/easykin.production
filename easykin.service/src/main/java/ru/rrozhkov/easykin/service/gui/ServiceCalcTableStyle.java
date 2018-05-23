@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.service.gui.style.impl.custom;
+package ru.rrozhkov.easykin.service.gui;
 
 
 

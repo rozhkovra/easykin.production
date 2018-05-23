@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 

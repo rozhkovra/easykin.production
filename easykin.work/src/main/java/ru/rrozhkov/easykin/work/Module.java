@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.work;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.easykin.work.gui.WorkGUIFactory;
+import ru.rrozhkov.easykin.work.gui.ActivityGUIFactory;
 import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IGUIFactory;
@@ -13,7 +13,7 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IGUIFactory workFactory = new WorkGUIFactory();
+    private static IGUIFactory workFactory = new ActivityGUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
         Collection collection = activities();
         return workFactory.createTablePanel(parent, collection);

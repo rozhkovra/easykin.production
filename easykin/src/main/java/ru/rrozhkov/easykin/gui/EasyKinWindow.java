@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.gui;
 
-import ru.rrozhkov.easykin.EasyKin;
 import ru.rrozhkov.easykin.context.EasyKinContext;
 import ru.rrozhkov.easykin.db.impl.DumpManager;
 import ru.rrozhkov.easykin.gui.image.ImageManager;
@@ -16,7 +15,10 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 
 public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private static final long serialVersionUID = 1L;

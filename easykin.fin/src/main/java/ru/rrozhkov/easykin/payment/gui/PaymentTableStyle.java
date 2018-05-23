@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.payment.style.impl.custom;
+package ru.rrozhkov.easykin.payment.gui;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;

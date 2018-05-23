@@ -1,7 +1,6 @@
 package ru.rrozhkov.easykin.payment.gui;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
-import ru.rrozhkov.easykin.payment.style.impl.custom.PaymentTableStyle;
 import ru.rrozhkov.lib.gui.TableModel;
 import ru.rrozhkov.lib.util.DateUtil;
 

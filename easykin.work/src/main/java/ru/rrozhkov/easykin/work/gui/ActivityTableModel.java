@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.work.gui;
 
 import ru.rrozhkov.easykin.model.person.util.PersonUtil;
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.easykin.work.gui.style.impl.custom.ActivityTableStyle;
 import ru.rrozhkov.lib.gui.TableModel;
 import ru.rrozhkov.lib.util.DateUtil;
 

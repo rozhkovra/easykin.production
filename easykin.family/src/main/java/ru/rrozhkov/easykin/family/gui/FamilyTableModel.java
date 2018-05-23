@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.family.gui;
 
-import ru.rrozhkov.easykin.family.gui.style.impl.custom.FamilyTableStyle;
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.lib.gui.TableModel;
 import ru.rrozhkov.lib.util.DateUtil;

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.task.gui;
+package ru.rrozhkov.easykin.task.gui.comment;
 
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.lib.gui.IGUIEditor;

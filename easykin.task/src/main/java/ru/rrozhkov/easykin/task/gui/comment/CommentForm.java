@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.task.gui;
+package ru.rrozhkov.easykin.task.gui.comment;
 
 import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
 import ru.rrozhkov.lib.gui.Form;

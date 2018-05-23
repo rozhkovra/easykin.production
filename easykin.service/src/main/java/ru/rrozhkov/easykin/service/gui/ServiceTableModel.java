@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
-import ru.rrozhkov.easykin.service.gui.style.impl.custom.ServiceCalcTableStyle;
 import ru.rrozhkov.lib.gui.TableModel;
 import ru.rrozhkov.lib.util.DateUtil;
 

@@ -1,7 +1,6 @@
-package ru.rrozhkov.easykin.task.gui;
+package ru.rrozhkov.easykin.task.gui.comment;
 
 import ru.rrozhkov.easykin.model.task.IComment;
-import ru.rrozhkov.easykin.task.gui.style.impl.custom.CommentTableStyle;
 import ru.rrozhkov.lib.gui.TableModel;
 import ru.rrozhkov.lib.util.DateUtil;
 

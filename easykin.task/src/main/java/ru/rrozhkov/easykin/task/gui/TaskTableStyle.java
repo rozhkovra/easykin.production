@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.task.gui.style.impl.custom;
+package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.lib.gui.color.ColorManager;
 import ru.rrozhkov.lib.gui.style.impl.TableStyle;

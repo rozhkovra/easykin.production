@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.task.gui.comment.CommentGUIFactory;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;

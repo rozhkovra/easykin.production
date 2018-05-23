@@ -12,7 +12,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class WorkGUIFactory implements IGUIFactory{
+public class ActivityGUIFactory implements IGUIFactory{
     public JPanel createTablePanel(IGUIEditor parent, Collection data) {
         return new TablePanel(parent, new Table(new ActivityTableModel(data)));
     }

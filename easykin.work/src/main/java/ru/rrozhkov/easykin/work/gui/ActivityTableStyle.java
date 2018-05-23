@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.work.gui.style.impl.custom;
+package ru.rrozhkov.easykin.work.gui;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.lib.gui.style.impl.TableStyle;

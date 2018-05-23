@@ -1,7 +1,6 @@
 package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.task.gui.style.impl.custom.TaskTableStyle;
 import ru.rrozhkov.lib.gui.TableModel;
 import ru.rrozhkov.lib.util.DateUtil;
 
