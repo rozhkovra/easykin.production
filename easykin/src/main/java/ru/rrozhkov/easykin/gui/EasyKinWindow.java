@@ -7,6 +7,7 @@ import ru.rrozhkov.easykin.gui.image.ImageManager;
 import ru.rrozhkov.easykin.gui.util.ContextUtil;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.lib.gui.util.ImageUtil;
@@ -15,9 +16,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +31,12 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	setVisible(true);
-        setMinimumSize(new Dimension(800,600));
+        setMinimumSize(new Dimension(800, 600));
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                EasyKin.close();
+            }
+        });
 	}
 
     private void fill() {
@@ -177,7 +181,9 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         JMenuItem loginItem = new JMenuItem("Сменить пользователя", keyIcon);
         loginItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EasyKin.restart();
+                if(AuthManager.authDialog(EasyKinWindow.this)== IGUIEditor.CODE_OK) {
+                    refresh();
+                }
             }
         });
 
