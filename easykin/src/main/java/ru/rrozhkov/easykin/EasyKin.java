@@ -5,6 +5,8 @@ import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.db.impl.HSQLDBServer;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Locale;
 
 public class EasyKin {
@@ -27,7 +29,13 @@ public class EasyKin {
     public static void start() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new EasyKinWindow();
+                JFrame window = new EasyKinWindow();
+                window.addWindowListener(new WindowAdapter() {
+                    public void windowClosing(WindowEvent e) {
+                        close();
+                    }
+                });
+
             }
         });
     }

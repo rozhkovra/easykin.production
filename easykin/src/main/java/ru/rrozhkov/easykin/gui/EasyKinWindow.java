@@ -32,11 +32,6 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	setVisible(true);
         setMinimumSize(new Dimension(800, 600));
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                EasyKin.close();
-            }
-        });
 	}
 
     private void fill() {
@@ -191,7 +186,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         JMenuItem exitItem = new JMenuItem("Выход",exitIcon);
         exitItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EasyKin.close();
+                EasyKinWindow.this.dispatchEvent(new WindowEvent(EasyKinWindow.this, WindowEvent.WINDOW_CLOSING));
             }
         });
 
