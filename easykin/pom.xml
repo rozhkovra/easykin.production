@@ -144,7 +144,7 @@
 </dependency>
 <dependency>
     <groupId>ru.rrozhkov.lib</groupId>
-    <artifactId>easykin.lib</artifactId>
+    <artifactId>easykin.common</artifactId>
     <version>${version}</version>
 </dependency>
     <dependency>
