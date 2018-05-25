@@ -18,6 +18,7 @@
   <col/>
   <col width="120"/>
   <col width="150"/>
+  <col width="50"/>
 <thead>
 <tr>
 <th>№</th>
@@ -25,6 +26,7 @@
 <th>Описание</th>
 <th>Срок</th>
 <th>Категория</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -38,6 +40,7 @@
 <td ><%=taskBean.getTask().getName()%><br/><span style="font-size:12px;"><%=taskBean.getComments()%></span></td>
 <td align="center"><span class="<%=taskBean.getDateClass()%>"><%=DateUtil.format(taskBean.getTask().getPlanDate())%></span></td>
 <td align="center"><%=taskBean.getTask().getCategory().getName()%></td>
+<td align="center"><%=taskBean.getDoneHtml()%></td>
 </tr>
 <%			
 	}
@@ -55,4 +58,20 @@
   $(function () {
     $('#tasks').DataTable()
   })
+
+  $('[id^=done]').click(
+    function(){
+      var id = $(this).attr('id').replace('done','');
+      if (confirm("Выполнить задачу "+id+"?")) {
+        $.post(
+          "task/done.jsp",
+          {
+            taskId: id
+          }
+        ).done(function() { location.reload(); })
+           .fail(function(data) { alert("Ошибка выполнения"); })
+           .always(function() { alert("Задача "+id+" выполнена."); });
+       }
+    }
+  );
 </script>

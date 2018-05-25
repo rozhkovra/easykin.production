@@ -66,23 +66,6 @@
 
 <%      if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
 %>
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i> <span>Категории</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-        <li class="<%=EasyKinWebConfig.getCategoryClass(request, -1)%>"><a href="<%=EasyKinWebConfig.getFilterUrlForCategory(request, session, -1)%>"><span>Все</span></a></li>
-<%
-	for(ICategory category : CategoryHandler.select()){
-%>		<li class="<%=EasyKinWebConfig.getCategoryClass(request, category.getId())%>"><a href="<%=EasyKinWebConfig.getFilterUrlForCategory(request, session, category.getId())%>"><span><%=category.getName()%></span></a></li>
-<%
-	}
-%>
-          </ul>
-        </li>
         <li class="header">Статус</li>
         <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, -1)%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
         <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, Status.status(Status.OPEN))%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>

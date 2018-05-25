@@ -26,12 +26,12 @@
 	Collection<PaymentBean> payments = PaymentAdapter.payments();
 	for (PaymentBean payment : payments) {
 %>
-<tr >
-<td style="height:30px;font-size:20px;"><%=payment.getNum()%></td>
-<td style="height:30px;font-size:20px;"><%=payment.getPayment().getCategory()%></td>
-<td style="height:30px;font-size:20px;"><%=payment.getPayment().getComment()%></td>
-<td style="height:30px;font-size:20px;text-align:right;"><%=payment.getPayment().getAmount()%></td>
-<td style="height:30px;font-size:20px;text-align:center;"><%=DateUtil.format(payment.getPayment().getDate())%></td>
+<tr>
+<td><%=payment.getNum()%></td>
+<td><%=payment.getPayment().getCategory()%></td>
+<td><%=payment.getPayment().getComment()%></td>
+<td align="right"><%=payment.getPayment().getAmount()%></td>
+<td align="center"><%=DateUtil.format(payment.getPayment().getDate())%></td>
 </tr>
 <%
 	}

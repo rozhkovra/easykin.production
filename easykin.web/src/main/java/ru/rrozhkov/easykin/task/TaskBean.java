@@ -11,13 +11,15 @@ public class TaskBean {
     private String taskClass = "";
     private String dateClass = "";
     private String comments = "";
+    private String doneHtml = "";
 
-    public TaskBean(int num, ITask task, String taskClass, String dateClass, String comments) {
+    public TaskBean(int num, ITask task, String taskClass, String dateClass, String comments, String doneHtml) {
         this.num = num;
         this.task = task;
         this.taskClass = taskClass;
         this.dateClass = dateClass;
         this.comments = comments;
+        this.doneHtml = doneHtml;
     }
 
     public int getNum() {
@@ -58,5 +60,13 @@ public class TaskBean {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getDoneHtml() {
+        return doneHtml;
+    }
+
+    public void setDoneHtml(String doneHtml) {
+        this.doneHtml = doneHtml;
     }
 }
