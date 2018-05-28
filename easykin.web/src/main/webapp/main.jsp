@@ -11,7 +11,7 @@
 %>
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <b><%=Module.name(moduleId)%></b>
+      <h4><%=Module.name(moduleId)%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh"></i></h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"><%=Module.name(moduleId)%></li>
@@ -46,3 +46,12 @@
     }
 %>
 </div>
+
+<!-- page script -->
+<script>
+  $('[id^=refresh]').click(
+    function(){
+        location.reload();
+    }
+  );
+</script>
