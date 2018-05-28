@@ -22,6 +22,13 @@ public class EasyKinWebConfig {
         return getFilterUrl(session.getId(), filterBean);
     }
 
+    public static String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId, String subModule) {
+        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        filterBean.setModuleId(moduleId);
+        filterBean.setSubModuleId(subModule);
+        return getFilterUrl(session.getId(), filterBean);
+    }
+
     public static String getFilterUrlForCategory(HttpServletRequest request, HttpSession session, int categoryId) {
         TaskFilterBean filterBean = TaskAdapter.filter(request);
         filterBean.setCategoryId(categoryId);
@@ -45,6 +52,7 @@ public class EasyKinWebConfig {
                 .append("&priorityId=").append(filterBean.getPriorityId())
                 .append("&categoryId=").append(filterBean.getCategoryId())
                 .append("&moduleId=").append(filterBean.getModuleId())
+                .append("&subModuleId=").append(filterBean.getSubModuleId())
                 .append("&statusId=").append(filterBean.getStatusId())
                 .append("&fromDate=").append(DateUtil.format(filterBean.getFromDate()))
                 .append("&toDate=").append(DateUtil.format(filterBean.getToDate())).toString();

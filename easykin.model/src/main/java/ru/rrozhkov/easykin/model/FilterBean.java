@@ -7,9 +7,14 @@ import ru.rrozhkov.lib.filter.IFilterBean;
  */
 public abstract class FilterBean implements IFilterBean {
     private String moduleId;
+    private String subModuleId;
 
     public FilterBean(String moduleId) {
         this.moduleId = moduleId;
+    }
+    public FilterBean(String moduleId, String subModuleId) {
+        this.moduleId = moduleId;
+        this.subModuleId = subModuleId;
     }
 
     public String getModuleId() {
@@ -18,5 +23,13 @@ public abstract class FilterBean implements IFilterBean {
 
     public void setModuleId(String moduleId) {
         this.moduleId = moduleId;
+    }
+
+    public String getSubModuleId() {
+        return subModuleId;
+    }
+
+    public void setSubModuleId(String subModuleId) {
+        this.subModuleId = subModuleId;
     }
 }

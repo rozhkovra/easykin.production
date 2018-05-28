@@ -7,6 +7,7 @@
 <div class="content-wrapper">
 <%
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
+	String subModuleId = request.getParameter("subModuleId")!=null?String.valueOf(request.getParameter("subModuleId")):"";
 %>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -23,9 +24,21 @@
         } else if (Module.FIN.equals(moduleId)){
 %><jsp:include page="finance/index.jsp"/><%
         } else if(Module.WORK.equals(moduleId)) {
+            if(SubModule.INDEX.equals(subModuleId)) {
 %><jsp:include page="work/index.jsp"/><%
+            } else if(SubModule.STATISTICS.equals(subModuleId)) {
+%><jsp:include page="work/statistics.jsp"/><%
+            }
         } else if (Module.SERVICE.equals(moduleId)) {
-%><jsp:include page="service/statistics.jsp"/><jsp:include page="service/index.jsp"/><%
+            if(SubModule.INDEX.equals(subModuleId)) {
+%><jsp:include page="service/index.jsp"/><%
+            } else if(SubModule.INFO.equals(subModuleId)) {
+%><jsp:include page="service/info.html"/><%
+            } else if(SubModule.RATES.equals(subModuleId)) {
+%><jsp:include page="service/rates.jsp"/><%
+            } else if(SubModule.STATISTICS.equals(subModuleId)) {
+%><jsp:include page="service/statistics.jsp"/><%
+            }
         } else {
 %><jsp:include page="task/index.jsp"/>
 <%
