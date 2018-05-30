@@ -19,11 +19,13 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 	private static final String jdbcProperties = "jdbc.properties";
 	private static String nextId = "SELECT MAX(ID)+1 AS ID FROM #table#";
 	private static String deleteAll = "DELETE FROM #table#";
+	private String connectDriver;
 	private String connectPath;
 	private String user;
 	private String pass;
 
-	public DBManager(String connectPath, String user, String pass) {
+	public DBManager(String connectDriver, String connectPath, String user, String pass) {
+		this.connectDriver = connectDriver;
 		this.connectPath = connectPath;
 		this.user = user;
 		this.pass = pass;
@@ -38,10 +40,11 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 			} catch (IOException e) {
 				throw new NotFoundDBPropertiesException(e);
 			}
+			String connectionDriver = property.getProperty("connectionDriver");
 			String connectionPath = property.getProperty("connectionPath");
 			String user = property.getProperty("user");
 			String pass = property.getProperty("pass");
-			dbManager = new DBManager(connectionPath, user, pass);
+			dbManager = new DBManager(connectionDriver, connectionPath, user, pass);
 		}
 		return dbManager;
 	}
@@ -174,7 +177,7 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
     
     protected Connection connect() throws ClassNotFoundException, SQLException{
 		if(connection==null || connection.isClosed()){
-			Class.forName("org.hsqldb.jdbc.JDBCDriver"); 
+			Class.forName(getConnectDriver());
 			connection =  DriverManager.getConnection( getConnectPath(), getUser(), getPass());
 		}
 		return connection;
@@ -210,5 +213,9 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 
     protected String getPass(){
 		return this.pass;
+	}
+
+	protected String getConnectDriver() {
+		return connectDriver;
 	}
 }
