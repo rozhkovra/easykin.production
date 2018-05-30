@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.module;
 import ru.rrozhkov.lib.gui.util.ImageUtil;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by rrozhkov on 3/28/2018.

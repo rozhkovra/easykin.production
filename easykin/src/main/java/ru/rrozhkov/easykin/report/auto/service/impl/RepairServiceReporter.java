@@ -21,11 +21,11 @@ public class RepairServiceReporter extends ServiceReporter {
 	}
 	
 	protected String getReportHeader(){
-		return "Отчет по у�?лугам c детал�?ми.";
+		return "Отчет по услугам c деталями.";
 	}
 
 	protected String getReportFooter(){
-		return "Итого у�?луг на: "+getSum()+"\nИтого запча�?тей на: "+getDetailsSum()+"\nИтого: "+getSum().add(getDetailsSum());
+		return "Итого услуг на: "+getSum()+"\nИтого запчастей на: "+getDetailsSum()+"\nИтого: "+getSum().add(getDetailsSum());
 	}
 
 }

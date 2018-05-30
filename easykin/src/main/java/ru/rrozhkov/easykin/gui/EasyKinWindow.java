@@ -24,15 +24,22 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane;
 	private EasyKinContext context;
+    private static EasyKinWindow window;
+
+    public static JFrame open() {
+        if(window==null) {
+            window = new EasyKinWindow();
+            window.fill();
+        }
+        return window;
+    }
 
 	public EasyKinWindow() throws HeadlessException {
 		super(ContextUtil.title());
         setIconImage(ImageManager.logo(this.getClass()));
 		this.context = new EasyKinContext();
-        fill();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	setVisible(true);
         setMinimumSize(new Dimension(800, 600));
 	}
 
@@ -41,6 +48,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         getContentPane().add(getMenuButtons());
         getContentPane().add(getTabbedPanel(), BorderLayout.SOUTH);
+        setVisible(true);
     }
 
  	public void edit(Object obj){
@@ -109,14 +117,14 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     }
 
     private JPanel getTabbedPanel() {
-        JPanel panel = new JPanel();
+        JPanel panel = GuiUtil.panelEmpty();
         panel.setLayout(new BorderLayout());
         panel.add(getTabbedPane(true));
         return panel;
     }
 
     private JPanel getMenuButtons() {
-        JPanel menuButtons = new JPanel();
+        JPanel menuButtons = GuiUtil.panelEmpty();
         menuButtons.setLayout(new BoxLayout(menuButtons, BoxLayout.X_AXIS));
 
         ImageIcon plusIcon = ImageUtil.scaleImage(70, 70, ImageManager.plus(this.getClass()));
@@ -178,7 +186,8 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         JMenuItem loginItem = new JMenuItem("Сменить пользователя", keyIcon);
         loginItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(AuthManager.authDialog(EasyKinWindow.this)== IGUIEditor.CODE_OK) {
+                int authCode = AuthManager.authDialog(EasyKinWindow.this);
+                if (authCode == IGUIEditor.CODE_OK) {
                     refresh();
                 }
             }

@@ -47,4 +47,7 @@ public class GuiUtil {
     public static Component password(){
         return new JPasswordField();
     }
+    public static JPanel panelEmpty() {
+        return new JPanel();
+    }
 }

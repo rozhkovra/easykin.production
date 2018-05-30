@@ -26,10 +26,10 @@ public class ServiceReporter extends FilteredReporter {
 	}
 	
 	protected String getReportHeader(){
-		return "Отчет по у�?лугам.";
+		return "Отчет по услугам.";
 	}
 
 	protected String getReportFooter(){
-		return "Итого у�?луг на: "+getSum();
+		return "Итого услуг на: "+getSum();
 	}
 }

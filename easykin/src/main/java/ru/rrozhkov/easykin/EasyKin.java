@@ -29,7 +29,7 @@ public class EasyKin {
     public static void start() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                JFrame window = new EasyKinWindow();
+                final JFrame window = EasyKinWindow.open();
                 window.addWindowListener(new WindowAdapter() {
                     public void windowClosing(WindowEvent e) {
                         close();

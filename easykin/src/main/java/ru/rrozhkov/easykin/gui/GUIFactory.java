@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.gui;
 
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import javax.swing.*;
 
@@ -13,7 +14,7 @@ public class GUIFactory {
         if (ModuleManager.exist(module)) {
             return (JPanel) ModuleManager.invoke(module, "createPanel", parent);
         }
-        return new JPanel();
+        return GuiUtil.panelEmpty();
     }
 
     public static JPanel createEditor(String module, IGUIEditor parent, Object obj) {
@@ -23,13 +24,13 @@ public class GUIFactory {
             else
                 return (JPanel)ModuleManager.invoke(module, "createEditor", parent);
         }
-        return new JPanel();
+        return GuiUtil.panelEmpty();
     }
 
     public static JPanel createFilter(String module, IGUIEditor parent) {
         if(ModuleManager.exist(module)) {
             return (JPanel)ModuleManager.invoke(module, "createFilter", parent);
         }
-        return new JPanel();
+        return GuiUtil.panelEmpty();
     }
 }
