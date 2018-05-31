@@ -13,22 +13,22 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IGUIFactory workFactory = new ActivityGUIFactory();
-    public static JPanel createPanel(IGUIEditor parent){
-        Collection collection = activities();
-        return workFactory.createTablePanel(parent, collection);
+    private static IGUIFactory activityFactory = new ActivityGUIFactory();
+    private static ActivityBuilder activityBuilder = new ActivityBuilder();
+    public static JPanel createPanel(IGUIEditor parent) {
+        return activityFactory.createTablePanel(parent, activities());
     }
     public static JPanel createEditor(IGUIEditor parent){
-        return workFactory.createEditor(parent, null);
+        return activityFactory.createEditor(parent, null);
     }
-    public static JPanel createEditor(IGUIEditor parent, IActivity activity){
-        return workFactory.createEditor(parent,activity);
+    public static JPanel createEditor(IGUIEditor parent, IActivity activity) {
+        return activityFactory.createEditor(parent,activity);
     }
     public static JPanel createFilter(IGUIEditor parent){
-        return workFactory.createFilter(parent);
+        return activityFactory.createFilter(parent);
     }
 
     public static Collection activities(){
-        return ActivityBuilder.build();
+        return activityBuilder.build();
     }
 }

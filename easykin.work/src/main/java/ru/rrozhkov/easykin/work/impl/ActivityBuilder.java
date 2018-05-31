@@ -13,7 +13,7 @@ import java.util.Collection;
  * Created by rrozhkov on 1/16/2018.
  */
 public class ActivityBuilder {
-    public static IActivity build(IActivity activity){
+    public IActivity build(IActivity activity){
         //todo add handle of person from db
         IPerson person = AuthManager.instance().signedPerson();
         if(activity.getPerson()==null) {
@@ -22,7 +22,7 @@ public class ActivityBuilder {
         return activity;
     }
 
-    public static Collection<IActivity> build() {
+    public Collection<IActivity> build() {
         IPerson person = AuthManager.instance().signedPerson();
         Collection<IActivity> collection = CollectionUtil.create();
         try {
