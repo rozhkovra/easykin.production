@@ -9,7 +9,7 @@ import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ import java.util.List;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IGUIFactory financeFactory = new FinanceGUIFactory();
+    private static IModuleGUIFactory financeFactory = new FinanceGUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
         return financeFactory.createTablePanel(parent, finance());
     }

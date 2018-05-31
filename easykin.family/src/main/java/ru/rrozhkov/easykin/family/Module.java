@@ -7,7 +7,7 @@ import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -16,7 +16,7 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IGUIFactory familyGUIFactory = new FamilyGUIFactory();
+    private static IModuleGUIFactory familyGUIFactory = new FamilyGUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
         Collection collection = null;
         try {

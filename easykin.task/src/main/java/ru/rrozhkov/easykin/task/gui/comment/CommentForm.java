@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.task.gui.comment;
 import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 
@@ -28,8 +27,8 @@ public class CommentForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(4, 2));
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getTextLabel());
 		add(getTextField());
 		add(getOkButton());
@@ -38,14 +37,14 @@ public class CommentForm extends Form {
 
 	private JTextField getTextField(){
 		if(textField == null){
-			textField = (JTextField)GuiUtil.fieldEditable(250, comment.getText());
+			textField = (JTextField) guiFactory.fieldEditable(250, comment.getText());
 		}
 		return textField;
 	}
 
 	private Component getTextLabel(){
 		if(textLabel == null)
-			textLabel = GuiUtil.label("Текст");
+			textLabel = guiFactory.label("Текст");
 		return textLabel;
 	}
 

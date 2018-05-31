@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.payment.gui;
 
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.lib.util.DateUtil;
 
@@ -33,8 +33,8 @@ public class PaymentForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(6,2)); 		
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getCommentLabel()); 
 		add(getCommentField()); 
 		add(getAmountLabel()); 
@@ -43,59 +43,59 @@ public class PaymentForm extends Form {
 		add(getDateField());
 		add(getCategoryLabel()); 
 		add(getCategoryField());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getCancelButton());
 	}
 
 	private Component getCommentField(){
 		if(commentField == null){
-			commentField = GuiUtil.fieldReadOnly(50, payment.getComment());
+			commentField = guiFactory.fieldReadOnly(50, payment.getComment());
 		}
 		return commentField;
 	}
 
 	private Component getAmountField(){
 		if(amountField == null){
-			amountField = GuiUtil.fieldReadOnly(10, payment.getAmount().toString());
+			amountField = guiFactory.fieldReadOnly(10, payment.getAmount().toString());
 		}
 		return amountField;
 	}
 	
 	private Component getDateField(){
 		if(dateField == null){
-			dateField = GuiUtil.fieldReadOnly(10, DateUtil.format(payment.getDate()));
+			dateField = guiFactory.fieldReadOnly(10, DateUtil.format(payment.getDate()));
 		}
 		return dateField;
 	}
 	
 	private Component getCategoryField(){
 		if(categoryField == null){
-			categoryField = GuiUtil.fieldReadOnly(50, payment.getCategory().toString());
+			categoryField = guiFactory.fieldReadOnly(50, payment.getCategory().toString());
 		}
 		return categoryField;
 	}
 	
 	private Component getCommentLabel(){
 		if(nameLabel == null)
-			nameLabel = GuiUtil.label("Описание");
+			nameLabel = guiFactory.label("Описание");
 		return nameLabel;
 	}
 	
 	private Component getAmountLabel(){
 		if(priceLabel == null)
-			priceLabel = GuiUtil.label("Цена");
+			priceLabel = guiFactory.label("Цена");
 		return priceLabel;
 	}
 	
 	private Component getDateLabel(){
 		if(dateLabel == null)
-			dateLabel = GuiUtil.label("Дата");
+			dateLabel = guiFactory.label("Дата");
 		return dateLabel;
 	}
 	
 	private Component getCategoryLabel(){
 		if(categoryLabel == null)
-			categoryLabel = GuiUtil.label("Категория");
+			categoryLabel = guiFactory.label("Категория");
 		return categoryLabel;
 	}
 }

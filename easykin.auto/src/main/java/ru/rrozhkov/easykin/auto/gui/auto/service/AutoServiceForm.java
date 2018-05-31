@@ -3,10 +3,8 @@ package ru.rrozhkov.easykin.auto.gui.auto.service;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import java.awt.*;
@@ -33,21 +31,21 @@ public class AutoServiceForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(5,2)); 		
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getNameLabel()); 
 		add(getNameField()); 
 		add(getPriceLabel()); 
 		add(getPriceField()); 
 		add(getDateLabel()); 
 		add(getDateField());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getCancelButton());
 	}
 
 	private Component getNameField(){
 		if(nameField == null){
-			nameField = GuiUtil.fieldReadOnly(50, service.getName());
+			nameField = guiFactory.fieldReadOnly(50, service.getName());
 
 		}
 		return nameField;
@@ -55,33 +53,33 @@ public class AutoServiceForm extends Form {
 
 	private Component getPriceField(){
 		if(priceField == null){
-			priceField = GuiUtil.fieldReadOnly(10, service.getPrice().toString());
+			priceField = guiFactory.fieldReadOnly(10, service.getPrice().toString());
 		}
 		return priceField;
 	}
 	
 	private Component getDateField(){
 		if(dateField == null){
-			dateField = GuiUtil.fieldReadOnly(10, DateUtil.format(service.getDate()));
+			dateField = guiFactory.fieldReadOnly(10, DateUtil.format(service.getDate()));
 		}
 		return dateField;
 	}
 	
 	private Component getNameLabel(){
 		if(nameLabel == null)
-			nameLabel = GuiUtil.label("Описание");
+			nameLabel = guiFactory.label("Описание");
 		return nameLabel;
 	}
 	
 	private Component getPriceLabel(){
 		if(priceLabel == null)
-			priceLabel = GuiUtil.label("Цена");
+			priceLabel = guiFactory.label("Цена");
 		return priceLabel;
 	}
 	
 	private Component getDateLabel(){
 		if(dateLabel == null)
-			dateLabel = GuiUtil.label("Дата");
+			dateLabel = guiFactory.label("Дата");
 		return dateLabel;
 	}
 }

@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 
@@ -20,8 +19,8 @@ public class ServiceCalcPanel extends Panel {
         	add(PanelFactory.getPanel(this, bean));
         }
 		refresh();
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getItogoLabel());
 	}
 

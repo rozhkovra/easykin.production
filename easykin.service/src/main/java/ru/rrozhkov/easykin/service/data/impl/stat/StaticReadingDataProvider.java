@@ -21,6 +21,7 @@ import java.util.Collection;
  * Created by rrozhkov on 12/7/2017.
  */
 public class StaticReadingDataProvider extends CollectionDataProvider<IReading> {
+    final private static ReadingBuilder readingBuilder = new ReadingBuilder();
     public static Collection<IRate> rates2018_1 = (Collection)Arrays.asList(
             new Rate(RateType.WATERIN, Money.valueOf(15.29),DateUtil.parse("01.01.2018"),DateUtil.parse("30.06.2018")),
             new Rate(RateType.WATEROUT,Money.valueOf(18.66),DateUtil.parse("01.01.2018"),DateUtil.parse("30.06.2018")),
@@ -53,8 +54,8 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
     public static Collection<ServiceCalc> calcs() {
         IReading prevReading = null;
         Collection<ServiceCalc> calcs = CollectionUtil.create();
-        Collection<IReading> readings = ReadingBuilder.build();
-        Collection<IRate> rates = rates2018_1;
+        Collection<IReading> readings = readingBuilder.build();
+        Collection<IRate> rates;
         for(IReading reading : readings) {
             try {
                 rates = RateHandler.selectForDate(reading.getDate());

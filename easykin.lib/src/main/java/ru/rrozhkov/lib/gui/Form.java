@@ -1,7 +1,7 @@
 package ru.rrozhkov.lib.gui;
 
 
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +17,7 @@ public abstract class Form extends JPanel {
     private Component okButton;
     private Component cancelButton;
     protected IGUIEditor parent;
+    protected final static IGUIFactory guiFactory = new SwingGuiFactory();
 
     public Form(IGUIEditor parent) {
         this.parent = parent;
@@ -53,7 +54,7 @@ public abstract class Form extends JPanel {
 
     protected Component getOkButton(){
         if(okButton==null){
-            okButton = GuiUtil.button("Ок", new ActionListener() {
+            okButton = guiFactory.button("Ок", new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     ok();
                 }
@@ -64,7 +65,7 @@ public abstract class Form extends JPanel {
 
     protected Component getCancelButton() {
         if(cancelButton==null){
-            cancelButton = GuiUtil.button("Закрыть",new ActionListener() {
+            cancelButton = guiFactory.button("Закрыть", new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     cancel();
                 }

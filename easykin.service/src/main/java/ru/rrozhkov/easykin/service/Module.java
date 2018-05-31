@@ -9,7 +9,7 @@ import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.Calc2GUIFactory;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ import java.util.List;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IGUIFactory calc2Factory = new Calc2GUIFactory();
+    private static IModuleGUIFactory calc2Factory = new Calc2GUIFactory();
     public static JPanel createPanel(IGUIEditor parent){
         return calc2Factory.createTablePanel(parent, calcs());
     }

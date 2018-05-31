@@ -8,7 +8,8 @@ import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.lib.gui.util.ImageUtil;
 
 import javax.swing.*;
@@ -25,6 +26,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private JTabbedPane tabbedPane;
 	private EasyKinContext context;
     private static EasyKinWindow window;
+    private final static IGUIFactory swingGuiFactory = new SwingGuiFactory();
 
     public static JFrame open() {
         if(window==null) {
@@ -117,18 +119,18 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     }
 
     private JPanel getTabbedPanel() {
-        JPanel panel = GuiUtil.panelEmpty();
+        JPanel panel = swingGuiFactory.panelEmpty();
         panel.setLayout(new BorderLayout());
         panel.add(getTabbedPane(true));
         return panel;
     }
 
     private JPanel getMenuButtons() {
-        JPanel menuButtons = GuiUtil.panelEmpty();
+        JPanel menuButtons = swingGuiFactory.panelEmpty();
         menuButtons.setLayout(new BoxLayout(menuButtons, BoxLayout.X_AXIS));
 
         ImageIcon plusIcon = ImageUtil.scaleImage(70, 70, ImageManager.plus(this.getClass()));
-        Component plusButton = GuiUtil.button(plusIcon, new ActionListener() {
+        Component plusButton = swingGuiFactory.button(plusIcon, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 add();
             }
@@ -136,7 +138,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         menuButtons.add(plusButton);
 
         ImageIcon refreshIcon = ImageUtil.scaleImage(70, 70, ImageManager.refresh(getClass()));
-        Component refreshButton = GuiUtil.button(refreshIcon,new ActionListener() {
+        Component refreshButton = swingGuiFactory.button(refreshIcon, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 refresh();
             }
@@ -144,7 +146,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         menuButtons.add(refreshButton);
 
         ImageIcon filterIcon = ImageUtil.scaleImage(70, 70, ImageManager.filter(getClass()));
-        Component filterButton = GuiUtil.button(filterIcon, new ActionListener() {
+        Component filterButton = swingGuiFactory.button(filterIcon, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 filter();
             }

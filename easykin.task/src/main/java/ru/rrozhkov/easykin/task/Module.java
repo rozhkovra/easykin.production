@@ -13,7 +13,7 @@ import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.IFilterBean;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -22,7 +22,7 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IGUIFactory taskFactory = new TaskGUIFactory();
+    private static IModuleGUIFactory taskFactory = new TaskGUIFactory();
     private static TaskBuilder taskBuilder = new TaskBuilder();
     public static JPanel createPanel(IGUIEditor parent){
         return taskFactory.createTablePanel(parent, tasks());

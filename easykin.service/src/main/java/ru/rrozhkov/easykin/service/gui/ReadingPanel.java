@@ -3,7 +3,8 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Measure;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,7 @@ public class ReadingPanel extends GUIPanel {
     private boolean isPaid;
     protected IReading reading;
     protected Map<IMeasure,JTextField> fields;
+    protected final static IGUIFactory guiFactory = new SwingGuiFactory();
 
     public ReadingPanel(Panel parent, IReading reading, boolean isPaid) {
         super(parent);
@@ -29,11 +31,11 @@ public class ReadingPanel extends GUIPanel {
         fields = new HashMap<IMeasure,JTextField>();
         setLayout(new GridLayout(2, reading.getMeasures().size()));
         for(IMeasure measure : reading.getMeasures()){
-            add(GuiUtil.label(String.valueOf(measure.getType())));
+            add(guiFactory.label(String.valueOf(measure.getType())));
 
         }
         for(IMeasure measure : reading.getMeasures()){
-            JTextField field = (JTextField) GuiUtil.fieldCalc(10, measure.getValue().toString(), isPaid());
+            JTextField field = (JTextField) guiFactory.fieldCalc(10, measure.getValue().toString(), isPaid());
             Font font1 = new Font("SansSerif", Font.PLAIN, 40);
             field.setFont(font1);
             field.setHorizontalAlignment(JTextField.CENTER);

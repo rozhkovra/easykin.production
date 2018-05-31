@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import java.awt.*;
 
@@ -22,7 +22,7 @@ public class ReadingCalcPanel extends Panel {
             add(ShortPanelFactory.getPanel(this, bean));
         }
         refresh();
-        add(GuiUtil.labelEmpty());
+        add(guiFactory.labelEmpty());
         add(getItogoLabel());
     }
 

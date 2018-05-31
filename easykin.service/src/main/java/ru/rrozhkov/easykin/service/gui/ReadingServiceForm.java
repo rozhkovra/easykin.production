@@ -9,7 +9,7 @@ import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 
@@ -29,14 +29,14 @@ public class ReadingServiceForm extends Form {
     @Override
     protected void fill() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(GuiUtil.labelEmpty());
+        add(guiFactory.labelEmpty());
         add(new ReadingServicePanel(calc, reading));
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
         if (!calc.isPaid()) {
             buttonPanel.add(getOkButton());
         } else {
-            buttonPanel.add(GuiUtil.labelEmpty());
+            buttonPanel.add(guiFactory.labelEmpty());
         }
         buttonPanel.add(getCancelButton());
         add(buttonPanel);

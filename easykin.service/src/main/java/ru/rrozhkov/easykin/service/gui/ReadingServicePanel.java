@@ -11,7 +11,7 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +36,7 @@ public class ReadingServicePanel extends Panel {
 
     private void fill() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        JLabel label = (JLabel)GuiUtil.label(((ServiceCalc) calc).getName());
+        JLabel label = (JLabel) guiFactory.label(((ServiceCalc) calc).getName());
         Font font1 = new Font("SansSerif", Font.PLAIN, 30);
         label.setFont(font1);
         label.setHorizontalAlignment(JTextField.LEFT);

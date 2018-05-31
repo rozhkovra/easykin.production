@@ -4,7 +4,6 @@ package ru.rrozhkov.easykin.person.gui.auth;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,7 +42,7 @@ public class AuthForm extends Form {
 
 	private JPasswordField getPasswordField(){
 		if(passwordField == null){
-			passwordField = (JPasswordField) GuiUtil.password();
+			passwordField = (JPasswordField) guiFactory.password();
 			passwordField.addKeyListener(keyListener());
 		}
 		return passwordField;
@@ -51,13 +50,13 @@ public class AuthForm extends Form {
 	
 	private Component getUsernameLabel(){
 		if(usernameLabel == null)
-			usernameLabel = GuiUtil.label("Пользователь");
+			usernameLabel = guiFactory.label("Пользователь");
 		return usernameLabel;
 	}
 	
 	private Component getPasswordLabel(){
 		if(passwordLabel == null)
-			passwordLabel = GuiUtil.label("Пароль");
+			passwordLabel = guiFactory.label("Пароль");
 		return passwordLabel;
 	}
 

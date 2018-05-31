@@ -7,7 +7,6 @@ import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,45 +34,36 @@ public class TaskFilter extends Form {
 		add(getCancelButton());
 	}
 	
-	private JComboBox getPriorityComboBox(){
+	private Component getPriorityComboBox(){
 		if(priorityComboBox == null){
-			priorityComboBox = new JComboBox();
-			priorityComboBox.addItem("----");
-			for(Priority priority : new Priority[]{
+			priorityComboBox = guiFactory.comboBoxFilled(CollectionUtil.create(
 					Priority.IMPOTANT_FAST,
 					Priority.IMPOTANT_NOFAST,
 					Priority.SIMPLE
-			}){
-				priorityComboBox.addItem(priority);
-			}
-
+			));
 		}
 		return priorityComboBox;
 	}
 	
-	private JComboBox getStatusComboBox(){
+	private Component getStatusComboBox(){
 		if(statusComboBox == null){
-			statusComboBox = new JComboBox();
-			statusComboBox.addItem("----");
-			for(Status status : new Status[]{
+			statusComboBox = guiFactory.comboBoxFilled(CollectionUtil.create(
 					Status.OPEN,
 					Status.CLOSE
-			}){
-				statusComboBox.addItem(status);
-			}
+			));
 		}
 		return statusComboBox;
 	}
 
 	private Component getPriorityLabel(){
 		if(priorityLabel == null)
-			priorityLabel = GuiUtil.label("Приоритет");
+			priorityLabel = guiFactory.label("Приоритет");
 		return priorityLabel;
 	}
 
 	private Component getStatusLabel(){
 		if(statusLabel == null)
-			statusLabel = GuiUtil.label("Статус");
+			statusLabel = guiFactory.label("Статус");
 		return statusLabel;
 	}
 

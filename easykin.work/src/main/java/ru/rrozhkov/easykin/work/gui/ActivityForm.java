@@ -8,7 +8,6 @@ import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
 import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;
@@ -46,8 +45,8 @@ public class ActivityForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(9, 2));
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getDateLabel());
 		add(getDateField());
 		add(getPersonLabel());
@@ -89,7 +88,7 @@ public class ActivityForm extends Form {
 
 	private Component getReleaseTypeLabel() {
 		if(releaseTypeLabel == null){
-			releaseTypeLabel = GuiUtil.label("Номер релиза");
+			releaseTypeLabel = guiFactory.label("Номер релиза");
 		}
 		return releaseTypeLabel;
 	}
@@ -116,76 +115,76 @@ public class ActivityForm extends Form {
 
 	private Component getTaskTypeLabel() {
 		if(taskTypeLabel == null){
-			taskTypeLabel = GuiUtil.label("Тип задачи");
+			taskTypeLabel = guiFactory.label("Тип задачи");
 		}
 		return taskTypeLabel;
 	}
 
 	private JTextField getTimeField() {
 		if(timeField == null){
-			timeField = (JTextField)GuiUtil.fieldEditable(2, String.valueOf(activity.getTime()));
+			timeField = (JTextField) guiFactory.fieldEditable(2, String.valueOf(activity.getTime()));
 		}
 		return timeField;
 	}
 
 	private Component getTimeLabel() {
 		if(timeLabel == null){
-			timeLabel = GuiUtil.label("Время");
+			timeLabel = guiFactory.label("Время");
 		}
 		return timeLabel;
 	}
 
 	private JTextField getPersonField() {
 		if(personField == null){
-			personField = (JTextField)GuiUtil.fieldEditable(10, PersonUtil.fi(activity.getPerson()));
+			personField = (JTextField) guiFactory.fieldEditable(10, PersonUtil.fi(activity.getPerson()));
 		}
 		return personField;
 	}
 
 	private Component getPersonLabel() {
 		if(personLabel == null){
-			personLabel = GuiUtil.label("Имя");
+			personLabel = guiFactory.label("Имя");
 		}
 		return personLabel;
 	}
 
 	private JTextField getDateField() {
 		if(dateField == null){
-			dateField = (JTextField)GuiUtil.fieldEditable(10, DateUtil.format(activity.getDate()));
+			dateField = (JTextField) guiFactory.fieldEditable(10, DateUtil.format(activity.getDate()));
 		}
 		return dateField;
 	}
 
 	private Component getDateLabel() {
 		if(dateLabel == null){
-			dateLabel = GuiUtil.label("Дата");
+			dateLabel = guiFactory.label("Дата");
 		}
 		return dateLabel;
 	}
 
 	private JTextField getNameField(){
 		if(nameField == null){
-			nameField = (JTextField)GuiUtil.fieldEditable(50, activity.getName());
+			nameField = (JTextField) guiFactory.fieldEditable(50, activity.getName());
 		}
 		return nameField;
 	}
 
 	private Component getNameLabel(){
 		if(nameLabel == null)
-			nameLabel = GuiUtil.label("Имя");
+			nameLabel = guiFactory.label("Имя");
 		return nameLabel;
 	}
 
 	private JTextField getDescField(){
 		if(descField == null){
-			descField = (JTextField)GuiUtil.fieldEditable(50, activity.getDesc());
+			descField = (JTextField) guiFactory.fieldEditable(50, activity.getDesc());
 		}
 		return descField;
 	}
 
 	private Component getDescLabel(){
 		if(descLabel == null)
-			descLabel = GuiUtil.label("Комментарий");
+			descLabel = guiFactory.label("Комментарий");
 		return descLabel;
 	}
 

@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.gui.doc;
 
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.lib.util.DateUtil;
 
@@ -29,8 +28,8 @@ public class DocForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(7, 2));
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getTypeLabel());
 		add(getTypeField());
 		add(getNumberLabel());
@@ -39,59 +38,59 @@ public class DocForm extends Form {
 		add(getSeriesField());
 		add(getDateLabel());
 		add(getDateField());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getCancelButton());
 	}
 
 	private Component getTypeField(){
 		if(typeField == null){
-			typeField = GuiUtil.fieldReadOnly(50, doc.getDocType().toString());
+			typeField = guiFactory.fieldReadOnly(50, doc.getDocType().toString());
 		}
 		return typeField;
 	}
 
 	private Component getNumberField(){
 		if(numberField == null){
-			numberField = GuiUtil.fieldReadOnly(50, doc.getNumber());
+			numberField = guiFactory.fieldReadOnly(50, doc.getNumber());
 		}
 		return numberField;
 	}
 
 	private Component getSeriesField(){
 		if(seriesField == null){
-			seriesField = GuiUtil.fieldReadOnly(50, doc.getSeries());
+			seriesField = guiFactory.fieldReadOnly(50, doc.getSeries());
 		}
 		return seriesField;
 	}
 
 	private Component getDateField(){
 		if(dateField == null){
-			dateField = GuiUtil.fieldReadOnly(10, DateUtil.format(doc.getDate()));
+			dateField = guiFactory.fieldReadOnly(10, DateUtil.format(doc.getDate()));
 		}
 		return dateField;
 	}
 
 	private Component getTypeLabel(){
 		if(typeLabel == null)
-			typeLabel = GuiUtil.label("Тип");
+			typeLabel = guiFactory.label("Тип");
 		return typeLabel;
 	}
 
 	private Component getNumberLabel(){
 		if(numberLabel == null)
-			numberLabel = GuiUtil.label("Номер");
+			numberLabel = guiFactory.label("Номер");
 		return numberLabel;
 	}
 
 	private Component getSeriesLabel(){
 		if(seriesLabel == null)
-			seriesLabel = GuiUtil.label("Серия");
+			seriesLabel = guiFactory.label("Серия");
 		return seriesLabel;
 	}
 
 	private Component getDateLabel(){
 		if(dateLabel == null)
-			dateLabel = GuiUtil.label("Дата");
+			dateLabel = guiFactory.label("Дата");
 		return dateLabel;
 	}
 }

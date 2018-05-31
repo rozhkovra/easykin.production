@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
 
@@ -22,13 +21,13 @@ public class DefaultPanel extends Panel {
 	
 	private void fill(){
 		setLayout(new GridLayout(5,2));
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getCalcTypeLabel());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getSumLabel()); 
 		add(getSumField());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getItogoLabel()); 
 		refresh();
 	}
@@ -36,14 +35,14 @@ public class DefaultPanel extends Panel {
 	public JTextField getSumField(){
 		if(sumField == null){
 			String sum = FormatUtil.formatEditMoney(((DefaultCalc)calc).getPrice());
-			sumField = (JTextField) GuiUtil.fieldCalc(10, sum, calc.isPaid());
+			sumField = (JTextField) guiFactory.fieldCalc(10, sum, calc.isPaid());
 			sumField.getDocument().addDocumentListener(this);
 		}
 		return sumField;
 	}
 	public JLabel getSumLabel(){
 		if(sumLabel == null)
-			sumLabel = (JLabel) GuiUtil.label("Сумма");
+			sumLabel = (JLabel) guiFactory.label("Сумма");
 		return sumLabel;
 	}
 	@Override

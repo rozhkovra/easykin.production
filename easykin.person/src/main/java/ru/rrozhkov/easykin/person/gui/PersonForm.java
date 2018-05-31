@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.person.gui;
 
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.lib.util.DateUtil;
 
@@ -29,8 +29,8 @@ public class PersonForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(7, 2));
-		add(GuiUtil.labelEmpty());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getSurnameLabel());
 		add(getSurnameField());
 		add(getNameLabel());
@@ -39,59 +39,59 @@ public class PersonForm extends Form {
 		add(getSecondNameField());
 		add(getBirthDateLabel());
 		add(getBirthDateField());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getCancelButton());
 	}
 
 	private Component getSurnameField(){
 		if(surnameField == null){
-			surnameField = GuiUtil.fieldReadOnly(50, person.getSurname());
+			surnameField = guiFactory.fieldReadOnly(50, person.getSurname());
 		}
 		return surnameField;
 	}
 
 	private Component getNameField(){
 		if(nameField == null){
-			nameField = GuiUtil.fieldReadOnly(50, person.getName());
+			nameField = guiFactory.fieldReadOnly(50, person.getName());
 		}
 		return nameField;
 	}
 
 	private Component getSecondNameField(){
 		if(secondNameField == null){
-			secondNameField = GuiUtil.fieldReadOnly(50, person.getSecondName());
+			secondNameField = guiFactory.fieldReadOnly(50, person.getSecondName());
 		}
 		return secondNameField;
 	}
 
 	private Component getBirthDateField(){
 		if(birthDateField == null){
-			birthDateField = GuiUtil.fieldReadOnly(10, DateUtil.format(person.getBirthDate()));
+			birthDateField = guiFactory.fieldReadOnly(10, DateUtil.format(person.getBirthDate()));
 		}
 		return birthDateField;
 	}
 
 	private Component getSurnameLabel(){
 		if(surnameLabel == null)
-			surnameLabel = GuiUtil.label("Фамилия");
+			surnameLabel = guiFactory.label("Фамилия");
 		return surnameLabel;
 	}
 
 	private Component getNameLabel(){
 		if(nameLabel == null)
-			nameLabel = GuiUtil.label("Имя");
+			nameLabel = guiFactory.label("Имя");
 		return nameLabel;
 	}
 
 	private Component getSecondNameLabel(){
 		if(secondNameLabel == null)
-			secondNameLabel = GuiUtil.label("Отчество");
+			secondNameLabel = guiFactory.label("Отчество");
 		return secondNameLabel;
 	}
 
 	private Component getBirthDateLabel(){
 		if(birthDateLabel == null)
-			birthDateLabel = GuiUtil.label("Дата рождения");
+			birthDateLabel = guiFactory.label("Дата рождения");
 		return birthDateLabel;
 	}
 }

@@ -13,7 +13,7 @@ import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;
@@ -48,12 +48,12 @@ public class TaskForm extends Form {
 	
 	protected void fill(){
 		setLayout(new GridLayout(7,2));
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		if(!task.getStatus().isClose()){
 			if(task.getId()!=-1){
 				add(getDoneButton());
 			}else
-				add(GuiUtil.labelEmpty());
+				add(guiFactory.labelEmpty());
 		}else{
 			add(getCloseDateLabel());
 		}
@@ -68,7 +68,7 @@ public class TaskForm extends Form {
 		if(!task.getStatus().isClose()){
 			add(getOkButton());
 		}else
-			add(GuiUtil.labelEmpty());
+			add(guiFactory.labelEmpty());
 		add(getCancelButton());
 	}
 	
@@ -78,7 +78,7 @@ public class TaskForm extends Form {
 
 	private JTextField getNameField(){
 		if(nameField == null){
-			nameField = (JTextField) GuiUtil.fieldEditable(250, task.getName());
+			nameField = (JTextField) guiFactory.fieldEditable(250, task.getName());
 			if(task.getStatus().isClose())
 				nameField.setEditable(false);
 		}
@@ -87,20 +87,20 @@ public class TaskForm extends Form {
 
 	private JTextField getPlanDateField(){
 		if(planDateField == null){
-			planDateField = (JTextField) GuiUtil.fieldEditable(10, DateUtil.format(task.getPlanDate()));
+			planDateField = (JTextField) guiFactory.fieldEditable(10, DateUtil.format(task.getPlanDate()));
 			if(task.getStatus().isClose())
 				planDateField.setEditable(false);
 		}
 		return planDateField;
 	}
 	
-	private JComboBox getPriorityComboBox(){
+	private Component getPriorityComboBox(){
 		if(priorityComboBox == null){
-			priorityComboBox = new JComboBox(new Priority[]{
+			priorityComboBox = guiFactory.comboBoxFilled(CollectionUtil.create(
 					Priority.IMPOTANT_FAST,
 					Priority.IMPOTANT_NOFAST,
 					Priority.SIMPLE
-			});
+			));
 			priorityComboBox.setSelectedIndex(Priority.priority(task.getPriority()) - 1);
 			if(task.getStatus().isClose())
 				priorityComboBox.setEditable(false);
@@ -108,9 +108,9 @@ public class TaskForm extends Form {
 		return priorityComboBox;
 	}
 	
-	private JComboBox getCategoryComboBox(){
+	private Component getCategoryComboBox(){
 		if(categoryComboBox == null){
-			categoryComboBox = new JComboBox(categories());
+			categoryComboBox = guiFactory.comboBoxFilled(categories());
 			categoryComboBox.setSelectedItem(task.getCategory().getName());
 			if(task.getStatus().isClose())
 				categoryComboBox.setEditable(false);
@@ -118,37 +118,37 @@ public class TaskForm extends Form {
 		return categoryComboBox;
 	}
 	
-	private String[] categories() {
+	private Collection<ICategory> categories() {
 		Collection<ICategory> collection = CollectionUtil.create();
 		try {
 			collection = CategoryHandler.select();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return TaskConverterFactory.category().stringArr(collection);
+		return collection;
 	}
 
 	private Component getNameLabel(){
 		if(nameLabel == null)
-			nameLabel = GuiUtil.label("Описание");
+			nameLabel = guiFactory.label("Описание");
 		return nameLabel;
 	}
 	
 	private Component getPlanDateLabel(){
 		if(planDateLabel == null)
-			planDateLabel = GuiUtil.label("Плановая дата");
+			planDateLabel = guiFactory.label("Плановая дата");
 		return planDateLabel;
 	}
 
 	private Component getPriorityLabel(){
 		if(priorityLabel == null)
-			priorityLabel = GuiUtil.label("Приоритет");
+			priorityLabel = guiFactory.label("Приоритет");
 		return priorityLabel;
 	}
 
 	private Component getCategoryLabel(){
 		if(categoryLabel == null)
-			categoryLabel = GuiUtil.label("Категория");
+			categoryLabel = guiFactory.label("Категория");
 		return categoryLabel;
 	}
 
@@ -160,14 +160,14 @@ public class TaskForm extends Form {
 
 	private Component getDoneButton() {
 	    if(doneButton==null){
-	    	doneButton = GuiUtil.button("Выполнить",new ActionListener() {
+	    	doneButton = guiFactory.button("Выполнить", new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					update();
-					if(!validateTask())
+					if (!validateTask())
 						return;
-					try{
+					try {
 						TaskHandler.close(task);
-					}catch(Exception ex){
+					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
 					parent.refresh();

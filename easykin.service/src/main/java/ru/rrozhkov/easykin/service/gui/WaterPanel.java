@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
-import ru.rrozhkov.lib.gui.util.GuiUtil;
+import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 
 public class WaterPanel extends Panel{
@@ -51,7 +51,7 @@ public class WaterPanel extends Panel{
 	private void fill() {
 		setLayout(new GridLayout(15, 2));
 		add(getCalcTypeLabel());
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getColdPrevMesureLabel());
 		add(getColdPrevMesureField()); 
 		add(getColdCurrentMesureLabel()); 
@@ -72,7 +72,7 @@ public class WaterPanel extends Panel{
 		add(getRateInField());
 		add(getRateOutLabel());
 		add(getRateOutField()); 
-		add(GuiUtil.labelEmpty());
+		add(guiFactory.labelEmpty());
 		add(getItogoLabel());
 		refresh();
 	}
@@ -80,7 +80,7 @@ public class WaterPanel extends Panel{
 	public JTextField getRateOutField() {
 		if(rateOutField == null){
 			String text = String.valueOf(((WaterCalc)calc).getOutRate());
-			rateOutField = (JTextField)GuiUtil.fieldCalc(6,text,calc.isPaid());
+			rateOutField = (JTextField) guiFactory.fieldCalc(6, text, calc.isPaid());
 			rateOutField.getDocument().addDocumentListener(this);
 		}
 		return rateOutField;
@@ -88,14 +88,14 @@ public class WaterPanel extends Panel{
 
 	private Component getRateOutLabel() {
 		if(rateOutLabel == null)
-			rateOutLabel = (JLabel)GuiUtil.label(RATE_OUT_LABEL_TEXT);
+			rateOutLabel = (JLabel) guiFactory.label(RATE_OUT_LABEL_TEXT);
 		return rateOutLabel;
 	}
 
 	public JTextField getRateInField() {
 		if(rateInField == null){
 			String text = String.valueOf(((WaterCalc)calc).getInRate());
-			rateInField = (JTextField)GuiUtil.fieldCalc(6,text,calc.isPaid());
+			rateInField = (JTextField) guiFactory.fieldCalc(6, text, calc.isPaid());
 			rateInField.getDocument().addDocumentListener(this);
 		}
 		return rateInField;
@@ -103,14 +103,14 @@ public class WaterPanel extends Panel{
 
 	private Component getRateInLabel() {
 		if(rateInLabel == null)
-			rateInLabel = (JLabel)GuiUtil.label(RATE_IN_LABEL_TEXT);
+			rateInLabel = (JLabel) guiFactory.label(RATE_IN_LABEL_TEXT);
 		return rateInLabel;
 	}
 
 	public JTextField getHotCurrentMesureField() {
 		if(hotCurrentMesureField == null){
 			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMesure());
-			hotCurrentMesureField = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			hotCurrentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotCurrentMesureField.getDocument().addDocumentListener(this);
 		}
 		return hotCurrentMesureField;
@@ -118,7 +118,7 @@ public class WaterPanel extends Panel{
 	public JTextField getHotCurrentMesureField2() {
 		if(hotCurrentMesureField2 == null){
 			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMesure2());
-			hotCurrentMesureField2 = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			hotCurrentMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotCurrentMesureField2.getDocument().addDocumentListener(this);
 		}
 		return hotCurrentMesureField2;
@@ -126,20 +126,20 @@ public class WaterPanel extends Panel{
 
 	private Component getHotCurrentMesureLabel() {
 		if(hotCurrentMesureLabel == null)
-			hotCurrentMesureLabel = (JLabel)GuiUtil.label(HOT_CURRENT_MESURE_LABEL_TEXT);
+			hotCurrentMesureLabel = (JLabel) guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT);
 		return hotCurrentMesureLabel;
 	}
 
 	private Component getHotCurrentMesureLabel2() {
 		if(hotCurrentMesureLabel2 == null)
-			hotCurrentMesureLabel2 = (JLabel)GuiUtil.label(HOT_CURRENT_MESURE_LABEL_TEXT2);
+			hotCurrentMesureLabel2 = (JLabel) guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT2);
 		return hotCurrentMesureLabel2;
 	}
 
 	public JTextField getHotPrevMesureField() {
 		if(hotPrevMesureField == null){
 			String text = String.valueOf(((WaterCalc)calc).getHotPrevMesure());
-			hotPrevMesureField = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			hotPrevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotPrevMesureField.getDocument().addDocumentListener(this);
 		}
 		return hotPrevMesureField;
@@ -148,7 +148,7 @@ public class WaterPanel extends Panel{
 	public JTextField getHotPrevMesureField2() {
 		if(hotPrevMesureField2 == null){
 			String text = String.valueOf(((WaterCalc)calc).getHotPrevMesure2());
-			hotPrevMesureField2 = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			hotPrevMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotPrevMesureField2.getDocument().addDocumentListener(this);
 		}
 		return hotPrevMesureField2;
@@ -156,20 +156,20 @@ public class WaterPanel extends Panel{
 
 	private Component getHotPrevMesureLabel() {
 		if(hotPrevMesureLabel == null)
-			hotPrevMesureLabel = (JLabel)GuiUtil.label(HOT_PREV_MESURE_LABEL_TEXT);
+			hotPrevMesureLabel = (JLabel) guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT);
 		return hotPrevMesureLabel;
 	}
 
 	private Component getHotPrevMesureLabel2() {
 		if(hotPrevMesureLabel2 == null)
-			hotPrevMesureLabel2 = (JLabel)GuiUtil.label(HOT_PREV_MESURE_LABEL_TEXT2);
+			hotPrevMesureLabel2 = (JLabel) guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT2);
 		return hotPrevMesureLabel2;
 	}
 
 	public JTextField getColdPrevMesureField(){
 		if(coldPrevMesureField == null){
 			String text = String.valueOf(((WaterCalc)calc).getColdPrevMesure());
-			coldPrevMesureField = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			coldPrevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldPrevMesureField.getDocument().addDocumentListener(this);
 		}
 		return coldPrevMesureField;
@@ -178,7 +178,7 @@ public class WaterPanel extends Panel{
 	public JTextField getColdPrevMesureField2(){
 		if(coldPrevMesureField2 == null){
 			String text = String.valueOf(((WaterCalc)calc).getColdPrevMesure2());
-			coldPrevMesureField2 = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			coldPrevMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldPrevMesureField2.getDocument().addDocumentListener(this);
 		}
 		return coldPrevMesureField2;
@@ -187,7 +187,7 @@ public class WaterPanel extends Panel{
 	public JTextField getColdCurrentMesureField(){
 		if(coldCurrentMesureField == null){
 			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMesure());
-			coldCurrentMesureField = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			coldCurrentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldCurrentMesureField.getDocument().addDocumentListener(this);
 		}
 		return coldCurrentMesureField;
@@ -196,7 +196,7 @@ public class WaterPanel extends Panel{
 	public JTextField getColdCurrentMesureField2(){
 		if(coldCurrentMesureField2 == null){
 			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMesure2());
-			coldCurrentMesureField2 = (JTextField)GuiUtil.fieldCalc(5,text,calc.isPaid());
+			coldCurrentMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldCurrentMesureField2.getDocument().addDocumentListener(this);
 		}
 		return coldCurrentMesureField2;
@@ -204,25 +204,25 @@ public class WaterPanel extends Panel{
 
 	public JLabel getColdPrevMesureLabel(){
 		if(coldPrevMesureLabel == null)
-			coldPrevMesureLabel = (JLabel)GuiUtil.label(COLD_PREV_MESURE_LABEL_TEXT);
+			coldPrevMesureLabel = (JLabel) guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT);
 		return coldPrevMesureLabel;
 	}
 
 	public JLabel getColdPrevMesureLabel2(){
 		if(coldPrevMesureLabel2 == null)
-			coldPrevMesureLabel2 = (JLabel)GuiUtil.label(COLD_PREV_MESURE_LABEL_TEXT2);
+			coldPrevMesureLabel2 = (JLabel) guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT2);
 		return coldPrevMesureLabel2;
 	}
 
 	public JLabel getColdCurrentMesureLabel(){
 		if(coldCurrentMesureLabel == null)
-			coldCurrentMesureLabel = (JLabel)GuiUtil.label(COLD_CURRENT_MESURE_LABEL_TEXT);
+			coldCurrentMesureLabel = (JLabel) guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT);
 		return coldCurrentMesureLabel;
 	}
 
 	public JLabel getColdCurrentMesureLabel2(){
 		if(coldCurrentMesureLabel2 == null)
-			coldCurrentMesureLabel2 = (JLabel)GuiUtil.label(COLD_CURRENT_MESURE_LABEL_TEXT2);
+			coldCurrentMesureLabel2 = (JLabel) guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT2);
 		return coldCurrentMesureLabel2;
 	}
 
