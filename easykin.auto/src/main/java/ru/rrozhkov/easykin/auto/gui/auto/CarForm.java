@@ -1,15 +1,15 @@
 package ru.rrozhkov.easykin.auto.gui.auto;
 
 import ru.rrozhkov.easykin.model.auto.ICar;
+import ru.rrozhkov.lib.gui.GUIFactory;
 import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class CarForm extends JPanel {
 	private static final long serialVersionUID = 1L;
-	protected final static IGUIFactory swingGuiFactory = new SwingGuiFactory();
+	protected final static IGUIFactory swingGuiFactory = GUIFactory.create();
 	private Component brendField = null;
 	private Component modelField = null;
 	private Component bodyField = null;

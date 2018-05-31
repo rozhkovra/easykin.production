@@ -9,7 +9,6 @@ import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 

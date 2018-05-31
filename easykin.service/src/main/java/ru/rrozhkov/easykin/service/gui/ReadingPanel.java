@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Measure;
+import ru.rrozhkov.lib.gui.GUIFactory;
 import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class ReadingPanel extends GUIPanel {
     private boolean isPaid;
     protected IReading reading;
     protected Map<IMeasure,JTextField> fields;
-    protected final static IGUIFactory guiFactory = new SwingGuiFactory();
+    protected final static IGUIFactory guiFactory = GUIFactory.create();
 
     public ReadingPanel(Panel parent, IReading reading, boolean isPaid) {
         super(parent);

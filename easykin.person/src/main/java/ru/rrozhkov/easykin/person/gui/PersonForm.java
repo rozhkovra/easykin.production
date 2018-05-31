@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.person.gui;
 
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.lib.util.DateUtil;
 

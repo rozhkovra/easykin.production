@@ -1,4 +1,4 @@
-package ru.rrozhkov.lib.gui.util;
+package ru.rrozhkov.lib.gui.swing;
 
 import ru.rrozhkov.lib.gui.*;
 

@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 
 public class HotWaterPanel extends Panel{ 

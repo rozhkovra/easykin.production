@@ -4,8 +4,8 @@ import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
+import ru.rrozhkov.lib.gui.GUIFactory;
 import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ public abstract class Panel extends GUIPanel{
 	private JLabel itogoLabel = null;
 	protected ICalculator calculator;
 	protected Calculation calc;
-	protected final static IGUIFactory guiFactory = new SwingGuiFactory();
+	protected final static IGUIFactory guiFactory = GUIFactory.create();
 	public Panel(Panel parent, Calculation calc) {
 		super(parent);
 		this.calc = calc;

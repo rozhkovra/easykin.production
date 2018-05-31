@@ -2,11 +2,7 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.Calc2Builder;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
-import ru.rrozhkov.lib.gui.Table;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
+import ru.rrozhkov.lib.gui.*;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -16,7 +12,7 @@ import java.util.Collection;
  */
 public class Calc2GUIFactory implements IModuleGUIFactory {
     final private static Calc2Builder calc2Builder = new Calc2Builder();
-    protected final static IGUIFactory swingGuiFactory = new SwingGuiFactory();
+    protected final static IGUIFactory swingGuiFactory = GUIFactory.create();
     public JPanel createTablePanel(IGUIEditor parent, Collection data) {
         return swingGuiFactory.tablePanel(parent, (Table)swingGuiFactory.table(new ServiceTableModel(data)));
     }

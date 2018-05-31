@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.payment.gui;
 
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.lib.util.DateUtil;
 

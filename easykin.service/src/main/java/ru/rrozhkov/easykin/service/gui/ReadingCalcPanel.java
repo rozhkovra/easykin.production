@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import java.awt.*;
 

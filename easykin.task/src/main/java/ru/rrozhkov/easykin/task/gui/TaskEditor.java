@@ -5,9 +5,9 @@ import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.task.gui.comment.CommentGUIFactory;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
+import ru.rrozhkov.lib.gui.GUIFactory;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 	private IGUIEditor parent;
 	private Component addButton;
 	private static TaskBuilder taskBuilder = new TaskBuilder();
-	private final static IGUIFactory guiFactory = new SwingGuiFactory();
+	private final static IGUIFactory guiFactory = GUIFactory.create();
 
 	public TaskEditor(IGUIEditor parent, ITask task) {
 		super();

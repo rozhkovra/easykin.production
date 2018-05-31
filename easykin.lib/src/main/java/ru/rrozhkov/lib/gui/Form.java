@@ -1,8 +1,6 @@
 package ru.rrozhkov.lib.gui;
 
 
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +15,7 @@ public abstract class Form extends JPanel {
     private Component okButton;
     private Component cancelButton;
     protected IGUIEditor parent;
-    protected final static IGUIFactory guiFactory = new SwingGuiFactory();
+    protected final static IGUIFactory guiFactory = GUIFactory.create();
 
     public Form(IGUIEditor parent) {
         this.parent = parent;

@@ -8,12 +8,10 @@ import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
-import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.lib.util.DateUtil;
 
 import javax.swing.*;

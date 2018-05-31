@@ -9,7 +9,6 @@ import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 import ru.rrozhkov.lib.gui.util.ImageUtil;
 
 import javax.swing.*;
@@ -26,7 +25,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
 	private JTabbedPane tabbedPane;
 	private EasyKinContext context;
     private static EasyKinWindow window;
-    private final static IGUIFactory swingGuiFactory = new SwingGuiFactory();
+    private final static IGUIFactory swingGuiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
 
     public static JFrame open() {
         if(window==null) {

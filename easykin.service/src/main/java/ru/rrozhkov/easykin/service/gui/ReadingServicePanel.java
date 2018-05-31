@@ -11,7 +11,6 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.gui.util.SwingGuiFactory;
 
 import javax.swing.*;
 import java.awt.*;
