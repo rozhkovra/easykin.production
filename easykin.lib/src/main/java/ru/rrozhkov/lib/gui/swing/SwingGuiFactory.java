@@ -50,17 +50,17 @@ public class SwingGuiFactory implements IGUIFactory {
     public Component password(){
         return new JPasswordField();
     }
-    public JPanel panelEmpty() {
+    public Component panelEmpty() {
         return new JPanel();
     }
-    public JPanel tablePanel(IGUIEditor parent, Table table) {
+    public TablePanel tablePanel(IGUIEditor parent, Table table) {
         return new TablePanel(parent, table);
     }
-    public JTable table(TableModel tableModel) {
+    public Table table(TableModel tableModel) {
         return new Table(tableModel);
     }
 
-    public JComboBox comboBoxFilled(Collection collection) {
+    public Component comboBoxFilled(Collection collection) {
         JComboBox box = new JComboBox();
         box.addItem("----");
         for(Object entry : collection){

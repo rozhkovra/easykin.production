@@ -19,7 +19,7 @@ public interface IGUIFactory {
     Component button(ImageIcon image, ActionListener listener);
     Component password();
     Component panelEmpty();
-    Component tablePanel(IGUIEditor parent, Table table);
-    Component table(TableModel tableModel);
+    TablePanel tablePanel(IGUIEditor parent, Table table);
+    Table table(TableModel tableModel);
     Component comboBoxFilled(Collection priorities);
 }
