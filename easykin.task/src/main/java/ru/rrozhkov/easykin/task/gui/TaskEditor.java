@@ -17,6 +17,7 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 	private ITask task;
 	private IGUIEditor parent;
 	private Component addButton;
+	private static TaskBuilder taskBuilder = new TaskBuilder();
 
 	public TaskEditor(IGUIEditor parent, ITask task) {
 		super();
@@ -67,7 +68,7 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 
 	public void refresh() {
 		if(task!=null) {
-			task = TaskBuilder.buildTask(task.getId());
+			task = taskBuilder.buildTask(task.getId());
 			fill();
 		}
 	}

@@ -23,6 +23,7 @@ import java.util.Collection;
  */
 public class Module {
     private static IGUIFactory taskFactory = new TaskGUIFactory();
+    private static TaskBuilder taskBuilder = new TaskBuilder();
     public static JPanel createPanel(IGUIEditor parent){
         return taskFactory.createTablePanel(parent, tasks());
     }
@@ -42,14 +43,14 @@ public class Module {
         if(person!=null)
             collection = tasks(person);
         else
-            collection = TaskBuilder.build();
+            collection = taskBuilder.build();
         return collection;
     }
     public static Collection tasks(IPerson person){
-        return TaskBuilder.build(person.getId());
+        return taskBuilder.build(person.getId());
     }
     public static Collection tasks(IFilterBean bean){
-        return TaskBuilder.build((TaskFilterBean)bean);
+        return taskBuilder.build((TaskFilterBean)bean);
     }
     public static Collection tasks(IPerson person, IFilter filter){
         return FilterUtil.filter(tasks(person), filter);

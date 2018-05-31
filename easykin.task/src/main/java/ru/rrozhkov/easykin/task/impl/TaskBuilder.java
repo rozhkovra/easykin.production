@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class TaskBuilder {
 	@Deprecated
-	public static ITask build(int id, String name, Date createDate, Date plannedDate,
+	public ITask build(int id, String name, Date createDate, Date plannedDate,
 			int priority, int categoryId, String categoryName, Date closeDate, int status){
 		ITask task = TaskFactory.createTask(id, name, createDate, plannedDate, priority, categoryId, categoryName, closeDate, status);
 		try {
@@ -28,7 +28,7 @@ public class TaskBuilder {
 		return task;
 	}
 
-	public static ITask buildTask(int id){
+	public ITask buildTask(int id){
 		try {
 			ITask task = TaskHandler.selectTask(id);
 			Collection<IComment> comments = CommentHandler.selectForTask(id);
@@ -41,7 +41,7 @@ public class TaskBuilder {
 		return null;
 	}
 
-	public static Collection<ITask> build(){
+	public Collection<ITask> build(){
 		try {
 			Collection<ITask> tasks = TaskHandler.select();
 			Collection<IComment> comments = CommentHandler.select();
@@ -52,7 +52,7 @@ public class TaskBuilder {
 		}
 	}	
 	
-	public static Collection<ITask> build(int personId){
+	public Collection<ITask> build(int personId){
 		try {
 			Collection<ITask> tasks = TaskHandler.selectForPerson(personId);
 			Collection<IComment> comments = CommentHandler.selectForPerson(personId);
@@ -63,7 +63,7 @@ public class TaskBuilder {
 		}
 	}
 
-	public static Collection<ITask> build(TaskFilterBean bean){
+	public Collection<ITask> build(TaskFilterBean bean){
 		try {
 			Collection<ITask> tasks = TaskHandler.selectForFilter(bean);
 			Collection<IComment> comments = CommentHandler.selectForPerson(bean.getPersonId());
@@ -75,7 +75,7 @@ public class TaskBuilder {
 	}
 
 
-	public static Collection<ITask> build(Collection<ITask> tasks, Collection<IComment> comments) {
+	public Collection<ITask> build(Collection<ITask> tasks, Collection<IComment> comments) {
 		for(ITask task : tasks){
 			task.comments().clear();
 			task.comments().addAll(FilterUtil.filter(comments,CommentFilterFactory.task(task.getId())));
