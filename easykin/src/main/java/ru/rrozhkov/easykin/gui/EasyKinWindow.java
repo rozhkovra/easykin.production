@@ -55,18 +55,18 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
  	public void edit(Object obj){
         closeEditor(IGUIEditor.CODE_CANCEL);
 
-        JPanel editor = GUIFactory.createEditor(context.getCurrentModule(), this, obj);
+        Component editor = GUIFactory.createEditor(context.getCurrentModule(), this, obj);
         showForm(editor);
 	}
 
     public void filter(){
         closeEditor(IGUIEditor.CODE_OK);
 
-        JPanel formPanel = GUIFactory.createFilter(context.getCurrentModule(), this);
+        Component formPanel = GUIFactory.createFilter(context.getCurrentModule(), this);
         showForm(formPanel);
     }
 
-    protected void showForm(JPanel form) {
+    protected void showForm(Component form) {
         JPanel content = new JPanel(new BorderLayout());
         content.add(form,BorderLayout.NORTH);
         Container main = (Container)getContentPane().getComponent(1);
@@ -118,14 +118,14 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     }
 
     private JPanel getTabbedPanel() {
-        JPanel panel = swingGuiFactory.panelEmpty();
+        JPanel panel = (JPanel)swingGuiFactory.panelEmpty();
         panel.setLayout(new BorderLayout());
         panel.add(getTabbedPane(true));
         return panel;
     }
 
     private JPanel getMenuButtons() {
-        JPanel menuButtons = swingGuiFactory.panelEmpty();
+        JPanel menuButtons = (JPanel)swingGuiFactory.panelEmpty();
         menuButtons.setLayout(new BoxLayout(menuButtons, BoxLayout.X_AXIS));
 
         ImageIcon plusIcon = ImageUtil.scaleImage(70, 70, ImageManager.plus(this.getClass()));

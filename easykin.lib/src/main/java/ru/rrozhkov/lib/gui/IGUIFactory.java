@@ -18,9 +18,8 @@ public interface IGUIFactory {
     Component button(String text, ActionListener listener);
     Component button(ImageIcon image, ActionListener listener);
     Component password();
-    JPanel panelEmpty();
-    JPanel tablePanel(IGUIEditor parent, Table table);
-    JTable table(TableModel tableModel);
-
-    JComboBox comboBoxFilled(Collection priorities);
+    Component panelEmpty();
+    Component tablePanel(IGUIEditor parent, Table table);
+    Component table(TableModel tableModel);
+    Component comboBoxFilled(Collection priorities);
 }

@@ -6,20 +6,21 @@ import ru.rrozhkov.lib.gui.IGUIFactory;
 import ru.rrozhkov.lib.gui.swing.SwingGuiFactory;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by rrozhkov on 4/19/2018.
  */
 public class GUIFactory {
     private final static IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
-    public static JPanel createPanel(String module, IGUIEditor parent) {
+    public static Component createPanel(String module, IGUIEditor parent) {
         if (ModuleManager.exist(module)) {
             return (JPanel) ModuleManager.invoke(module, "createPanel", parent);
         }
         return guiFactory.panelEmpty();
     }
 
-    public static JPanel createEditor(String module, IGUIEditor parent, Object obj) {
+    public static Component createEditor(String module, IGUIEditor parent, Object obj) {
         if(ModuleManager.exist(module)) {
             if(obj!=null)
                 return (JPanel)ModuleManager.invoke(module, "createEditor", parent, obj);
@@ -29,7 +30,7 @@ public class GUIFactory {
         return guiFactory.panelEmpty();
     }
 
-    public static JPanel createFilter(String module, IGUIEditor parent) {
+    public static Component createFilter(String module, IGUIEditor parent) {
         if(ModuleManager.exist(module)) {
             return (JPanel)ModuleManager.invoke(module, "createFilter", parent);
         }

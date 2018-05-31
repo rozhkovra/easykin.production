@@ -36,7 +36,7 @@ public class TaskFilter extends Form {
 	
 	private Component getPriorityComboBox(){
 		if(priorityComboBox == null){
-			priorityComboBox = guiFactory.comboBoxFilled(CollectionUtil.create(
+			priorityComboBox = (JComboBox)guiFactory.comboBoxFilled(CollectionUtil.create(
 					Priority.IMPOTANT_FAST,
 					Priority.IMPOTANT_NOFAST,
 					Priority.SIMPLE
@@ -47,7 +47,7 @@ public class TaskFilter extends Form {
 	
 	private Component getStatusComboBox(){
 		if(statusComboBox == null){
-			statusComboBox = guiFactory.comboBoxFilled(CollectionUtil.create(
+			statusComboBox = (JComboBox)guiFactory.comboBoxFilled(CollectionUtil.create(
 					Status.OPEN,
 					Status.CLOSE
 			));

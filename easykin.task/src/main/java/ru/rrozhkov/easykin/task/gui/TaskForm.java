@@ -94,7 +94,7 @@ public class TaskForm extends Form {
 	
 	private Component getPriorityComboBox(){
 		if(priorityComboBox == null){
-			priorityComboBox = guiFactory.comboBoxFilled(CollectionUtil.create(
+			priorityComboBox = (JComboBox)guiFactory.comboBoxFilled(CollectionUtil.create(
 					Priority.IMPOTANT_FAST,
 					Priority.IMPOTANT_NOFAST,
 					Priority.SIMPLE
@@ -108,7 +108,7 @@ public class TaskForm extends Form {
 	
 	private Component getCategoryComboBox(){
 		if(categoryComboBox == null){
-			categoryComboBox = guiFactory.comboBoxFilled(categories());
+			categoryComboBox = (JComboBox)guiFactory.comboBoxFilled(categories());
 			categoryComboBox.setSelectedItem(task.getCategory().getName());
 			if(task.getStatus().isClose())
 				categoryComboBox.setEditable(false);

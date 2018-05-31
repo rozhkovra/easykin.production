@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.task;
 
-import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
@@ -15,7 +14,7 @@ import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
-import javax.swing.*;
+import java.awt.*;
 import java.util.Collection;
 
 /**
@@ -24,16 +23,16 @@ import java.util.Collection;
 public class Module {
     private static IModuleGUIFactory taskFactory = new TaskGUIFactory();
     private static TaskBuilder taskBuilder = new TaskBuilder();
-    public static JPanel createPanel(IGUIEditor parent){
+    public static Component createPanel(IGUIEditor parent){
         return taskFactory.createTablePanel(parent, tasks());
     }
-    public static JPanel createEditor(IGUIEditor parent){
+    public static Component createEditor(IGUIEditor parent){
         return taskFactory.createEditor(parent, null);
     }
-    public static JPanel createEditor(IGUIEditor parent, ITask task){
+    public static Component createEditor(IGUIEditor parent, ITask task){
         return taskFactory.createEditor(parent, task);
     }
-    public static JPanel createFilter(IGUIEditor parent){
+    public static Component createFilter(IGUIEditor parent){
         return taskFactory.createFilter(parent);
     }
 
@@ -55,7 +54,7 @@ public class Module {
     public static Collection tasks(IPerson person, IFilter filter){
         return FilterUtil.filter(tasks(person), filter);
     }
-    public static Collection<IPayment> payments(){
+    public static Collection payments(){
         return ((TaskConverter)TaskConverterFactory.task()).payments(tasks());
     }
 }

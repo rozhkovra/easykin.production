@@ -14,7 +14,7 @@ public class Calc2GUIFactory implements IModuleGUIFactory {
     final private static Calc2Builder calc2Builder = new Calc2Builder();
     protected final static IGUIFactory swingGuiFactory = GUIFactory.create();
     public JPanel createTablePanel(IGUIEditor parent, Collection data) {
-        return swingGuiFactory.tablePanel(parent, (Table)swingGuiFactory.table(new ServiceTableModel(data)));
+        return (JPanel)swingGuiFactory.tablePanel(parent, (Table)swingGuiFactory.table(new ServiceTableModel(data)));
     }
 
     public JPanel createEditor(IGUIEditor parent, Object calc) {
@@ -26,6 +26,6 @@ public class Calc2GUIFactory implements IModuleGUIFactory {
     }
 
     public JPanel createFilter(IGUIEditor parent) {
-        return swingGuiFactory.panelEmpty();
+        return (JPanel)swingGuiFactory.panelEmpty();
     }
 }
