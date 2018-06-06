@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.work.gui;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
+import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
 import ru.rrozhkov.lib.gui.*;
 
 import javax.swing.*;
@@ -12,15 +13,13 @@ import java.util.Collection;
  */
 public class ActivityGUIFactory implements IModuleGUIFactory {
     private final static IGUIFactory guiFactory = GUIFactory.create();
+
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new ActivityTableModel(data));
     }
 
     public Component createEditor(IGUIEditor parent, Object obj) {
-        if(obj!=null) {
-            return new ActivityForm(parent,(IActivity)obj);
-        }
-        return new ActivityForm(parent);
+        return new ActivityForm(parent,(IActivity)obj);
     }
 
     public Component createFilter(IGUIEditor parent) {

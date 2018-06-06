@@ -17,8 +17,7 @@ public class ActivityBuilder {
     private static final ActivityHandler activityHandler = new ActivityHandler();
     private static final AuthManager authManager = AuthManager.instance();
 
-    public IActivity build(IActivity activity){
-        //todo add handle of person from db
+    public IActivity applyPerson(IActivity activity){
         IPerson person = authManager.signedPerson();
         if(activity.getPerson()==null) {
             activity = workFactory.create(activity.getId(),activity.getDate(),person,activity.getTime(),activity.getTaskType(),activity.getName(),activity.getReleaseType(),activity.getDesc());
@@ -32,7 +31,7 @@ public class ActivityBuilder {
         try {
             Collection<IActivity> activities = activityHandler.selectForPerson(person.getId());
             for(IActivity activity : activities) {
-                collection.add(build(activity));
+                collection.add(applyPerson(activity));
             }
         } catch (Exception e) {
             e.printStackTrace();

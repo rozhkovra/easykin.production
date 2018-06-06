@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.work;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
+import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
 import ru.rrozhkov.easykin.work.gui.ActivityGUIFactory;
 import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
 import ru.rrozhkov.lib.gui.IGUIEditor;
@@ -16,11 +17,14 @@ import java.util.Collection;
 public class Module {
     private static IModuleGUIFactory activityFactory = new ActivityGUIFactory();
     private static ActivityBuilder activityBuilder = new ActivityBuilder();
+    private static final WorkFactory workFactory = new WorkFactory();
+
     public static Component createPanel(IGUIEditor parent) {
         return activityFactory.createTablePanel(parent, activities());
     }
     public static Component createEditor(IGUIEditor parent){
-        return activityFactory.createEditor(parent, null);
+        IActivity activity = workFactory.newActivity();
+        return activityFactory.createEditor(parent, activity);
     }
     public static Component createEditor(IGUIEditor parent, IActivity activity) {
         return activityFactory.createEditor(parent,activity);
