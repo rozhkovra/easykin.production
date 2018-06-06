@@ -2,15 +2,12 @@ package ru.rrozhkov.easykin.task;
 
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.TaskGUIFactory;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
-import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
-import ru.rrozhkov.lib.filter.IFilter;
-import ru.rrozhkov.lib.filter.IFilterBean;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
@@ -21,42 +18,36 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    final private static IModuleGUIFactory taskFactory = new TaskGUIFactory();
+    final private static IModuleGUIFactory guiTaskFactory = new TaskGUIFactory();
+    private static final TaskFactory taskFactory = new TaskFactory();
     final private static TaskBuilder taskBuilder = new TaskBuilder();
     final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
     final private static AuthManager authManager = AuthManager.instance();
 
     public static Component createPanel(IGUIEditor parent){
-        return taskFactory.createTablePanel(parent, tasks());
+        return guiTaskFactory.createTablePanel(parent, tasks());
     }
     public static Component createEditor(IGUIEditor parent){
-        return taskFactory.createEditor(parent, null);
+        ITask task = taskFactory.newTask();
+        return guiTaskFactory.createEditor(parent, task);
     }
     public static Component createEditor(IGUIEditor parent, ITask task){
-        return taskFactory.createEditor(parent, task);
+        return guiTaskFactory.createEditor(parent, task);
     }
     public static Component createFilter(IGUIEditor parent){
-        return taskFactory.createFilter(parent);
+        return guiTaskFactory.createFilter(parent);
     }
 
     public static Collection tasks(){
         Collection collection;
         IPerson person = authManager.signedPerson();
         if(person!=null)
-            collection = tasks(person);
+            collection = taskBuilder.build(person.getId());
         else
             collection = taskBuilder.build();
         return collection;
     }
-    public static Collection tasks(IPerson person){
-        return taskBuilder.build(person.getId());
-    }
-    public static Collection tasks(IFilterBean bean){
-        return taskBuilder.build((TaskFilterBean)bean);
-    }
-    public static Collection tasks(IPerson person, IFilter filter){
-        return FilterUtil.filter(tasks(person), filter);
-    }
+
     public static Collection payments(){
         return ((TaskConverter)taskConverterFactory.task()).payments(tasks());
     }

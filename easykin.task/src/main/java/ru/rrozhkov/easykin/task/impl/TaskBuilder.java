@@ -22,7 +22,8 @@ public class TaskBuilder {
 	@Deprecated
 	public ITask build(int id, String name, Date createDate, Date plannedDate,
 			int priority, int categoryId, String categoryName, Date closeDate, int status){
-		ITask task = taskFactory.createTask(id, name, createDate, plannedDate, priority, categoryId, categoryName, closeDate, status);
+		ITask task = taskFactory.createTask(id, name, createDate, plannedDate,
+				priority, categoryId, categoryName, closeDate, status);
 		try {
 			Collection<IComment> comments = commentHandler.selectForTask(id);
 			task.comments().clear();

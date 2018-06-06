@@ -1,26 +1,22 @@
 package ru.rrozhkov.easykin.task.gui.comment;
 
-import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
+import ru.rrozhkov.easykin.task.service.impl.CommentService;
+import ru.rrozhkov.lib.gui.Form;
+import ru.rrozhkov.lib.gui.IGUIEditor;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class CommentForm extends Form {
 	private static final long serialVersionUID = 1L;
-	private static final CommentHandler handler = new CommentHandler();
+	private static final CommentService commentService = new CommentService();
 	private static final TaskFactory taskFactory = new TaskFactory();
 
 	private JTextField textField;
 	private Component textLabel;
 	private IComment comment;
-
-	public CommentForm(IGUIEditor parent, int taskId) {
-		this(parent, taskFactory.newComment(taskId));
-	}
 
 	public CommentForm(IGUIEditor parent, IComment comment) {
 		super(parent);
@@ -29,7 +25,7 @@ public class CommentForm extends Form {
 	}
 	
 	protected void fill(){
-		setLayout(new GridLayout(4, 2));
+		setLayout(guiFactory.gridLayout(4, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getTextLabel());
@@ -59,14 +55,7 @@ public class CommentForm extends Form {
 		update();
 		if(!validateData())
 			return;
-		try{
-			if(comment.getId()==-1)
-				handler.insert(comment);
-			else
-				handler.update(comment);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		commentService.createOrUpdate(comment);
 		parent.refresh();
 	}
 

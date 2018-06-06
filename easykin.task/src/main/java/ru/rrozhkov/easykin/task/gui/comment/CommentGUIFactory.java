@@ -17,16 +17,9 @@ public class CommentGUIFactory implements IModuleGUIFactory {
     public Component createTablePanel(IGUIEditor parent, Collection collection){
         return guiFactory.tablePanel(parent, new CommentTableModel(collection));
     }
-    public Component createEditor(IGUIEditor parent, Object obj, int id){
-        if(obj!=null && obj instanceof IComment)
-            return new CommentForm(parent,(IComment)obj);
-        return new CommentForm(parent, id);
-    }
 
     public Component createEditor(IGUIEditor parent, Object obj) {
-        if(obj!=null)
-            return new CommentForm(parent,(IComment)obj);
-        return new CommentForm(parent, 0);
+        return new CommentForm(parent,(IComment)obj);
     }
 
     public Component createFilter(IGUIEditor parent) {

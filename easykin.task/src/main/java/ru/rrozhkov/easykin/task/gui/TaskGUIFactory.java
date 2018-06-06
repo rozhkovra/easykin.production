@@ -1,9 +1,11 @@
 package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.lib.gui.*;
+import ru.rrozhkov.lib.gui.GUIFactory;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 
@@ -12,19 +14,16 @@ import java.util.Collection;
  */
 public class TaskGUIFactory implements IModuleGUIFactory {
     private final static IGUIFactory guiFactory = GUIFactory.create();
+
     public Component createTaskForm(IGUIEditor parent, ITask task){
-        if(task!=null)
-            return new TaskForm(parent,task);
-        return new TaskForm(parent);
+        return new TaskForm(parent, task);
     }
     public Component createFilter(IGUIEditor parent){
         return new TaskFilter(parent);
     }
-
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new TaskTableModel(data));
     }
-
     public Component createEditor(IGUIEditor parent, Object obj) {
         return new TaskEditor(parent, (ITask)obj);
     }

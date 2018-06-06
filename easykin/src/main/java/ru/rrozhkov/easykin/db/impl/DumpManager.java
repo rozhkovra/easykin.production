@@ -14,6 +14,7 @@ import ru.rrozhkov.easykin.person.impl.convert.PersonConverterFactory;
 import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
+import ru.rrozhkov.easykin.task.service.impl.CategoryService;
 import ru.rrozhkov.lib.convert.IEntityConverter;
 import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
@@ -32,19 +33,17 @@ public class DumpManager {
     final private static PersonConverterFactory personConverterFactory = new PersonConverterFactory();
     final private static PaymentConverterFactory paymentConverterFactory = new PaymentConverterFactory();
     final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+    private static final CategoryService categoryService = new CategoryService();
 
     public void dump(){
         StringBuilder builder = new StringBuilder();
-        try {
-            Collection<ICategory> categories = CategoryHandler.select();
-            IEntityConverter converter = taskConverterFactory.category();
-            for (ICategory category : categories)
-                builder.append(converter.sqlInsert(category)).append(";");
-        } catch (Exception e) {
-            e.printStackTrace();
+        Collection<ICategory> categories = categoryService.categories();
+        IEntityConverter converter = taskConverterFactory.category();
+        for (ICategory category : categories) {
+            builder.append(converter.sqlInsert(category)).append(";");
         }
         Collection<IPerson> persons = (Collection<IPerson>) moduleManager.invoke(Module.PERSON, "persons");
-        IEntityConverter converter = personConverterFactory.person();
+        converter = personConverterFactory.person();
         for (IPerson person : persons)
             builder.append(converter.sqlInsert(person)).append(";");
         IPerson person = authManager.signedPerson();

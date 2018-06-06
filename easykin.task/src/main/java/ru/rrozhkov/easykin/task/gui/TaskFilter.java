@@ -27,7 +27,7 @@ public class TaskFilter extends Form {
 	}
 	
 	protected void fill(){
-		setLayout(new GridLayout(3, 2));
+		setLayout(guiFactory.gridLayout(3, 2));
 		add(getPriorityLabel()); 
 		add(getPriorityComboBox()); 
 		add(getStatusLabel());
@@ -70,14 +70,12 @@ public class TaskFilter extends Form {
 	}
 
 	protected void ok() {
-//		EasyKinContext easyKinContext = (EasyKinContext) context;
 		Collection<IFilter> filters = CollectionUtil.create();
-			if(statusComboBox.getSelectedIndex()!=0)
-				filters.add(taskFilterFactory.status(Status.status(statusComboBox.getSelectedIndex())));
-			if(priorityComboBox.getSelectedIndex()!=0)
-				filters.add(taskFilterFactory.priority(Priority.priority(priorityComboBox.getSelectedIndex())));
-//			easyKinContext.masterData().filter(filters);
-		parent.refresh();
+		if(statusComboBox.getSelectedIndex()!=0)
+			filters.add(taskFilterFactory.status(Status.status(statusComboBox.getSelectedIndex())));
+		if(priorityComboBox.getSelectedIndex()!=0)
+			filters.add(taskFilterFactory.priority(Priority.priority(priorityComboBox.getSelectedIndex())));
 		parent.closeEditor(IGUIEditor.CODE_OK);
+		parent.refresh();
 	}
 }

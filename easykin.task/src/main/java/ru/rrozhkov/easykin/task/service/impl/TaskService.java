@@ -5,6 +5,7 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.model.task.util.TaskUtil;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.db.impl.Task2PaymentHandler;
 import ru.rrozhkov.easykin.task.db.impl.Task2PersonHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
@@ -17,14 +18,42 @@ import java.sql.SQLException;
  * Created by rrozhkov on 3/6/2017.
  */
 public class TaskService {
-    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
-    final private static Task2PaymentHandler t2paymentHandler = new Task2PaymentHandler();
-    final private static Task2PersonHandler t2personHandler = new Task2PersonHandler();
-    final private static TaskHandler taskHandler = new TaskHandler();
-    final private static PaymentHandler paymentHandler = new PaymentHandler();
-    final private static TaskFactory taskFactory = new TaskFactory();
+    private static final TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+    private static final Task2PaymentHandler t2paymentHandler = new Task2PaymentHandler();
+    private static final Task2PersonHandler t2personHandler = new Task2PersonHandler();
+    private static final TaskHandler taskHandler = new TaskHandler();
+    private static final PaymentHandler paymentHandler = new PaymentHandler();
+    private static final TaskFactory taskFactory = new TaskFactory();
+    private static final AuthManager authManager = AuthManager.instance();
 
-    public static int create(int personId, ITask task) throws SQLException {
+    public int createOrUpdate(ITask task){
+        int taskId = task.getId();
+        try{
+            if (taskId == -1) {
+                taskId = create(task);
+            } else {
+                taskHandler.update(task);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return taskId;
+    }
+
+
+    public void close(ITask task) {
+        if (task.getId()==-1) {
+            return;
+        }
+        try {
+            taskHandler.close(task);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    protected int create(ITask task) throws SQLException {
+        int personId = authManager.signedPerson().getId();
         int taskId = taskHandler.insert(task);
         t2personHandler.insert(taskFactory.createTask2Person(-1, personId, taskId));
         if(TaskUtil.withPayment(task)) {

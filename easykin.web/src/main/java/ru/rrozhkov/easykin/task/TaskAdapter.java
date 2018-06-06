@@ -7,13 +7,13 @@ import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
-import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
+import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.util.DateUtil;
 
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -23,13 +23,14 @@ import java.util.Date;
 public class TaskAdapter {
     final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
     final private static AuthManager authManager = AuthManager.instance();
-    final private static TaskHandler taskHandler = new TaskHandler();
+    final private static TaskService taskService = new TaskService();
     final private static TaskFactory taskFactory = new TaskFactory();
+    final private static TaskBuilder taskBuilder = new TaskBuilder();
     final private static TaskBeanFactory taskBeanFactory = new TaskBeanFactory();
 
     public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
         TaskFilterBean bean = filter(request);
-        Collection<ITask> tasks = Module.tasks(bean);
+        Collection<ITask> tasks = taskBuilder.build(bean);
         Collection<TaskBean> taskBeans = CollectionUtil.create();
         int num = 0;
         for (ITask task : tasks) {
@@ -75,14 +76,8 @@ public class TaskAdapter {
 
     public void done(javax.servlet.http.HttpServletRequest request) {
         int taskId = request.getParameter("taskId")!=null?Integer.valueOf(request.getParameter("taskId")):-1;
-        if (taskId!=-1) {
-            ITask task = taskFactory.createTask(taskId, "", new Date(), new Date(), Priority.priority(Priority.SIMPLE)
+        ITask task = taskFactory.createTask(taskId, "", new Date(), new Date(), Priority.priority(Priority.SIMPLE)
                     , 1, "", null, Status.status(Status.OPEN));
-            try {
-                taskHandler.close(task);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        taskService.close(task);
     }
 }
