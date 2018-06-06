@@ -14,6 +14,8 @@ import java.util.Collection;
 
 public class TaskFilter extends Form {
 	private static final long serialVersionUID = 1L;
+	final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+
 	private JComboBox priorityComboBox;
 	private JComboBox statusComboBox;
 	private Component priorityLabel;
@@ -71,9 +73,9 @@ public class TaskFilter extends Form {
 //		EasyKinContext easyKinContext = (EasyKinContext) context;
 		Collection<IFilter> filters = CollectionUtil.create();
 			if(statusComboBox.getSelectedIndex()!=0)
-				filters.add(TaskFilterFactory.status(Status.status(statusComboBox.getSelectedIndex())));
+				filters.add(taskFilterFactory.status(Status.status(statusComboBox.getSelectedIndex())));
 			if(priorityComboBox.getSelectedIndex()!=0)
-				filters.add(TaskFilterFactory.priority(Priority.priority(priorityComboBox.getSelectedIndex())));
+				filters.add(taskFilterFactory.priority(Priority.priority(priorityComboBox.getSelectedIndex())));
 //			easyKinContext.masterData().filter(filters);
 		parent.refresh();
 		parent.closeEditor(IGUIEditor.CODE_OK);

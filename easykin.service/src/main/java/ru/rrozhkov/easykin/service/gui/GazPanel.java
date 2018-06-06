@@ -1,12 +1,11 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
+import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class GazPanel extends Panel{ 
 	public static String PREV_MESURE_LABEL_TEXT = "Предыдущие показания";
@@ -16,17 +15,17 @@ public class GazPanel extends Panel{
 	private JTextField prevMesureField = null;
 	private JTextField currentMesureField = null;
 	private JTextField rateField = null;
-	private JLabel prevMesureLabel = null;
-	private JLabel currentMesureLabel = null;
-	private JLabel rateLabel = null;
+	private Component prevMesureLabel = null;
+	private Component currentMesureLabel = null;
+	private Component rateLabel = null;
 	
-	public GazPanel(Panel parent, GazCalc calcBean) {
+	public GazPanel(Panel parent, ICalculation calcBean) {
 		super(parent, calcBean);
 		fill();
 	}
 
 	private void fill() {
-		setLayout(new GridLayout(7, 2));
+		setLayout(guiFactory.gridLayout(7, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getCalcTypeLabel());
@@ -69,21 +68,21 @@ public class GazPanel extends Panel{
 		return rateField;
 	}
 	
-	public JLabel getPrevMesureLabel(){
+	public Component getPrevMesureLabel(){
 		if(prevMesureLabel == null)
-			prevMesureLabel = (JLabel) guiFactory.label(PREV_MESURE_LABEL_TEXT);
+			prevMesureLabel = guiFactory.label(PREV_MESURE_LABEL_TEXT);
 		return prevMesureLabel;
 	}
 	
-	public JLabel getCurrentMesureLabel(){
+	public Component getCurrentMesureLabel(){
 		if(currentMesureLabel == null)
-			currentMesureLabel = (JLabel) guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
+			currentMesureLabel = guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
 		return currentMesureLabel;
 	}
 	
-	public JLabel getRateLabel(){
+	public Component getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = (JLabel) guiFactory.label(RATE_LABEL_TEXT);
+			rateLabel = guiFactory.label(RATE_LABEL_TEXT);
 		return rateLabel;
 	}
 

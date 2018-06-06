@@ -1,12 +1,11 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
+import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class ElectricityPanel extends Panel{
 	public static String PREV_MESURE_LABEL_TEXT = "Предыдущие показания";
@@ -18,18 +17,18 @@ public class ElectricityPanel extends Panel{
 	private JTextField currentMesureField = null;
 	private JTextField rateField = null;
 	private JTextField odnField = null;
-	private JLabel prevMesureLabel = null;
-	private JLabel currentMesureLabel = null;
-	private JLabel rateLabel = null;
-	private JLabel odnLabel = null;
+	private Component prevMesureLabel = null;
+	private Component currentMesureLabel = null;
+	private Component rateLabel = null;
+	private Component odnLabel = null;
 	
-	public ElectricityPanel(Panel parent, ElectricityCalc bean) {
+	public ElectricityPanel(Panel parent, ICalculation bean) {
 		super(parent, bean);
 		fill();	 
 	}
 
 	private void fill() {
-		setLayout(new GridLayout(7, 2));
+		setLayout(guiFactory.gridLayout(7, 2));
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
 		add(getPrevMesureLabel()); 
@@ -81,27 +80,27 @@ public class ElectricityPanel extends Panel{
 		return odnField;
 	}
 	
-	public JLabel getPrevMesureLabel(){
+	public Component getPrevMesureLabel(){
 		if(prevMesureLabel == null)
-			prevMesureLabel = (JLabel) guiFactory.label(PREV_MESURE_LABEL_TEXT);
+			prevMesureLabel = guiFactory.label(PREV_MESURE_LABEL_TEXT);
 		return prevMesureLabel;
 	}
 	
-	public JLabel getCurrentMesureLabel(){
+	public Component getCurrentMesureLabel(){
 		if(currentMesureLabel == null)
-			currentMesureLabel = (JLabel) guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
+			currentMesureLabel = guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
 		return currentMesureLabel;
 	}
 	
-	public JLabel getRateLabel(){
+	public Component getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = (JLabel) guiFactory.label(RATE_LABEL_TEXT);
+			rateLabel = guiFactory.label(RATE_LABEL_TEXT);
 		return rateLabel;
 	}
 
-	public JLabel getOdnLabel(){
+	public Component getOdnLabel(){
 		if(odnLabel == null)
-			odnLabel = (JLabel) guiFactory.label(ODN_LABEL_TEXT);
+			odnLabel = guiFactory.label(ODN_LABEL_TEXT);
 		return odnLabel;
 	}
 

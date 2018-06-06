@@ -11,7 +11,9 @@ import javax.swing.*;
  * Created by rrozhkov on 3/6/2017.
  */
 public class AuthManager {
-    static AuthManager authManager = new AuthManager();
+    private final static AuthHandler authHandler = new AuthHandler();
+
+    static AuthManager authManager = null;
     protected IPerson signedPerson;
 
     public static AuthManager instance(){
@@ -27,16 +29,16 @@ public class AuthManager {
         while(!window.isFinished()){
         }
         window.finish();
-        return authManager;
-    }
-
-    public static int authDialog(JFrame parent){
-        AuthDialog dialog = new AuthDialog(parent, true);
-        dialog.start();
-        return dialog.code();
+        return instance();
     }
 
     protected AuthManager() {
+    }
+
+    public int authDialog(JFrame parent){
+        AuthDialog dialog = new AuthDialog(parent, true);
+        dialog.start();
+        return dialog.code();
     }
 
     public IPerson signedPerson(){
@@ -45,7 +47,7 @@ public class AuthManager {
 
     public void signIn(String user, String pass){
         try {
-            this.signedPerson = AuthHandler.auth(user, pass);
+            this.signedPerson = authHandler.auth(user, pass);
         }catch(Exception e){
             e.printStackTrace();
         }

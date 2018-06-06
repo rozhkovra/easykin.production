@@ -1,6 +1,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.payment.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <section class="content">
 <div class="row">
@@ -23,7 +24,9 @@
 </thead>
 <tbody>
 <%
-	Collection<PaymentBean> payments = PaymentAdapter.payments();
+	final AdapterFactory adapterFactory = new AdapterFactory();
+	final PaymentAdapter paymentAdapter = adapterFactory.payment();
+	Collection<PaymentBean> payments = paymentAdapter.payments();
 	for (PaymentBean payment : payments) {
 %>
 <tr>

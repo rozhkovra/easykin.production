@@ -6,7 +6,9 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculator;
 import ru.rrozhkov.easykin.model.service.calc.IResult;
 
 public class ServiceCalculator extends Calculator {
-	public ServiceCalculator(ServiceCalc calcBean) {
+	private static final CalculatorFactory calculatorFactory = new CalculatorFactory();
+
+	public ServiceCalculator(ICalculation calcBean) {
 		super(calcBean);
 	}
 
@@ -14,7 +16,7 @@ public class ServiceCalculator extends Calculator {
 		ServiceCalc calcBean = (ServiceCalc)getCalc();
 		Money itogo = Money.valueOf(0.00);
 		for(ICalculation calc : calcBean.calcs()){
-			ICalculator calculator = CalculatorFactory.getCalculator(calc);
+			ICalculator calculator = calculatorFactory.getCalculator(calc);
 			if(calculator!=null) {
 				IResult result = calculator.calculate();
 				itogo.add(result.getResult());

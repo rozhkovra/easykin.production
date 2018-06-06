@@ -17,6 +17,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class ActivityConverter implements IEntityConverter<IActivity> {
+    private static final WorkFactory workFactory = new WorkFactory();
+
     protected ActivityConverter() {
     }
 
@@ -49,7 +51,7 @@ public class ActivityConverter implements IEntityConverter<IActivity> {
         return new IConverter<ResultSet, IActivity>() {
             public IActivity convert(ResultSet entry) {
                 try{
-                    return WorkFactory.create(entry.getInt("id"), entry.getDate("actdate")
+                    return workFactory.create(entry.getInt("id"), entry.getDate("actdate")
                             , null, entry.getInt("acttime")
                             , TaskType.type(entry.getString("tasktype")), entry.getString("name")
                             , ReleaseType.type(entry.getString("releaseType")), entry.getString("desc"));

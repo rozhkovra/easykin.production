@@ -10,6 +10,9 @@ import java.awt.*;
 
 public class AuthForm extends Form {
 	private static final long serialVersionUID = 1L;
+	private static final AuthManager authManager = AuthManager.instance();
+	private static final AuthValidator authValidator = new AuthValidator();
+
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 	private Component usernameLabel;
@@ -17,12 +20,11 @@ public class AuthForm extends Form {
 
 	public AuthForm(final IGUIEditor parent) {
 		super(parent);
-
 		fill();
 	}
 	
 	protected void fill(){
-		setLayout(new GridLayout(3, 2));
+		setLayout(guiFactory.gridLayout(3, 2));
 		add(getUsernameLabel());
 		add(getUsernameField());
 		add(getPasswordLabel());
@@ -34,7 +36,7 @@ public class AuthForm extends Form {
 	
 	private JTextField getUsernameField(){
 		if(usernameField == null){
-			usernameField = new JTextField(50);
+			usernameField = (JTextField) guiFactory.fieldEditable(50, "");
 			usernameField.addKeyListener(keyListener());
 		}
 		return usernameField;
@@ -61,23 +63,23 @@ public class AuthForm extends Form {
 	}
 
 	protected void ok(){
-		if (!AuthValidator.validateAuthForm(getUsernameField(), getPasswordField())) {
+		if (!authValidator.validateAuthForm(getUsernameField(), getPasswordField())) {
 			JOptionPane.showMessageDialog((Component)parent, "Username or password can't be empty!!!");
 			return;
 		}
-		if (AuthValidator.validateSignedUsername(getUsernameField().getText())) {
+		if (authValidator.validateSignedUsername(getUsernameField().getText())) {
 			JOptionPane.showMessageDialog((Component)parent, "Username is already signed in!!!");
 			return;
 		}
-		AuthManager.instance().signIn(getUsernameField().getText().toString(), getPasswordField().getText().toString());
-		if (!AuthManager.instance().isSignedIn()) {
+		authManager.signIn(getUsernameField().getText(), getPasswordField().getText());
+		if (!authManager.isSignedIn()) {
 			JOptionPane.showMessageDialog((Component) parent, "Username or password incorrect!!!");
 		} else
 			parent.closeEditor(IGUIEditor.CODE_OK);
 	}
 
 	protected boolean validateData(){
-		return !getUsernameField().getText().toString().isEmpty()
-				&& !getPasswordField().getText().toString().isEmpty();
+		return !getUsernameField().getText().isEmpty()
+				&& !getPasswordField().getText().isEmpty();
 	}
 }

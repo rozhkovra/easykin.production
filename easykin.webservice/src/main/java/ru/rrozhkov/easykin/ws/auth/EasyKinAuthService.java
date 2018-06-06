@@ -10,10 +10,9 @@ import javax.jws.WebService;
  */
 @WebService(serviceName="EasyKinAuth", portName="EasyKinAuthPort", targetNamespace="http://rrozhkov.ru/easykin/auth")
 public class EasyKinAuthService {
-
+    private static final AuthManager authManager = AuthManager.instance();
     @WebMethod
     public int auth(String user, String pass) {
-        AuthManager authManager = AuthManager.instance();
         authManager.signIn(user, pass);
         if(authManager.isSignedIn())
             return 1;

@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.lib.filter.IFilter;
 
 public class ServiceCalcFilterFactory {
-	public static IFilter<ICalculation> createCalcTypeFilter(CalculationType type){
+	public IFilter<ICalculation> createCalcTypeFilter(CalculationType type){
 		return new CalcTypeFilter(type);
 	}
 }

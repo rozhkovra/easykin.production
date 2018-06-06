@@ -3,36 +3,35 @@ package ru.rrozhkov.easykin.gui;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.swing.SwingGuiFactory;
 
-import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by rrozhkov on 4/19/2018.
  */
 public class GUIFactory {
-    private final static IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
+    final private static IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
+    final private static ModuleManager moduleManager = new ModuleManager();
     public static Component createPanel(String module, IGUIEditor parent) {
-        if (ModuleManager.exist(module)) {
-            return (JPanel) ModuleManager.invoke(module, "createPanel", parent);
+        if (moduleManager.exist(module)) {
+            return (Component) moduleManager.invoke(module, "createPanel", parent);
         }
         return guiFactory.panelEmpty();
     }
 
     public static Component createEditor(String module, IGUIEditor parent, Object obj) {
-        if(ModuleManager.exist(module)) {
+        if(moduleManager.exist(module)) {
             if(obj!=null)
-                return (JPanel)ModuleManager.invoke(module, "createEditor", parent, obj);
+                return (Component)moduleManager.invoke(module, "createEditor", parent, obj);
             else
-                return (JPanel)ModuleManager.invoke(module, "createEditor", parent);
+                return (Component)moduleManager.invoke(module, "createEditor", parent);
         }
         return guiFactory.panelEmpty();
     }
 
     public static Component createFilter(String module, IGUIEditor parent) {
-        if(ModuleManager.exist(module)) {
-            return (JPanel)ModuleManager.invoke(module, "createFilter", parent);
+        if(moduleManager.exist(module)) {
+            return (Component)moduleManager.invoke(module, "createFilter", parent);
         }
         return guiFactory.panelEmpty();
     }

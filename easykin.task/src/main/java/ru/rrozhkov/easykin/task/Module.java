@@ -21,8 +21,11 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IModuleGUIFactory taskFactory = new TaskGUIFactory();
-    private static TaskBuilder taskBuilder = new TaskBuilder();
+    final private static IModuleGUIFactory taskFactory = new TaskGUIFactory();
+    final private static TaskBuilder taskBuilder = new TaskBuilder();
+    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+    final private static AuthManager authManager = AuthManager.instance();
+
     public static Component createPanel(IGUIEditor parent){
         return taskFactory.createTablePanel(parent, tasks());
     }
@@ -38,7 +41,7 @@ public class Module {
 
     public static Collection tasks(){
         Collection collection;
-        IPerson person = AuthManager.instance().signedPerson();
+        IPerson person = authManager.signedPerson();
         if(person!=null)
             collection = tasks(person);
         else
@@ -55,6 +58,6 @@ public class Module {
         return FilterUtil.filter(tasks(person), filter);
     }
     public static Collection payments(){
-        return ((TaskConverter)TaskConverterFactory.task()).payments(tasks());
+        return ((TaskConverter)taskConverterFactory.task()).payments(tasks());
     }
 }

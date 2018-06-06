@@ -16,7 +16,7 @@ import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalculator;
 
 public class CalculatorFactory {
-	public static ICalculator getCalculator(ICalculation bean){
+	public ICalculator getCalculator(ICalculation bean){
 		if(bean instanceof MeasureCalc)
 			return new MeasureCalculator((MeasureCalc)bean);
 		else if(bean instanceof GazCalc)
@@ -30,7 +30,7 @@ public class CalculatorFactory {
 		else if (bean instanceof DefaultCalc)
 			return new DefaultCalculator((DefaultCalc) bean);
 		else if (bean instanceof ServiceCalc)
-			return new ServiceCalculator((ServiceCalc) bean);
+			return new ServiceCalculator(bean);
 		return null;
 	}
 }

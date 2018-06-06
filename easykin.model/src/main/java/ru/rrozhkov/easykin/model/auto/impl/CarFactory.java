@@ -8,10 +8,10 @@ import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.person.IPerson;
 
 public class CarFactory {
-	public static ICar createRegisteredCar(Brend brend, Model model, Body body, int year, double volume, IPerson owner, IDoc doc){
+	public ICar createRegisteredCar(Brend brend, Model model, Body body, int year, double volume, IPerson owner, IDoc doc){
 		return new RegisteredCar(brend, model, body, year, volume, owner, doc);
 	}
-	public static ICar createCar(Brend brend, Model model, Body body, int year, double volume){
+	public ICar createCar(Brend brend, Model model, Body body, int year, double volume){
 		return new Car(brend, model, body, year, volume);
 	}
 }

@@ -11,7 +11,7 @@
 %>
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h4><%=Module.name(moduleId)%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh"></i></h4>
+      <h4><%=Module.name(moduleId)%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh" style="cursor:pointer;"></i></h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"><%=Module.name(moduleId)%></li>

@@ -7,7 +7,7 @@ import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
-import javax.swing.*;
+import java.awt.*;
 import java.util.Collection;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 public class Module {
     private static IModuleGUIFactory personGUIFactory = new PersonGUIFactory();
-    public static JPanel createEditor(IGUIEditor parent, IPerson person){
+    public static Component createEditor(IGUIEditor parent, IPerson person){
         return personGUIFactory.createEditor(parent,person);
     }
     public static Collection persons(){

@@ -6,5 +6,5 @@ import ru.rrozhkov.lib.convert.IEntityConverter;
  * Created by rrozhkov on 07.05.2018.
  */
 public class PersonConverterFactory {
-    public static IEntityConverter person(){return new PersonConverter();}
+    public IEntityConverter person(){return new PersonConverter();}
 }

@@ -2,6 +2,8 @@ package ru.rrozhkov.easykin.work.db.impl;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.work.impl.convert.WorkConverterFactory;
+import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.lib.db.IDBManager;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.sql.SQLException;
@@ -9,6 +11,10 @@ import java.util.Collection;
 import java.util.Map;
 
 public class ActivityHandler {
+	private static final IDBManager dbManager = DBManager.instance();
+	private static final WorkConverterFactory converterFactory = new WorkConverterFactory();
+	private static final IEntityConverter converter = converterFactory.activity();
+
 	private static String TABLENAME = "ACTIVITY";
 
 	public static String select = "select * from "+TABLENAME;
@@ -26,19 +32,19 @@ public class ActivityHandler {
 
 
 	public static Collection<IActivity> select() throws Exception {
-		return DBManager.instance().select(select, WorkConverterFactory.activity());
+		return dbManager.select(select, converter);
 	}
 
 	public static Collection<IActivity> selectForPerson(int id) throws Exception {
-		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), WorkConverterFactory.activity());
+		return dbManager.select(selectForPerson.replace("#person#", String.valueOf(id)), converter);
 	}
 
 	public static int insert(IActivity activity) throws SQLException {
 		try {
-			Map<String, Object> map = WorkConverterFactory.activity().map(activity);
-			int id = DBManager.instance().nextId(TABLENAME);
+			Map<String, Object> map = converter.map(activity);
+			int id = dbManager.nextId(TABLENAME);
 			map.put("id", id);
-			DBManager.instance().insert(insert,map);
+			dbManager.insert(insert, map);
 			return id;
 		} catch (Exception e) {
 			throw new SQLException(e);
@@ -47,8 +53,8 @@ public class ActivityHandler {
 
 	public static int update(IActivity activity) throws SQLException{
 		try {
-			Map<String, Object> map = WorkConverterFactory.activity().map(activity);
-			int count = DBManager.instance().update(update, map);
+			Map<String, Object> map = converter.map(activity);
+			int count = dbManager.update(update, map);
 			return count;
 		} catch (Exception e) {
 			throw new SQLException(e);

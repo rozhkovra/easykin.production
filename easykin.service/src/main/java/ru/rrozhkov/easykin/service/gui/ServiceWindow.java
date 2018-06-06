@@ -10,6 +10,7 @@ import java.util.Locale;
 
 public class ServiceWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
+	private static final PanelFactory panelFactory = new PanelFactory();
 
 	public ServiceWindow(JPanel panel) throws HeadlessException {
 		super("EasyKin Калькулятор - Коммунальные услуги");
@@ -24,7 +25,7 @@ public class ServiceWindow extends JFrame{
 		Locale.setDefault(new Locale("en"));
 		ServiceCalc calc = (ServiceCalc) CalcFactory.createEmptyServiceCalc();
 
-		final ru.rrozhkov.easykin.service.gui.Panel panel = PanelFactory.getPanel(null, calc);
+		final ru.rrozhkov.easykin.service.gui.Panel panel = panelFactory.getPanel(null, calc);
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new ServiceWindow(panel);

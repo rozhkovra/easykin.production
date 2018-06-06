@@ -24,6 +24,10 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class TaskConverter implements IEntityConverter<ITask> {
+    final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+    final static private PaymentFactory paymentFactory = new PaymentFactory();
+    final static private TaskFactory taskFactory = new TaskFactory();
+
     protected TaskConverter() {
     }
 
@@ -70,7 +74,7 @@ public class TaskConverter implements IEntityConverter<ITask> {
         return new IConverter<ResultSet, ITask>() {
             public ITask convert(ResultSet result){
                 try{
-                    return TaskFactory.createTask(result.getInt("id"), result.getString("name"), result.getDate("createdate")
+                    return taskFactory.createTask(result.getInt("id"), result.getString("name"), result.getDate("createdate")
                             , result.getDate("plandate"), result.getInt("priorityid"), result.getInt("categoryid")
                             , result.getString("categoryname"), result.getDate("closedate"), result.getInt("statusid"));
                 }catch(SQLException e){
@@ -84,7 +88,7 @@ public class TaskConverter implements IEntityConverter<ITask> {
     public IPayment payment(ITask task) {
         return new IConverter<ITask, IPayment>() {
             public IPayment convert(ITask task) {
-                return PaymentFactory.createTaskPayment(TaskUtil.extractComment(task), TaskUtil.extractAmount(task)
+                return paymentFactory.createTaskPayment(TaskUtil.extractComment(task), TaskUtil.extractAmount(task)
                         , task.getStatus().isClose() ? task.getCloseDate() : task.getPlanDate(), task.getStatus());
             }
         }.convert(task);
@@ -94,7 +98,7 @@ public class TaskConverter implements IEntityConverter<ITask> {
         return new IConverter<Collection<ITask>,Collection<IPayment>>(){
             public Collection<IPayment> convert(Collection<ITask> entries) {
                 Collection<IPayment> collection = CollectionUtil.<IPayment>create();
-                entries = FilterUtil.<ITask>filter(entries, TaskFilterFactory.withPayment());
+                entries = FilterUtil.<ITask>filter(entries, taskFilterFactory.withPayment());
                 for(ITask task : entries){
                     collection.add(payment(task));
                 }
@@ -107,7 +111,7 @@ public class TaskConverter implements IEntityConverter<ITask> {
         return new IConverter<ResultSet, ITask>() {
             public ITask convert(ResultSet result) {
                 try{
-                    return TaskFactory.createTask(result.getInt("id"), result.getString("name"), result.getDate("createdate")
+                    return taskFactory.createTask(result.getInt("id"), result.getString("name"), result.getDate("createdate")
                             , result.getDate("plandate"), result.getInt("priorityid"), result.getInt("categoryid")
                             , result.getString("categoryname"), result.getDate("closedate"), result.getInt("statusid"));
                 }catch(SQLException e){

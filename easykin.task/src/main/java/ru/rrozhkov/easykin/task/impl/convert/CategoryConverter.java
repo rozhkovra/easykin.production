@@ -16,6 +16,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class CategoryConverter implements IEntityConverter<ICategory>{
+    final static private CategoryFactory categoryFactory = new CategoryFactory();
     protected CategoryConverter() {
     }
 
@@ -54,7 +55,7 @@ public class CategoryConverter implements IEntityConverter<ICategory>{
         return new IConverter<ResultSet, ICategory>() {
             public ICategory convert(ResultSet result){
                 try{
-                    return CategoryFactory.create(result.getInt("id"), result.getString("name"));
+                    return categoryFactory.create(result.getInt("id"), result.getString("name"));
                 }catch(SQLException e){
                     e.printStackTrace();
                 }

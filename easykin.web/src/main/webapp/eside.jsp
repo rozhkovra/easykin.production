@@ -18,6 +18,7 @@
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
+    UrlConfigurator urlConfigurator = new UrlConfigurator();
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 	IPerson person = AuthManager.instance().signedPerson();
 %>
@@ -60,7 +61,7 @@
 	for(String module : ModuleManager.activeModules()){
 	    if (!module.equals(ru.rrozhkov.easykin.module.Module.SERVICE) &&
 	        !module.equals(ru.rrozhkov.easykin.module.Module.WORK)) {
-%><li class="<%=EasyKinWebConfig.getModuleClass(request, module)%>"><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, module)%>"><i class="fa fa-circle-o"></i> <%=ru.rrozhkov.easykin.module.Module.name(module)%></a></li>
+%><li class="<%=urlConfigurator.getModuleClass(request, module)%>"><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, module)%>"><i class="fa fa-circle-o"></i> <%=ru.rrozhkov.easykin.module.Module.name(module)%></a></li>
 <%
         }
 	}
@@ -75,8 +76,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.INDEX)%>">Активности</a></li>
-            <li><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>">Статистика</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.INDEX)%>">Активности</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>">Статистика</a></li>
           </ul>
         </li>
         <li class="active treeview">
@@ -87,18 +88,18 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INDEX)%>">Платежи</a></li>
-            <li><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.RATES )%>">Тарифы</a></li>
-            <li><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INFO )%>">Инфо</a></li>
-            <li><a href="<%=EasyKinWebConfig.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>">Статистика</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INDEX)%>">Платежи</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.RATES )%>">Тарифы</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INFO )%>">Инфо</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>">Статистика</a></li>
           </ul>
         </li>
 <%      if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
 %>
         <li class="header">Статус</li>
-        <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, -1)%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
-        <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, Status.status(Status.OPEN))%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>
-        <li><a href="<%=EasyKinWebConfig.getFilterUrlForStatus(request, session, Status.status(Status.CLOSE))%>"><i class="fa fa-circle-o text-green"></i> <span><%=Status.CLOSE%></span></a></li>
+        <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, -1)%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
+        <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, Status.status(Status.OPEN))%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>
+        <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, Status.status(Status.CLOSE))%>"><i class="fa fa-circle-o text-green"></i> <span><%=Status.CLOSE%></span></a></li>
 <%      }
 %>
       </ul>

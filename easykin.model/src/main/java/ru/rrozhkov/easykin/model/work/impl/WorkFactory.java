@@ -12,13 +12,14 @@ import java.util.Date;
 
 
 public class WorkFactory {
-	public static IActivity create(int id, Date date, IPerson person,
+	final static private PersonFactory personFactory = new PersonFactory();
+	public IActivity create(int id, Date date, IPerson person,
 			int time, TaskType taskType, String name, ReleaseType releaseType, String desc) {
 		return new Activity(id, date, person, time, taskType, name, releaseType, desc);
 	}
 
-	public static IActivity newActivity(){
-		return create(-1, new Date(), PersonFactory.create(1,"Рожков","Роман","Александрович", DateUtil.parse("29.08.1985"), Sex.MALE), 0, TaskType.ANOTHER
+	public IActivity newActivity(){
+		return create(-1, new Date(), personFactory.create(1,"Рожков","Роман","Александрович", DateUtil.parse("29.08.1985"), Sex.MALE), 0, TaskType.ANOTHER
 				, "", ReleaseType.ANOTHER, "");
 	}
 }

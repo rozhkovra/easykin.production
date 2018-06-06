@@ -16,6 +16,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class Task2PersonConverter implements IEntityConverter<ITask2Person> {
+    final static private TaskFactory taskFactory = new TaskFactory();
+
     protected Task2PersonConverter() {
     }
 
@@ -50,7 +52,7 @@ public class Task2PersonConverter implements IEntityConverter<ITask2Person> {
         return new IConverter<ResultSet, ITask2Person>() {
             public ITask2Person convert(ResultSet result){
                 try{
-                    return TaskFactory.createTask2Person(result.getInt("id"), result.getInt("person"), result.getInt("task"));
+                    return taskFactory.createTask2Person(result.getInt("id"), result.getInt("person"), result.getInt("task"));
                 }catch(SQLException e){
                     e.printStackTrace();
                 }

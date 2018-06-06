@@ -8,11 +8,13 @@ import javax.swing.*;
  * Created by rrozhkov on 6/28/2017.
  */
 public class AuthValidator {
-    public static boolean validateAuthForm(JTextField username, JPasswordField password){
-        return !username.getText().toString().isEmpty()
-                && !password.getText().toString().isEmpty();
+    private static final AuthManager authManager = AuthManager.instance();
+
+    public boolean validateAuthForm(JTextField username, JPasswordField password){
+        return !username.getText().isEmpty()
+                && !password.getText().isEmpty();
     }
-    public static boolean validateSignedUsername(String username){
-        return AuthManager.instance().isSignedIn() && username.equals(AuthManager.instance().signedPerson().getUsername());
+    public boolean validateSignedUsername(String username){
+        return authManager.isSignedIn() && username.equals(authManager.signedPerson().getUsername());
     }
 }

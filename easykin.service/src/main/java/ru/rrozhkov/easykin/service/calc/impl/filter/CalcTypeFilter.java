@@ -7,7 +7,7 @@ import ru.rrozhkov.lib.filter.IFilter;
 public class CalcTypeFilter implements IFilter<ICalculation> {
 	private CalculationType type;
 	
-	public CalcTypeFilter(CalculationType type) {
+	protected CalcTypeFilter(CalculationType type) {
 		this.type = type;
 	}
 

@@ -7,6 +7,8 @@ import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.lib.util.DateUtil;
 
 public class TaskUtil {
+	final static private TaskFactory taskFactory = new TaskFactory();
+
 	public static boolean withPayment(ITask task){
 		String text = task.getName();
 		int index = text.indexOf('$');
@@ -34,7 +36,7 @@ public class TaskUtil {
 	}
 
 	public static void main(String[] args){
-		System.out.println(extractComment(TaskFactory.createTask(0,"123 $100$", DateUtil.today(),DateUtil.today(),0,0,"",DateUtil.today(),1)));
-		System.out.println(extractComment(TaskFactory.createTask(0,"12", DateUtil.today(),DateUtil.today(),0,0,"",DateUtil.today(),1)));
+		System.out.println(extractComment(taskFactory.createTask(0,"123 $100$", DateUtil.today(),DateUtil.today(),0,0,"",DateUtil.today(),1)));
+		System.out.println(extractComment(taskFactory.createTask(0,"12", DateUtil.today(),DateUtil.today(),0,0,"",DateUtil.today(),1)));
 	}
 }

@@ -10,12 +10,14 @@ import java.util.Collection;
  * Created by rrozhkov on 16.05.2018.
  */
 public class FinanceAdapter {
+    private static final FinanceBeanFactory financeBeanFactory = new FinanceBeanFactory();
+
     public static Collection<FinanceBean> finance() {
         Collection<FinanceBean> beans = CollectionUtil.create();
         Collection<IPayment> payments = Module.finance();
         int i =0;
         for (IPayment peyment : payments) {
-            beans.add(new FinanceBean(++i,peyment));
+            beans.add(financeBeanFactory.financeBean(++i,peyment));
         }
         return beans;
     }

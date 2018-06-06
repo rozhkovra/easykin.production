@@ -14,6 +14,8 @@ import ru.rrozhkov.easykin.person.impl.convert.PersonConverterFactory;
 import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
+import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.lib.filter.IFilter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
 import java.io.*;
@@ -23,25 +25,41 @@ import java.util.Collection;
  * Created by rrozhkov on 6/23/2017.
  */
 public class DumpManager {
-    public static final String STORAGE = "F:/temp/EasyKin";
+    final private static String STORAGE = "F:/temp/EasyKin";
+    final private static ModuleManager moduleManager = new ModuleManager();
+    final private static AuthManager authManager = AuthManager.instance();
+    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+    final private static PersonConverterFactory personConverterFactory = new PersonConverterFactory();
+    final private static PaymentConverterFactory paymentConverterFactory = new PaymentConverterFactory();
+    final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
 
-    public static void dump(){
+    public void dump(){
         StringBuilder builder = new StringBuilder();
         try {
-            for (ICategory category : CategoryHandler.select())
-                builder.append(TaskConverterFactory.category().sqlInsert(category)+";");
+            Collection<ICategory> categories = CategoryHandler.select();
+            IEntityConverter converter = taskConverterFactory.category();
+            for (ICategory category : categories)
+                builder.append(converter.sqlInsert(category)).append(";");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (IPerson person : (Collection<IPerson>) ModuleManager.invoke(Module.PERSON, "persons"))
-            builder.append(PersonConverterFactory.person().sqlInsert(person)+";");
-        for (ITask task : FilterUtil.filter((Collection<ITask>) ModuleManager.invoke(Module.TASK, "tasks", AuthManager.instance().signedPerson()), TaskFilterFactory.status(Status.OPEN)))
-            builder.append(TaskConverterFactory.task().sqlInsert(task)+";");
-        for (IPayment payment : (Collection<IPayment>) ModuleManager.invoke(Module.FIN, "finance"))
-            builder.append(PaymentConverterFactory.payment().sqlInsert(payment)+";");
+        Collection<IPerson> persons = (Collection<IPerson>) moduleManager.invoke(Module.PERSON, "persons");
+        IEntityConverter converter = personConverterFactory.person();
+        for (IPerson person : persons)
+            builder.append(converter.sqlInsert(person)).append(";");
+        IPerson person = authManager.signedPerson();
+        IFilter filter = taskFilterFactory.status(Status.OPEN);
+        Collection<ITask> tasks = FilterUtil.filter((Collection<ITask>) moduleManager.invoke(Module.TASK, "tasks", person), filter);
+        converter = taskConverterFactory.task();
+        for (ITask task : tasks)
+            builder.append(converter.sqlInsert(task)).append(";");
+        Collection<IPayment> payments = (Collection<IPayment>) moduleManager.invoke(Module.FIN, "finance");
+        converter = paymentConverterFactory.payment();
+        for (IPayment payment : payments)
+            builder.append(converter.sqlInsert(payment)).append(";");
         writeDump(builder.toString());
     }
-    public static void writeDump(String s){
+    public void writeDump(String s){
         File sdcard = new File(STORAGE);
         File dumpFile = new File(sdcard, FilesSettings.EASYKIN_DUMP);
         Writer out = null;

@@ -10,7 +10,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 
 public class ShortPanelFactory {
-	public static Panel getPanel(Panel parent, ICalculation bean){
+	public Panel getPanel(Panel parent, ICalculation bean){
 		return new ShortPanel(parent,(Calculation)bean);
 	}
 }

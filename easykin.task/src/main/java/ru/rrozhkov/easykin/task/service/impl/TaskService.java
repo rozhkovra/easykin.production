@@ -17,13 +17,20 @@ import java.sql.SQLException;
  * Created by rrozhkov on 3/6/2017.
  */
 public class TaskService {
+    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+    final private static Task2PaymentHandler t2paymentHandler = new Task2PaymentHandler();
+    final private static Task2PersonHandler t2personHandler = new Task2PersonHandler();
+    final private static TaskHandler taskHandler = new TaskHandler();
+    final private static PaymentHandler paymentHandler = new PaymentHandler();
+    final private static TaskFactory taskFactory = new TaskFactory();
+
     public static int create(int personId, ITask task) throws SQLException {
-        int taskId = TaskHandler.insert(task);
-        Task2PersonHandler.insert(TaskFactory.createTask2Person(-1, personId, taskId));
+        int taskId = taskHandler.insert(task);
+        t2personHandler.insert(taskFactory.createTask2Person(-1, personId, taskId));
         if(TaskUtil.withPayment(task)) {
-            IPayment payment = ((TaskConverter)TaskConverterFactory.task()).payment(task);
-            int paymentId = PaymentHandler.insert(payment);
-            Task2PaymentHandler.insert(TaskFactory.createTask2Payment(-1, paymentId, taskId));
+            IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
+            int paymentId = paymentHandler.insert(payment);
+            t2paymentHandler.insert(taskFactory.createTask2Payment(-1, paymentId, taskId));
         }
         return taskId;
     }

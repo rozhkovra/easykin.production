@@ -19,6 +19,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class PaymentConverter implements IEntityConverter<IPayment> {
+    final static private PaymentFactory paymentFactory = new PaymentFactory();
     protected PaymentConverter() {
     }
 
@@ -57,7 +58,7 @@ public class PaymentConverter implements IEntityConverter<IPayment> {
         return new IConverter<ResultSet, IPayment>() {
             public IPayment convert(ResultSet result){
                 try{
-                    return PaymentFactory.createPayment(result.getInt("id"), PaymentCategory.category(result.getInt("categoryid"))
+                    return paymentFactory.createPayment(result.getInt("id"), PaymentCategory.category(result.getInt("categoryid"))
                             , result.getString("comment"), Money.valueOf(result.getDouble("amount"))
                             , result.getDate("createdate"), PaymentStatus.status(result.getInt("statusid")));
                 }catch(SQLException e){

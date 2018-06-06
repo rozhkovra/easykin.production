@@ -16,6 +16,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class ReadingConverter implements IEntityConverter<IReading> {
+    private static final ServiceFactory serviceFactory = new ServiceFactory();
+
     protected ReadingConverter() {}
 
     public String sqlInsert(IReading entity) {
@@ -41,7 +43,7 @@ public class ReadingConverter implements IEntityConverter<IReading> {
         return new IConverter<ResultSet, IReading>() {
             public IReading convert(ResultSet result){
                 try{
-                    return ServiceFactory.createReading(result.getInt("id"), result.getDate("reddate"));
+                    return serviceFactory.createReading(result.getInt("id"), result.getDate("reddate"));
                 }catch(SQLException e){
                     e.printStackTrace();
                 }

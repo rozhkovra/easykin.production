@@ -22,6 +22,13 @@ import java.util.Collection;
 
 public class TaskForm extends Form {
 	private static final long serialVersionUID = 1L;
+	private static final AuthManager authManager = AuthManager.instance();
+	private static final TaskFactory taskFactory = new TaskFactory();
+	private static final TaskHandler taskHandler = new TaskHandler();
+	private static final TaskService taskService = new TaskService();
+	private static final CategoryHandler categoryHandler = new CategoryHandler();
+
+
 	private JTextField nameField;
 	private JTextField planDateField;
 	private JComboBox priorityComboBox;
@@ -35,7 +42,7 @@ public class TaskForm extends Form {
 	private ITask task;
 	
 	public TaskForm(IGUIEditor parent) {
-		this(parent, TaskFactory.newTask());
+		this(parent, taskFactory.newTask());
 	}
 
 	public TaskForm(IGUIEditor parent, ITask task) {
@@ -119,7 +126,7 @@ public class TaskForm extends Form {
 	private Collection<ICategory> categories() {
 		Collection<ICategory> collection = CollectionUtil.create();
 		try {
-			collection = CategoryHandler.select();
+			collection = categoryHandler.select();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -151,7 +158,7 @@ public class TaskForm extends Form {
 	}
 
 	protected void update() {
-		task = TaskFactory.createTask(task.getId(), getNameField().getText(), task.getCreateDate()
+		task = taskFactory.createTask(task.getId(), getNameField().getText(), task.getCreateDate()
 				, DateUtil.parse(getPlanDateField().getText()), priorityComboBox.getSelectedIndex()+1
 				, categoryComboBox.getSelectedIndex()+1, "", null, Status.status(Status.OPEN));
 	}
@@ -164,7 +171,7 @@ public class TaskForm extends Form {
 					if (!validateTask())
 						return;
 					try {
-						TaskHandler.close(task);
+						taskHandler.close(task);
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
@@ -184,11 +191,11 @@ public class TaskForm extends Form {
 		if(!validateData())
 			return;
 		try{
-			AuthManager authManager = AuthManager.instance();
+
 			if(task.getId()==-1) {
-				TaskService.create(authManager.signedPerson().getId(), task);
+				taskService.create(authManager.signedPerson().getId(), task);
 			}else {
-				TaskHandler.update(task);
+				taskHandler.update(task);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();

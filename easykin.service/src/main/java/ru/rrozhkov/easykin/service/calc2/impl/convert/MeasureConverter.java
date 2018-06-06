@@ -16,6 +16,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class MeasureConverter implements IEntityConverter<IMeasure> {
+    private static final ServiceFactory serviceFactory = new ServiceFactory();
+
     public String sqlInsert(IMeasure entity) {
         return null;
     }
@@ -41,7 +43,7 @@ public class MeasureConverter implements IEntityConverter<IMeasure> {
         return new IConverter<ResultSet, IMeasure>() {
             public IMeasure convert(ResultSet result){
                 try{
-                    return ServiceFactory.createMeasure(result.getInt("id"), result.getInt("readingid"), MeasureType.type(result.getString("measuretype")), Integer.valueOf(result.getString("MEASUREVALUE")));
+                    return serviceFactory.createMeasure(result.getInt("id"), result.getInt("readingid"), MeasureType.type(result.getString("measuretype")), Integer.valueOf(result.getString("MEASUREVALUE")));
                 }catch(SQLException e){
                     e.printStackTrace();
                 }

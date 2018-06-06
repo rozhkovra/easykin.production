@@ -14,7 +14,7 @@ public class ShortPanel extends Panel{
 
 	private void fill() {
 		refresh();
-		setLayout(new GridLayout(1, 2));
+		setLayout(guiFactory.gridLayout(1, 2));
 		add(getCalcTypeLabel());
 		add(getItogoLabel());
 	}

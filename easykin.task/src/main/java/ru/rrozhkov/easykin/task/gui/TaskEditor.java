@@ -18,8 +18,10 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 	private ITask task;
 	private IGUIEditor parent;
 	private Component addButton;
-	private static TaskBuilder taskBuilder = new TaskBuilder();
+	private final static TaskBuilder taskBuilder = new TaskBuilder();
 	private final static IGUIFactory guiFactory = GUIFactory.create();
+	private final static TaskGUIFactory taskGUIFactory = new TaskGUIFactory();
+	private final static CommentGUIFactory commentGUIFactory = new CommentGUIFactory();
 
 	public TaskEditor(IGUIEditor parent, ITask task) {
 		super();
@@ -34,11 +36,11 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 	private void fill(){
 		removeAll();
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(new TaskGUIFactory().createTaskForm(parent, task));
+		add(taskGUIFactory.createTaskForm(parent, task));
 		add(getAddButton());
 		getAddButton().setEnabled(true);
 		if(task!=null)
-			add(new CommentGUIFactory().createTablePanel(this, task.comments()));
+			add(commentGUIFactory.createTablePanel(this, task.comments()));
 		validate();
 	}
 
@@ -50,7 +52,7 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 		IComment comment = null;
 		if (obj!=null)
 			comment = (IComment)obj;
-		add(new CommentGUIFactory().createEditor(this, comment, task.getId()));
+		add(commentGUIFactory.createEditor(this, comment, task.getId()));
 		getAddButton().setEnabled(false);
 		validate();
 	}

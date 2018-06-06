@@ -31,14 +31,14 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 		this.pass = pass;
 	}
 
-	public static IDBManager instance() throws Exception {
+	public static IDBManager instance(){
 		if(dbManager==null){
 			Properties property=new Properties();
 			try {
 				URL iconUrl = IDBManager.class.getResource("/"+jdbcProperties);
 				property.load(iconUrl.openStream());
 			} catch (IOException e) {
-				throw new NotFoundDBPropertiesException(e);
+				System.out.print(new NotFoundDBPropertiesException(e).getMessage());
 			}
 			String connectionDriver = property.getProperty("connectionDriver");
 			String connectionPath = property.getProperty("connectionPath");

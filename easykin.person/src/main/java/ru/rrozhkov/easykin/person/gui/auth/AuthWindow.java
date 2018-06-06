@@ -14,7 +14,6 @@ public class AuthWindow extends JFrame implements IGUIEditor {
     public AuthWindow() throws HeadlessException {
         super("Авторизация");
         setIconImage(ImageUtil.imageByPath(getClass(), "/icon/key.png"));
-
         setSize(400, 150);
         getContentPane().removeAll();
         getContentPane().add(new AuthForm(this));

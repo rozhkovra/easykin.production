@@ -8,7 +8,7 @@ import ru.rrozhkov.lib.filter.IFilter;
  */
 public class MeasureReadingFilter implements IFilter<IMeasure> {
     private int readingId;
-    public MeasureReadingFilter(int readingId) {
+    protected MeasureReadingFilter(int readingId) {
         this.readingId = readingId;
     }
     public boolean filter(IMeasure obj) {

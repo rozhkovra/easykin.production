@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class MeasureTypeFilter implements IFilter<IMeasure> {
     private MeasureType[] types;
-    public MeasureTypeFilter(MeasureType... types) {this.types = types;}
+    protected MeasureTypeFilter(MeasureType... types) {this.types = types;}
     public boolean filter(IMeasure obj) {
         return Arrays.asList(types).contains(obj.getType());
     }

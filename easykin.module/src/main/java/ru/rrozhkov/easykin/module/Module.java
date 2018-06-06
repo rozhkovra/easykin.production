@@ -10,6 +10,7 @@ import java.util.Map;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
+    final static private ImageManager imageManager = new ImageManager();
     // First level
     public static final String PERSON = "person";
     public static final String FAMILY = "family";
@@ -61,12 +62,12 @@ public class Module {
         {
             put(AUTO, null);
             put(PERSON, null);
-            put(FAMILY, ImageUtil.scaleImage(25,25,ImageManager.family(getClass())));
-            put(FIN, ImageUtil.scaleImage(25,25,ImageManager.finance(getClass())));
-            put(PAYMENT, ImageUtil.scaleImage(25, 25, ImageManager.payment(getClass())));
-            put(SERVICE, ImageUtil.scaleImage(25, 25, ImageManager.service(getClass())));
-            put(TASK, ImageUtil.scaleImage(25, 25, ImageManager.tasks(getClass())));
-            put(WORK, ImageUtil.scaleImage(25, 25, ImageManager.work(getClass())));
+            put(FAMILY, ImageUtil.scaleImage(25,25,imageManager.family(getClass())));
+            put(FIN, ImageUtil.scaleImage(25,25,imageManager.finance(getClass())));
+            put(PAYMENT, ImageUtil.scaleImage(25, 25, imageManager.payment(getClass())));
+            put(SERVICE, ImageUtil.scaleImage(25, 25, imageManager.service(getClass())));
+            put(TASK, ImageUtil.scaleImage(25, 25, imageManager.tasks(getClass())));
+            put(WORK, ImageUtil.scaleImage(25, 25, imageManager.work(getClass())));
         }
     };
     public static String name(String module){

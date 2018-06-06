@@ -1,5 +1,6 @@
 <%@ page import="ru.rrozhkov.easykin.service.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
@@ -34,7 +35,9 @@
 <tbody>
 <%
 	int i = 0;
-	Collection<ServiceBean> beans = ServiceAdapter.services();
+	final AdapterFactory adapterFactory = new AdapterFactory();
+	final ServiceAdapter serviceAdapter = adapterFactory.service();
+	Collection<ServiceBean> beans = serviceAdapter.services();
 	for(ServiceBean service : beans){
 %>
 <tr>

@@ -11,6 +11,7 @@ import java.util.Locale;
 
 public class EasyKin {
     static final HSQLDBServer dbServer = new HSQLDBServer("easykin", "file:data/easykin");
+    final static private AuthManager authManager = AuthManager.instance();
 
     public static void main( String[] args ) {
         Locale.setDefault(new Locale("en"));
@@ -20,13 +21,14 @@ public class EasyKin {
     }
 
     public static void auth() {
-        final AuthManager authManager = AuthManager.auth();
+        authManager.auth();
         if (!authManager.isSignedIn()) {
             close();
         }
     }
 
     public static void start() {
+        authManager.signOut();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 final JFrame window = EasyKinWindow.open();
@@ -41,7 +43,7 @@ public class EasyKin {
     }
 
     public static void close(){
-        AuthManager.instance().signOut();
+        authManager.signOut();
         dbServer.shutdown();
         System.exit(0);
     }

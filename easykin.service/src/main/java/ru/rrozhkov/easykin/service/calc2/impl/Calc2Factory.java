@@ -21,7 +21,7 @@ import java.util.Date;
  * Created by rrozhkov on 12/11/2017.
  */
 public class Calc2Factory {
-    public static ICalculation createHotWaterCalc(IReading oldReading,
+    public ICalculation createHotWaterCalc(IReading oldReading,
                                                   IReading newReading,
                                                   Collection<IRate> rates,
                                                   boolean isPaid) {
@@ -37,7 +37,7 @@ public class Calc2Factory {
 
     }
 
-    public static ICalculation createWaterCalc(IReading oldReading,
+    public ICalculation createWaterCalc(IReading oldReading,
                                                IReading newReading,
                                                Collection<IRate> rates,
                                                boolean isPaid) {
@@ -99,7 +99,7 @@ public class Calc2Factory {
 
     }
 
-    public static ICalculation createElectricityCalc(IReading oldReading,
+    public ICalculation createElectricityCalc(IReading oldReading,
                                                      IReading newReading,
                                                      Collection<IRate> rates,
                                                      boolean isPaid) {
@@ -115,7 +115,7 @@ public class Calc2Factory {
         return new ElectricityCalc(oldMeasures, newMeasures, electricityRate, isPaid);
     }
 
-    public static ICalculation createAntennaCalc(Collection<IRate> rates, boolean isPaid) {
+    public ICalculation createAntennaCalc(Collection<IRate> rates, boolean isPaid) {
         Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isAntenna()) {
@@ -125,7 +125,7 @@ public class Calc2Factory {
         return new RateCalc(CalculationType.ANTENNA, money, isPaid);
     }
 
-    public static ICalculation createIntercomCalc(Collection<IRate> rates, boolean isPaid) {
+    public ICalculation createIntercomCalc(Collection<IRate> rates, boolean isPaid) {
         Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isIntercom()) {
@@ -135,7 +135,7 @@ public class Calc2Factory {
         return new RateCalc(CalculationType.INTERCOM, money, isPaid);
     }
 
-    public static ICalculation createHeatingCalc(Collection<IRate> rates, boolean isPaid) {
+    public ICalculation createHeatingCalc(Collection<IRate> rates, boolean isPaid) {
         Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isHeating()) {
@@ -145,7 +145,7 @@ public class Calc2Factory {
         return new RateCalc(CalculationType.HEATING, money, isPaid);
     }
 
-    public static ICalculation createRepairCalc(Collection<IRate> rates, boolean isPaid) {
+    public ICalculation createRepairCalc(Collection<IRate> rates, boolean isPaid) {
         Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isRepair()) {
@@ -155,7 +155,7 @@ public class Calc2Factory {
         return new RateCalc(CalculationType.REPAIR, money, isPaid);
     }
 
-    public static ICalculation createGazCalc(Collection<IRate> rates, boolean isPaid) {
+    public ICalculation createGazCalc(Collection<IRate> rates, boolean isPaid) {
         Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isGaz()) {
@@ -165,7 +165,7 @@ public class Calc2Factory {
         return new RateCalc(CalculationType.GAZ, money, isPaid);
     }
 
-    public static ICalculation createHouseCalc(Collection<IRate> rates, boolean isPaid) {
+    public ICalculation createHouseCalc(Collection<IRate> rates, boolean isPaid) {
         Money money = Money.valueOf(0.00);
         for(IRate rate : rates) {
             if(rate.getType().isHouse()) {
@@ -175,7 +175,7 @@ public class Calc2Factory {
         return new RateCalc(CalculationType.HOUSE, money, isPaid);
     }
 
-    public static ICalculation createEmptyServiceCalc(IReading oldReading, IReading newReading, Collection<IRate> rates) {
+    public ICalculation createEmptyServiceCalc(IReading oldReading, IReading newReading, Collection<IRate> rates) {
         Date lastDayOfMonth = DateUtil.lastDayOfMonth(DateUtil.today());
         return CalcFactory.createServiceCalc(lastDayOfMonth,
                 Arrays.asList(

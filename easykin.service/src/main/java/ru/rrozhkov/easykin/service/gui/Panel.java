@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
-import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
 import ru.rrozhkov.lib.gui.GUIFactory;
 import ru.rrozhkov.lib.gui.IGUIFactory;
@@ -11,37 +11,37 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class Panel extends GUIPanel{
-
+	private static final CalculatorFactory calculatorFactory = new CalculatorFactory();
 	private static final long serialVersionUID = 1L;
-	private JLabel itogoLabel = null;
+	private Component itogoLabel = null;
 	protected ICalculator calculator;
-	protected Calculation calc;
+	protected ICalculation calc;
 	protected final static IGUIFactory guiFactory = GUIFactory.create();
-	public Panel(Panel parent, Calculation calc) {
+	public Panel(Panel parent, ICalculation calc) {
 		super(parent);
 		this.calc = calc;
-		this.calculator = CalculatorFactory.getCalculator(calc);
+		this.calculator = calculatorFactory.getCalculator(calc);
 	}
 
 	@Override
 	public void updateUI() {
 		super.updateUI();
 		if(calculator!=null)
-			getItogoLabel().setText(FormatUtil.formatMoney(calculator.calculate().getResult()));
+			((JLabel)getItogoLabel()).setText(FormatUtil.formatMoney(calculator.calculate().getResult()));
 	}
 
-	public JLabel getItogoLabel(){
+	public Component getItogoLabel(){
 		if(itogoLabel == null){
-			itogoLabel  = (JLabel) guiFactory.label("");
+			itogoLabel  = guiFactory.label("");
 			itogoLabel.setFont(itogoLabel.getFont().deriveFont(Font.BOLD, 20));			
 		}
 		return itogoLabel;
 	}
 
-	public JLabel getCalcTypeLabel(){
-		return (JLabel) guiFactory.label(String.valueOf(calc.getType()));
+	public Component getCalcTypeLabel(){
+		return guiFactory.label(String.valueOf(calc.getType()));
 	}
-	public Calculation getCalc(){
+	public ICalculation getCalc(){
 		return calc;
 	}
 }

@@ -21,7 +21,13 @@ import java.util.Date;
  * Created by rrozhkov on 11.05.2018.
  */
 public class TaskAdapter {
-    public static Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
+    final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+    final private static AuthManager authManager = AuthManager.instance();
+    final private static TaskHandler taskHandler = new TaskHandler();
+    final private static TaskFactory taskFactory = new TaskFactory();
+    final private static TaskBeanFactory taskBeanFactory = new TaskBeanFactory();
+
+    public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
         TaskFilterBean bean = filter(request);
         Collection<ITask> tasks = Module.tasks(bean);
         Collection<TaskBean> taskBeans = CollectionUtil.create();
@@ -52,28 +58,28 @@ public class TaskAdapter {
             for (IComment comment : task.comments()) {
                 comments += comment.getText()+" | ";
             }
-            taskBeans.add(new TaskBean(++num,task,taskClass,dateClass,comments,doneHtml));
+            taskBeans.add(taskBeanFactory.taskBean(++num,task,taskClass,dateClass,comments,doneHtml));
         }
         return taskBeans;
     }
 
-    public static TaskFilterBean filter(javax.servlet.http.HttpServletRequest request) {
-        IPerson person = AuthManager.instance().signedPerson();
+    public TaskFilterBean filter(javax.servlet.http.HttpServletRequest request) {
+        IPerson person = authManager.signedPerson();
         int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
         int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
         int priorityId = request.getParameter("priorityId")!=null?Integer.valueOf(request.getParameter("priorityId")):-1;
         Date fromDate = request.getParameter("fromDate")!=null?DateUtil.parse(request.getParameter("fromDate")):DateUtil.parse("01.01.2000");
         Date toDate = request.getParameter("toDate")!=null?DateUtil.parse(request.getParameter("toDate")): DateUtil.parse("01.01.3000");
-        return TaskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
+        return taskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
     }
 
-    public static void done(javax.servlet.http.HttpServletRequest request) {
+    public void done(javax.servlet.http.HttpServletRequest request) {
         int taskId = request.getParameter("taskId")!=null?Integer.valueOf(request.getParameter("taskId")):-1;
         if (taskId!=-1) {
-            ITask task = TaskFactory.createTask(taskId, "", new Date(), new Date(), Priority.priority(Priority.SIMPLE)
+            ITask task = taskFactory.createTask(taskId, "", new Date(), new Date(), Priority.priority(Priority.SIMPLE)
                     , 1, "", null, Status.status(Status.OPEN));
             try {
-                TaskHandler.close(task);
+                taskHandler.close(task);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

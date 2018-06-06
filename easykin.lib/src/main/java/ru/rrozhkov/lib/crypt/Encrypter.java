@@ -10,7 +10,9 @@ import java.security.NoSuchAlgorithmException;
  * Created by rrozhkov on 3/9/2017.
  */
 public class Encrypter {
-    public static String encrypt(String text){
+    private static final BASE64Encoder base64Encoder = new BASE64Encoder();
+
+    public String encrypt(String text){
         MessageDigest md = null;
         try{
             md = MessageDigest.getInstance("SHA");
@@ -24,12 +26,13 @@ public class Encrypter {
             e.printStackTrace();
         }
         byte raw[] = md.digest();
-        String hash = (new BASE64Encoder()).encode(raw); //step 5
+
+        String hash = base64Encoder.encode(raw); //step 5
         return hash;
     }
 
     public static void main(String[] args) {
         String password = "123";
-        System.out.println(Encrypter.encrypt(password));
+        System.out.println(new Encrypter().encrypt(password));
     }
 }

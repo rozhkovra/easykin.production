@@ -9,19 +9,19 @@ import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 
 public class PanelFactory {
-	public static Panel getPanel(Panel parent, ICalculation bean){
+	public Panel getPanel(Panel parent, ICalculation bean){
 		if(bean instanceof GazCalc)
-			return new GazPanel(parent, (GazCalc) bean);
+			return new GazPanel(parent, bean);
 		else if (bean instanceof WaterCalc)
-			return new WaterPanel(parent, (WaterCalc) bean);
+			return new WaterPanel(parent, bean);
 		else if (bean instanceof ElectricityCalc)
-			return new ElectricityPanel(parent, (ElectricityCalc) bean);
+			return new ElectricityPanel(parent, bean);
 		else if (bean instanceof HotWaterCalc)
-			return new HotWaterPanel(parent, (HotWaterCalc) bean);
+			return new HotWaterPanel(parent, bean);
 		else if (bean instanceof DefaultCalc)
-			return new DefaultPanel(parent, (DefaultCalc) bean);
+			return new DefaultPanel(parent, bean);
 		else if (bean instanceof ServiceCalc)
-			return new ServiceCalcPanel((ServiceCalc) bean);
+			return new ServiceCalcPanel(bean);
 		return null;
 	}
 }

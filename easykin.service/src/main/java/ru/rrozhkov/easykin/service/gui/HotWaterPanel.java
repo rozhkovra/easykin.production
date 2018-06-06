@@ -1,12 +1,11 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
+import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class HotWaterPanel extends Panel{ 
 	public static String PREV_MESURE_LABEL_TEXT = "Пред. показания 1 сч";
@@ -22,20 +21,20 @@ public class HotWaterPanel extends Panel{
 	private JTextField currentMesureField2 = null;
 	private JTextField rateField = null;
 	private JTextField odnField = null;
-	private JLabel prevMesureLabel = null;
-	private JLabel currentMesureLabel = null;
-	private JLabel prevMesureLabel2 = null;
-	private JLabel currentMesureLabel2 = null;
-	private JLabel rateLabel = null;
-	private JLabel odnLabel = null;
+	private Component prevMesureLabel = null;
+	private Component currentMesureLabel = null;
+	private Component prevMesureLabel2 = null;
+	private Component currentMesureLabel2 = null;
+	private Component rateLabel = null;
+	private Component odnLabel = null;
 	
-	public HotWaterPanel(Panel parent, HotWaterCalc calcBean) {
+	public HotWaterPanel(Panel parent, ICalculation calcBean) {
 		super(parent, calcBean);
 		fill();	 
 	}
 
 	private void fill() {
-		setLayout(new GridLayout(10, 2));
+		setLayout(guiFactory.gridLayout(10, 2));
 
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
@@ -111,39 +110,39 @@ public class HotWaterPanel extends Panel{
 		return odnField;
 	}
 	
-	public JLabel getPrevMesureLabel(){
+	public Component getPrevMesureLabel(){
 		if(prevMesureLabel == null)
-			prevMesureLabel = (JLabel) guiFactory.label(PREV_MESURE_LABEL_TEXT);
+			prevMesureLabel = guiFactory.label(PREV_MESURE_LABEL_TEXT);
 		return prevMesureLabel;
 	}
 	
-	public JLabel getCurrentMesureLabel(){
+	public Component getCurrentMesureLabel(){
 		if(currentMesureLabel == null)
-			currentMesureLabel = (JLabel) guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
+			currentMesureLabel = guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
 		return currentMesureLabel;
 	}
 
-	public JLabel getPrevMesureLabel2(){
+	public Component getPrevMesureLabel2(){
 		if(prevMesureLabel2 == null)
-			prevMesureLabel2 = (JLabel) guiFactory.label(PREV_MESURE_LABEL_TEXT2);
+			prevMesureLabel2 = guiFactory.label(PREV_MESURE_LABEL_TEXT2);
 		return prevMesureLabel2;
 	}
 
-	public JLabel getCurrentMesureLabel2(){
+	public Component getCurrentMesureLabel2(){
 		if(currentMesureLabel2 == null)
-			currentMesureLabel2 = (JLabel) guiFactory.label(CURRENT_MESURE_LABEL_TEXT2);
+			currentMesureLabel2 = guiFactory.label(CURRENT_MESURE_LABEL_TEXT2);
 		return currentMesureLabel2;
 	}
 
-	public JLabel getRateLabel(){
+	public Component getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = (JLabel) guiFactory.label(RATE_LABEL_TEXT);
+			rateLabel = guiFactory.label(RATE_LABEL_TEXT);
 		return rateLabel;
 	}
 
-	public JLabel getOdnLabel(){
+	public Component getOdnLabel(){
 		if(odnLabel == null)
-			odnLabel = (JLabel) guiFactory.label(ODN_LABEL_TEXT);
+			odnLabel = guiFactory.label(ODN_LABEL_TEXT);
 		return odnLabel;
 	}
 

@@ -8,22 +8,22 @@ import javax.swing.*;
  * Created by rrozhkov on 3/28/2018.
  */
 public class ImageManager {
-    public static ImageIcon finance(Class clazz) {
+    public ImageIcon finance(Class clazz) {
         return ImageUtil.imageIconByPath(clazz, "/icon/finance.png");
     }
-    public static ImageIcon payment(Class clazz) {
+    public ImageIcon payment(Class clazz) {
         return ImageUtil.imageIconByPath(clazz, "/icon/payment.png");
     }
-    public static ImageIcon family(Class clazz) {
+    public ImageIcon family(Class clazz) {
         return ImageUtil.imageIconByPath(clazz, "/icon/family.png");
     }
-    public static ImageIcon tasks(Class clazz) {
+    public ImageIcon tasks(Class clazz) {
         return ImageUtil.imageIconByPath(clazz, "/icon/tasks.png");
     }
-    public static ImageIcon work(Class clazz) {
+    public ImageIcon work(Class clazz) {
         return ImageUtil.imageIconByPath(clazz, "/icon/work.png");
     }
-    public static ImageIcon service(Class clazz){
+    public ImageIcon service(Class clazz){
         return ImageUtil.imageIconByPath(clazz, "/icon/service.png");
     }
 

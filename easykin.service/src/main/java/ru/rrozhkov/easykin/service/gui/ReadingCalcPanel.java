@@ -10,15 +10,18 @@ import java.awt.*;
  * Created by rrozhkov on 12/7/2017.
  */
 public class ReadingCalcPanel extends Panel {
-    public ReadingCalcPanel(Panel parent, Calculation calc) {
+    private static final ShortPanelFactory shortPanelFactory = new ShortPanelFactory();
+
+    public ReadingCalcPanel(Panel parent, ICalculation calc) {
         super(parent, calc);
         fill();
     }
 
     private void fill() {
-        setLayout(new GridLayout(((ServiceCalc)calc).calcs().size()+2, 1));
-        for(ICalculation bean : ((ServiceCalc)calc).calcs()){
-            add(ShortPanelFactory.getPanel(this, bean));
+        ServiceCalc serviceCalc = (ServiceCalc) calc;
+        setLayout(guiFactory.gridLayout(serviceCalc.calcs().size() + 2, 1));
+        for(ICalculation bean : serviceCalc.calcs()){
+            add(shortPanelFactory.getPanel(this, bean));
         }
         refresh();
         add(guiFactory.labelEmpty());

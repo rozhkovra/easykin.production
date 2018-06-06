@@ -12,17 +12,21 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class PersonConverter implements IEntityConverter<IPerson> {
+    private static final IConverter<ResultSet, IPerson> converter = new AuthDBPersonConverter();
+
     public String sqlInsert(IPerson entity) {
         return new IConverter<IPerson, String>() {
             public String convert(IPerson iPerson) {
-                return "INSERT INTO person (id, surname, name, secondname, sex, username, password)"
-                        +" VALUES("+iPerson.getId()
-                        +", '"+iPerson.getSurname()+"'"
-                        +", '"+iPerson.getName()+"'"
-                        +", '"+iPerson.getSecondName()+"'"
-                        +", '"+iPerson.getSex()+"'"
-                        +", '"+iPerson.getUsername()+"'"
-                        +", '"+iPerson.getPassword()+"')";
+                return new StringBuilder("INSERT INTO person (id, surname, name, secondname, sex, username, password)")
+                        .append(" VALUES(")
+                        .append(iPerson.getId()).append(",'")
+                        .append(iPerson.getSurname()).append("','")
+                        .append(iPerson.getName()).append("','")
+                        .append(iPerson.getSecondName()).append("','")
+                        .append(iPerson.getSex()).append("','")
+                        .append(iPerson.getUsername()).append("','")
+                        .append(iPerson.getPassword())
+                        .append("')").toString();
             }
         }.convert(entity);
     }
@@ -36,6 +40,6 @@ public class PersonConverter implements IEntityConverter<IPerson> {
     }
 
     public IPerson entity(ResultSet resultSet) {
-        return new AuthDBPersonConverter().convert(resultSet);
+        return converter.convert(resultSet);
     }
 }

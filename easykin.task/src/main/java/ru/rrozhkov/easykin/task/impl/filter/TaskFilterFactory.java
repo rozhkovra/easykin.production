@@ -9,31 +9,31 @@ import ru.rrozhkov.lib.filter.IFilter;
 import java.util.Date;
 
 public class TaskFilterFactory {
-	public static IFilter<ITask> home(){
+	public IFilter<ITask> home(){
 		return new OnlyHomeFilter();
 	}
-	public static IFilter<ITask> work(){
+	public IFilter<ITask> work(){
 		return new OnlyWorkFilter();
 	}
-	public static IFilter<ITask> status(Status status){
+	public IFilter<ITask> status(Status status){
 		return new StatusFilter(status);
 	}
-	public static IFilter<ITask> category(ICategory category){
+	public IFilter<ITask> category(ICategory category){
 		return new CategoryFilter(category);
 	}
-	public static IFilter<ITask> priority(Priority priority){
+	public IFilter<ITask> priority(Priority priority){
 		return new PriorityFilter(priority);
 	}
-	public static IFilter<ITask> withPayment(){
+	public IFilter<ITask> withPayment(){
 		return new WithPaymentFilter();
 	}
-	public static IFilter<ITask> fromDate(Date date){
+	public IFilter<ITask> fromDate(Date date){
 		return new FromDateFilter(date);
 	}
-	public static IFilter<ITask> toDate(Date date){
+	public IFilter<ITask> toDate(Date date){
 		return new ToDateFilter(date);
 	}
-	public static TaskFilterBean bean(int statusId, int categoryId, int priorityId, Date fromDate, Date todate, int personId) {
+	public TaskFilterBean bean(int statusId, int categoryId, int priorityId, Date fromDate, Date todate, int personId) {
 		return new TaskFilterBean(statusId, categoryId, priorityId, fromDate, todate, personId);
 	}
 }

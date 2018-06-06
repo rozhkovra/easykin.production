@@ -9,10 +9,10 @@ import ru.rrozhkov.easykin.model.person.Sex;
 import ru.rrozhkov.lib.convert.IConverter;
 
 public class DBKinPersonConverter implements IConverter<ResultSet, IKinPerson> {
-
+	final static private FamilyFactory familyFactory = new FamilyFactory();
 	public IKinPerson convert(ResultSet entry) {
 		try{
-			return FamilyFactory.create(entry.getInt("id"), entry.getString("surname"), entry.getString("name")
+			return familyFactory.create(entry.getInt("id"), entry.getString("surname"), entry.getString("name")
 				, entry.getString("secondName"), entry.getDate("birthdate")
 				, Sex.sex(entry.getString("sex")), KinType.kin(entry.getString("kinType")));
 		}catch(Exception e){

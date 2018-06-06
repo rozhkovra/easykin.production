@@ -15,6 +15,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class Task2PaymentConverter implements IEntityConverter<ITask2Payment> {
+    final static private TaskFactory taskFactory = new TaskFactory();
+
     public String sqlInsert(ITask2Payment entity) {
         return null;
     }
@@ -39,7 +41,7 @@ public class Task2PaymentConverter implements IEntityConverter<ITask2Payment> {
         return new IConverter<ResultSet, ITask2Payment>() {
             public ITask2Payment convert(ResultSet result){
                 try{
-                    return TaskFactory.createTask2Payment(result.getInt("id"), result.getInt("payment"), result.getInt("task"));
+                    return taskFactory.createTask2Payment(result.getInt("id"), result.getInt("payment"), result.getInt("task"));
                 }catch(SQLException e){
                     e.printStackTrace();
                 }

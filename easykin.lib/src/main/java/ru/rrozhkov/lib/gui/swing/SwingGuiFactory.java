@@ -5,6 +5,7 @@ import ru.rrozhkov.lib.gui.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.Collection;
 
 /**
@@ -50,12 +51,26 @@ public class SwingGuiFactory implements IGUIFactory {
     public Component password(){
         return new JPasswordField();
     }
-    public Component panelEmpty() {
+    public Container panelEmpty() {
         return new JPanel();
     }
+
+    public Container panel(LayoutManager manager) {
+        return new JPanel(manager);
+    }
+    public Container panelBordered() {
+        return panel(new BorderLayout());
+    }
+
+
     public TablePanel tablePanel(IGUIEditor parent, Table table) {
         return new TablePanel(parent, table);
     }
+
+    public TablePanel tablePanel(IGUIEditor parent, TableModel tableModel) {
+        return tablePanel(parent, table(tableModel));
+    }
+
     public Table table(TableModel tableModel) {
         return new Table(tableModel);
     }
@@ -67,5 +82,37 @@ public class SwingGuiFactory implements IGUIFactory {
             box.addItem(entry);
         }
         return box;
+    }
+
+    public LayoutManager boxLayout(Container comp, int direction) {
+        return new BoxLayout(comp, direction);
+    }
+
+    public LayoutManager gridLayout(int rows, int cols) {
+        return new GridLayout(rows, cols);
+    }
+
+    public Dimension size(int width, int height) {
+        return new Dimension(width, height);
+    }
+
+    public JTabbedPane tabbedPane() {
+        return new JTabbedPane();
+    }
+
+    public JMenuItem menuItem(String text, Icon icon) {
+        return new JMenuItem(text, icon);
+    }
+
+    public JMenu menu(String text) {
+        return new JMenu(text);
+    }
+
+    public JMenuBar menuBar() {
+        return new JMenuBar();
+    }
+
+    public WindowEvent windowEvent(Window source, int id) {
+        return new WindowEvent(source, id);
     }
 }

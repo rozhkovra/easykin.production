@@ -15,11 +15,16 @@ import java.util.Date;
 import java.util.List;
 
 public class ReadingBuilder {
+	private static final MeasureHandler measureHandler = new MeasureHandler();
+	private static final ReadingHandler readingHandler = new ReadingHandler();
+	private static final ServiceFactory serviceFactory = new ServiceFactory();
+	private static final MeasureFilterFactory measureFilterFactory = new MeasureFilterFactory();
+
 	public IReading build(int id, Date date){
 		IReading reading = null;
 		try {
-			Collection<IMeasure> measures = MeasureHandler.selectForReading(id);
-			reading = ServiceFactory.createReading(id, date, measures);
+			Collection<IMeasure> measures = measureHandler.selectForReading(id);
+			reading = serviceFactory.createReading(id, date, measures);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,11 +49,11 @@ public class ReadingBuilder {
 
 	public Collection<IReading> build(){
 		try {
-			Collection<IReading> readings = ReadingHandler.select();
-			Collection<IMeasure> measures = MeasureHandler.select();
+			Collection<IReading> readings = readingHandler.select();
+			Collection<IMeasure> measures = measureHandler.select();
 			for(IReading reading : readings){
 				reading.getMeasures().clear();
-				reading.getMeasures().addAll(FilterUtil.filter(measures, MeasureFilterFactory.readingFilter(reading.getId())));
+				reading.getMeasures().addAll(FilterUtil.filter(measures, measureFilterFactory.readingFilter(reading.getId())));
 			}
 			return readings;
 		} catch (Exception e) {

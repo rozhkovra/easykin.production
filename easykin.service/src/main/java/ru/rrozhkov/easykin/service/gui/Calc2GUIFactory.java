@@ -2,9 +2,12 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.Calc2Builder;
-import ru.rrozhkov.lib.gui.*;
+import ru.rrozhkov.lib.gui.GUIFactory;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
-import javax.swing.*;
+import java.awt.*;
 import java.util.Collection;
 
 /**
@@ -12,12 +15,12 @@ import java.util.Collection;
  */
 public class Calc2GUIFactory implements IModuleGUIFactory {
     final private static Calc2Builder calc2Builder = new Calc2Builder();
-    protected final static IGUIFactory swingGuiFactory = GUIFactory.create();
-    public JPanel createTablePanel(IGUIEditor parent, Collection data) {
-        return (JPanel)swingGuiFactory.tablePanel(parent, (Table)swingGuiFactory.table(new ServiceTableModel(data)));
+    protected final static IGUIFactory guiFactory = GUIFactory.create();
+    public Component createTablePanel(IGUIEditor parent, Collection data) {
+        return guiFactory.tablePanel(parent, new ServiceTableModel(data));
     }
 
-    public JPanel createEditor(IGUIEditor parent, Object calc) {
+    public Component createEditor(IGUIEditor parent, Object calc) {
         if(calc==null) {
             calc = calc2Builder.buildNew();
         }
@@ -25,7 +28,7 @@ public class Calc2GUIFactory implements IModuleGUIFactory {
 
     }
 
-    public JPanel createFilter(IGUIEditor parent) {
-        return (JPanel)swingGuiFactory.panelEmpty();
+    public Component createFilter(IGUIEditor parent) {
+        return guiFactory.panelEmpty();
     }
 }

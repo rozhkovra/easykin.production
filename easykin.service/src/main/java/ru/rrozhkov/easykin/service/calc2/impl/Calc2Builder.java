@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.service.calc2.impl;
 
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
@@ -14,7 +15,8 @@ import java.util.Collection;
  */
 public class Calc2Builder {
     final private static ReadingBuilder readingBuilder = new ReadingBuilder();
-    public ServiceCalc buildNew() {
+    final private static Calc2Factory calcFactory = new Calc2Factory();
+    public ICalculation buildNew() {
         Collection<IRate> rates;
         try {
             rates = RateHandler.selectForDate(DateUtil.lastDayOfMonth(DateUtil.today()));
@@ -23,6 +25,6 @@ public class Calc2Builder {
         }
         IReading oldReading = readingBuilder.last();
         IReading newReading = readingBuilder.buildNew();
-        return (ServiceCalc)Calc2Factory.createEmptyServiceCalc(oldReading, newReading, rates);
+        return calcFactory.createEmptyServiceCalc(oldReading, newReading, rates);
     }
 }

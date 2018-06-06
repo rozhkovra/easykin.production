@@ -10,39 +10,42 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by rrozhkov on 11.05.2018.
  */
-public class EasyKinWebConfig {
+public class UrlConfigurator {
+    final private static AdapterFactory adapterFactory = new AdapterFactory();
+    final private static TaskAdapter taskAdapter = adapterFactory.task();
+
     public static String getFilterUrl(HttpServletRequest request, HttpSession session) {
-        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        TaskFilterBean filterBean = taskAdapter.filter(request);
         return getFilterUrl(session.getId(), filterBean);
     }
 
     public static String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId) {
-        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setModuleId(moduleId);
         return getFilterUrl(session.getId(), filterBean);
     }
 
     public static String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId, String subModule) {
-        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setModuleId(moduleId);
         filterBean.setSubModuleId(subModule);
         return getFilterUrl(session.getId(), filterBean);
     }
 
     public static String getFilterUrlForCategory(HttpServletRequest request, HttpSession session, int categoryId) {
-        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setCategoryId(categoryId);
         return getFilterUrl(session.getId(), filterBean);
     }
 
     public static String getFilterUrlForStatus(HttpServletRequest request, HttpSession session, int statusId) {
-        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setStatusId(statusId);
         return getFilterUrl(session.getId(), filterBean);
     }
 
     public static String getFilterUrlForPriority(HttpServletRequest request, HttpSession session, int priorityId) {
-        TaskFilterBean filterBean = TaskAdapter.filter(request);
+        TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setPriority(priorityId);
         return getFilterUrl(session.getId(), filterBean);
     }

@@ -6,6 +6,7 @@ import ru.rrozhkov.easykin.model.work.ReleaseType;
 import ru.rrozhkov.easykin.model.work.TaskType;
 import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
 import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
+import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.Form;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.util.DateUtil;
@@ -15,6 +16,9 @@ import java.awt.*;
 
 public class ActivityForm extends Form {
 	private static final long serialVersionUID = 1L;
+	private static final WorkFactory workFactory = new WorkFactory();
+	private static final ActivityHandler activityHandler = new ActivityHandler();
+
 	private JTextField dateField;
 	private JTextField personField;
 	private JTextField timeField;
@@ -34,7 +38,7 @@ public class ActivityForm extends Form {
 	private IActivity activity;
 
 	public ActivityForm(IGUIEditor parent) {
-		this(parent, WorkFactory.newActivity());
+		this(parent, workFactory.newActivity());
 	}
 
 	public ActivityForm(IGUIEditor parent, IActivity activity) {
@@ -44,7 +48,7 @@ public class ActivityForm extends Form {
 	}
 	
 	protected void fill(){
-		setLayout(new GridLayout(9, 2));
+		setLayout(guiFactory.gridLayout(9, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getDateLabel());
@@ -67,7 +71,7 @@ public class ActivityForm extends Form {
 
 	private JComboBox getReleaseTypeComboBox(){
 		if(releaseTypeComboBox == null){
-			releaseTypeComboBox = new JComboBox(new ReleaseType[]{
+			releaseTypeComboBox = (JComboBox) guiFactory.comboBoxFilled(CollectionUtil.create(
 					ReleaseType.R800,
 					ReleaseType.R810,
 					ReleaseType.R900,
@@ -80,7 +84,7 @@ public class ActivityForm extends Form {
 					ReleaseType.R1500,
 					ReleaseType.NORELEASE,
 					ReleaseType.ANOTHER
-			});
+			));
 			releaseTypeComboBox.setSelectedItem(activity.getReleaseType());
 		}
 		return releaseTypeComboBox;
@@ -95,7 +99,7 @@ public class ActivityForm extends Form {
 
 	private JComboBox getTaskTypeComboBox(){
 		if(taskTypeComboBox == null){
-			taskTypeComboBox = new JComboBox(new TaskType[]{
+			taskTypeComboBox = (JComboBox) guiFactory.comboBoxFilled(CollectionUtil.create(
 					TaskType.BUGFIX,
 					TaskType.ESTIMATECR,
 					TaskType.WRITEIC,
@@ -107,7 +111,7 @@ public class ActivityForm extends Form {
 					TaskType.LEADPM,
 					TaskType.VACATION,
 					TaskType.ANOTHER
-			});
+			));
 			taskTypeComboBox.setSelectedItem(activity.getTaskType());
 		}
 		return taskTypeComboBox;
@@ -189,7 +193,7 @@ public class ActivityForm extends Form {
 	}
 
 	protected void update() {
-		activity = WorkFactory.create(activity.getId(), DateUtil.parse(dateField.getText()), activity.getPerson()
+		activity = workFactory.create(activity.getId(), DateUtil.parse(dateField.getText()), activity.getPerson()
 				,Integer.valueOf(timeField.getText()), (TaskType)taskTypeComboBox.getSelectedItem(), nameField.getText()
 				, (ReleaseType)releaseTypeComboBox.getSelectedItem(), descField.getText());
 	}
@@ -201,9 +205,9 @@ public class ActivityForm extends Form {
 			return;
 		try{
 			if(activity.getId()==-1) {
-				ActivityHandler.insert(activity);
+				activityHandler.insert(activity);
 			}else {
-				ActivityHandler.update(activity);
+				activityHandler.update(activity);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();

@@ -34,7 +34,7 @@ public class ReadingServicePanel extends Panel {
     }
 
     private void fill() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(guiFactory.boxLayout(this, BoxLayout.Y_AXIS));
         JLabel label = (JLabel) guiFactory.label(((ServiceCalc) calc).getName());
         Font font1 = new Font("SansSerif", Font.PLAIN, 30);
         label.setFont(font1);

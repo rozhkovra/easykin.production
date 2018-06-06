@@ -13,11 +13,11 @@ import java.sql.SQLException;
  */
 @WebService(serviceName="EasyKinTask", portName="EasyKinTaskPort", targetNamespace="http://rrozhkov.ru/easykin/task")
 public class EasyKinTaskService {
-
+    private static final TaskHandler taskHandler = new TaskHandler();
     @WebMethod
     public int add(TaskBean bean) {
         try {
-            return TaskHandler.insert(WSConverterFactory.taskws().convert(bean));
+            return taskHandler.insert(WSConverterFactory.taskws().convert(bean));
         }catch (SQLException e){
             e.printStackTrace();
         }

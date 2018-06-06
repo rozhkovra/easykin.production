@@ -1,4 +1,5 @@
 <%@ page import="ru.rrozhkov.lib.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.work.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
@@ -26,7 +27,9 @@
 </thead>
 <tbody>
 <%
-	Collection<ActivityBean> activities = WorkAdapter.activities();
+	final AdapterFactory adapterFactory = new AdapterFactory();
+	final WorkAdapter workAdapter = adapterFactory.work();
+	Collection<ActivityBean> activities = workAdapter.activities();
 	for(ActivityBean bean : activities){
 %>
 <tr>

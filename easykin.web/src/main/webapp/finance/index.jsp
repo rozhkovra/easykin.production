@@ -1,5 +1,6 @@
 <%@ page import="java.util.*"%>
 <%@ page import="ru.rrozhkov.lib.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.finance.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <section class="content">
@@ -23,7 +24,10 @@
 </thead>
 <tbody>
 <%
-	Collection<FinanceBean> payments = FinanceAdapter.finance();
+	final AdapterFactory adapterFactory = new AdapterFactory();
+	final FinanceAdapter financeAdapter = adapterFactory.finance();
+
+	Collection<FinanceBean> payments = financeAdapter.finance();
 	for (FinanceBean payment : payments) {
 %>
 <tr>

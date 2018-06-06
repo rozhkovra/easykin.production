@@ -3,6 +3,7 @@ package ru.rrozhkov.lib.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.Collection;
 
 /**
@@ -18,8 +19,19 @@ public interface IGUIFactory {
     Component button(String text, ActionListener listener);
     Component button(ImageIcon image, ActionListener listener);
     Component password();
-    Component panelEmpty();
+    Container panelEmpty();
+    Container panel(LayoutManager manager);
+    Container panelBordered();
     TablePanel tablePanel(IGUIEditor parent, Table table);
+    TablePanel tablePanel(IGUIEditor parent, TableModel tableModel);
     Table table(TableModel tableModel);
     Component comboBoxFilled(Collection priorities);
+    LayoutManager boxLayout(Container comp, int direction);
+    LayoutManager gridLayout(int rows, int cols);
+    Dimension size(int width, int height);
+    JTabbedPane tabbedPane();
+    JMenuItem menuItem(String text, Icon icon);
+    JMenu menu(String text);
+    JMenuBar menuBar();
+    WindowEvent windowEvent(Window source, int id);
 }

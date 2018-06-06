@@ -9,8 +9,8 @@ import ru.rrozhkov.lib.convert.IConverter;
  * Created by rrozhkov on 2/28/2017.
  */
 public class TaskWSConverter implements IConverter<TaskBean, ITask> {
-
+    private static final TaskFactory taskFactory = new TaskFactory();
     public ITask convert(TaskBean bean) {
-        return TaskFactory.createTask(bean.getId(),bean.getName(),bean.getCreateDate(),bean.getPlanDate(),bean.getPriority(),bean.getCategory(),bean.getCategoryName(),null,bean.getStatus());
+        return taskFactory.createTask(bean.getId(), bean.getName(), bean.getCreateDate(), bean.getPlanDate(), bean.getPriority(), bean.getCategory(), bean.getCategoryName(), null, bean.getStatus());
     }
 }

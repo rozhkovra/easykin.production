@@ -15,6 +15,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class RateConverter implements IEntityConverter {
+    private static final ServiceFactory serviceFactory = new ServiceFactory();
+
     protected RateConverter() {
     }
 
@@ -34,7 +36,7 @@ public class RateConverter implements IEntityConverter {
         return new IConverter<ResultSet, IRate>() {
             public IRate convert(ResultSet result){
                 try{
-                    return ServiceFactory.createRate(result.getInt("id"), RateType.type(result.getString("rateType"))
+                    return serviceFactory.createRate(result.getInt("id"), RateType.type(result.getString("rateType"))
                             , result.getString("rateValue"), result.getDate("dateFrom"), result.getDate("dateTo"));
                 }catch(SQLException e){
                     e.printStackTrace();

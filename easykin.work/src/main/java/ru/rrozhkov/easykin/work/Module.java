@@ -7,6 +7,7 @@ import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Collection;
 
 /**
@@ -15,16 +16,16 @@ import java.util.Collection;
 public class Module {
     private static IModuleGUIFactory activityFactory = new ActivityGUIFactory();
     private static ActivityBuilder activityBuilder = new ActivityBuilder();
-    public static JPanel createPanel(IGUIEditor parent) {
+    public static Component createPanel(IGUIEditor parent) {
         return activityFactory.createTablePanel(parent, activities());
     }
-    public static JPanel createEditor(IGUIEditor parent){
+    public static Component createEditor(IGUIEditor parent){
         return activityFactory.createEditor(parent, null);
     }
-    public static JPanel createEditor(IGUIEditor parent, IActivity activity) {
+    public static Component createEditor(IGUIEditor parent, IActivity activity) {
         return activityFactory.createEditor(parent,activity);
     }
-    public static JPanel createFilter(IGUIEditor parent){
+    public static Component createFilter(IGUIEditor parent){
         return activityFactory.createFilter(parent);
     }
 

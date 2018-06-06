@@ -13,20 +13,24 @@ import java.util.Collection;
  * Created by rrozhkov on 1/16/2018.
  */
 public class ActivityBuilder {
+    private static final WorkFactory workFactory = new WorkFactory();
+    private static final ActivityHandler activityHandler = new ActivityHandler();
+    private static final AuthManager authManager = AuthManager.instance();
+
     public IActivity build(IActivity activity){
         //todo add handle of person from db
-        IPerson person = AuthManager.instance().signedPerson();
+        IPerson person = authManager.signedPerson();
         if(activity.getPerson()==null) {
-            activity = WorkFactory.create(activity.getId(),activity.getDate(),person,activity.getTime(),activity.getTaskType(),activity.getName(),activity.getReleaseType(),activity.getDesc());
+            activity = workFactory.create(activity.getId(),activity.getDate(),person,activity.getTime(),activity.getTaskType(),activity.getName(),activity.getReleaseType(),activity.getDesc());
         }
         return activity;
     }
 
     public Collection<IActivity> build() {
-        IPerson person = AuthManager.instance().signedPerson();
+        IPerson person = authManager.signedPerson();
         Collection<IActivity> collection = CollectionUtil.create();
         try {
-            Collection<IActivity> activities = ActivityHandler.selectForPerson(person.getId());
+            Collection<IActivity> activities = activityHandler.selectForPerson(person.getId());
             for(IActivity activity : activities) {
                 collection.add(build(activity));
             }

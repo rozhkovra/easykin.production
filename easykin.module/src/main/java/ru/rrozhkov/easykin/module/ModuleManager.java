@@ -11,6 +11,8 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class ModuleManager {
+    private static final ClassManager classManager = new ClassManager();
+
     public static final String ROOT = "ru.rrozhkov.easykin";
     public static Collection<String> activeModules(){
         return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.FAMILY, Module.WORK,Module.SERVICE);
@@ -26,10 +28,10 @@ public class ModuleManager {
         for (Object obj : params){
             clazzs.add(getInterface(obj.getClass()));
         }
-        Class clazz = ClassManager.clazz(module(module));
+        Class clazz = classManager.clazz(module(module));
         Method method = null;
         try {
-            method = ClassManager.method(clazz, methodName, clazzs.toArray(new Class[clazzs.size()]));
+            method = classManager.method(clazz, methodName, clazzs.toArray(new Class[clazzs.size()]));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
@@ -45,10 +47,10 @@ public class ModuleManager {
         return null;
     }
     public static Object invoke(String module, String methodName){
-        Class clazz = ClassManager.clazz(module(module));
+        Class clazz = classManager.clazz(module(module));
         Method method = null;
         try {
-            method = ClassManager.method(clazz, methodName);
+            method = classManager.method(clazz, methodName);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }

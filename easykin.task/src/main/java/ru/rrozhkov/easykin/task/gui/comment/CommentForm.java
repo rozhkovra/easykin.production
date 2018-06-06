@@ -11,12 +11,15 @@ import java.awt.*;
 
 public class CommentForm extends Form {
 	private static final long serialVersionUID = 1L;
+	private static final CommentHandler handler = new CommentHandler();
+	private static final TaskFactory taskFactory = new TaskFactory();
+
 	private JTextField textField;
 	private Component textLabel;
 	private IComment comment;
 
 	public CommentForm(IGUIEditor parent, int taskId) {
-		this(parent, TaskFactory.newComment(taskId));
+		this(parent, taskFactory.newComment(taskId));
 	}
 
 	public CommentForm(IGUIEditor parent, IComment comment) {
@@ -49,7 +52,7 @@ public class CommentForm extends Form {
 	}
 
 	protected void update() {
-		comment = TaskFactory.createComment(comment.getId(), getTextField().getText(), comment.getDate(), comment.getTaskId());
+		comment = taskFactory.createComment(comment.getId(), getTextField().getText(), comment.getDate(), comment.getTaskId());
 	}
 
 	protected void ok(){
@@ -58,9 +61,9 @@ public class CommentForm extends Form {
 			return;
 		try{
 			if(comment.getId()==-1)
-				CommentHandler.insert(comment);
+				handler.insert(comment);
 			else
-				CommentHandler.update(comment);
+				handler.update(comment);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

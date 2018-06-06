@@ -48,7 +48,6 @@ public class ActivityTableStyle extends TableStyle<IActivity>  {
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 			{
 				final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-				IActivity task = (IActivity) ((java.util.List)data).get(row);
 				c.setFont(c.getFont().deriveFont(Font.PLAIN,18));
 				setHorizontalAlignment(getColumnAlignment()[column]);
 				return c;

@@ -17,6 +17,8 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class CommentConverter implements IEntityConverter<IComment> {
+    private static final TaskFactory taskFactory = new TaskFactory();
+
     protected CommentConverter() {
     }
 
@@ -52,7 +54,7 @@ public class CommentConverter implements IEntityConverter<IComment> {
         return new IConverter<ResultSet, IComment>() {
             public IComment convert(ResultSet result){
                 try{
-                    return TaskFactory.createComment(result.getInt("id"), result.getString("text")
+                    return taskFactory.createComment(result.getInt("id"), result.getString("text")
                             , result.getDate("createdate"), result.getInt("taskId")
                     );
                 }catch(SQLException e){

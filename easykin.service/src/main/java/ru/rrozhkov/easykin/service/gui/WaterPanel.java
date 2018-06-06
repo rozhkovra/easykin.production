@@ -1,13 +1,11 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import java.awt.Component;
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
+import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class WaterPanel extends Panel{
 	public static String COLD_PREV_MESURE_LABEL_TEXT = "Хол. пред. сч1";
@@ -31,24 +29,24 @@ public class WaterPanel extends Panel{
 	private JTextField hotCurrentMesureField2 = null;
 	private JTextField rateInField = null;
 	private JTextField rateOutField = null;
-	private JLabel coldPrevMesureLabel = null;
-	private JLabel coldCurrentMesureLabel = null;
-	private JLabel hotPrevMesureLabel = null;
-	private JLabel hotCurrentMesureLabel = null;
-	private JLabel coldPrevMesureLabel2 = null;
-	private JLabel coldCurrentMesureLabel2 = null;
-	private JLabel hotPrevMesureLabel2 = null;
-	private JLabel hotCurrentMesureLabel2 = null;
-	private JLabel rateInLabel = null;
-	private JLabel rateOutLabel = null;
+	private Component coldPrevMesureLabel = null;
+	private Component coldCurrentMesureLabel = null;
+	private Component hotPrevMesureLabel = null;
+	private Component hotCurrentMesureLabel = null;
+	private Component coldPrevMesureLabel2 = null;
+	private Component coldCurrentMesureLabel2 = null;
+	private Component hotPrevMesureLabel2 = null;
+	private Component hotCurrentMesureLabel2 = null;
+	private Component rateInLabel = null;
+	private Component rateOutLabel = null;
 
-	public WaterPanel(Panel parent, WaterCalc calcBean) {
+	public WaterPanel(Panel parent, ICalculation calcBean) {
 		super(parent, calcBean);
 		fill();	 
 	}
 
 	private void fill() {
-		setLayout(new GridLayout(15, 2));
+		setLayout(guiFactory.gridLayout(15, 2));
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
 		add(getColdPrevMesureLabel());
@@ -87,7 +85,7 @@ public class WaterPanel extends Panel{
 
 	private Component getRateOutLabel() {
 		if(rateOutLabel == null)
-			rateOutLabel = (JLabel) guiFactory.label(RATE_OUT_LABEL_TEXT);
+			rateOutLabel = guiFactory.label(RATE_OUT_LABEL_TEXT);
 		return rateOutLabel;
 	}
 
@@ -102,7 +100,7 @@ public class WaterPanel extends Panel{
 
 	private Component getRateInLabel() {
 		if(rateInLabel == null)
-			rateInLabel = (JLabel) guiFactory.label(RATE_IN_LABEL_TEXT);
+			rateInLabel = guiFactory.label(RATE_IN_LABEL_TEXT);
 		return rateInLabel;
 	}
 
@@ -125,13 +123,13 @@ public class WaterPanel extends Panel{
 
 	private Component getHotCurrentMesureLabel() {
 		if(hotCurrentMesureLabel == null)
-			hotCurrentMesureLabel = (JLabel) guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT);
+			hotCurrentMesureLabel = guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT);
 		return hotCurrentMesureLabel;
 	}
 
 	private Component getHotCurrentMesureLabel2() {
 		if(hotCurrentMesureLabel2 == null)
-			hotCurrentMesureLabel2 = (JLabel) guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT2);
+			hotCurrentMesureLabel2 = guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT2);
 		return hotCurrentMesureLabel2;
 	}
 
@@ -155,13 +153,13 @@ public class WaterPanel extends Panel{
 
 	private Component getHotPrevMesureLabel() {
 		if(hotPrevMesureLabel == null)
-			hotPrevMesureLabel = (JLabel) guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT);
+			hotPrevMesureLabel = guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT);
 		return hotPrevMesureLabel;
 	}
 
 	private Component getHotPrevMesureLabel2() {
 		if(hotPrevMesureLabel2 == null)
-			hotPrevMesureLabel2 = (JLabel) guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT2);
+			hotPrevMesureLabel2 = guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT2);
 		return hotPrevMesureLabel2;
 	}
 
@@ -201,27 +199,27 @@ public class WaterPanel extends Panel{
 		return coldCurrentMesureField2;
 	}
 
-	public JLabel getColdPrevMesureLabel(){
+	public Component getColdPrevMesureLabel(){
 		if(coldPrevMesureLabel == null)
-			coldPrevMesureLabel = (JLabel) guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT);
+			coldPrevMesureLabel = guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT);
 		return coldPrevMesureLabel;
 	}
 
-	public JLabel getColdPrevMesureLabel2(){
+	public Component getColdPrevMesureLabel2(){
 		if(coldPrevMesureLabel2 == null)
-			coldPrevMesureLabel2 = (JLabel) guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT2);
+			coldPrevMesureLabel2 = guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT2);
 		return coldPrevMesureLabel2;
 	}
 
-	public JLabel getColdCurrentMesureLabel(){
+	public Component getColdCurrentMesureLabel(){
 		if(coldCurrentMesureLabel == null)
-			coldCurrentMesureLabel = (JLabel) guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT);
+			coldCurrentMesureLabel = guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT);
 		return coldCurrentMesureLabel;
 	}
 
-	public JLabel getColdCurrentMesureLabel2(){
+	public Component getColdCurrentMesureLabel2(){
 		if(coldCurrentMesureLabel2 == null)
-			coldCurrentMesureLabel2 = (JLabel) guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT2);
+			coldCurrentMesureLabel2 = guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT2);
 		return coldCurrentMesureLabel2;
 	}
 

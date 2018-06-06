@@ -12,7 +12,7 @@ import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 import ru.rrozhkov.lib.util.DateUtil;
 
-import javax.swing.*;
+import java.awt.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,19 +23,20 @@ import java.util.List;
  */
 public class Module {
     private static IModuleGUIFactory financeFactory = new FinanceGUIFactory();
-    public static JPanel createPanel(IGUIEditor parent){
+    public static Component createPanel(IGUIEditor parent){
         return financeFactory.createTablePanel(parent, finance());
     }
 
-    public static JPanel createEditor(IGUIEditor parent, IPayment payment){
+    public static Component createEditor(IGUIEditor parent, IPayment payment){
         return financeFactory.createEditor(parent,payment);
     }
     public static Collection finance(){
         Collection collection = CollectionUtil.create();
         for(String module : ModuleManager.activeModules()) {
             Collection payments = (Collection) ModuleManager.invoke(module, "payments");
-            if(payments!=null)
+            if(payments!=null) {
                 collection.addAll(payments);
+            }
         }
         try {
             collection.addAll(PaymentHandler.select());

@@ -1,26 +1,24 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
+import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+
+import javax.swing.*;
 
 public class DefaultPanel extends Panel { 
 	private static final long serialVersionUID = 1L;
 	private JTextField sumField;
 	private JLabel sumLabel;
 	
-	public DefaultPanel(Panel parent, DefaultCalc calcBean) {
+	public DefaultPanel(Panel parent, ICalculation calcBean) {
 		super(parent, calcBean);
 		fill();
 	}
 	
 	private void fill(){
-		setLayout(new GridLayout(5,2));
+		setLayout(guiFactory.gridLayout(5,2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getCalcTypeLabel());

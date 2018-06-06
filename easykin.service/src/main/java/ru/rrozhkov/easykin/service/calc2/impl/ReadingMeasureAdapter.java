@@ -4,7 +4,6 @@ import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureFilterFactory;
-import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureTypeFilter;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
@@ -14,6 +13,8 @@ import java.util.Collection;
  * Created by rrozhkov on 12/25/2017.
  */
 public class ReadingMeasureAdapter {
+    private static final MeasureFilterFactory measureFilterFactory = new MeasureFilterFactory();
+
     protected Collection<IMeasure> measures;
     protected double coldMeasure;
     protected double coldMeasure2;
@@ -84,6 +85,6 @@ public class ReadingMeasureAdapter {
     }
 
     public Collection<IMeasure> getMeasuresByType(MeasureType... types) {
-        return FilterUtil.filter(measures, MeasureFilterFactory.typeFilter(types));
+        return FilterUtil.filter(measures, measureFilterFactory.typeFilter(types));
     }
 }

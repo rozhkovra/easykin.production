@@ -22,6 +22,8 @@ import java.util.Collection;
  */
 public class StaticReadingDataProvider extends CollectionDataProvider<IReading> {
     final private static ReadingBuilder readingBuilder = new ReadingBuilder();
+    final private static Calc2Factory calc2Factory = new Calc2Factory();
+
     public static Collection<IRate> rates2018_1 = (Collection)Arrays.asList(
             new Rate(RateType.WATERIN, Money.valueOf(15.29),DateUtil.parse("01.01.2018"),DateUtil.parse("30.06.2018")),
             new Rate(RateType.WATEROUT,Money.valueOf(18.66),DateUtil.parse("01.01.2018"),DateUtil.parse("30.06.2018")),
@@ -47,7 +49,7 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
             new Rate(RateType.INTERCOM, Money.valueOf(30.00),DateUtil.parse("01.07.2018"),DateUtil.parse("31.12.2018"))
     );
 
-    public StaticReadingDataProvider(Collection<IReading> collection) {
+    public StaticReadingDataProvider() {
         super(CollectionUtil.<IReading>create());
     }
 
@@ -76,15 +78,15 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
         if(newReading.getDate().getTime() <= DateUtil.parse("30.04.2018").getTime()) {
             paid = true;
         }
-        calculations.add(Calc2Factory.createWaterCalc(oldReading, newReading, rates, paid));
-        calculations.add(Calc2Factory.createHotWaterCalc(oldReading, newReading, rates, paid));
-        calculations.add(Calc2Factory.createElectricityCalc(oldReading, newReading, rates, paid));
-        calculations.add(Calc2Factory.createGazCalc(rates, paid));
-        calculations.add(Calc2Factory.createHeatingCalc(rates, paid));
-        calculations.add(Calc2Factory.createRepairCalc(rates, paid));
-        calculations.add(Calc2Factory.createAntennaCalc(rates, paid));
-        calculations.add(Calc2Factory.createIntercomCalc(rates, paid));
-        calculations.add(Calc2Factory.createHouseCalc(rates, paid));
+        calculations.add(calc2Factory.createWaterCalc(oldReading, newReading, rates, paid));
+        calculations.add(calc2Factory.createHotWaterCalc(oldReading, newReading, rates, paid));
+        calculations.add(calc2Factory.createElectricityCalc(oldReading, newReading, rates, paid));
+        calculations.add(calc2Factory.createGazCalc(rates, paid));
+        calculations.add(calc2Factory.createHeatingCalc(rates, paid));
+        calculations.add(calc2Factory.createRepairCalc(rates, paid));
+        calculations.add(calc2Factory.createAntennaCalc(rates, paid));
+        calculations.add(calc2Factory.createIntercomCalc(rates, paid));
+        calculations.add(calc2Factory.createHouseCalc(rates, paid));
         return new ServiceCalc(newReading.getDate(),calculations);
     }
 }

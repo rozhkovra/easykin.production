@@ -1,8 +1,5 @@
 package ru.rrozhkov.easykin.auto.service.impl.convert;
 
-import static ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory.createDetailPayment;
-
-
 import java.util.Collection;
 
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
@@ -15,12 +12,13 @@ import ru.rrozhkov.lib.convert.IConverter;
 import ru.rrozhkov.lib.filter.util.FilterUtil;
 
 public class ServiceConverter implements IConverter<Collection<IService>,Collection<IPayment>> {
+	final static private PaymentFactory paymentFactory = new PaymentFactory();
 	public Collection<IPayment> convert(Collection<IService> entries) {
 		Collection<IPayment> collection = CollectionUtil.create();
 		for(IService service : entries){
 			collection.add(new SingleConverter().convert(service));
 			for(IService detailService : service.services()){
-				collection.add(createDetailPayment(detailService.getName(),detailService.getPrice(),detailService.getDate()));
+				collection.add(paymentFactory.createDetailPayment(detailService.getName(), detailService.getPrice(), detailService.getDate()));
 			}
 		}
 		return FilterUtil.filter(collection, PaymentFilterFactory.noFree());
@@ -29,9 +27,9 @@ public class ServiceConverter implements IConverter<Collection<IService>,Collect
 	class SingleConverter implements IConverter<IService, IPayment> {
 		public IPayment convert(IService entry) {
 			if(entry instanceof RepairService){
-				return PaymentFactory.createAutoRepairPayment(entry.getName(),entry.getPrice(),entry.getDate());
+				return paymentFactory.createAutoRepairPayment(entry.getName(),entry.getPrice(),entry.getDate());
 			}
-			return PaymentFactory.createAutoPayment(entry.getName(),entry.getPrice(),entry.getDate());
+			return paymentFactory.createAutoPayment(entry.getName(),entry.getPrice(),entry.getDate());
 		}
 	}
 }

@@ -10,6 +10,8 @@ import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
  * Created by rrozhkov on 12/27/2017.
  */
 public class MeasureCalculator extends Calculator {
+    private static final ServiceFactory serviceFactory = new ServiceFactory();
+
     public MeasureCalculator(MeasureCalc calc) {
         super(calc);
     }
@@ -20,6 +22,6 @@ public class MeasureCalculator extends Calculator {
         int prev = CalcUtil.summ(mCalc.getOldMeasures());
         int delta = curr-prev;
         Money deltaSum = MoneyFactory.create(mCalc.getPrice()).multiply(delta);
-        return ServiceFactory.createMeasureResult(delta, deltaSum, deltaSum);
+        return serviceFactory.createMeasureResult(delta, deltaSum, deltaSum);
     }
 }

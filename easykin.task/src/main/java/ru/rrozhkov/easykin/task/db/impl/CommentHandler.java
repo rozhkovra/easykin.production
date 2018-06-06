@@ -2,6 +2,8 @@ package ru.rrozhkov.easykin.task.db.impl;
 
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.lib.db.IDBManager;
 import ru.rrozhkov.lib.db.impl.DBManager;
 
 import java.sql.SQLException;
@@ -9,48 +11,49 @@ import java.util.Collection;
 import java.util.Map;
 
 public class CommentHandler {
-	private static String TABLENAME = "COMMENT";
-	
-	public static String select = "SELECT * FROM "+TABLENAME;
-	public static String selectForTask = "SELECT * FROM "+TABLENAME+" where taskId=#taskId#";
-	public static String selectForPerson = "SELECT * FROM "+TABLENAME
+	final private static TaskConverterFactory converterFactory = new TaskConverterFactory();
+	final private static IEntityConverter converter = converterFactory.comment();
+	final private static IDBManager dbManager = DBManager.instance();
+
+	final private static String TABLENAME = "COMMENT";
+	final private static String select = "SELECT * FROM "+TABLENAME;
+	final private static String selectForTask = "SELECT * FROM "+TABLENAME+" where taskId=#taskId#";
+	final private static String selectForPerson = "SELECT * FROM "+TABLENAME
 			+" INNER JOIN TASK2PERSON ON TASK2PERSON.TASK = COMMENT.TASKID AND TASK2PERSON.PERSON=#person#";
-	public static String insert = "INSERT INTO "+TABLENAME
+	final private static String insert = "INSERT INTO "+TABLENAME
 			+"(ID, TEXT, CREATEDATE, TASKID)"
 			+" VALUES(#id#,'#text#','#createdate#',#taskid#)";
-	public static String update = "UPDATE "+TABLENAME+" SET TEXT='#text#', CREATEDATE='#createdate#', TASKID=#taskid#"
+	final private static String update = "UPDATE "+TABLENAME+" SET TEXT='#text#', CREATEDATE='#createdate#', TASKID=#taskid#"
 			+" WHERE ID=#id#";
 
-
-
-	public static Collection<IComment> select() throws Exception {
-		return DBManager.instance().select(select, TaskConverterFactory.comment());
+	public Collection<IComment> select() throws Exception {
+		return dbManager.select(select, converter);
 	}
 	
-	public static Collection<IComment> selectForTask(int taskId) throws Exception {
-		return DBManager.instance().select(selectForTask.replace("#taskId#", String.valueOf(taskId)), TaskConverterFactory.comment());
+	public Collection<IComment> selectForTask(int taskId) throws Exception {
+		return dbManager.select(selectForTask.replace("#taskId#", String.valueOf(taskId)), converter);
 	}
 	
-	public static Collection<IComment> selectForPerson(int personId) throws Exception {
-		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(personId)), TaskConverterFactory.comment());
+	public Collection<IComment> selectForPerson(int personId) throws Exception {
+		return dbManager.select(selectForPerson.replace("#person#", String.valueOf(personId)), converter);
 	}
 
-	public static int insert(IComment comment) throws SQLException{
+	public int insert(IComment comment) throws SQLException{
 		try {
-			Map<String, Object> map = TaskConverterFactory.comment().map(comment);
-			int id = DBManager.instance().nextId(TABLENAME);
+			Map<String, Object> map = converter.map(comment);
+			int id = dbManager.nextId(TABLENAME);
 			map.put("id", id);
-			DBManager.instance().insert(insert,map);
+			dbManager.insert(insert, map);
 			return id;
 		} catch (Exception e) {
 			throw new SQLException(e);
 		}
 	}
 
-	public static int update(IComment comment) throws SQLException{
+	public int update(IComment comment) throws SQLException{
 		try {
-			Map<String, Object> map = TaskConverterFactory.comment().map(comment);
-			int count = DBManager.instance().update(update, map);
+			Map<String, Object> map = converter.map(comment);
+			int count = dbManager.update(update, map);
 			return count;
 		} catch (Exception e) {
 			throw new SQLException(e);

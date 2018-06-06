@@ -29,7 +29,7 @@ public class ReadingPanel extends GUIPanel {
 
     private void fill() {
         fields = new HashMap<IMeasure,JTextField>();
-        setLayout(new GridLayout(2, reading.getMeasures().size()));
+        setLayout(guiFactory.gridLayout(2, reading.getMeasures().size()));
         for(IMeasure measure : reading.getMeasures()){
             add(guiFactory.label(String.valueOf(measure.getType())));
 

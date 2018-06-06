@@ -5,6 +5,8 @@ import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.lib.db.IDBManager;
 import ru.rrozhkov.lib.db.impl.DBManager;
 import ru.rrozhkov.lib.util.DateUtil;
 
@@ -14,6 +16,10 @@ import java.util.Date;
 import java.util.Map;
 
 public class TaskHandler {
+	final private static IDBManager dbManager = DBManager.instance();
+	final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+	final private static IEntityConverter converter = taskConverterFactory.task();
+
 	private static String TABLENAME = "TASK";
 
 	public static String select = "SELECT "+TABLENAME+".*, CATEGORY.NAME as CATEGORYNAME FROM "+TABLENAME
@@ -40,15 +46,15 @@ public class TaskHandler {
 			+ " STATUSID="+Status.status(Status.CLOSE)+" WHERE ID=#id#";
 
 
-	public static Collection<ITask> select() throws Exception{
-		return DBManager.instance().select(select, TaskConverterFactory.task());
+	public Collection<ITask> select() throws Exception{
+		return dbManager.select(select, converter);
 	}
 
-	public static Collection<ITask> selectForPerson(int id) throws Exception {
-		return DBManager.instance().select(selectForPerson.replace("#person#", String.valueOf(id)), TaskConverterFactory.task());
+	public Collection<ITask> selectForPerson(int id) throws Exception {
+		return dbManager.select(selectForPerson.replace("#person#", String.valueOf(id)), converter);
 	}
 
-	public static Collection<ITask> selectForFilter(TaskFilterBean bean) throws Exception {
+	public Collection<ITask> selectForFilter(TaskFilterBean bean) throws Exception {
 		StringBuilder select = new StringBuilder();
 		select.append("SELECT ").append(TABLENAME).append(".*, CATEGORY.NAME as CATEGORYNAME FROM ").append(TABLENAME)
 				.append(" INNER JOIN CATEGORY ON ").append(TABLENAME).append(".CATEGORYID = CATEGORY.ID")
@@ -74,42 +80,42 @@ public class TaskHandler {
 				.append(TABLENAME).append(".PLANDATE, ")
 				.append(TABLENAME).append(".CATEGORYID");
 
-		return DBManager.instance().select(select.toString(), TaskConverterFactory.task());
+		return dbManager.select(select.toString(), converter);
 	}
 
-	public static ITask selectTask(int taskId) throws Exception {
-		Collection<ITask> tasks = DBManager.instance().select(selectTask.replace("#id#", String.valueOf(taskId)), TaskConverterFactory.task());
+	public ITask selectTask(int taskId) throws Exception {
+		Collection<ITask> tasks = dbManager.select(selectTask.replace("#id#", String.valueOf(taskId)), converter);
 		if(tasks!=null && !tasks.isEmpty())
 			return CollectionUtil.get(tasks,0);
 		return null;
 	}
 	
-	public static int insert(ITask task) throws SQLException{
+	public int insert(ITask task) throws SQLException{
 		try {
-			Map<String, Object> map = TaskConverterFactory.task().map(task);
-			int id = DBManager.instance().nextId(TABLENAME);
+			Map<String, Object> map = converter.map(task);
+			int id = dbManager.nextId(TABLENAME);
 			map.put("id", id);
-			DBManager.instance().insert(insert,map);
+			dbManager.insert(insert, map);
 			return id;
 		} catch (Exception e) { 
 			throw new SQLException(e); 
 		}
 	}
 	
-	public static int update(ITask task) throws SQLException{
+	public int update(ITask task) throws SQLException{
 		try {
-			Map<String, Object> map = TaskConverterFactory.task().map(task);
-			int count = DBManager.instance().update(update, map);
+			Map<String, Object> map = converter.map(task);
+			int count = dbManager.update(update, map);
 			return count;
 		} catch (Exception e) { 
 			throw new SQLException(e); 
 		} 
 	}
 
-	public static int close(ITask task) throws SQLException{
+	public int close(ITask task) throws SQLException{
 		try {
-			Map<String, Object> map = TaskConverterFactory.task().map(task);
-			int count = DBManager.instance().update(close, map);
+			Map<String, Object> map = converter.map(task);
+			int count = dbManager.update(close, map);
 			return count;
 		} catch (Exception e) { 
 			throw new SQLException(e); 
