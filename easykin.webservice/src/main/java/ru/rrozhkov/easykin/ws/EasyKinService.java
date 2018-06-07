@@ -21,6 +21,7 @@ import java.util.Collection;
 @WebService(serviceName="EasyKin", portName="EasyKinPort", targetNamespace="http://rrozhkov.ru/easykin")
 public class EasyKinService {
 	private static final CategoryService categoryService = new CategoryService();
+	private static final ModuleManager moduleManager = new ModuleManager();
 
 	@WebMethod
 	public Collection<CategoryBean> categories() {
@@ -33,7 +34,7 @@ public class EasyKinService {
 	@WebMethod
 	public Collection<PersonBean> persons() {
 		Collection<PersonBean> beans = CollectionUtil.create();
-		for(IPerson person : (Collection<IPerson>)ModuleManager.invoke(Module.PERSON, "persons")){
+		for(IPerson person : (Collection<IPerson>)moduleManager.invoke(Module.PERSON, "persons")){
 			beans.add(WSConverterFactory.person().convert(person));
 		}
 		return beans;
@@ -41,7 +42,7 @@ public class EasyKinService {
 	@WebMethod
 	public Collection<TaskBean> tasks(IPerson person) {
 		Collection<TaskBean> beans = CollectionUtil.create();
-		for(ITask task : (Collection<ITask>)ModuleManager.invoke(Module.TASK, "tasks", person)){
+		for(ITask task : (Collection<ITask>)moduleManager.invoke(Module.TASK, "tasks", person)){
 			beans.add(WSConverterFactory.task().convert(task));
 		}
 		return beans;
@@ -49,7 +50,7 @@ public class EasyKinService {
 	@WebMethod
 	public Collection<PaymentBean> payments() {
 		Collection<PaymentBean> beans = CollectionUtil.create();
-		for(IPayment payment : (Collection<IPayment>)ModuleManager.invoke(Module.PAYMENT, "finance")){
+		for(IPayment payment : (Collection<IPayment>)moduleManager.invoke(Module.PAYMENT, "finance")){
 			beans.add(WSConverterFactory.payment().convert(payment));
 		}
 		return beans;

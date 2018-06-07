@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
  * Created by rrozhkov on 8/14/2017.
  */
 public class ClassManager {
-    public static boolean exist(String clazz){
+    public boolean exist(String clazz){
         try{
             Class.forName(clazz);
         }catch (ClassNotFoundException e) {
@@ -15,7 +15,7 @@ public class ClassManager {
         return true;
     }
 
-    public static Class clazz(String clazz){
+    public Class clazz(String clazz){
         try{
             return Class.forName(clazz);
         }catch (ClassNotFoundException e) {
@@ -23,10 +23,10 @@ public class ClassManager {
         }
     }
 
-    public static Method method(Class clazz, String methodName, Class[] types) throws NoSuchMethodException {
+    public Method method(Class clazz, String methodName, Class[] types) throws NoSuchMethodException {
         return clazz.getMethod(methodName, types);
     }
-    public static Method method(Class clazz, String methodName) throws NoSuchMethodException {
+    public Method method(Class clazz, String methodName) throws NoSuchMethodException {
         return clazz.getMethod(methodName);
     }
 }

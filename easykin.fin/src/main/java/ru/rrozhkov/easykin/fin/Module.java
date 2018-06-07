@@ -22,6 +22,7 @@ import java.util.List;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
+    private static final ModuleManager moduleManager = new ModuleManager();
     private static IModuleGUIFactory financeFactory = new FinanceGUIFactory();
     private static final PaymentHandler paymentHandler = new PaymentHandler();
     private static final PaymentFilterFactory paymentFilterFactory = new PaymentFilterFactory();
@@ -35,8 +36,8 @@ public class Module {
     }
     public static Collection finance(){
         Collection collection = CollectionUtil.create();
-        for(String module : ModuleManager.activeModules()) {
-            Collection payments = (Collection) ModuleManager.invoke(module, "payments");
+        for(String module : moduleManager.activeModules()) {
+            Collection payments = (Collection) moduleManager.invoke(module, "payments");
             if(payments!=null) {
                 collection.addAll(payments);
             }

@@ -12,23 +12,23 @@ import java.util.Collection;
  */
 public class ModuleManager {
     private static final ClassManager classManager = new ClassManager();
-
     public static final String ROOT = "ru.rrozhkov.easykin";
-    public static Collection<String> activeModules(){
+
+    public Collection<String> activeModules(){
         return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.FAMILY, Module.WORK,Module.SERVICE);
     }
-    private static String module(String module){
+    private String moduleClass(String module){
         return ROOT+"." + module + ".Module";
     }
-    public static boolean exist(String module){
-        return ClassManager.exist(module(module));
+    public boolean exist(String module){
+        return classManager.exist(moduleClass(module));
     }
-    public static Object invoke(String module, String methodName, Object... params){
+    public Object invoke(String module, String methodName, Object... params){
         Collection<Class> clazzs = CollectionUtil.create();
         for (Object obj : params){
             clazzs.add(getInterface(obj.getClass()));
         }
-        Class clazz = classManager.clazz(module(module));
+        Class clazz = classManager.clazz(moduleClass(module));
         Method method = null;
         try {
             method = classManager.method(clazz, methodName, clazzs.toArray(new Class[clazzs.size()]));
@@ -46,8 +46,8 @@ public class ModuleManager {
         }
         return null;
     }
-    public static Object invoke(String module, String methodName){
-        Class clazz = classManager.clazz(module(module));
+    public Object invoke(String module, String methodName){
+        Class clazz = classManager.clazz(moduleClass(module));
         Method method = null;
         try {
             method = classManager.method(clazz, methodName);
@@ -65,7 +65,7 @@ public class ModuleManager {
         }
         return null;
     }
-    private static Class getInterface(Class<? extends Object> aClass) {
+    private Class getInterface(Class<? extends Object> aClass) {
         Class clazz = aClass;
         while(clazz.getInterfaces().length==0){
             clazz = clazz.getSuperclass();
@@ -74,7 +74,8 @@ public class ModuleManager {
     }
 
     public static void main(String[] args){
-        System.out.println("Baby:"+ exist(Module.BABY));
-        System.out.println("Auto:" + exist(Module.AUTO));
+        ModuleManager moduleManager = new ModuleManager();
+        System.out.println("Baby:"+ moduleManager.exist(Module.BABY));
+        System.out.println("Auto:" + moduleManager.exist(Module.PAYMENT));
     }
 }

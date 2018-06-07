@@ -6,6 +6,8 @@ import ru.rrozhkov.easykin.module.ModuleManager;
 import javax.swing.*;
 
 public class TabbedPaneAnalyzer {
+	private static final ModuleManager moduleManager = new ModuleManager();
+
 	public String getCurrentModule(JTabbedPane tabs){
 		int index = tabs.getSelectedIndex();
 		if(index==-1)
@@ -14,7 +16,7 @@ public class TabbedPaneAnalyzer {
 	}
 	public int getCurrentTab(String module){
 		int i=0;
-		for(String mod : ModuleManager.activeModules()){
+		for(String mod : moduleManager.activeModules()){
 			if(mod.equals(module))
 				return i;
 			i++;

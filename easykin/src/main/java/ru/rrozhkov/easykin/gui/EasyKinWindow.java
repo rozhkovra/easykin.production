@@ -27,7 +27,8 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
     final private AuthManager authManager = AuthManager.instance();
     final private ImageManager imageManager = new ImageManager();
     final private TabbedPaneAnalyzer tabAnalyzer = new TabbedPaneAnalyzer();
-    final private static DumpManager dumpManager = new DumpManager();
+    private static final DumpManager dumpManager = new DumpManager();
+    private static final ModuleManager moduleManager = new ModuleManager();
 
 	private JTabbedPane tabbedPane;
     private static EasyKinWindow window;
@@ -111,7 +112,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
         if(reload){
             int currentIndex = tabAnalyzer.getCurrentTab(context.getCurrentModule());
             tabbedPane.removeAll();
-            for(String module : ModuleManager.activeModules()) {
+            for(String module : moduleManager.activeModules()) {
                 tabbedPane.addTab(Module.name(module), Module.icon(module), easyKinGuiFactory.createPanel(module, this));
             }
 
