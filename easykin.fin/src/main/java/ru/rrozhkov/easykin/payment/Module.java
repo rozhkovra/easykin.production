@@ -23,6 +23,9 @@ import java.util.List;
  */
 public class Module {
     private static IModuleGUIFactory paymentFactory = new PaymentGUIFactory();
+    private static final PaymentHandler paymentHandler = new PaymentHandler();
+    private static final PaymentFilterFactory paymentFilterFactory = new PaymentFilterFactory();
+
     public static Component createPanel(IGUIEditor parent){
         return paymentFactory.createTablePanel(parent, finance());
     }
@@ -39,7 +42,7 @@ public class Module {
             }
         }
         try {
-            collection.addAll(PaymentHandler.select());
+            collection.addAll(paymentHandler.select());
         }catch(Exception e){
 
         }
@@ -48,6 +51,6 @@ public class Module {
                 return DateUtil.formatSql(o2.getDate()).compareTo(DateUtil.formatSql(o1.getDate()));
             }
         });
-        return FilterUtil.filter(collection, PaymentFilterFactory.status(PaymentStatus.FACT));
+        return FilterUtil.filter(collection, paymentFilterFactory.status(PaymentStatus.FACT));
     }
 }

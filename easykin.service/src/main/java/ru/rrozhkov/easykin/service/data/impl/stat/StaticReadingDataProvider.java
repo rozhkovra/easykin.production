@@ -8,8 +8,8 @@ import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.RateType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Rate;
 import ru.rrozhkov.easykin.service.calc2.impl.Calc2Factory;
-import ru.rrozhkov.easykin.service.db.impl.calc2.RateHandler;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingBuilder;
+import ru.rrozhkov.easykin.service.calc2.impl.service.RateService;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.data.impl.CollectionDataProvider;
 import ru.rrozhkov.lib.util.DateUtil;
@@ -23,6 +23,7 @@ import java.util.Collection;
 public class StaticReadingDataProvider extends CollectionDataProvider<IReading> {
     final private static ReadingBuilder readingBuilder = new ReadingBuilder();
     final private static Calc2Factory calc2Factory = new Calc2Factory();
+    final private static RateService rateService = new RateService();
 
     public static Collection<IRate> rates2018_1 = (Collection)Arrays.asList(
             new Rate(RateType.WATERIN, Money.valueOf(15.29),DateUtil.parse("01.01.2018"),DateUtil.parse("30.06.2018")),
@@ -59,11 +60,7 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
         Collection<IReading> readings = readingBuilder.build();
         Collection<IRate> rates;
         for(IReading reading : readings) {
-            try {
-                rates = RateHandler.selectForDate(reading.getDate());
-            } catch (Exception e) {
-                rates = rates2018_1;
-            }
+            rates = rateService.rates(reading.getDate());
             if(prevReading!=null) {
                 calcs.add(getServiceCalc(prevReading, reading, rates));
             }

@@ -5,6 +5,7 @@ import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
 import ru.rrozhkov.lib.convert.IEntityConverter;
 import ru.rrozhkov.lib.db.IDBManager;
 import ru.rrozhkov.lib.db.impl.DBManager;
+import ru.rrozhkov.lib.db.impl.EntityHandler;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -13,39 +14,39 @@ import java.util.Map;
 /**
  * Created by rrozhkov on 1/17/2018.
  */
-public class MeasureHandler {
-    private static final IDBManager dbManager = DBManager.instance();
+public class MeasureHandler extends EntityHandler {
     private static final ServiceConverterFactory converterFactory = new ServiceConverterFactory();
-    private static final IEntityConverter converter = converterFactory.measure();
 
-    private static String TABLENAME = "SERVICE_MEASURE";
+    public String selectForReading = "SELECT * FROM "+getTableName()+" WHERE READINGID=#readingid#";
 
-    public static String select = "SELECT * FROM "+TABLENAME;
+    @Override
+    protected String getTableName() {
+        return "SERVICE_MEASURE";
+    }
 
-    public static String selectForReading = "SELECT * FROM "+TABLENAME+" WHERE READINGID=#readingid#";
+    @Override
+    protected IEntityConverter getConverter() {
+        return converterFactory.measure();
+    }
 
-    public static String insert = "INSERT INTO "+TABLENAME
-            +"(ID, READINGID, MEASURETYPE, MEASUREVALUE)"
-            +" VALUES(#id#, #readingid#, '#measuretype#','#measurevalue#')";
+    @Override
+    protected String getSelect() {
+        return "SELECT * FROM "+getTableName();
+    }
 
-    public Collection<IMeasure> select() throws Exception {
-        return dbManager.select(select, converter);
+    @Override
+    protected String getInsert() {
+        return "INSERT INTO "+getTableName()
+                +"(ID, READINGID, MEASURETYPE, MEASUREVALUE)"
+                +" VALUES(#id#, #readingid#, '#measuretype#','#measurevalue#')";
+    }
+
+    @Override
+    protected String getUpdate() {
+        return null;
     }
 
     public Collection<IMeasure> selectForReading(int id) throws Exception {
-        return dbManager.select(selectForReading.replace("#readingid#", String.valueOf(id)), converter);
+        return dbManager().select(selectForReading.replace("#readingid#", String.valueOf(id)), getConverter());
     }
-
-    public int insert(IMeasure measure) throws SQLException {
-        try {
-            Map<String, Object> map = converter.map(measure);
-            int id = dbManager.nextId(TABLENAME);
-            map.put("id", id);
-            dbManager.insert(insert, map);
-            return id;
-        } catch (Exception e) {
-            throw new SQLException(e);
-        }
-    }
-
 }

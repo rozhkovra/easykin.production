@@ -7,7 +7,6 @@ import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
 import ru.rrozhkov.lib.gui.IGUIEditor;
 import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 

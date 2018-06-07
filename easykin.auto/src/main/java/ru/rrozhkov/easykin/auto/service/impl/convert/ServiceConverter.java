@@ -13,6 +13,8 @@ import ru.rrozhkov.lib.filter.util.FilterUtil;
 
 public class ServiceConverter implements IConverter<Collection<IService>,Collection<IPayment>> {
 	final static private PaymentFactory paymentFactory = new PaymentFactory();
+	private static final PaymentFilterFactory paymentFilterFactory = new PaymentFilterFactory();
+
 	public Collection<IPayment> convert(Collection<IService> entries) {
 		Collection<IPayment> collection = CollectionUtil.create();
 		for(IService service : entries){
@@ -21,7 +23,7 @@ public class ServiceConverter implements IConverter<Collection<IService>,Collect
 				collection.add(paymentFactory.createDetailPayment(detailService.getName(), detailService.getPrice(), detailService.getDate()));
 			}
 		}
-		return FilterUtil.filter(collection, PaymentFilterFactory.noFree());
+		return FilterUtil.filter(collection, paymentFilterFactory.noFree());
 	}
 	
 	class SingleConverter implements IConverter<IService, IPayment> {

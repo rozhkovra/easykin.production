@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.model.work;
 
+import ru.rrozhkov.lib.db.IEntity;
 import ru.rrozhkov.easykin.model.person.IPerson;
 
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Date;
 /**
  * Created by rrozhkov on 1/15/2018.
  */
-public interface IActivity {
+public interface IActivity extends IEntity {
     Date getDate();
     IPerson getPerson();
     int getTime();

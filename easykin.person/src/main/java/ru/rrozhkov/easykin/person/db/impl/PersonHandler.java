@@ -1,19 +1,34 @@
 package ru.rrozhkov.easykin.person.db.impl;
 
-import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.person.impl.convert.PersonConverterFactory;
-import ru.rrozhkov.lib.db.IDBManager;
-import ru.rrozhkov.lib.db.impl.DBManager;
+import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.lib.db.impl.EntityHandler;
 
-import java.util.Collection;
-
-public class PersonHandler {
-	private static final IDBManager dbManager = DBManager.instance();
+public class PersonHandler extends EntityHandler {
 	private static final PersonConverterFactory converterFactory = new PersonConverterFactory();
 
-	public static String select = "select * from PERSON";
-	
-	public static Collection<IPerson> select() throws Exception {
-		return dbManager.select(select, converterFactory.person());
+	@Override
+	protected String getTableName() {
+		return "PERSON";
+	}
+
+	@Override
+	protected IEntityConverter getConverter() {
+		return converterFactory.person();
+	}
+
+	@Override
+	protected String getSelect() {
+		return "select * from PERSON";
+	}
+
+	@Override
+	protected String getInsert() {
+		return null;
+	}
+
+	@Override
+	protected String getUpdate() {
+		return null;
 	}
 }

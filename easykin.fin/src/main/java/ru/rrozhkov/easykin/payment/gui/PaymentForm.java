@@ -31,7 +31,7 @@ public class PaymentForm extends Form {
 
 	
 	protected void fill(){
-		setLayout(new GridLayout(6,2)); 		
+		setLayout(guiFactory.gridLayout(6,2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getCommentLabel()); 

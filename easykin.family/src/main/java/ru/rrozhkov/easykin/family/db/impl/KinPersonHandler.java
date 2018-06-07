@@ -1,15 +1,17 @@
 package ru.rrozhkov.easykin.family.db.impl;
 
 import ru.rrozhkov.easykin.family.impl.convert.DBKinPersonConverter;
-import ru.rrozhkov.easykin.model.family.IKinPerson;
-import ru.rrozhkov.lib.db.impl.DBManager;
+import ru.rrozhkov.easykin.person.db.impl.PersonHandler;
+import ru.rrozhkov.lib.convert.IEntityConverter;
 
-import java.util.Collection;
+public class KinPersonHandler extends PersonHandler {
+	@Override
+	protected String getSelect() {
+		return "select * from "+getTableName()+" inner join KINPERSON on "+getTableName()+".id = KINPERSON.person";
+	}
 
-public class KinPersonHandler {
-	public static String select = "select * from PERSON inner join KINPERSON on PERSON.id = KINPERSON.person";
-	
-	public static Collection<IKinPerson> select() throws Exception {
-		return DBManager.instance().select(select,new DBKinPersonConverter());
+	@Override
+	protected IEntityConverter getConverter() {
+		return new DBKinPersonConverter();
 	}
 }

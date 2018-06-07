@@ -13,14 +13,14 @@ import javax.swing.*;
 public class AuthManager {
     private final static AuthHandler authHandler = new AuthHandler();
 
-    static AuthManager authManager = null;
+    public static class AuthManagerHolder {
+        public static final AuthManager INSTANCE = new AuthManager();
+    }
+
     protected IPerson signedPerson;
 
     public static AuthManager instance(){
-        if(authManager==null){
-            authManager = new AuthManager();
-        }
-        return authManager;
+        return AuthManagerHolder.INSTANCE;
     }
 
     public static AuthManager auth(){

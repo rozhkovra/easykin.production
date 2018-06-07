@@ -28,7 +28,6 @@ public class EasyKin {
     }
 
     public static void start() {
-        authManager.signOut();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 final JFrame window = EasyKinWindow.open();

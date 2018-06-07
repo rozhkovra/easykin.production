@@ -18,6 +18,8 @@ import java.util.Collection;
  */
 public class Module {
     private static IModuleGUIFactory familyGUIFactory = new FamilyGUIFactory();
+    private static final KinPersonHandler kinPersonHandler = new KinPersonHandler();
+
     public static Component createPanel(IGUIEditor parent){
         return familyGUIFactory.createTablePanel(parent, persons());
     }
@@ -25,7 +27,7 @@ public class Module {
     private static Collection persons() {
         Collection collection = null;
         try {
-            collection = KinPersonHandler.select();
+            collection = kinPersonHandler.select();
         } catch (Exception e) {
             e.printStackTrace();
         }
