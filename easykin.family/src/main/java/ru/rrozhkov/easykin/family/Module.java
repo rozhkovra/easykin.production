@@ -15,9 +15,9 @@ import java.awt.*;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IModuleGUIFactory familyGUIFactory = new FamilyGUIFactory();
-    private static final KinPersonService kinPersonService = new KinPersonService();
-    private static final KinFilterFactory kinFilterFactory = new KinFilterFactory();
+    private static IModuleGUIFactory familyGUIFactory = FamilyGUIFactory.instance();
+    private static final KinPersonService kinPersonService = KinPersonService.instance();
+    private static final KinFilterFactory kinFilterFactory = KinFilterFactory.instance();
 
     public static Component createPanel(IGUIEditor parent){
         return familyGUIFactory.createTablePanel(parent, kinPersonService.persons());

@@ -14,6 +14,14 @@ public class AuthHandler extends PersonHandler {
 
     private String selectPerson = "select * from "+getTableName()+" where username='#username#' and password='#password#'";
 
+    public static class AuthHandlerHolder {
+        public static final AuthHandler INSTANCE = new AuthHandler();
+    }
+
+    public static AuthHandler instance(){
+        return AuthHandlerHolder.INSTANCE;
+    }
+
     public IPerson auth(String username, String password) throws Exception {
         Collection<IPerson> persons = dbManager().select(
                 selectPerson.replace("#username#", username).replace("#password#", encrypter.encrypt(password))

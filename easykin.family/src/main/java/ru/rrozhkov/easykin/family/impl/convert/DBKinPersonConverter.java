@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Map;
 
 public class DBKinPersonConverter implements IEntityConverter<IKinPerson> {
-	final static private FamilyFactory familyFactory = new FamilyFactory();
+	final static private FamilyFactory familyFactory = FamilyFactory.instance();
 
 	public String sqlInsert(IKinPerson entity) {
 		return "";

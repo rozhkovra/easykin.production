@@ -11,13 +11,12 @@ import javax.swing.*;
  * Created by rrozhkov on 3/6/2017.
  */
 public class AuthManager {
-    private final static AuthHandler authHandler = new AuthHandler();
+    private final static AuthHandler authHandler = AuthHandler.instance();
+    protected IPerson signedPerson;
 
     public static class AuthManagerHolder {
         public static final AuthManager INSTANCE = new AuthManager();
     }
-
-    protected IPerson signedPerson;
 
     public static AuthManager instance(){
         return AuthManagerHolder.INSTANCE;

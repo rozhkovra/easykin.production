@@ -9,7 +9,15 @@ import java.util.Collection;
  * Created by rrozhkov on 07.06.2018.
  */
 public class PersonService {
-    private static final PersonHandler personHandler = new PersonHandler();
+    private static final PersonHandler personHandler = PersonHandler.instance();
+
+    public static class PersonServiceHolder {
+        public static final PersonService INSTANCE = new PersonService();
+    }
+
+    public static PersonService instance(){
+        return PersonServiceHolder.INSTANCE;
+    }
 
     public static Collection persons(){
         Collection persons = CollectionUtil.create();

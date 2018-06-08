@@ -9,6 +9,14 @@ import java.sql.Date;
 import java.util.Collection;
 
 public class FamilyFactory {
+	public static class FamilyFactoryHolder {
+		public static final FamilyFactory INSTANCE = new FamilyFactory();
+	}
+
+	public static FamilyFactory instance(){
+		return FamilyFactoryHolder.INSTANCE;
+	}
+
 	public IFamily createFamily(Collection<IKinPerson> persons){
 		return new Family(persons);
 	}
