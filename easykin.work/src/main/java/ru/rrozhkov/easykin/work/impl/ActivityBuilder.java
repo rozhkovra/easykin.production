@@ -17,6 +17,15 @@ public class ActivityBuilder {
     private static final ActivityHandler activityHandler = new ActivityHandler();
     private static final AuthManager authManager = AuthManager.instance();
 
+    public static class ActivityBuilderHolder {
+        public static final ActivityBuilder INSTANCE = new ActivityBuilder();
+    }
+
+    public static ActivityBuilder instance(){
+        return ActivityBuilderHolder.INSTANCE;
+    }
+
+
     public IActivity applyPerson(IActivity activity){
         IPerson person = authManager.signedPerson();
         if(activity.getPerson()==null) {
