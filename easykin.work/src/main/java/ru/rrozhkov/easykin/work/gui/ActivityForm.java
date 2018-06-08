@@ -5,7 +5,6 @@ import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.model.work.ReleaseType;
 import ru.rrozhkov.easykin.model.work.TaskType;
 import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
-import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
 import ru.rrozhkov.easykin.work.service.impl.ActivityService;
 import ru.rrozhkov.lib.collection.CollectionUtil;
 import ru.rrozhkov.lib.gui.Form;
@@ -18,7 +17,7 @@ import java.awt.*;
 public class ActivityForm extends Form {
 	private static final long serialVersionUID = 1L;
 	private static final WorkFactory workFactory = WorkFactory.instance();
-	private static final ActivityService activityService = new ActivityService();
+	private static final ActivityService activityService = ActivityService.instance();
 
 	private JTextField dateField;
 	private JTextField personField;

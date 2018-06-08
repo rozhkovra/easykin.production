@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.work.service.impl;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
-import ru.rrozhkov.lib.db.IEntity;
 import ru.rrozhkov.lib.db.IEntityHandler;
 
 /**
@@ -10,6 +9,14 @@ import ru.rrozhkov.lib.db.IEntityHandler;
  */
 public class ActivityService {
     private static final IEntityHandler activityHandler = ActivityHandler.instance();
+
+    public static class ActivityServiceHolder {
+        public static final ActivityService INSTANCE = new ActivityService();
+    }
+
+    public static ActivityService instance(){
+        return ActivityServiceHolder.INSTANCE;
+    }
 
     public int createOrUpdate(IActivity activity){
         int activityId = activity.getId();
