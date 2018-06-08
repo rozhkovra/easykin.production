@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class ActivityConverter implements IEntityConverter<IActivity> {
-    private static final WorkFactory workFactory = new WorkFactory();
+    private static final WorkFactory workFactory = WorkFactory.instance();
 
     protected ActivityConverter() {
     }

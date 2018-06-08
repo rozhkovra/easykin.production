@@ -17,7 +17,7 @@ import java.awt.*;
 
 public class ActivityForm extends Form {
 	private static final long serialVersionUID = 1L;
-	private static final WorkFactory workFactory = new WorkFactory();
+	private static final WorkFactory workFactory = WorkFactory.instance();
 	private static final ActivityService activityService = new ActivityService();
 
 	private JTextField dateField;

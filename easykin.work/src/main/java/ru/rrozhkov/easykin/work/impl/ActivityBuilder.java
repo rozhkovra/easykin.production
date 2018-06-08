@@ -13,7 +13,7 @@ import java.util.Collection;
  * Created by rrozhkov on 1/16/2018.
  */
 public class ActivityBuilder {
-    private static final WorkFactory workFactory = new WorkFactory();
+    private static final WorkFactory workFactory = WorkFactory.instance();
     private static final ActivityHandler activityHandler = new ActivityHandler();
     private static final AuthManager authManager = AuthManager.instance();
 

@@ -13,6 +13,15 @@ import java.util.Date;
 
 public class WorkFactory {
 	final static private PersonFactory personFactory = new PersonFactory();
+
+	public static class WorkFactoryHolder {
+		public static final WorkFactory INSTANCE = new WorkFactory();
+	}
+
+	public static WorkFactory instance(){
+		return WorkFactoryHolder.INSTANCE;
+	}
+
 	public IActivity create(int id, Date date, IPerson person,
 			int time, TaskType taskType, String name, ReleaseType releaseType, String desc) {
 		return new Activity(id, date, person, time, taskType, name, releaseType, desc);

@@ -16,7 +16,7 @@ import java.util.Collection;
 public class Module {
     private static IModuleGUIFactory activityFactory = new ActivityGUIFactory();
     private static ActivityBuilder activityBuilder = new ActivityBuilder();
-    private static final WorkFactory workFactory = new WorkFactory();
+    private static final WorkFactory workFactory = WorkFactory.instance();
 
     public static Component createPanel(IGUIEditor parent) {
         return activityFactory.createTablePanel(parent, activities());
