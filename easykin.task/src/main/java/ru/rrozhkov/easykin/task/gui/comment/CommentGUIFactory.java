@@ -12,7 +12,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class CommentGUIFactory implements IModuleGUIFactory {
+public class CommentGUIFactory implements IModuleGUIFactory<IComment> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
     public static class CommentGUIFactoryHolder {
@@ -27,8 +27,8 @@ public class CommentGUIFactory implements IModuleGUIFactory {
         return guiFactory.tablePanel(parent, new CommentTableModel(collection));
     }
 
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new CommentForm(parent,(IComment)obj);
+    public Component createEditor(IGUIEditor parent, IComment comment) {
+        return new CommentForm(parent,comment);
     }
 
     public Component createFilter(IGUIEditor parent) {

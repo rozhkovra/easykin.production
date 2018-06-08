@@ -13,19 +13,19 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class Calc2GUIFactory implements IModuleGUIFactory {
+public class Calc2GUIFactory implements IModuleGUIFactory<ServiceCalc> {
     final private static Calc2Builder calc2Builder = new Calc2Builder();
     protected final static IGUIFactory guiFactory = GUIFactory.create();
-    
+
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new ServiceTableModel(data));
     }
 
-    public Component createEditor(IGUIEditor parent, Object calc) {
+    public Component createEditor(IGUIEditor parent, ServiceCalc calc) {
         if(calc==null) {
-            calc = calc2Builder.buildNew();
+            calc = (ServiceCalc)calc2Builder.buildNew();
         }
-        return new ReadingServiceForm(parent, (ServiceCalc)calc);
+        return new ReadingServiceForm(parent, calc);
 
     }
 

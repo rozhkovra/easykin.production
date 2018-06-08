@@ -14,7 +14,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class FinanceGUIFactory implements IModuleGUIFactory {
+public class FinanceGUIFactory implements IModuleGUIFactory<IPayment> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
     public static class FinanceGUIFactoryHolder {
@@ -29,8 +29,8 @@ public class FinanceGUIFactory implements IModuleGUIFactory {
         return guiFactory.tablePanel(parent, new PaymentTableModel(data));
     }
 
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new PaymentForm(parent,(IPayment)obj);
+    public Component createEditor(IGUIEditor parent, IPayment payment) {
+        return new PaymentForm(parent, payment);
     }
 
     public Component createFilter(IGUIEditor parent) {

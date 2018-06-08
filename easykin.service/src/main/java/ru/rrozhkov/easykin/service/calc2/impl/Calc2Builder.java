@@ -17,7 +17,7 @@ public class Calc2Builder {
     final private static RateService rateService = new RateService();
 
     public ICalculation buildNew() {
-        Collection<IRate> rates = rateService.rates(DateUtil.lastDayOfMonth(DateUtil.today()));
+        Collection<IRate> rates = rateService.rates(DateUtil.lastDayOfMonth());
         IReading oldReading = readingBuilder.last();
         IReading newReading = readingBuilder.buildNew();
         return calcFactory.createEmptyServiceCalc(oldReading, newReading, rates);

@@ -13,7 +13,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class FamilyGUIFactory implements IModuleGUIFactory {
+public class FamilyGUIFactory implements IModuleGUIFactory<IPerson> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
     public static class FamilyGUIFactoryHolder {
@@ -28,8 +28,8 @@ public class FamilyGUIFactory implements IModuleGUIFactory {
         return guiFactory.tablePanel(parent, new FamilyTableModel(data));
     }
 
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new PersonForm(parent,(IPerson)obj);
+    public Component createEditor(IGUIEditor parent, IPerson person) {
+        return new PersonForm(parent,person);
     }
 
     public Component createFilter(IGUIEditor parent) {

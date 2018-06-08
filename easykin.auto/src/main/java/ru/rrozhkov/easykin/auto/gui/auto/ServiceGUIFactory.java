@@ -16,7 +16,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class ServiceGUIFactory implements IModuleGUIFactory {
+public class ServiceGUIFactory implements IModuleGUIFactory<IService> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
     private final static ServiceFactory serviceFactory = ServiceFactory.instance();
 
@@ -32,8 +32,8 @@ public class ServiceGUIFactory implements IModuleGUIFactory {
         return guiFactory.tablePanel(parent, new AutoTableModel(data));
     }
 
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new AutoServiceForm(parent,(IService)obj);
+    public Component createEditor(IGUIEditor parent, IService service) {
+        return new AutoServiceForm(parent,service);
     }
 
     public Component createFilter(IGUIEditor parent) {

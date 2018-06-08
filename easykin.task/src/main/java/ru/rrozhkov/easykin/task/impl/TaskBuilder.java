@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Date;
 
 public class TaskBuilder {
-	final private static CommentHandler commentHandler = CommentHandler.instance();
 	final private static CommentFilterFactory commentFilterFactory = CommentFilterFactory.instance();
+	final private static CommentHandler commentHandler = CommentHandler.instance();
 	final private static TaskHandler taskHandler = TaskHandler.instance();
 	final private static TaskFactory taskFactory = TaskFactory.instance();
 

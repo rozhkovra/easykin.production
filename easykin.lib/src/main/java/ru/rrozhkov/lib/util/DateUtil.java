@@ -42,4 +42,7 @@ public class DateUtil {
 		cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
 		return cal.getTime();
 	}
+	public static Date lastDayOfMonth(){
+		return lastDayOfMonth(today());
+	}
 }

@@ -12,8 +12,9 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 8/15/2017.
  */
-public class TaskGUIFactory implements IModuleGUIFactory {
+public class TaskGUIFactory implements IModuleGUIFactory<ITask> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
+
     public static class TaskGUIFactoryHolder {
         public static final TaskGUIFactory INSTANCE = new TaskGUIFactory();
     }
@@ -31,7 +32,7 @@ public class TaskGUIFactory implements IModuleGUIFactory {
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new TaskTableModel(data));
     }
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new TaskEditor(parent, (ITask)obj);
+    public Component createEditor(IGUIEditor parent, ITask task) {
+        return new TaskEditor(parent, task);
     }
 }

@@ -1,17 +1,18 @@
 package ru.rrozhkov.easykin.work.gui;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
-import ru.rrozhkov.lib.gui.*;
+import ru.rrozhkov.lib.gui.GUIFactory;
+import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.lib.gui.IModuleGUIFactory;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class ActivityGUIFactory implements IModuleGUIFactory {
+public class ActivityGUIFactory implements IModuleGUIFactory<IActivity> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
     public static class ActivityGUIFactoryHolder {
@@ -26,8 +27,8 @@ public class ActivityGUIFactory implements IModuleGUIFactory {
         return guiFactory.tablePanel(parent, new ActivityTableModel(data));
     }
 
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new ActivityForm(parent,(IActivity)obj);
+    public Component createEditor(IGUIEditor parent, IActivity activity) {
+        return new ActivityForm(parent,activity);
     }
 
     public Component createFilter(IGUIEditor parent) {

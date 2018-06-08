@@ -12,7 +12,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 21.05.2018.
  */
-public class PersonGUIFactory implements IModuleGUIFactory {
+public class PersonGUIFactory implements IModuleGUIFactory<IPerson> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
     public static class PersonGUIFactoryHolder {
         public static final PersonGUIFactory INSTANCE = new PersonGUIFactory();
@@ -26,8 +26,8 @@ public class PersonGUIFactory implements IModuleGUIFactory {
         return guiFactory.panelEmpty();
     }
 
-    public Component createEditor(IGUIEditor parent, Object obj) {
-        return new PersonForm(parent,(IPerson)obj);
+    public Component createEditor(IGUIEditor parent, IPerson person) {
+        return new PersonForm(parent,person);
     }
 
     public Component createFilter(IGUIEditor parent) {
