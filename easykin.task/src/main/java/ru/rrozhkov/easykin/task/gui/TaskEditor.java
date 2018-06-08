@@ -16,11 +16,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TaskEditor extends JPanel implements IGUIEditor{
-	private final static TaskBuilder taskBuilder = new TaskBuilder();
-	private final static TaskFactory taskFactory = new TaskFactory();
+	private final static TaskBuilder taskBuilder = TaskBuilder.instance();
+	private final static TaskFactory taskFactory = TaskFactory.instance();
 	private final static IGUIFactory guiFactory = GUIFactory.create();
-	private final static TaskGUIFactory taskGUIFactory = new TaskGUIFactory();
-	private final static CommentGUIFactory commentGUIFactory = new CommentGUIFactory();
+	private final static TaskGUIFactory taskGUIFactory = TaskGUIFactory.instance();
+	private final static CommentGUIFactory commentGUIFactory = CommentGUIFactory.instance();
 
 	private ITask task;
 	private IGUIEditor parent;

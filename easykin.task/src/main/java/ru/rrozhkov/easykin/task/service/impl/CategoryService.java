@@ -10,7 +10,15 @@ import java.util.Collection;
  * Created by rrozhkov on 06.06.2018.
  */
 public class CategoryService {
-    private static final CategoryHandler categoryHandler = new CategoryHandler();
+    private static final CategoryHandler categoryHandler = CategoryHandler.instance();
+
+    public static class CategoryServiceHolder {
+        public static final CategoryService INSTANCE = new CategoryService();
+    }
+
+    public static CategoryService instance(){
+        return CategoryServiceHolder.INSTANCE;
+    }
 
     public Collection<ICategory> categories() {
         Collection<ICategory> collection = CollectionUtil.create();

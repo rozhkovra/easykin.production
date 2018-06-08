@@ -15,7 +15,15 @@ import java.util.Date;
 import java.util.Map;
 
 public class TaskHandler extends EntityHandler {
-	final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+	final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
+
+	public static class TaskHandlerHolder {
+		public static final TaskHandler INSTANCE = new TaskHandler();
+	}
+
+	public static TaskHandler instance(){
+		return TaskHandlerHolder.INSTANCE;
+	}
 
 	protected String getTableName() {
 		return "TASK";

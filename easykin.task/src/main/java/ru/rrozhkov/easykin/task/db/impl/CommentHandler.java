@@ -8,11 +8,18 @@ import ru.rrozhkov.lib.db.impl.EntityHandler;
 import java.util.Collection;
 
 public class CommentHandler extends EntityHandler {
-	final private static TaskConverterFactory converterFactory = new TaskConverterFactory();
-
+	final private static TaskConverterFactory converterFactory = TaskConverterFactory.instance();
 	final private String selectForTask = "SELECT * FROM "+getTableName()+" where taskId=#taskId#";
 	final private String selectForPerson = "SELECT * FROM "+getTableName()
 			+" INNER JOIN TASK2PERSON ON TASK2PERSON.TASK = COMMENT.TASKID AND TASK2PERSON.PERSON=#person#";
+
+	public static class CommentHandlerHolder {
+		public static final CommentHandler INSTANCE = new CommentHandler();
+	}
+
+	public static CommentHandler instance(){
+		return CommentHandlerHolder.INSTANCE;
+	}
 
 	protected String getTableName() { return  "COMMENT";}
 	protected String getSelect() {

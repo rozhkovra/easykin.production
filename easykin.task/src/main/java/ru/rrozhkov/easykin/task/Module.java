@@ -18,10 +18,10 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    final private static IModuleGUIFactory guiTaskFactory = new TaskGUIFactory();
-    private static final TaskFactory taskFactory = new TaskFactory();
-    final private static TaskBuilder taskBuilder = new TaskBuilder();
-    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+    final private static IModuleGUIFactory guiTaskFactory = TaskGUIFactory.instance();
+    private static final TaskFactory taskFactory = TaskFactory.instance();
+    final private static TaskBuilder taskBuilder = TaskBuilder.instance();
+    final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
     final private static AuthManager authManager = AuthManager.instance();
 
     public static Component createPanel(IGUIEditor parent){

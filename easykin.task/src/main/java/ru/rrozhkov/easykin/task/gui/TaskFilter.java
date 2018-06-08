@@ -14,7 +14,7 @@ import java.util.Collection;
 
 public class TaskFilter extends Form {
 	private static final long serialVersionUID = 1L;
-	final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+	final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
 
 	private JComboBox priorityComboBox;
 	private JComboBox statusComboBox;

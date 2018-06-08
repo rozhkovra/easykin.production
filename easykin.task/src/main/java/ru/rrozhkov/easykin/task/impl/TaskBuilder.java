@@ -14,10 +14,18 @@ import java.util.Collection;
 import java.util.Date;
 
 public class TaskBuilder {
-	final private static CommentHandler commentHandler = new CommentHandler();
-	final private static CommentFilterFactory commentFilterFactory = new CommentFilterFactory();
-	final private static TaskHandler taskHandler = new TaskHandler();
-	final private static TaskFactory taskFactory = new TaskFactory();
+	final private static CommentHandler commentHandler = CommentHandler.instance();
+	final private static CommentFilterFactory commentFilterFactory = CommentFilterFactory.instance();
+	final private static TaskHandler taskHandler = TaskHandler.instance();
+	final private static TaskFactory taskFactory = TaskFactory.instance();
+
+	public static class TaskBuilderHolder {
+		public static final TaskBuilder INSTANCE = new TaskBuilder();
+	}
+
+	public static TaskBuilder instance(){
+		return TaskBuilderHolder.INSTANCE;
+	}
 
 	@Deprecated
 	public ITask build(int id, String name, Date createDate, Date plannedDate,

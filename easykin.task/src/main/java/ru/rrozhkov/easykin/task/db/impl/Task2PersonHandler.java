@@ -8,7 +8,15 @@ import ru.rrozhkov.lib.db.impl.EntityHandler;
  * Created by rrozhkov on 3/6/2017.
  */
 public class Task2PersonHandler extends EntityHandler {
-    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+    final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
+
+    public static class Task2PersonHandlerHolder {
+        public static final Task2PersonHandler INSTANCE = new Task2PersonHandler();
+    }
+
+    public static Task2PersonHandler instance(){
+        return Task2PersonHandlerHolder.INSTANCE;
+    }
 
     @Override
     protected String getTableName() {

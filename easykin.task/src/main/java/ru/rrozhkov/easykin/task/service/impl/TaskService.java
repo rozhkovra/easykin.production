@@ -18,12 +18,21 @@ import java.sql.SQLException;
  * Created by rrozhkov on 3/6/2017.
  */
 public class TaskService {
-    private static final TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
-    private static final Task2PaymentHandler t2paymentHandler = new Task2PaymentHandler();
-    private static final Task2PersonHandler t2personHandler = new Task2PersonHandler();
-    private static final TaskHandler taskHandler = new TaskHandler();
+    public static class TaskServiceHolder {
+        public static final TaskService INSTANCE = new TaskService();
+    }
+
+    public static TaskService instance(){
+        return TaskServiceHolder.INSTANCE;
+    }
+
+
+    private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
+    private static final Task2PaymentHandler t2paymentHandler = Task2PaymentHandler.instance();
+    private static final Task2PersonHandler t2personHandler = Task2PersonHandler.instance();
+    private static final TaskHandler taskHandler = TaskHandler.instance();
     private static final PaymentHandler paymentHandler = new PaymentHandler();
-    private static final TaskFactory taskFactory = new TaskFactory();
+    private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final AuthManager authManager = AuthManager.instance();
 
     public int createOrUpdate(ITask task){

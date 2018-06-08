@@ -14,6 +14,14 @@ public class ModuleManager {
     private static final ClassManager classManager = new ClassManager();
     public static final String ROOT = "ru.rrozhkov.easykin";
 
+    public static class ModuleManagerHolder {
+        public static final ModuleManager INSTANCE = new ModuleManager();
+    }
+
+    public static ModuleManager instance(){
+        return ModuleManagerHolder.INSTANCE;
+    }
+
     public Collection<String> activeModules(){
         return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.FAMILY, Module.WORK,Module.SERVICE);
     }

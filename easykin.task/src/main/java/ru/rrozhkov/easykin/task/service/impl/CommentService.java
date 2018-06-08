@@ -7,7 +7,15 @@ import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
  * Created by rrozhkov on 06.06.2018.
  */
 public class CommentService {
-    private static final CommentHandler commentHandler = new CommentHandler();
+    private static final CommentHandler commentHandler = CommentHandler.instance();
+
+    public static class CommentServiceHolder {
+        public static final CommentService INSTANCE = new CommentService();
+    }
+
+    public static CommentService instance(){
+        return CommentServiceHolder.INSTANCE;
+    }
 
     public int createOrUpdate(IComment comment){
         int commentId = comment.getId();

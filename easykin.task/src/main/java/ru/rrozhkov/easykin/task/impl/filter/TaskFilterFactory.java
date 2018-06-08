@@ -9,6 +9,14 @@ import ru.rrozhkov.lib.filter.IFilter;
 import java.util.Date;
 
 public class TaskFilterFactory {
+	public static class TaskFilterFactoryHolder {
+		public static final TaskFilterFactory INSTANCE = new TaskFilterFactory();
+	}
+
+	public static TaskFilterFactory instance(){
+		return TaskFilterFactoryHolder.INSTANCE;
+	}
+
 	public IFilter<ITask> home(){
 		return new OnlyHomeFilter();
 	}

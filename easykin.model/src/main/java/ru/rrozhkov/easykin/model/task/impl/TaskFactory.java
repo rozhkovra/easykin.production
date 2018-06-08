@@ -7,6 +7,14 @@ import ru.rrozhkov.easykin.model.task.*;
 import java.util.Date;
 
 public class TaskFactory{
+	public static class TaskFactoryHolder {
+		public static final TaskFactory INSTANCE = new TaskFactory();
+	}
+
+	public static TaskFactory instance(){
+		return TaskFactoryHolder.INSTANCE;
+	}
+
 	public ITask createTask(int id, String name, Date createDate, Date plannedDate,
 								   int priority, int categoryId, String categoryName, Date closeDate, int status) {
 		return new Task(id, name, createDate, plannedDate, Priority.priority(priority)

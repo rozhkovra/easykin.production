@@ -14,6 +14,13 @@ import java.util.Collection;
  */
 public class TaskGUIFactory implements IModuleGUIFactory {
     private final static IGUIFactory guiFactory = GUIFactory.create();
+    public static class TaskGUIFactoryHolder {
+        public static final TaskGUIFactory INSTANCE = new TaskGUIFactory();
+    }
+
+    public static TaskGUIFactory instance(){
+        return TaskGUIFactoryHolder.INSTANCE;
+    }
 
     public Component createTaskForm(IGUIEditor parent, ITask task){
         return new TaskForm(parent, task);

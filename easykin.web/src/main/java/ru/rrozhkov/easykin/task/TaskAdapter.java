@@ -21,12 +21,12 @@ import java.util.Date;
  * Created by rrozhkov on 11.05.2018.
  */
 public class TaskAdapter {
-    final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+    final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
     final private static AuthManager authManager = AuthManager.instance();
-    final private static TaskService taskService = new TaskService();
-    final private static TaskFactory taskFactory = new TaskFactory();
-    final private static TaskBuilder taskBuilder = new TaskBuilder();
-    final private static TaskBeanFactory taskBeanFactory = new TaskBeanFactory();
+    final private static TaskService taskService = TaskService.instance();
+    final private static TaskFactory taskFactory = TaskFactory.instance();
+    final private static TaskBuilder taskBuilder = TaskBuilder.instance();
+    final private static TaskBeanFactory taskBeanFactory = TaskBeanFactory.instance();
 
     public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
         TaskFilterBean bean = filter(request);
@@ -76,7 +76,7 @@ public class TaskAdapter {
 
     public void done(javax.servlet.http.HttpServletRequest request) {
         int taskId = request.getParameter("taskId")!=null?Integer.valueOf(request.getParameter("taskId")):-1;
-        ITask task = taskFactory.createTask(taskId, "", new Date(), new Date(), Priority.priority(Priority.SIMPLE)
+        ITask task = taskFactory.createTask(taskId, "", DateUtil.today(), DateUtil.today(), Priority.priority(Priority.SIMPLE)
                     , 1, "", null, Status.status(Status.OPEN));
         taskService.close(task);
     }

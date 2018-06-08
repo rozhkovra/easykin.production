@@ -26,13 +26,13 @@ import java.util.Collection;
  */
 public class DumpManager {
     final private static String STORAGE = "F:/temp/EasyKin";
-    final private static ModuleManager moduleManager = new ModuleManager();
+    final private static ModuleManager moduleManager = ModuleManager.instance();
     final private static AuthManager authManager = AuthManager.instance();
-    final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
-    final private static PersonConverterFactory personConverterFactory = new PersonConverterFactory();
+    final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
+    final private static PersonConverterFactory personConverterFactory = PersonConverterFactory.instance();
     final private static PaymentConverterFactory paymentConverterFactory = new PaymentConverterFactory();
-    final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
-    private static final CategoryService categoryService = new CategoryService();
+    final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
+    private static final CategoryService categoryService = CategoryService.instance();
 
     public void dump(){
         StringBuilder builder = new StringBuilder();

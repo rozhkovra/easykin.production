@@ -14,6 +14,15 @@ import java.util.Collection;
  */
 public class CommentGUIFactory implements IModuleGUIFactory {
     private final static IGUIFactory guiFactory = GUIFactory.create();
+
+    public static class CommentGUIFactoryHolder {
+        public static final CommentGUIFactory INSTANCE = new CommentGUIFactory();
+    }
+
+    public static CommentGUIFactory instance(){
+        return CommentGUIFactoryHolder.INSTANCE;
+    }
+
     public Component createTablePanel(IGUIEditor parent, Collection collection){
         return guiFactory.tablePanel(parent, new CommentTableModel(collection));
     }

@@ -18,9 +18,9 @@ import java.awt.event.ActionListener;
 
 public class TaskForm extends Form {
 	private static final long serialVersionUID = 1L;
-	private static final TaskFactory taskFactory = new TaskFactory();
-	private static final TaskService taskService = new TaskService();
-	private static final CategoryService categoryService = new CategoryService();
+	private static final TaskFactory taskFactory = TaskFactory.instance();
+	private static final TaskService taskService = TaskService.instance();
+	private static final CategoryService categoryService = CategoryService.instance();
 
 	private JTextField nameField;
 	private JTextField planDateField;

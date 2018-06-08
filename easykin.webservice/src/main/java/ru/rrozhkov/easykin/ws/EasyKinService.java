@@ -20,8 +20,8 @@ import java.util.Collection;
 
 @WebService(serviceName="EasyKin", portName="EasyKinPort", targetNamespace="http://rrozhkov.ru/easykin")
 public class EasyKinService {
-	private static final CategoryService categoryService = new CategoryService();
-	private static final ModuleManager moduleManager = new ModuleManager();
+	private static final CategoryService categoryService = CategoryService.instance();
+	private static final ModuleManager moduleManager = ModuleManager.instance();
 
 	@WebMethod
 	public Collection<CategoryBean> categories() {

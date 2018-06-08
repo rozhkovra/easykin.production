@@ -5,7 +5,15 @@ import ru.rrozhkov.lib.convert.IEntityConverter;
 import ru.rrozhkov.lib.db.impl.EntityHandler;
 
 public class CategoryHandler extends EntityHandler {
-	final private static TaskConverterFactory taskConverterFactory = new TaskConverterFactory();
+	final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
+
+	public static class CategoryHandlerHolder {
+		public static final CategoryHandler INSTANCE = new CategoryHandler();
+	}
+
+	public static CategoryHandler instance(){
+		return CategoryHandlerHolder.INSTANCE;
+	}
 
 	@Override
 	protected String getTableName() {

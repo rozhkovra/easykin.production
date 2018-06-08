@@ -11,8 +11,8 @@ import java.awt.*;
 
 public class CommentForm extends Form {
 	private static final long serialVersionUID = 1L;
-	private static final CommentService commentService = new CommentService();
-	private static final TaskFactory taskFactory = new TaskFactory();
+	private static final CommentService commentService = CommentService.instance();
+	private static final TaskFactory taskFactory = TaskFactory.instance();
 
 	private JTextField textField;
 	private Component textLabel;
