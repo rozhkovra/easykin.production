@@ -10,6 +10,11 @@ import java.util.Collection;
 public class ActivityHandler extends EntityHandler {
 	private static final WorkConverterFactory converterFactory = WorkConverterFactory.instance();
 
+	private String selectForPerson = "select * from "+getTableName()
+			+" WHERE PERSONID=#person#"
+			+" ORDER BY "+getTableName()+".ACTDATE desc";
+
+
 	public static class ActivityHandlerHolder {
 		public static final ActivityHandler INSTANCE = new ActivityHandler();
 	}
@@ -26,10 +31,6 @@ public class ActivityHandler extends EntityHandler {
 		return converterFactory.activity();
 	}
 
-	protected String getSelect() {
-		return "select * from "+getTableName();
-	}
-
 	protected String getInsert() {
 		return "INSERT INTO "+getTableName()
 				+"(ID, ACTDATE, PERSONID, ACTTIME, TASKTYPE, NAME, RELEASETYPE, DESC)"
@@ -40,11 +41,6 @@ public class ActivityHandler extends EntityHandler {
 		return "UPDATE " + getTableName() + " SET ACTDATE='#date#', PERSONID=#personId#, ACTTIME=#time#,"
 				+ " TASKTYPE='#taskType#', NAME='#name#', RELEASETYPE='#releaseType#', DESC='#desc#' WHERE ID=#id#";
 	}
-
-	protected String selectForPerson = "select * from "+getTableName()
-			+" WHERE PERSONID=#person#"
-			+" ORDER BY "+getTableName()+".ACTDATE desc";
-
 
 	public Collection<IActivity> selectForPerson(int id) throws Exception {
 		return dbManager().select(selectForPerson.replace("#person#", String.valueOf(id)), getConverter());

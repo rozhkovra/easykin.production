@@ -46,7 +46,13 @@ public abstract class EntityHandler implements IEntityHandler {
     }
     protected abstract String getTableName();
     protected abstract IEntityConverter getConverter();
-    protected abstract String getSelect();
-    protected abstract String getInsert();
-    protected abstract String getUpdate();
+    protected String getSelect() {
+        return "SELECT * FROM " + getTableName();
+    }
+    protected String getInsert() {
+        return null;
+    }
+    protected String getUpdate() {
+        return null;
+    }
 }

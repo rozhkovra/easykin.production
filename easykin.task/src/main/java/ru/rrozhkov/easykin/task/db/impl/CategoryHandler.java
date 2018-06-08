@@ -29,14 +29,4 @@ public class CategoryHandler extends EntityHandler {
 	protected String getSelect() {
 		return "SELECT * FROM "+getTableName()+" ORDER BY ID";
 	}
-
-	@Override
-	protected String getInsert() {
-		return null;
-	}
-
-	@Override
-	protected String getUpdate() {
-		return null;
-	}
 }

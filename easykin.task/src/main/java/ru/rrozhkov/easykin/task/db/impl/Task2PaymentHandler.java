@@ -29,19 +29,9 @@ public class Task2PaymentHandler extends EntityHandler {
     }
 
     @Override
-    protected String getSelect() {
-        return "SELECT * FROM "+getTableName();
-    }
-
-    @Override
     protected String getInsert() {
         return "INSERT INTO "+getTableName()
                 +"(ID, PAYMENT, TASK)"
                 +" VALUES(#id#,#payment#,#task#)";
-    }
-
-    @Override
-    protected String getUpdate() {
-        return null;
     }
 }

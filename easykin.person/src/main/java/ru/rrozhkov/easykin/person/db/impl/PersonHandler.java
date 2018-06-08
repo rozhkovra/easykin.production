@@ -24,19 +24,4 @@ public class PersonHandler extends EntityHandler {
 	protected IEntityConverter getConverter() {
 		return converterFactory.person();
 	}
-
-	@Override
-	protected String getSelect() {
-		return "select * from "+getTableName();
-	}
-
-	@Override
-	protected String getInsert() {
-		return null;
-	}
-
-	@Override
-	protected String getUpdate() {
-		return null;
-	}
 }

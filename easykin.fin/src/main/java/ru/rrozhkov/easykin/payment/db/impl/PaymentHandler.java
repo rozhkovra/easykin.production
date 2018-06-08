@@ -40,9 +40,4 @@ public class PaymentHandler extends EntityHandler {
                 +"(ID, COMMENT, CREATEDATE, CATEGORYID, CLOSEDATE, STATUSID, AMOUNT)"
                 +" VALUES(#id#,'#comment#','#createdate#',#categoryid#,NULL,#statusid#,#amount#)";
     }
-
-    @Override
-    protected String getUpdate() {
-        return null;
-    }
 }

@@ -29,19 +29,9 @@ public class Task2PersonHandler extends EntityHandler {
     }
 
     @Override
-    protected String getSelect() {
-        return "SELECT * FROM "+getTableName();
-    }
-
-    @Override
     protected String getInsert() {
         return "INSERT INTO "+getTableName()
                 +"(ID, PERSON, TASK)"
                 +" VALUES(#id#,#person#,#task#)";
-    }
-
-    @Override
-    protected String getUpdate() {
-        return null;
     }
 }

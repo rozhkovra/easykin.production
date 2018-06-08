@@ -3,8 +3,6 @@ package ru.rrozhkov.easykin.service.db.impl.calc2;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
 import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.IDBManager;
-import ru.rrozhkov.lib.db.impl.DBManager;
 import ru.rrozhkov.lib.db.impl.EntityHandler;
 import ru.rrozhkov.lib.util.DateUtil;
 
@@ -27,21 +25,6 @@ public class RateHandler extends EntityHandler {
     @Override
     protected IEntityConverter getConverter() {
         return converterFactory.rate();
-    }
-
-    @Override
-    protected String getSelect() {
-        return "SELECT * FROM " + getTableName();
-    }
-
-    @Override
-    protected String getInsert() {
-        return null;
-    }
-
-    @Override
-    protected String getUpdate() {
-        return null;
     }
 
     public Collection<IRate> selectForDate(Date rateDate) throws Exception {

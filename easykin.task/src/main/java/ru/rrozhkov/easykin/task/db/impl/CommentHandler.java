@@ -22,9 +22,7 @@ public class CommentHandler extends EntityHandler {
 	}
 
 	protected String getTableName() { return  "COMMENT";}
-	protected String getSelect() {
-		return "SELECT * FROM "+getTableName();
-	}
+
 	protected String getInsert() {
 		return "INSERT INTO "+getTableName()
 				+"(ID, TEXT, CREATEDATE, TASKID)"

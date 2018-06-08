@@ -21,19 +21,9 @@ public class ReadingHandler extends EntityHandler {
     }
 
     @Override
-    protected String getSelect() {
-        return "SELECT * FROM "+getTableName();
-    }
-
-    @Override
     protected String getInsert() {
         return "INSERT INTO "+getTableName()
                 +"(ID, REDDATE)"
                 +" VALUES(#id#,'#reddate#')";
-    }
-
-    @Override
-    protected String getUpdate() {
-        return null;
     }
 }
