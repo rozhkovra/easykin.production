@@ -8,7 +8,7 @@ import ru.rrozhkov.lib.db.impl.EntityHandler;
 import java.util.Collection;
 
 public class ActivityHandler extends EntityHandler {
-	private static final WorkConverterFactory converterFactory = new WorkConverterFactory();
+	private static final WorkConverterFactory converterFactory = WorkConverterFactory.instance();
 
 	public static class ActivityHandlerHolder {
 		public static final ActivityHandler INSTANCE = new ActivityHandler();
