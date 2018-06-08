@@ -22,10 +22,10 @@ import java.util.List;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static final ModuleManager moduleManager = new ModuleManager();
-    private static IModuleGUIFactory financeFactory = new FinanceGUIFactory();
-    private static final PaymentHandler paymentHandler = new PaymentHandler();
-    private static final PaymentFilterFactory paymentFilterFactory = new PaymentFilterFactory();
+    private static final ModuleManager moduleManager = ModuleManager.instance();
+    private static IModuleGUIFactory financeFactory = FinanceGUIFactory.instance();
+    private static final PaymentHandler paymentHandler = PaymentHandler.instance();
+    private static final PaymentFilterFactory paymentFilterFactory = PaymentFilterFactory.instance();
 
     public static Component createPanel(IGUIEditor parent){
         return financeFactory.createTablePanel(parent, finance());

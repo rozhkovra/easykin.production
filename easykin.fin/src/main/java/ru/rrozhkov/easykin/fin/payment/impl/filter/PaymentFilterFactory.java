@@ -5,6 +5,14 @@ import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.lib.filter.IFilter;
 
 public class PaymentFilterFactory {
+	public static class PaymentFilterFactoryHolder {
+		public static final PaymentFilterFactory INSTANCE = new PaymentFilterFactory();
+	}
+
+	public static PaymentFilterFactory instance(){
+		return PaymentFilterFactoryHolder.INSTANCE;
+	}
+
 	public IFilter<IPayment> noFree(){
 		return new NoFreeFilter();
 	}

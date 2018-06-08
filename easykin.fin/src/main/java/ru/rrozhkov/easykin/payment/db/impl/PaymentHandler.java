@@ -8,7 +8,15 @@ import ru.rrozhkov.lib.db.impl.EntityHandler;
  * Created by rrozhkov on 8/25/2017.
  */
 public class PaymentHandler extends EntityHandler {
-    private static final PaymentConverterFactory paymentConverterFactory = new PaymentConverterFactory();
+    private static final PaymentConverterFactory paymentConverterFactory = PaymentConverterFactory.instance();
+
+    public static class PaymentHandlerHolder {
+        public static final PaymentHandler INSTANCE = new PaymentHandler();
+    }
+
+    public static PaymentHandler instance(){
+        return PaymentHandlerHolder.INSTANCE;
+    }
 
     @Override
     protected String getTableName() {

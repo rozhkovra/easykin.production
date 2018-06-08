@@ -15,6 +15,14 @@ import java.util.Collection;
 public class PaymentGUIFactory implements IModuleGUIFactory {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
+    public static class PaymentGUIFactoryHolder {
+        public static final PaymentGUIFactory INSTANCE = new PaymentGUIFactory();
+    }
+
+    public static PaymentGUIFactory instance(){
+        return PaymentGUIFactoryHolder.INSTANCE;
+    }
+
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new PaymentTableModel(data));
     }
