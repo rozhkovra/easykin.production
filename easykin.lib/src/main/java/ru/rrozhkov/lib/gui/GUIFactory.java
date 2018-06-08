@@ -7,6 +7,6 @@ import ru.rrozhkov.lib.gui.swing.SwingGuiFactory;
  */
 public abstract class GUIFactory {
     public static IGUIFactory create() {
-        return new SwingGuiFactory();
+        return SwingGuiFactory.instance();
     }
 }

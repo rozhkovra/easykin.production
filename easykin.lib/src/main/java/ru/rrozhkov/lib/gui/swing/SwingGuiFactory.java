@@ -12,6 +12,13 @@ import java.util.Collection;
  * Created by rrozhkov on 3/3/2017.
  */
 public class SwingGuiFactory implements IGUIFactory {
+    public static class SwingGuiFactoryHolder {
+        public static final SwingGuiFactory INSTANCE = new SwingGuiFactory();
+    }
+
+    public static SwingGuiFactory instance(){
+        return SwingGuiFactoryHolder.INSTANCE;
+    }
     public Component label(String text){
         return new JLabel(text);
     }
