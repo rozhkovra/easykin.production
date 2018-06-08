@@ -9,6 +9,15 @@ import java.util.Collection;
 import java.util.Date;
 
 public class ServiceFactory {
+	public static class Holder {
+		public static final ServiceFactory INSTANCE = new ServiceFactory();
+	}
+
+	public static ServiceFactory instance(){
+		return Holder.INSTANCE;
+	}
+
+
 	public static IService createService(String name, Money money, Date date){
 		return new Service(name, money, date);
 	}	

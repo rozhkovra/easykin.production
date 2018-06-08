@@ -30,7 +30,7 @@ public class DumpManager {
     final private static AuthManager authManager = AuthManager.instance();
     final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
     final private static PersonConverterFactory personConverterFactory = PersonConverterFactory.instance();
-    final private static PaymentConverterFactory paymentConverterFactory = new PaymentConverterFactory();
+    final private static PaymentConverterFactory paymentConverterFactory = PaymentConverterFactory.instance();
     final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
     private static final CategoryService categoryService = CategoryService.instance();
 

@@ -9,6 +9,14 @@ import java.awt.*;
  * Created by rrozhkov on 3/3/2017.
  */
 public class ImageManager {
+    public static class ImageManagerHolder {
+        public static final ImageManager INSTANCE = new ImageManager();
+    }
+
+    public static ImageManager instance(){
+        return ImageManagerHolder.INSTANCE;
+    }
+
     public Image logo(Class clazz){
         return ImageUtil.imageByPath(clazz, "/icon/logo.png");
     }

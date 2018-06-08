@@ -8,6 +8,14 @@ import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.model.person.IPerson;
 
 public class CarFactory {
+	public static class Holder {
+		public static final CarFactory INSTANCE = new CarFactory();
+	}
+
+	public static CarFactory instance(){
+		return Holder.INSTANCE;
+	}
+
 	public ICar createRegisteredCar(Brend brend, Model model, Body body, int year, double volume, IPerson owner, IDoc doc){
 		return new RegisteredCar(brend, model, body, year, volume, owner, doc);
 	}

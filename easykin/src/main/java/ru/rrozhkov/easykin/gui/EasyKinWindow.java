@@ -21,14 +21,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 
 public class EasyKinWindow extends JFrame implements IGUIEditor {
-    final private static EasyKinContext context = new EasyKinContext();
+    final private static EasyKinContext context = EasyKinContext.instance();
     final private IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
     final private GUIFactory easyKinGuiFactory = new GUIFactory();
     final private AuthManager authManager = AuthManager.instance();
-    final private ImageManager imageManager = new ImageManager();
+    final private ImageManager imageManager = ImageManager.instance();
     final private TabbedPaneAnalyzer tabAnalyzer = new TabbedPaneAnalyzer();
     private static final DumpManager dumpManager = new DumpManager();
-    private static final ModuleManager moduleManager = new ModuleManager();
+    private static final ModuleManager moduleManager = ModuleManager.instance();
 
 	private JTabbedPane tabbedPane;
     private static EasyKinWindow window;

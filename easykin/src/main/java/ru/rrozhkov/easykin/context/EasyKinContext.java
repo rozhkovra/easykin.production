@@ -3,6 +3,14 @@ package ru.rrozhkov.easykin.context;
 import ru.rrozhkov.lib.util.DateUtil;
 
 public class EasyKinContext {
+	public static class EasyKinContextHolder {
+		public static final EasyKinContext INSTANCE = new EasyKinContext();
+	}
+
+	public static EasyKinContext instance(){
+		return EasyKinContextHolder.INSTANCE;
+	}
+
 	private String module;
 
 	public static String title(){

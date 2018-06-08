@@ -14,6 +14,15 @@ import java.util.Collection;
  */
 public class AutoGUIFactory implements IModuleGUIFactory {
     private final static IGUIFactory guiFactory = GUIFactory.create();
+
+    public static class Holder {
+        public static final AutoGUIFactory INSTANCE = new AutoGUIFactory();
+    }
+
+    public static AutoGUIFactory instance(){
+        return Holder.INSTANCE;
+    }
+
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.panelEmpty();
     }

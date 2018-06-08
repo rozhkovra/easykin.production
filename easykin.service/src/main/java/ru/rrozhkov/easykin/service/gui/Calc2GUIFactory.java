@@ -16,6 +16,7 @@ import java.util.Collection;
 public class Calc2GUIFactory implements IModuleGUIFactory {
     final private static Calc2Builder calc2Builder = new Calc2Builder();
     protected final static IGUIFactory guiFactory = GUIFactory.create();
+    
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new ServiceTableModel(data));
     }

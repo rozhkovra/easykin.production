@@ -9,8 +9,10 @@ import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.lib.data.impl.SingleCollectionDataProvider;
 
 public class StaticServiceHistoryDataProvider extends SingleCollectionDataProvider<IService, ICar> {
-	final static private CarFactory carFactory = new CarFactory();
+	final static private CarFactory carFactory = CarFactory.instance();
+	private static final StaticAutoServiceDataProvider dataProvider = new StaticAutoServiceDataProvider();
+
 	public StaticServiceHistoryDataProvider() {
-		super(new StaticAutoServiceDataProvider().getData(), carFactory.createCar(Brend.TOYOTA, Model.VISTA, Body.SEDAN, 1995, 1.8));
+		super(dataProvider.getData(), carFactory.createCar(Brend.TOYOTA, Model.VISTA, Body.SEDAN, 1995, 1.8));
 	}
 }

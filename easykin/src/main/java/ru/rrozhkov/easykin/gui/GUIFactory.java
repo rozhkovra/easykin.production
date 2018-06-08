@@ -11,7 +11,8 @@ import java.awt.*;
  */
 public class GUIFactory {
     final private static IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
-    final private static ModuleManager moduleManager = new ModuleManager();
+    final private static ModuleManager moduleManager = ModuleManager.instance();
+
     public static Component createPanel(String module, IGUIEditor parent) {
         if (moduleManager.exist(module)) {
             return (Component) moduleManager.invoke(module, "createPanel", parent);

@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class CarForm extends JPanel {
 	private static final long serialVersionUID = 1L;
-	protected final static IGUIFactory swingGuiFactory = GUIFactory.create();
+	private static final IGUIFactory guiFactory = GUIFactory.create();
 	private Component brendField = null;
 	private Component modelField = null;
 	private Component bodyField = null;
@@ -24,7 +24,7 @@ public class CarForm extends JPanel {
 	public CarForm(ICar car) {
 		this.car = car;
 		
-		setLayout(new GridLayout(5,2)); 		
+		setLayout(guiFactory.gridLayout(5,2));
  
 		add(getBrendLabel()); 
 		add(getBredField()); 
@@ -40,66 +40,66 @@ public class CarForm extends JPanel {
 	
 	private Component getVolumeField() {
 		if(volumeField == null){
-			volumeField = swingGuiFactory.fieldReadOnly(10, String.valueOf(car.getVolume()));
+			volumeField = guiFactory.fieldReadOnly(10, String.valueOf(car.getVolume()));
 		}
 		return volumeField;
 	}
 
 	private Component getVolumeLabel() {
 		if(volumeLabel == null)
-			volumeLabel = swingGuiFactory.label("Объем");
+			volumeLabel = guiFactory.label("Объем");
 		return volumeLabel;
 	}
 
 	private Component getYearField() {
 		if(yearField == null){
-			yearField = swingGuiFactory.fieldReadOnly(10, String.valueOf(car.getYear()));
+			yearField = guiFactory.fieldReadOnly(10, String.valueOf(car.getYear()));
 		}
 		return yearField;
 	}
 
 	private Component getYearLabel() {		
 		if(yearLabel == null)
-			yearLabel = swingGuiFactory.label("Год");
+			yearLabel = guiFactory.label("Год");
 		return yearLabel;
 	}
 
 	public Component getBredField(){
 		if(brendField == null){
-			brendField = swingGuiFactory.fieldReadOnly(10, car.getBrend().toString());
+			brendField = guiFactory.fieldReadOnly(10, car.getBrend().toString());
 		}
 		return brendField;
 	}
 
 	public Component getModelField(){
 		if(modelField == null){
-			modelField = swingGuiFactory.fieldReadOnly(10, car.getModel().toString());
+			modelField = guiFactory.fieldReadOnly(10, car.getModel().toString());
 		}
 		return modelField;
 	}
 	
 	public Component getBodyField(){
 		if(bodyField == null){
-			bodyField = swingGuiFactory.fieldReadOnly(10, car.getBody().toString());
+			bodyField = guiFactory.fieldReadOnly(10, car.getBody().toString());
 		}
 		return bodyField;
 	}
 	
 	public Component getBrendLabel(){
 		if(brendLabel == null)
-			brendLabel = swingGuiFactory.label("Марка");
+			brendLabel = guiFactory.label("Марка");
 		return brendLabel;
 	}
 	
 	public Component getModelLabel(){
 		if(modelLabel == null)
-			modelLabel = swingGuiFactory.label("Модель");
+			modelLabel = guiFactory.label("Модель");
 		return modelLabel;
 	}
 	
 	public Component getBodyLabel(){
 		if(bodyLabel == null)
-			bodyLabel = swingGuiFactory.label("Кузов");
+			bodyLabel = guiFactory.label("Кузов");
 		return bodyLabel;
 	}
 }
