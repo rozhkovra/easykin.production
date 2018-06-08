@@ -11,7 +11,6 @@ import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.payment.impl.convert.PaymentConverterFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.person.impl.convert.PersonConverterFactory;
-import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;

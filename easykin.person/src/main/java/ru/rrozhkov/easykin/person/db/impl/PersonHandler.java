@@ -19,7 +19,7 @@ public class PersonHandler extends EntityHandler {
 
 	@Override
 	protected String getSelect() {
-		return "select * from PERSON";
+		return "select * from "+getTableName();
 	}
 
 	@Override
