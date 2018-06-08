@@ -10,6 +10,14 @@ import java.util.Collection;
 public class ActivityHandler extends EntityHandler {
 	private static final WorkConverterFactory converterFactory = new WorkConverterFactory();
 
+	public static class ActivityHandlerHolder {
+		public static final ActivityHandler INSTANCE = new ActivityHandler();
+	}
+
+	public static ActivityHandler instance(){
+		return ActivityHandlerHolder.INSTANCE;
+	}
+
 	protected String getTableName() {
 		return "ACTIVITY";
 	}

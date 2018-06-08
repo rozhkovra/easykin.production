@@ -9,7 +9,7 @@ import ru.rrozhkov.lib.db.IEntityHandler;
  * Created by rrozhkov on 06.06.2018.
  */
 public class ActivityService {
-    private static final IEntityHandler activityHandler = new ActivityHandler();
+    private static final IEntityHandler activityHandler = ActivityHandler.instance();
 
     public int createOrUpdate(IActivity activity){
         int activityId = activity.getId();

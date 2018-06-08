@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 public class ActivityBuilder {
     private static final WorkFactory workFactory = WorkFactory.instance();
-    private static final ActivityHandler activityHandler = new ActivityHandler();
+    private static final ActivityHandler activityHandler = ActivityHandler.instance();
     private static final AuthManager authManager = AuthManager.instance();
 
     public static class ActivityBuilderHolder {
