@@ -14,7 +14,7 @@ import java.util.Collection;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    private static IModuleGUIFactory activityFactory = new ActivityGUIFactory();
+    private static IModuleGUIFactory activityFactory = ActivityGUIFactory.instance();
     private static ActivityBuilder activityBuilder = ActivityBuilder.instance();
     private static final WorkFactory workFactory = WorkFactory.instance();
 

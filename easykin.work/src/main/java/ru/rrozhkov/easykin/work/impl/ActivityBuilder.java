@@ -25,7 +25,6 @@ public class ActivityBuilder {
         return ActivityBuilderHolder.INSTANCE;
     }
 
-
     public IActivity applyPerson(IActivity activity){
         IPerson person = authManager.signedPerson();
         if(activity.getPerson()==null) {
