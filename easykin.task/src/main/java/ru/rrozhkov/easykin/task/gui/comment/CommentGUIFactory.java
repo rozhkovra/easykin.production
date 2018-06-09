@@ -1,10 +1,10 @@
 package ru.rrozhkov.easykin.task.gui.comment;
 
 import ru.rrozhkov.easykin.model.task.IComment;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.*;
 import java.util.Collection;

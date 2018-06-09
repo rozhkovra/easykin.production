@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.work.gui;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

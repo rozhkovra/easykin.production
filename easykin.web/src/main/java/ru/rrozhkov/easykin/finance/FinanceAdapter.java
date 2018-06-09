@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.finance;
 
 import ru.rrozhkov.easykin.fin.Module;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
 import java.util.Collection;
 

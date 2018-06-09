@@ -2,10 +2,10 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.Calc2Builder;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.*;
 import java.util.Collection;

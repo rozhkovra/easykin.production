@@ -1,4 +1,4 @@
-<%@ page import="ru.rrozhkov.lib.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.service.gui.style.impl.custom.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.service.calc2.*"%>

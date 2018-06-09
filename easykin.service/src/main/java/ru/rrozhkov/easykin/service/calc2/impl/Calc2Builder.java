@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.service.calc2.impl.service.RateService;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 

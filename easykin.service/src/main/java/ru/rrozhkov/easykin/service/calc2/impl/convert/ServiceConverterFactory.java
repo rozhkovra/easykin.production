@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.service.calc2.impl.convert;
 
-import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 
 /**
  * Created by rrozhkov on 07.05.2018.

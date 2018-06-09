@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.task.gui;
 
-import ru.rrozhkov.lib.gui.color.ColorManager;
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.color.ColorManager;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;

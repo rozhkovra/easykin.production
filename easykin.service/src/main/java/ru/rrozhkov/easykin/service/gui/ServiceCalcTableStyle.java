@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.service.gui;
 
 
 
-import ru.rrozhkov.lib.gui.color.ColorManager;
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.color.ColorManager;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;

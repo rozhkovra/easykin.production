@@ -4,8 +4,8 @@ import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
 import ru.rrozhkov.easykin.work.gui.ActivityGUIFactory;
 import ru.rrozhkov.easykin.work.impl.ActivityBuilder;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.*;
 import java.util.Collection;

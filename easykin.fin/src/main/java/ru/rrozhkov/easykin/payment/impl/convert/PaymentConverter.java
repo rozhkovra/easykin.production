@@ -5,9 +5,9 @@ import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentCategory;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

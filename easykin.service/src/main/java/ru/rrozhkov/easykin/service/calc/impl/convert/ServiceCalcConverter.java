@@ -7,8 +7,8 @@ import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 public class ServiceCalcConverter implements
 		IConverter<Collection<ServiceCalc>, Collection<IPayment>> {

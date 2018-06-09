@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.family.service.impl;
 
 import ru.rrozhkov.easykin.family.db.impl.KinPersonHandler;
-import ru.rrozhkov.lib.filter.IFilter;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 import java.util.Collection;
 

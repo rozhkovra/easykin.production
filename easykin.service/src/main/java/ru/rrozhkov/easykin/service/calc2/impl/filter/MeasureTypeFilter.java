@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.service.calc2.impl.filter;
 
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
-import ru.rrozhkov.lib.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
 
 import java.util.Arrays;
 

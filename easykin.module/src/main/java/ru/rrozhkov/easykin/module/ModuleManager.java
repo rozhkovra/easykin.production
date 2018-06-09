@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.module;
 
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.reflection.ClassManager;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.reflection.ClassManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.work;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
 import java.util.Collection;
 import java.util.Date;

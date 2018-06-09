@@ -7,11 +7,11 @@ import ru.rrozhkov.easykin.service.calc.impl.convert.ServiceCalcConverter;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticReadingDataProvider;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.Calc2GUIFactory;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.awt.*;
 import java.util.Collection;

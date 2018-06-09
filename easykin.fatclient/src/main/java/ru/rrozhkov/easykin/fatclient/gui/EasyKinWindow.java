@@ -7,9 +7,9 @@ import ru.rrozhkov.easykin.fatclient.gui.util.TabbedPaneAnalyzer;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.util.ImageUtil;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -22,7 +22,7 @@ import java.awt.event.WindowEvent;
 
 public class EasyKinWindow extends JFrame implements IGUIEditor {
     final private static EasyKinContext context = EasyKinContext.instance();
-    final private IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
+    final private IGUIFactory guiFactory = ru.rrozhkov.easykin.core.gui.GUIFactory.create();
     final private GUIFactory easyKinGuiFactory = new GUIFactory();
     final private AuthManager authManager = AuthManager.instance();
     final private ImageManager imageManager = ImageManager.instance();

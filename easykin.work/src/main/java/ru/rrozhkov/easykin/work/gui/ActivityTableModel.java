@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.work.gui;
 
 import ru.rrozhkov.easykin.model.person.util.PersonUtil;
 import ru.rrozhkov.easykin.model.work.IActivity;
-import ru.rrozhkov.lib.gui.TableModel;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.gui.TableModel;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 import java.util.List;

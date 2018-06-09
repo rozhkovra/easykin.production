@@ -2,9 +2,9 @@ package ru.rrozhkov.easykin.task.impl.convert;
 
 import ru.rrozhkov.easykin.model.category.CategoryFactory;
 import ru.rrozhkov.easykin.model.category.ICategory;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

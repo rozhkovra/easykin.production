@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.filter.ServiceCalcFilterFactory;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 import java.util.List;
 

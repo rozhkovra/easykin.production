@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.fatclient;
 
 import ru.rrozhkov.easykin.fatclient.gui.EasyKinWindow;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
-import ru.rrozhkov.lib.db.impl.HSQLDBServer;
+import ru.rrozhkov.easykin.core.db.impl.HSQLDBServer;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;

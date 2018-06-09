@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.work.db.impl;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.work.impl.convert.WorkConverterFactory;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 
 import java.util.Collection;
 

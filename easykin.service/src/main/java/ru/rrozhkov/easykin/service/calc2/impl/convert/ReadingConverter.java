@@ -2,9 +2,9 @@ package ru.rrozhkov.easykin.service.calc2.impl.convert;
 
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

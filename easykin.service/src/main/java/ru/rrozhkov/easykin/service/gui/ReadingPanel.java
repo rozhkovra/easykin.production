@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Measure;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
 import javax.swing.*;
 import java.awt.*;

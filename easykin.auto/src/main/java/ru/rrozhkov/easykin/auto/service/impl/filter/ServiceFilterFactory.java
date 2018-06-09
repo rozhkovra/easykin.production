@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.auto.service.impl.filter;
 
 import java.util.Date;
 
-import ru.rrozhkov.lib.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
 
 public class ServiceFilterFactory {
 	public static IFilter createDateFilter(Date start, Date end){

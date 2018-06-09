@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.person;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.person.gui.PersonGUIFactory;
 import ru.rrozhkov.easykin.person.service.impl.PersonService;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.*;
 import java.util.Collection;

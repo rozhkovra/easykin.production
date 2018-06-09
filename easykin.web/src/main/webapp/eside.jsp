@@ -8,10 +8,10 @@
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.util.*"%>
-<%@ page import="ru.rrozhkov.lib.util.*"%>
-<%@ page import="ru.rrozhkov.lib.filter.util.*"%>
-<%@ page import="ru.rrozhkov.lib.filter.*"%>
-<%@ page import="ru.rrozhkov.lib.collection.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.filter.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.collection.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.db.impl.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="java.util.*"%>

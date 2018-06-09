@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.IServiceHistory;
 import ru.rrozhkov.easykin.model.auto.service.util.RepairUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 public class RepairServiceReporter extends ServiceReporter {
 

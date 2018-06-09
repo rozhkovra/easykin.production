@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.person.service.impl;
 
 import ru.rrozhkov.easykin.person.db.impl.PersonHandler;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
 import java.util.Collection;
 

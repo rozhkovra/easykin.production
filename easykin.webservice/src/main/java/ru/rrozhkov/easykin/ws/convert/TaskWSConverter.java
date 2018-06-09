@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.ws.convert;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.ws.bean.TaskBean;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 /**
  * Created by rrozhkov on 2/28/2017.

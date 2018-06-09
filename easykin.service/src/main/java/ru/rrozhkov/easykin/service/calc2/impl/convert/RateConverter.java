@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.service.calc2.impl.convert;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.RateType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

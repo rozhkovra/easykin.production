@@ -4,10 +4,10 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.impl.EntityHandler;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.sql.SQLException;
 import java.util.Collection;

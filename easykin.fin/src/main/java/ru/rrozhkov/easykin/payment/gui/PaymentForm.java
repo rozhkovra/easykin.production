@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.payment.gui;
 
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.awt.*;
 

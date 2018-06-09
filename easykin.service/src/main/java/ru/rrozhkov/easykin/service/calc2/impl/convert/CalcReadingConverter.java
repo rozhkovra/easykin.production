@@ -5,8 +5,8 @@ import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Reading;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 import java.util.Collection;
 

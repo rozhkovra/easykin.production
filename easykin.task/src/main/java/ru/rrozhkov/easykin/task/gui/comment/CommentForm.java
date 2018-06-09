@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.task.gui.comment;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.task.service.impl.CommentService;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
 import javax.swing.*;
 import java.awt.*;

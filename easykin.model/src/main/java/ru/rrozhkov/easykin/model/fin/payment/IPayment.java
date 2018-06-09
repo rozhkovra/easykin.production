@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.model.fin.payment;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.lib.db.IEntity;
+import ru.rrozhkov.easykin.core.db.IEntity;
 
 import java.util.Date;
 

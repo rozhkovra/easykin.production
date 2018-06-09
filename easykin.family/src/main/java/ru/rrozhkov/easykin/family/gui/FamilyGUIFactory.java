@@ -2,10 +2,10 @@ package ru.rrozhkov.easykin.family.gui;
 
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.person.gui.PersonForm;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.*;
 import java.util.Collection;

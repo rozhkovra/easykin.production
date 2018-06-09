@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.task.service.impl;
 
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
 import java.util.Collection;
 

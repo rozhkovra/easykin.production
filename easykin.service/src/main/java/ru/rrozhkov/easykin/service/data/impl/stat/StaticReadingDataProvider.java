@@ -10,9 +10,9 @@ import ru.rrozhkov.easykin.model.service.calc2.impl.Rate;
 import ru.rrozhkov.easykin.service.calc2.impl.Calc2Factory;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingBuilder;
 import ru.rrozhkov.easykin.service.calc2.impl.service.RateService;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.data.impl.CollectionDataProvider;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.data.impl.CollectionDataProvider;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Arrays;
 import java.util.Collection;

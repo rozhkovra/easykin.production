@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.person.gui.auth;
 
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.util.ImageUtil;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
 import javax.swing.*;
 import java.awt.*;

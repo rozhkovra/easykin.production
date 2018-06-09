@@ -7,9 +7,9 @@ import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.CalcReadingConverter;
 import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
 import javax.swing.*;
 import java.awt.*;

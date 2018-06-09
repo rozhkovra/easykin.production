@@ -6,9 +6,9 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.task.gui.comment.CommentGUIFactory;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
 import javax.swing.*;
 import java.awt.*;

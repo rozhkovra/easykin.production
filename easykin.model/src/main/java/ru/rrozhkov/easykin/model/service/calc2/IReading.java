@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.model.service.calc2;
 
-import ru.rrozhkov.lib.db.IEntity;
+import ru.rrozhkov.easykin.core.db.IEntity;
 
 import java.util.Collection;
 import java.util.Date;

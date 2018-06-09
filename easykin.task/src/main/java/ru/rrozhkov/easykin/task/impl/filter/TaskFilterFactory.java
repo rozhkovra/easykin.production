@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
-import ru.rrozhkov.lib.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
 
 import java.util.Date;
 

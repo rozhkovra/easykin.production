@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.ws.convert;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.ws.bean.PaymentBean;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 public class WSPaymentConverter implements IConverter<IPayment, PaymentBean> {
 

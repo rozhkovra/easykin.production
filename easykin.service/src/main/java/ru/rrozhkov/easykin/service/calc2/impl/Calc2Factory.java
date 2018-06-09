@@ -11,7 +11,7 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.rate.RateCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.water.hot.HotWaterCalc;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Arrays;
 import java.util.Collection;

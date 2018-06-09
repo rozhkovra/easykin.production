@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.model.work;
 
-import ru.rrozhkov.lib.db.IEntity;
+import ru.rrozhkov.easykin.core.db.IEntity;
 import ru.rrozhkov.easykin.model.person.IPerson;
 
 import java.util.Date;

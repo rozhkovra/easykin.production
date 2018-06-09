@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.ws.convert;
 
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.ws.bean.PersonBean;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 public class WSPersonConverter implements IConverter<IPerson, PersonBean> {
 

@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.fatclient.gui;
 
 import ru.rrozhkov.easykin.module.ModuleManager;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
 import java.awt.*;
 
@@ -10,7 +10,7 @@ import java.awt.*;
  * Created by rrozhkov on 4/19/2018.
  */
 public class GUIFactory {
-    final private static IGUIFactory guiFactory = ru.rrozhkov.lib.gui.GUIFactory.create();
+    final private static IGUIFactory guiFactory = ru.rrozhkov.easykin.core.gui.GUIFactory.create();
     final private static ModuleManager moduleManager = ModuleManager.instance();
 
     public static Component createPanel(String module, IGUIEditor parent) {

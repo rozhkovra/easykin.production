@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.fatclient.context;
 
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 public class EasyKinContext {
 	public static class EasyKinContextHolder {

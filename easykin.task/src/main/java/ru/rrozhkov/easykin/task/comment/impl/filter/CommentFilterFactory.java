@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.task.comment.impl.filter;
 
 import ru.rrozhkov.easykin.model.task.IComment;
-import ru.rrozhkov.lib.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
 
 public class CommentFilterFactory {
 	public static class CommentFilterFactoryHolder {

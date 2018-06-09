@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
 import ru.rrozhkov.easykin.model.person.Sex;
 import ru.rrozhkov.easykin.model.person.impl.Person;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Date;
 

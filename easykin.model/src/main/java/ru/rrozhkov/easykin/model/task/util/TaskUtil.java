@@ -1,10 +1,9 @@
 package ru.rrozhkov.easykin.model.task.util;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 public class TaskUtil {
 	final static private TaskFactory taskFactory = new TaskFactory();

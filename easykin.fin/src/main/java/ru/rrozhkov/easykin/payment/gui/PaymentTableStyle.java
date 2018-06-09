@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.payment.gui;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 
-import ru.rrozhkov.lib.gui.color.ColorManager;
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.color.ColorManager;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

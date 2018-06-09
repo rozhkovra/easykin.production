@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.module;
 
-import ru.rrozhkov.lib.gui.util.ImageUtil;
+import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
 import javax.swing.*;
 

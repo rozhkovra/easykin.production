@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.auto.gui.auto.service;
 
 import ru.rrozhkov.easykin.model.auto.service.IService;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.awt.*;
 

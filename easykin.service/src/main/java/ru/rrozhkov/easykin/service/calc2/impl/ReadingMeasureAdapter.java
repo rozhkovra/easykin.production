@@ -4,8 +4,8 @@ import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureFilterFactory;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 import java.util.Collection;
 

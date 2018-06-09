@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.model.auto.service.impl;
 
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 
 import java.util.Collection;

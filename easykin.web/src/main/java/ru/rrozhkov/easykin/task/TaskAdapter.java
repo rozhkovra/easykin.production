@@ -11,8 +11,8 @@ import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 import java.util.Date;

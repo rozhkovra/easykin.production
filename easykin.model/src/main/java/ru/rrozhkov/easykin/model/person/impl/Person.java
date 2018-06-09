@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.model.person.impl;
 
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.person.Sex;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Date;
 

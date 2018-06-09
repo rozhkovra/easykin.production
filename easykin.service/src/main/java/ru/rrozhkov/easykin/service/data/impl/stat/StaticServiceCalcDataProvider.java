@@ -4,13 +4,12 @@ import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.data.impl.CollectionDataProvider;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.data.impl.CollectionDataProvider;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 
 public class StaticServiceCalcDataProvider extends CollectionDataProvider<ServiceCalc> {
 	private static Collection<ServiceCalc> serviceCalcs = Arrays.asList(

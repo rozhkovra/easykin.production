@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.family.gui;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 import ru.rrozhkov.easykin.model.person.IPerson;
 
 public class FamilyTableStyle extends TableStyle<IPerson> {

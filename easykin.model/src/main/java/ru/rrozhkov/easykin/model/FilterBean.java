@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.model;
 
-import ru.rrozhkov.lib.filter.IFilterBean;
+import ru.rrozhkov.easykin.core.filter.IFilterBean;
 
 /**
  * Created by rrozhkov on 15.05.2018.

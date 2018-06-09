@@ -3,9 +3,9 @@ package ru.rrozhkov.easykin.auto.data.impl.stat;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.data.impl.CollectionDataProvider;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.data.impl.CollectionDataProvider;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Arrays;
 

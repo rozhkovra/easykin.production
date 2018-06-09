@@ -3,10 +3,10 @@ package ru.rrozhkov.easykin.task.gui;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.filter.IFilter;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.filter.IFilter;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
 import javax.swing.*;
 import java.awt.*;

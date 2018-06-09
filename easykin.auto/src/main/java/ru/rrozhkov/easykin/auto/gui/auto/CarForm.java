@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.auto.gui.auto;
 
 import ru.rrozhkov.easykin.model.auto.ICar;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
 import javax.swing.*;
 import java.awt.*;

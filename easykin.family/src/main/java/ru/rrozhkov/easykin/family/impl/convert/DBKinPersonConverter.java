@@ -4,8 +4,8 @@ import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
 import ru.rrozhkov.easykin.model.family.impl.FamilyFactory;
 import ru.rrozhkov.easykin.model.person.Sex;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

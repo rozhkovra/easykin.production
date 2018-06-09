@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.person.db.impl;
 
 import ru.rrozhkov.easykin.model.person.IPerson;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.crypt.Encrypter;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.crypt.Encrypter;
 
 import java.util.Collection;
 

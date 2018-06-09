@@ -1,5 +1,5 @@
 <%@ page import="ru.rrozhkov.easykin.service.*"%>
-<%@ page import="ru.rrozhkov.lib.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
 <%@ page import="java.util.*"%>

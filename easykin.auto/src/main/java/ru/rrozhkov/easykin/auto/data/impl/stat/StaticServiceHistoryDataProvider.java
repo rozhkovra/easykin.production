@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.auto.ICar;
 import ru.rrozhkov.easykin.model.auto.Model;
 import ru.rrozhkov.easykin.model.auto.impl.CarFactory;
 import ru.rrozhkov.easykin.model.auto.service.IService;
-import ru.rrozhkov.lib.data.impl.SingleCollectionDataProvider;
+import ru.rrozhkov.easykin.core.data.impl.SingleCollectionDataProvider;
 
 public class StaticServiceHistoryDataProvider extends SingleCollectionDataProvider<IService, ICar> {
 	final static private CarFactory carFactory = CarFactory.instance();

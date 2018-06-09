@@ -5,7 +5,7 @@ import javax.swing.JTable;
 
 
 import ru.rrozhkov.easykin.model.auto.service.IService;
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 
 public class ServiceTableStyle extends TableStyle<IService> {
 	public int[] getColumnAlignment() {

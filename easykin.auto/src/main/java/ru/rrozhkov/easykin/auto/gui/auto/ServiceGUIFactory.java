@@ -4,11 +4,11 @@ import ru.rrozhkov.easykin.auto.gui.auto.service.AutoServiceForm;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.lib.gui.GUIFactory;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IGUIFactory;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.awt.*;
 import java.util.Collection;

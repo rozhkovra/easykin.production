@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.auto.gui.auto;
 
 import ru.rrozhkov.easykin.auto.gui.auto.style.impl.custom.ServiceTableStyle;
 import ru.rrozhkov.easykin.model.auto.service.IService;
-import ru.rrozhkov.lib.gui.TableModel;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.gui.TableModel;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 import java.util.List;

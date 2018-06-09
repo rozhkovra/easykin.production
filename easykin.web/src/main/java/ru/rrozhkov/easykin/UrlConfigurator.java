@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin;
 
 import ru.rrozhkov.easykin.task.TaskAdapter;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

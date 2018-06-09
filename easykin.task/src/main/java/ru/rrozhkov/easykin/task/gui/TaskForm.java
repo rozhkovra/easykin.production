@@ -6,10 +6,10 @@ import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.gui.Form;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import javax.swing.*;
 import java.awt.*;

@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.family.db.impl;
 
 import ru.rrozhkov.easykin.family.impl.convert.DBKinPersonConverter;
 import ru.rrozhkov.easykin.person.db.impl.PersonHandler;
-import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 
 public class KinPersonHandler extends PersonHandler {
 	public static class KinPersonHandlerHolder {

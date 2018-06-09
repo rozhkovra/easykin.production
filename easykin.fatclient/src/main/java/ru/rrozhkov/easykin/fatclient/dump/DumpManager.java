@@ -13,9 +13,9 @@ import ru.rrozhkov.easykin.person.impl.convert.PersonConverterFactory;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.filter.IFilter;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 import java.io.*;
 import java.util.Collection;

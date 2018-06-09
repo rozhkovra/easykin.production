@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.person.impl.PersonFactory;
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.model.work.ReleaseType;
 import ru.rrozhkov.easykin.model.work.TaskType;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Date;
 

@@ -5,9 +5,9 @@ import ru.rrozhkov.easykin.family.impl.filter.KinFilterFactory;
 import ru.rrozhkov.easykin.family.service.impl.KinPersonService;
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
-import ru.rrozhkov.lib.filter.IFilter;
-import ru.rrozhkov.lib.gui.IGUIEditor;
-import ru.rrozhkov.lib.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.core.filter.IFilter;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.*;
 

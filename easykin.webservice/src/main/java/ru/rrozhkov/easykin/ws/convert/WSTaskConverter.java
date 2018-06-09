@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.ws.bean.TaskBean;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 public class WSTaskConverter implements IConverter<ITask, TaskBean> {
 

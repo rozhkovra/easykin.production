@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.person.db.impl;
 
 import ru.rrozhkov.easykin.person.impl.convert.PersonConverterFactory;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 
 public class PersonHandler extends EntityHandler {
 	private static final PersonConverterFactory converterFactory = PersonConverterFactory.instance();

@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.service;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 import java.util.Calendar;
 import java.util.Collection;

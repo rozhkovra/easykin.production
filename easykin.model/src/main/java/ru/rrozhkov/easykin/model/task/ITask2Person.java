@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.model.task;
 
-import ru.rrozhkov.lib.db.IEntity;
+import ru.rrozhkov.easykin.core.db.IEntity;
 
 /**
  * Created by rrozhkov on 3/6/2017.

@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.person.impl.convert;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.person.Sex;
 import ru.rrozhkov.easykin.model.person.impl.PersonFactory;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 import java.sql.ResultSet;
 

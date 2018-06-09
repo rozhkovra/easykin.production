@@ -8,11 +8,11 @@ import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.model.task.util.TaskUtil;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

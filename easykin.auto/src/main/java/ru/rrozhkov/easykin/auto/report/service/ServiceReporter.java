@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.auto.report.service;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.IServiceHistory;
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
-import ru.rrozhkov.lib.report.impl.FilteredReporter;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.report.impl.FilteredReporter;
 
 public class ServiceReporter extends FilteredReporter {
 	protected IServiceHistory history;

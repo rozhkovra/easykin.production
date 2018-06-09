@@ -12,7 +12,7 @@ import ru.rrozhkov.easykin.ws.bean.PaymentBean;
 import ru.rrozhkov.easykin.ws.bean.PersonBean;
 import ru.rrozhkov.easykin.ws.bean.TaskBean;
 import ru.rrozhkov.easykin.ws.convert.WSConverterFactory;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;

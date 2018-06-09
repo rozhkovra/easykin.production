@@ -7,8 +7,8 @@ import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.task.comment.impl.filter.CommentFilterFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
-import ru.rrozhkov.lib.collection.CollectionUtil;
-import ru.rrozhkov.lib.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 import java.util.Collection;
 import java.util.Date;

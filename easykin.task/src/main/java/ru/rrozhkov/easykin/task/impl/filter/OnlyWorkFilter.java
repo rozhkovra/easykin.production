@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.task.impl.filter;
 
 import ru.rrozhkov.easykin.model.category.Category;
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.lib.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
 
 public class OnlyWorkFilter implements IFilter<ITask> {
 	protected OnlyWorkFilter() {}

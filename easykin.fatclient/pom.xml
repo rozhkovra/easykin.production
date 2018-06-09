@@ -46,8 +46,8 @@
         <version>1.7.8</version>
       </dependency>
       <dependency>
-        <groupId>ru.rrozhkov.lib</groupId>
-        <artifactId>easykin.common</artifactId>
+        <groupId>ru.rrozhkov.easykin.core</groupId>
+        <artifactId>easykin.core</artifactId>
         <version>${version}</version>
       </dependency>
       <dependency>

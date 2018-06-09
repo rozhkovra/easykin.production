@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.service.db.impl.calc2;
 
 import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 
 /**
  * Created by rrozhkov on 1/17/2018.

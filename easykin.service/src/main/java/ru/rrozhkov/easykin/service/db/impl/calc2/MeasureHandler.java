@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.service.db.impl.calc2;
 
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 
 import java.util.Collection;
 

@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.person.impl.convert;
 
 import ru.rrozhkov.easykin.model.person.IPerson;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 
 import java.sql.ResultSet;
 import java.util.Collection;

@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.task.db.impl;
 
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 
 import java.util.Collection;
 

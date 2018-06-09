@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.fatclient.gui.style.impl.custom;
 
-import ru.rrozhkov.lib.gui.style.impl.TableStyle;
+import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 
 import javax.swing.*;

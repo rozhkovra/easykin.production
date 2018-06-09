@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.work.service.impl;
 
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
-import ru.rrozhkov.lib.db.IEntityHandler;
+import ru.rrozhkov.easykin.core.db.IEntityHandler;
 
 /**
  * Created by rrozhkov on 06.06.2018.

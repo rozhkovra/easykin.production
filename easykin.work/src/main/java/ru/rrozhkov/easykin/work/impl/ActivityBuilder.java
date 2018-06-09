@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
-import ru.rrozhkov.lib.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
 import java.util.Collection;
 

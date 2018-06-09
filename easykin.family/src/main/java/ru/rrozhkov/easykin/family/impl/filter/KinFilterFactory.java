@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.family.impl.filter;
 
 import ru.rrozhkov.easykin.model.family.IKinPerson;
 import ru.rrozhkov.easykin.model.family.KinType;
-import ru.rrozhkov.lib.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.IFilter;
 
 public class KinFilterFactory {
 	public static class KinFilterFactoryHolder {

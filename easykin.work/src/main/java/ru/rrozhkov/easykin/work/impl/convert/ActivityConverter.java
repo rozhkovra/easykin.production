@@ -4,9 +4,9 @@ import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.model.work.ReleaseType;
 import ru.rrozhkov.easykin.model.work.TaskType;
 import ru.rrozhkov.easykin.model.work.impl.WorkFactory;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.convert.IEntityConverter;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.sql.ResultSet;
 import java.util.Collection;

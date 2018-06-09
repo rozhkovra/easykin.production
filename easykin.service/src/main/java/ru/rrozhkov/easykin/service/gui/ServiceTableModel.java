@@ -4,8 +4,8 @@ import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
-import ru.rrozhkov.lib.gui.TableModel;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.gui.TableModel;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 import java.util.List;

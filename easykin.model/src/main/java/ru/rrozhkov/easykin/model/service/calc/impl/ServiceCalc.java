@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.model.service.calc.impl;
 
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 
 import java.util.Collection;

@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.task.gui;
 
 import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.lib.gui.TableModel;
-import ru.rrozhkov.lib.util.DateUtil;
+import ru.rrozhkov.easykin.core.gui.TableModel;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 import java.util.List;

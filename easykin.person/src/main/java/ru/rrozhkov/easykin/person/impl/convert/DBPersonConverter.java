@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.person.Sex;
 import ru.rrozhkov.easykin.model.person.impl.PersonFactory;
-import ru.rrozhkov.lib.convert.IConverter;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 
 public class DBPersonConverter implements IConverter<ResultSet, IPerson> {
 	final static private PersonFactory personFactory = new PersonFactory();

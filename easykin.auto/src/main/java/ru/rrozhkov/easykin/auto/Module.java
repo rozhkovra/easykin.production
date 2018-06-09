@@ -7,9 +7,9 @@ import ru.rrozhkov.easykin.auto.service.impl.convert.ServiceConverter;
 import ru.rrozhkov.easykin.model.auto.ICar;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
-import ru.rrozhkov.lib.convert.IConverter;
-import ru.rrozhkov.lib.data.impl.SingleCollectionDataProvider;
-import ru.rrozhkov.lib.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.data.impl.SingleCollectionDataProvider;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
 import java.awt.*;
 import java.util.Collection;
