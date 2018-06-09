@@ -29,7 +29,7 @@
 	int i = 0;
 	Collection<IRate> rates = StaticReadingDataProvider.rates2018_1;
 	try {
-		rates = RateHandler.selectForDate(DateUtil.today());
+		rates = new RateHandler().selectForDate(DateUtil.today());
 	} catch (Exception e) {
 		rates = StaticReadingDataProvider.rates2018_1;
 	}

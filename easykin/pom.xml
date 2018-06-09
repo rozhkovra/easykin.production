@@ -30,7 +30,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.rrozhkov.easykin.EasyKin</mainClass>
+                            <mainClass>ru.rrozhkov.easykin.fatclient.EasyKin</mainClass>
                         </manifest>
                     </archive>
 			<finalName>easykin-full-${version}</finalName>
@@ -50,7 +50,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.rrozhkov.easykin.EasyKin</mainClass>
+                            <mainClass>ru.rrozhkov.easykin.fatclient.EasyKin</mainClass>
                         </manifest>
                     </archive>
 			<includes>

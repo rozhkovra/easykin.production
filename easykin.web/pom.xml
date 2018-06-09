@@ -50,8 +50,8 @@
       <version>${version}</version>
     </dependency>
     <dependency>
-      <groupId>ru.rrozhkov.easykin</groupId>
-      <artifactId>easykin</artifactId>
+      <groupId>ru.rrozhkov.easykin.work</groupId>
+      <artifactId>easykin.work</artifactId>
       <version>${version}</version>
     </dependency>
     <dependency>
