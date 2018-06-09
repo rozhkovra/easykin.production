@@ -24,24 +24,15 @@
 </thead>
 <tbody>
 <%
-	int i = 0;
-	int daytime = 0;
-	Collection<IActivity> activities = (Collection<IActivity>)ModuleManager.invoke(Module.WORK, "activities");
-	Map<String, Integer> groupActivities = new HashMap<String, Integer>();
-	for (IActivity activity : activities) {
-		String key = activity.getTaskType()+" "+activity.getName();
-		int time = activity.getTime();
-		if(groupActivities.containsKey(key)) {
-			time=time+groupActivities.get(key);
-		}
-		groupActivities.put(key,time);
-	}
-	for(String key : groupActivities.keySet()) {
+	final AdapterFactory adapterFactory = new AdapterFactory();
+	final WorkAdapter workAdapter = adapterFactory.work();
+	Collection<GroupActivityBean> activities = workAdapter.groupActivities()();
+	for(GroupActivityBean bean : activities) {
 %>
 <tr>
-<td><%=++i%></td>
-<td><%=key%></td>
-<td><%=groupActivities.get(key)%></td>
+<td><%=bean.getNum()%></td>
+<td><%=bean.getName()%></td>
+<td><%=bean.getTime()%></td>
 </tr>
 <%
 	}

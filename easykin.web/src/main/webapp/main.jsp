@@ -18,7 +18,8 @@
       </ol>
     </section>
 <%
-    if(ModuleManager.activeModules().contains(moduleId)) {
+    ModuleManager moduleManager = ModuleManager.instance();
+    if(moduleManager.activeModules().contains(moduleId)) {
         if (Module.PAYMENT.equals(moduleId)) {
 %><jsp:include page="payment/index.jsp"/><%
         } else if (Module.FIN.equals(moduleId)){

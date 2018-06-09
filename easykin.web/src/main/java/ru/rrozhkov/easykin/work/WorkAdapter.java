@@ -35,4 +35,23 @@ public class WorkAdapter {
         }
         return beans;
     }
+
+    public Collection<GroupActivityBean> groupActivities() {
+        Collection<IActivity> activities = Module.activities();
+        Map<String, Integer> activitiesMap = new HashMap<String, Integer>();
+        for (IActivity activity : activities) {
+            String key = activity.getTaskType()+" "+activity.getName();
+            int time = activity.getTime();
+            if (activitiesMap.containsKey(key)) {
+                time=time+activitiesMap.get(key);
+            }
+            activitiesMap.put(key,time);
+        }
+        Collection<GroupActivityBean> groupActivityBeans = CollectionUtil.create();
+        int i = 0;
+        for (String key : activitiesMap.keySet()) {
+            groupActivityBeans.add(workBeanFactory.groupActivityBean(++i, key, activitiesMap.get(key)));
+        }
+        return groupActivityBeans;
+    }
 }

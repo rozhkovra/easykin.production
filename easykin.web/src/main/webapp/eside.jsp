@@ -19,6 +19,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
     UrlConfigurator urlConfigurator = new UrlConfigurator();
+    ModuleManager moduleManager = ModuleManager.instance();
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 	IPerson person = AuthManager.instance().signedPerson();
 %>
@@ -58,7 +59,7 @@
           </a>
           <ul class="treeview-menu">
 <%
-	for(String module : ModuleManager.activeModules()){
+	for(String module : moduleManager.activeModules()){
 	    if (!module.equals(ru.rrozhkov.easykin.module.Module.SERVICE) &&
 	        !module.equals(ru.rrozhkov.easykin.module.Module.WORK)) {
 %><li class="<%=urlConfigurator.getModuleClass(request, module)%>"><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, module)%>"><i class="fa fa-circle-o"></i> <%=ru.rrozhkov.easykin.module.Module.name(module)%></a></li>

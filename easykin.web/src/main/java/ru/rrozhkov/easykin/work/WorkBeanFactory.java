@@ -9,4 +9,7 @@ public class WorkBeanFactory {
     public ActivityBean activityBean(int num, IActivity activity, String dateClass) {
         return new ActivityBean(num, activity, dateClass);
     }
+    public GroupActivityBean groupActivityBean(int num, String name, int time) {
+        return new GroupActivityBean(num, name, time);
+    }
 }

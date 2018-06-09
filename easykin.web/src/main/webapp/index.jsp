@@ -4,7 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <html>
-<title>EasyKin, <%=DateUtil.formatWeek(new Date())%></title>
+<title>EasyKin, <%=DateUtil.formatWeek()%></title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
