@@ -26,9 +26,9 @@
 %><jsp:include page="finance/index.jsp"/><%
         } else if(Module.WORK.equals(moduleId)) {
             if(SubModule.INDEX.equals(subModuleId)) {
-%><jsp:include page="work/index.jsp"/><%
+%><jsp:include page="work/mvideo/index.jsp"/><%
             } else if(SubModule.STATISTICS.equals(subModuleId)) {
-%><jsp:include page="work/statistics.jsp"/><%
+%><jsp:include page="work/mvideo/statistics.jsp"/><%
             }
         } else if (Module.SERVICE.equals(moduleId)) {
             if(SubModule.INDEX.equals(subModuleId)) {
