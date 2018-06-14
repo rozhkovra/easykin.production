@@ -24,6 +24,7 @@ public class TaskForm extends Form {
 	private static final TaskFactory taskFactory = TaskFactory.instance();
 	private static final TaskService taskService = TaskService.instance();
 	private static final CategoryService categoryService = CategoryService.instance();
+	private static final PeriodTaskBuilder periodTaskBuilder = PeriodTaskBuilder.instance();
 
 	private JTextField nameField;
 	private JTextField planDateField;
@@ -227,8 +228,7 @@ public class TaskForm extends Form {
 			}
 			Period period = (Period)periodComboBox.getSelectedItem();
 			Date untilDate = DateUtil.parse(untilDateField.getText());
-			PeriodTaskBuilder periodTaskBuilder = new PeriodTaskBuilder(period, untilDate, task);
-			periodTaskBuilder.create();
+			periodTaskBuilder.create(period, untilDate, task);
 		} else {
 			taskService.createOrUpdate(task);
 		}

@@ -21,6 +21,9 @@ public class CommentHandler extends EntityHandler {
 		return CommentHandlerHolder.INSTANCE;
 	}
 
+	private CommentHandler() {
+	}
+
 	protected String getTableName() { return  "COMMENT";}
 
 	protected String getInsert() {

@@ -16,6 +16,9 @@ public class CategoryService {
         public static final CategoryService INSTANCE = new CategoryService();
     }
 
+    private CategoryService() {
+    }
+
     public static CategoryService instance(){
         return CategoryServiceHolder.INSTANCE;
     }

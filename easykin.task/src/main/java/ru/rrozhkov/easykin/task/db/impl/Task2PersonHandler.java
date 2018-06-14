@@ -18,6 +18,9 @@ public class Task2PersonHandler extends EntityHandler {
         return Task2PersonHandlerHolder.INSTANCE;
     }
 
+    private Task2PersonHandler() {
+    }
+
     @Override
     protected String getTableName() {
         return "TASK2PERSON";

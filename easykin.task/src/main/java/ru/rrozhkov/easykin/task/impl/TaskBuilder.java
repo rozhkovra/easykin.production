@@ -27,6 +27,9 @@ public class TaskBuilder {
 		return TaskBuilderHolder.INSTANCE;
 	}
 
+	private TaskBuilder() {
+	}
+
 	@Deprecated
 	public ITask build(int id, String name, Date createDate, Date plannedDate,
 			int priority, int categoryId, String categoryName, Date closeDate, int status){

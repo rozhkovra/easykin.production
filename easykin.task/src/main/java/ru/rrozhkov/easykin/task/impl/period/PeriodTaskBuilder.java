@@ -17,17 +17,18 @@ public class PeriodTaskBuilder {
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final TaskService taskService = TaskService.instance();
 
-    private Period period;
-    private Date untilDate;
-    private ITask source;
-
-    public PeriodTaskBuilder(Period period, Date untilDate, ITask source) {
-        this.period = period;
-        this.untilDate = untilDate;
-        this.source = source;
+    public static class Holder {
+        public static final PeriodTaskBuilder INSTANCE = new PeriodTaskBuilder();
     }
 
-    public int create() {
+    public static PeriodTaskBuilder instance(){
+        return Holder.INSTANCE;
+    }
+
+    private PeriodTaskBuilder() {
+    }
+
+    public int create(Period period, Date untilDate, ITask source) {
         Date start = source.getPlanDate();
         Date end = untilDate;
         Date shiftDate = start;

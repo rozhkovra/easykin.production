@@ -13,6 +13,9 @@ public class CommentService {
         public static final CommentService INSTANCE = new CommentService();
     }
 
+    private CommentService() {
+    }
+
     public static CommentService instance(){
         return CommentServiceHolder.INSTANCE;
     }

@@ -26,6 +26,9 @@ public class TaskService {
         return TaskServiceHolder.INSTANCE;
     }
 
+    private TaskService() {
+    }
+
     private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
     private static final Task2PaymentHandler t2paymentHandler = Task2PaymentHandler.instance();
     private static final Task2PersonHandler t2personHandler = Task2PersonHandler.instance();

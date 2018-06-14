@@ -12,6 +12,9 @@ public class CommentFilterFactory {
 		return CommentFilterFactoryHolder.INSTANCE;
 	}
 
+	private CommentFilterFactory() {
+	}
+
 	public IFilter<IComment> task(int taskId){
 		return new TaskFilter(taskId);
 	}

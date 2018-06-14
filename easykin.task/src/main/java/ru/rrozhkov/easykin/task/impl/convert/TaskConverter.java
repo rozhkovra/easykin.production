@@ -24,7 +24,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class TaskConverter implements IEntityConverter<ITask> {
-    final private static TaskFilterFactory taskFilterFactory = new TaskFilterFactory();
+    final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
     final static private PaymentFactory paymentFactory = new PaymentFactory();
     final static private TaskFactory taskFactory = new TaskFactory();
 

@@ -14,6 +14,9 @@ public class TaskConverterFactory {
         return TaskConverterFactoryHolder.INSTANCE;
     }
 
+    private TaskConverterFactory() {
+    }
+
     public IEntityConverter task() {return new TaskConverter();}
     public IEntityConverter category() {return new CategoryConverter();}
     public IEntityConverter comment() {return new CommentConverter();}

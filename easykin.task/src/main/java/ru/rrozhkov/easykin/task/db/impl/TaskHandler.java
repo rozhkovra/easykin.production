@@ -25,6 +25,9 @@ public class TaskHandler extends EntityHandler {
 		return TaskHandlerHolder.INSTANCE;
 	}
 
+	private TaskHandler() {
+	}
+
 	protected String getTableName() {
 		return "TASK";
 	}

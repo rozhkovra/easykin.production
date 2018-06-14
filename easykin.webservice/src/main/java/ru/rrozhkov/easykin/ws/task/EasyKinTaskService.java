@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 @WebService(serviceName="EasyKinTask", portName="EasyKinTaskPort", targetNamespace="http://rrozhkov.ru/easykin/task")
 public class EasyKinTaskService {
-    private static final TaskHandler taskHandler = new TaskHandler();
+    private static final TaskHandler taskHandler = TaskHandler.instance();
     @WebMethod
     public int add(TaskBean bean) {
         try {

@@ -17,6 +17,9 @@ public class TaskFilterFactory {
 		return TaskFilterFactoryHolder.INSTANCE;
 	}
 
+	private TaskFilterFactory() {
+	}
+
 	public IFilter<ITask> home(){
 		return new OnlyHomeFilter();
 	}
