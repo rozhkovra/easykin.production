@@ -25,7 +25,7 @@ public class ActivityBuilder {
         return ActivityBuilderHolder.INSTANCE;
     }
 
-    public IActivity applyPerson(IActivity activity){
+    private IActivity applyPerson(IActivity activity){
         IPerson person = authManager.signedPerson();
         if(activity.getPerson()==null) {
             activity = workFactory.create(activity.getId(),activity.getDate(),person,activity.getTime(),activity.getTaskType(),activity.getName(),activity.getReleaseType(),activity.getDesc());

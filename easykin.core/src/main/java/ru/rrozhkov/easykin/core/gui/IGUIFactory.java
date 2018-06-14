@@ -26,6 +26,7 @@ public interface IGUIFactory {
     TablePanel tablePanel(IGUIEditor parent, TableModel tableModel);
     Table table(TableModel tableModel);
     Component comboBoxFilled(Collection priorities);
+    Component checkBox(String text);
     LayoutManager boxLayout(Container comp, int direction);
     LayoutManager gridLayout(int rows, int cols);
     Dimension size(int width, int height);

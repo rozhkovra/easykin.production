@@ -48,4 +48,7 @@ public class DateUtil {
 	public static Date lastDayOfMonth(){
 		return lastDayOfMonth(today());
 	}
+	public static Date shiftDate(Date source, long shiftMillis) {
+		return new Date(source.getTime() + shiftMillis);
+	}
 }
