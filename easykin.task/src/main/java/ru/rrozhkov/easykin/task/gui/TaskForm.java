@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.task.gui;
 
+import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
@@ -17,6 +18,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 import java.util.Date;
 
 public class TaskForm extends Form {
@@ -110,7 +112,7 @@ public class TaskForm extends Form {
 					Priority.IMPOTANT_NOFAST,
 					Priority.SIMPLE
 			));
-			priorityComboBox.setSelectedIndex(Priority.priority(task.getPriority()) - 1);
+			priorityComboBox.setSelectedIndex(Priority.priority(task.getPriority()));
 			if(task.getStatus().isClose())
 				priorityComboBox.setEditable(false);
 		}
@@ -119,8 +121,14 @@ public class TaskForm extends Form {
 	
 	private Component getCategoryComboBox(){
 		if(categoryComboBox == null){
-			categoryComboBox = (JComboBox)guiFactory.comboBoxFilled(categoryService.categories());
-			categoryComboBox.setSelectedItem(task.getCategory().getName());
+			Collection<ICategory> categories = categoryService.categories();
+			categoryComboBox = (JComboBox)guiFactory.comboBoxFilled(categories);
+			for (ICategory category : categories) {
+				if (category.getId() == task.getCategory().getId()) {
+					categoryComboBox.setSelectedItem(category);
+				}
+			}
+
 			if(task.getStatus().isClose())
 				categoryComboBox.setEditable(false);
 		}
@@ -194,8 +202,8 @@ public class TaskForm extends Form {
 
 	protected void update() {
 		task = taskFactory.createTask(task.getId(), getNameField().getText(), task.getCreateDate()
-				, DateUtil.parse(getPlanDateField().getText()), priorityComboBox.getSelectedIndex()+1
-				, categoryComboBox.getSelectedIndex()+1, "", null, Status.status(Status.OPEN));
+				, DateUtil.parse(getPlanDateField().getText()), priorityComboBox.getSelectedIndex()
+				, categoryComboBox.getSelectedIndex(), "", null, Status.status(Status.OPEN));
 	}
 
 	private Component getDoneButton() {
