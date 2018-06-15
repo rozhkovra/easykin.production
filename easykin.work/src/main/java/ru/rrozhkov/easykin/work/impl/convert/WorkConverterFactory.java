@@ -14,5 +14,8 @@ public class WorkConverterFactory {
         return WorkConverterFactoryHolder.INSTANCE;
     }
 
+    private WorkConverterFactory() {
+    }
+
     public IEntityConverter activity(){return new ActivityConverter();}
 }

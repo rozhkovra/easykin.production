@@ -18,6 +18,9 @@ public class ActivityService {
         return ActivityServiceHolder.INSTANCE;
     }
 
+    private ActivityService() {
+    }
+
     public int createOrUpdate(IActivity activity){
         int activityId = activity.getId();
         try{

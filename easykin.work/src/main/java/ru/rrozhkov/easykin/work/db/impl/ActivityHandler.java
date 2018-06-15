@@ -23,6 +23,9 @@ public class ActivityHandler extends EntityHandler {
 		return ActivityHandlerHolder.INSTANCE;
 	}
 
+	private ActivityHandler() {
+	}
+
 	protected String getTableName() {
 		return "ACTIVITY";
 	}
