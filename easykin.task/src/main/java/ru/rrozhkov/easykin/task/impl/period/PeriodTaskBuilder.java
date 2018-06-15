@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.task.impl.period;
 
-import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;

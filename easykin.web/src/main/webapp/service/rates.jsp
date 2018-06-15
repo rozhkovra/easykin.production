@@ -1,9 +1,6 @@
-<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
-<%@ page import="ru.rrozhkov.easykin.module.*"%>
-<%@ page import="ru.rrozhkov.easykin.service.gui.style.impl.custom.*"%>
+<%@ page import="ru.rrozhkov.easykin.service.calc2.impl.service.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.service.calc2.*"%>
-<%@ page import="ru.rrozhkov.easykin.service.data.impl.stat.*"%>
-<%@ page import="ru.rrozhkov.easykin.service.db.impl.calc2.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <section class="content">
@@ -27,12 +24,8 @@
 <tbody>
 <%
 	int i = 0;
-	Collection<IRate> rates = StaticReadingDataProvider.rates2018_1;
-	try {
-		rates = new RateHandler().selectForDate(DateUtil.today());
-	} catch (Exception e) {
-		rates = StaticReadingDataProvider.rates2018_1;
-	}
+	final RateService rateService = RateService.instance();
+	Collection<IRate> rates = rateService.rates(DateUtil.lastDayOfMonth());
 
 	for(IRate rate : rates){
 %>

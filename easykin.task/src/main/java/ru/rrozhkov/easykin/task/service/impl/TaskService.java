@@ -11,13 +11,25 @@ import ru.rrozhkov.easykin.task.db.impl.Task2PersonHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.easykin.task.impl.period.Period;
+import ru.rrozhkov.easykin.task.impl.period.PeriodTaskBuilder;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  * Created by rrozhkov on 3/6/2017.
  */
 public class TaskService {
+    private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
+    private static final Task2PaymentHandler t2paymentHandler = Task2PaymentHandler.instance();
+    private static final Task2PersonHandler t2personHandler = Task2PersonHandler.instance();
+    private static final PaymentHandler paymentHandler = PaymentHandler.instance();
+    private static final TaskHandler taskHandler = TaskHandler.instance();
+    private static final TaskFactory taskFactory = TaskFactory.instance();
+    private static final AuthManager authManager = AuthManager.instance();
+    private static final PeriodTaskBuilder periodTaskBuilder = PeriodTaskBuilder.instance();
+
     public static class TaskServiceHolder {
         public static final TaskService INSTANCE = new TaskService();
     }
@@ -28,14 +40,6 @@ public class TaskService {
 
     private TaskService() {
     }
-
-    private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
-    private static final Task2PaymentHandler t2paymentHandler = Task2PaymentHandler.instance();
-    private static final Task2PersonHandler t2personHandler = Task2PersonHandler.instance();
-    private static final PaymentHandler paymentHandler = PaymentHandler.instance();
-    private static final TaskHandler taskHandler = TaskHandler.instance();
-    private static final TaskFactory taskFactory = TaskFactory.instance();
-    private static final AuthManager authManager = AuthManager.instance();
 
     public int createOrUpdate(ITask task){
         int taskId = task.getId();
@@ -61,6 +65,10 @@ public class TaskService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void createPeriod(Period period, Date untilDate, ITask source) {
+        periodTaskBuilder.create(period, untilDate, source);
     }
 
     protected int create(ITask task) throws SQLException {

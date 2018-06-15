@@ -24,7 +24,7 @@ import java.util.Collection;
  * Created by rrozhkov on 6/23/2017.
  */
 public class DumpManager {
-    final private static String STORAGE = "F:/temp/EasyKin";
+    final private static String STORAGE = "F:/temp/easykin.production";
     final private static ModuleManager moduleManager = ModuleManager.instance();
     final private static AuthManager authManager = AuthManager.instance();
     final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
@@ -44,9 +44,8 @@ public class DumpManager {
         converter = personConverterFactory.person();
         for (IPerson person : persons)
             builder.append(converter.sqlInsert(person)).append(";");
-        IPerson person = authManager.signedPerson();
         IFilter filter = taskFilterFactory.status(Status.OPEN);
-        Collection<ITask> tasks = FilterUtil.filter((Collection<ITask>) moduleManager.invoke(Module.TASK, "tasks", person), filter);
+        Collection<ITask> tasks = FilterUtil.filter((Collection<ITask>) moduleManager.invoke(Module.TASK, "tasks"), filter);
         converter = taskConverterFactory.task();
         for (ITask task : tasks)
             builder.append(converter.sqlInsert(task)).append(";");

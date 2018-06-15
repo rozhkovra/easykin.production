@@ -1,18 +1,17 @@
 package ru.rrozhkov.easykin.task.gui;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.task.impl.period.Period;
-import ru.rrozhkov.easykin.task.impl.period.PeriodTaskBuilder;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
-import ru.rrozhkov.easykin.core.collection.CollectionUtil;
-import ru.rrozhkov.easykin.core.gui.Form;
-import ru.rrozhkov.easykin.core.gui.IGUIEditor;
-import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +25,6 @@ public class TaskForm extends Form {
 	private static final TaskFactory taskFactory = TaskFactory.instance();
 	private static final TaskService taskService = TaskService.instance();
 	private static final CategoryService categoryService = CategoryService.instance();
-	private static final PeriodTaskBuilder periodTaskBuilder = PeriodTaskBuilder.instance();
 
 	private JTextField nameField;
 	private JTextField planDateField;
@@ -236,7 +234,7 @@ public class TaskForm extends Form {
 			}
 			Period period = (Period)periodComboBox.getSelectedItem();
 			Date untilDate = DateUtil.parse(untilDateField.getText());
-			periodTaskBuilder.create(period, untilDate, task);
+			taskService.createPeriod(period, untilDate, task);
 		} else {
 			taskService.createOrUpdate(task);
 		}
