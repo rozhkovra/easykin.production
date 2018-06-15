@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.model.service.calc2.impl.measure;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
-import ru.rrozhkov.easykin.model.service.calc2.impl.rate.RateCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.RateCalc;
 
 import java.util.Collection;
 

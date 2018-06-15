@@ -15,6 +15,9 @@ public class TaskFactory{
 		return TaskFactoryHolder.INSTANCE;
 	}
 
+	private TaskFactory() {
+	}
+
 	public ITask createTask(int id, String name, Date createDate, Date plannedDate,
 								   int priority, int categoryId, String categoryName, Date closeDate, int status) {
 		return new Task(id, name, createDate, plannedDate, Priority.priority(priority)

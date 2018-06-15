@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class ReadingConverter implements IEntityConverter<IReading> {
-    private static final ServiceFactory serviceFactory = new ServiceFactory();
+    private static final ServiceFactory serviceFactory = ServiceFactory.instance();
 
     protected ReadingConverter() {}
 

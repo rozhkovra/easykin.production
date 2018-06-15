@@ -3,7 +3,7 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
-import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
+import ru.rrozhkov.easykin.service.calc.impl.calculator.CalculatorFactory;
 import ru.rrozhkov.easykin.core.gui.GUIFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class Panel extends GUIPanel{
-	private static final CalculatorFactory calculatorFactory = new CalculatorFactory();
+	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 	private static final long serialVersionUID = 1L;
 	private Component itogoLabel = null;
 	protected ICalculator calculator;

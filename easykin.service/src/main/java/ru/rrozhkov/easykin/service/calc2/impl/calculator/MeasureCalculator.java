@@ -1,16 +1,17 @@
-package ru.rrozhkov.easykin.model.service.calc2.impl.measure;
+package ru.rrozhkov.easykin.service.calc2.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.IResult;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
+import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 
 /**
  * Created by rrozhkov on 12/27/2017.
  */
 public class MeasureCalculator extends Calculator {
-    private static final ServiceFactory serviceFactory = new ServiceFactory();
+    private static final ServiceFactory serviceFactory = ServiceFactory.instance();
 
     public MeasureCalculator(MeasureCalc calc) {
         super(calc);

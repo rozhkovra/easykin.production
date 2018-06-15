@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class Task2PaymentConverter implements IEntityConverter<ITask2Payment> {
-    final static private TaskFactory taskFactory = new TaskFactory();
+    final static private TaskFactory taskFactory = TaskFactory.instance();
 
     public String sqlInsert(ITask2Payment entity) {
         return null;

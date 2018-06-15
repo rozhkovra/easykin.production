@@ -12,6 +12,17 @@ import java.util.Date;
  * Created by rrozhkov on 1/17/2018.
  */
 public class ServiceFactory {
+    public static class Holder {
+        public static final ServiceFactory INSTANCE = new ServiceFactory();
+    }
+
+    public static ServiceFactory instance(){
+        return Holder.INSTANCE;
+    }
+
+    private ServiceFactory() {
+    }
+
     public IReading createReading(int id, Date date){
         return new Reading(id, date);
     }

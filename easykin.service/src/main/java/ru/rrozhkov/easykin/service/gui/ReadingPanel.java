@@ -18,7 +18,7 @@ public class ReadingPanel extends GUIPanel {
     private boolean isPaid;
     protected IReading reading;
     protected Map<IMeasure,JTextField> fields;
-    protected final static IGUIFactory guiFactory = GUIFactory.create();
+    protected static final IGUIFactory guiFactory = GUIFactory.create();
 
     public ReadingPanel(Panel parent, IReading reading, boolean isPaid) {
         super(parent);

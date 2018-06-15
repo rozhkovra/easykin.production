@@ -1,12 +1,15 @@
-package ru.rrozhkov.easykin.model.service.calc.impl;
+package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
 import ru.rrozhkov.easykin.model.service.calc.IResult;
+import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.ServiceResult;
 
 public class ServiceCalculator extends Calculator {
-	private static final CalculatorFactory calculatorFactory = new CalculatorFactory();
+	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 
 	public ServiceCalculator(ICalculation calcBean) {
 		super(calcBean);

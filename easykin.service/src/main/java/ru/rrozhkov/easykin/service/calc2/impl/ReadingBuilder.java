@@ -15,10 +15,21 @@ import java.util.Date;
 import java.util.List;
 
 public class ReadingBuilder {
-	private static final MeasureHandler measureHandler = new MeasureHandler();
-	private static final ReadingHandler readingHandler = new ReadingHandler();
-	private static final ServiceFactory serviceFactory = new ServiceFactory();
-	private static final MeasureFilterFactory measureFilterFactory = new MeasureFilterFactory();
+	private static final MeasureHandler measureHandler = MeasureHandler.instance();
+	private static final ReadingHandler readingHandler = ReadingHandler.instance();
+	private static final ServiceFactory serviceFactory = ServiceFactory.instance();
+	private static final MeasureFilterFactory measureFilterFactory = MeasureFilterFactory.instance();
+
+	public static class Holder {
+		public static final ReadingBuilder INSTANCE = new ReadingBuilder();
+	}
+
+	public static ReadingBuilder instance(){
+		return Holder.INSTANCE;
+	}
+
+	private ReadingBuilder() {
+	}
 
 	public IReading build(int id, Date date){
 		IReading reading = null;

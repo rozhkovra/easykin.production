@@ -13,7 +13,7 @@ import java.util.Collection;
  * Created by rrozhkov on 12/25/2017.
  */
 public class ReadingMeasureAdapter {
-    private static final MeasureFilterFactory measureFilterFactory = new MeasureFilterFactory();
+    private static final MeasureFilterFactory measureFilterFactory = MeasureFilterFactory.instance();
 
     protected Collection<IMeasure> measures;
     protected double coldMeasure;

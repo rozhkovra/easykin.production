@@ -3,8 +3,6 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 
-import java.awt.*;
-
 public class ShortPanel extends Panel{
 
 	public ShortPanel(Panel parent, Calculation calc) {

@@ -11,9 +11,20 @@ import java.util.Collection;
  * Created by rrozhkov on 1/17/2018.
  */
 public class MeasureHandler extends EntityHandler {
-    private static final ServiceConverterFactory converterFactory = new ServiceConverterFactory();
+    private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
 
     private String selectForReading = "SELECT * FROM "+getTableName()+" WHERE READINGID=#readingid#";
+
+    public static class Holder {
+        public static final MeasureHandler INSTANCE = new MeasureHandler();
+    }
+
+    public static MeasureHandler instance(){
+        return Holder.INSTANCE;
+    }
+
+    private MeasureHandler() {
+    }
 
     @Override
     protected String getTableName() {

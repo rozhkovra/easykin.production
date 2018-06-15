@@ -8,9 +8,9 @@ import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
-import ru.rrozhkov.easykin.model.service.calc2.impl.electricity.ElectricityCalc;
-import ru.rrozhkov.easykin.model.service.calc2.impl.rate.RateCalc;
-import ru.rrozhkov.easykin.model.service.calc2.impl.water.hot.HotWaterCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.ElectricityCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.RateCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.HotWaterCalc;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Arrays;
@@ -21,6 +21,17 @@ import java.util.Date;
  * Created by rrozhkov on 12/11/2017.
  */
 public class Calc2Factory {
+    public static class Holder {
+        public static final Calc2Factory INSTANCE = new Calc2Factory();
+    }
+
+    public static Calc2Factory instance(){
+        return Holder.INSTANCE;
+    }
+
+    private Calc2Factory() {
+    }
+
     public ICalculation createHotWaterCalc(IReading oldReading,
                                                   IReading newReading,
                                                   Collection<IRate> rates,

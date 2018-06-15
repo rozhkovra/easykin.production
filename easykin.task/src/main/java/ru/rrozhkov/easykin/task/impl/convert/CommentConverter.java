@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class CommentConverter implements IEntityConverter<IComment> {
-    private static final TaskFactory taskFactory = new TaskFactory();
+    private static final TaskFactory taskFactory = TaskFactory.instance();
 
     protected CommentConverter() {
     }

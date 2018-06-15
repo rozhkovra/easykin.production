@@ -12,8 +12,8 @@ import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 
 public class ServiceConverter implements IConverter<Collection<IService>,Collection<IPayment>> {
-	final static private PaymentFactory paymentFactory = new PaymentFactory();
-	private static final PaymentFilterFactory paymentFilterFactory = new PaymentFilterFactory();
+	final static private PaymentFactory paymentFactory = PaymentFactory.instance();
+	private static final PaymentFilterFactory paymentFilterFactory = PaymentFilterFactory.instance();
 
 	public Collection<IPayment> convert(Collection<IService> entries) {
 		Collection<IPayment> collection = CollectionUtil.create();

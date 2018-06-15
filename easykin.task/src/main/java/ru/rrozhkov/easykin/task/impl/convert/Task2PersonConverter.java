@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class Task2PersonConverter implements IEntityConverter<ITask2Person> {
-    final static private TaskFactory taskFactory = new TaskFactory();
+    final static private TaskFactory taskFactory = TaskFactory.instance();
 
     protected Task2PersonConverter() {
     }

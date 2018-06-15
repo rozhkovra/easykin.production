@@ -15,6 +15,8 @@ import java.util.Collection;
  */
 public class CalcReadingConverter implements
         IConverter<ServiceCalc,IReading> {
+    protected CalcReadingConverter() {
+    }
 
     public IReading convert(ServiceCalc entry) {
         Collection<IMeasure> measures = CollectionUtil.create();

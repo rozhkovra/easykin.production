@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class PaymentConverter implements IEntityConverter<IPayment> {
-    final static private PaymentFactory paymentFactory = new PaymentFactory();
+    final static private PaymentFactory paymentFactory = PaymentFactory.instance();
     protected PaymentConverter() {
     }
 

@@ -185,7 +185,16 @@ public class StaticServiceCalcDataProvider extends CollectionDataProvider<Servic
 						)
 				)
 				);
-	public StaticServiceCalcDataProvider() {
+
+	public static class Holder {
+		public static final StaticServiceCalcDataProvider INSTANCE = new StaticServiceCalcDataProvider();
+	}
+
+	public static StaticServiceCalcDataProvider instance(){
+		return Holder.INSTANCE;
+	}
+
+	private StaticServiceCalcDataProvider() {
 		super(CollectionUtil.copy(serviceCalcs));
 	}
 }

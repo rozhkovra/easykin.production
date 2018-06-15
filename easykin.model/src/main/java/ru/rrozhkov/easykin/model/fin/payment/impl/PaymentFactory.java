@@ -10,6 +10,17 @@ import java.util.Date;
 import static ru.rrozhkov.easykin.model.fin.payment.PaymentCategory.*;
 
 public class PaymentFactory {
+	public static class Holder {
+		public static final PaymentFactory INSTANCE = new PaymentFactory();
+	}
+
+	public static PaymentFactory instance(){
+		return Holder.INSTANCE;
+	}
+
+	private PaymentFactory() {
+	}
+
 	public IPayment createAutoPayment(String comment, Money amount, Date date){
 		return createPayment(AUTO, comment,amount,date,PaymentStatus.FACT);
 	}

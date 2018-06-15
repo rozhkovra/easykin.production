@@ -1,8 +1,10 @@
-package ru.rrozhkov.easykin.model.service.calc.impl.water;
+package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterResult;
 
 public class WaterCalculator extends Calculator {
 	public WaterCalculator(WaterCalc calc) {

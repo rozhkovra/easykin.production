@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by rrozhkov on 07.05.2018.
  */
 public class MeasureConverter implements IEntityConverter<IMeasure> {
-    private static final ServiceFactory serviceFactory = new ServiceFactory();
+    private static final ServiceFactory serviceFactory = ServiceFactory.instance();
 
     public String sqlInsert(IMeasure entity) {
         return null;

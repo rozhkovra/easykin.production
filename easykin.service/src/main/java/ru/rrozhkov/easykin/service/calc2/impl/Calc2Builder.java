@@ -12,9 +12,20 @@ import java.util.Collection;
  * Created by rrozhkov on 31.05.2018.
  */
 public class Calc2Builder {
-    final private static ReadingBuilder readingBuilder = new ReadingBuilder();
-    final private static Calc2Factory calcFactory = new Calc2Factory();
-    final private static RateService rateService = new RateService();
+    private static final ReadingBuilder readingBuilder = ReadingBuilder.instance();
+    private static final Calc2Factory calcFactory = Calc2Factory.instance();
+    private static final RateService rateService = RateService.instance();
+
+    public static class Holder {
+        public static final Calc2Builder INSTANCE = new Calc2Builder();
+    }
+
+    public static Calc2Builder instance(){
+        return Holder.INSTANCE;
+    }
+
+    private Calc2Builder() {
+    }
 
     public ICalculation buildNew() {
         Collection<IRate> rates = rateService.rates(DateUtil.lastDayOfMonth());

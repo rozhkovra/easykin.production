@@ -49,7 +49,7 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 		return dbManager;
 	}
     /* (non-Javadoc)
-	 * @see ru.rrozhkov.easykin.core.db.impl.IDBManager#nextId(java.lang.String)
+	 * @see ru.rrozhkov.easykin.core.db.calculator.IDBManager#nextId(java.lang.String)
 	 */
     public int nextId(String tableName) throws SQLException {
 		ResultSet result = null;
@@ -73,7 +73,7 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
     }
 	
 	/* (non-Javadoc)
-	 * @see ru.rrozhkov.easykin.core.db.impl.IDBManager#select(java.lang.String, ru.rrozhkov.easykin.core.convert.IConverter)
+	 * @see ru.rrozhkov.easykin.core.db.calculator.IDBManager#select(java.lang.String, ru.rrozhkov.easykin.core.convert.IConverter)
 	 */
 	public <T> Collection<T> select(String select, IConverter<ResultSet,T> converter) throws SQLException {
 		ResultSet result = null;
@@ -138,7 +138,7 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 	}
 
 	/* (non-Javadoc)
-	 * @see ru.rrozhkov.easykin.core.db.impl.IDBManager#executeQuery(java.lang.String)
+	 * @see ru.rrozhkov.easykin.core.db.calculator.IDBManager#executeQuery(java.lang.String)
 	 */
 	protected ResultSet executeQuery(String query) throws SQLException{
 		Statement stmt = null;  
@@ -157,7 +157,7 @@ public class DBManager implements IDBManager<ResultSet,Map<String,Object>> {
 	}
 	
 	/* (non-Javadoc)
-	 * @see ru.rrozhkov.easykin.core.db.impl.IDBManager#executeUpdate(java.lang.String)
+	 * @see ru.rrozhkov.easykin.core.db.calculator.IDBManager#executeUpdate(java.lang.String)
 	 */
 	protected int executeUpdate(String query) throws SQLException {
 		Statement stmt = null;  

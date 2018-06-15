@@ -11,7 +11,18 @@ import java.util.Date;
  * Created by rrozhkov on 07.06.2018.
  */
 public class RateService {
-    final private static RateHandler rateHandler = new RateHandler();
+    final private static RateHandler rateHandler = RateHandler.instance();
+
+    public static class Holder {
+        public static final RateService INSTANCE = new RateService();
+    }
+
+    public static RateService instance(){
+        return Holder.INSTANCE;
+    }
+
+    private RateService() {
+    }
 
     public Collection<IRate> rates(Date date) {
         Collection<IRate> rates;

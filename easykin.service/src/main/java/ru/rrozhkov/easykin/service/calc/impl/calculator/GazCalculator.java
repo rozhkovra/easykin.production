@@ -1,7 +1,9 @@
-package ru.rrozhkov.easykin.model.service.calc.impl.gaz;
+package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazResult;
 
 public class GazCalculator extends Calculator {
 	public GazCalculator(GazCalc gaz) {

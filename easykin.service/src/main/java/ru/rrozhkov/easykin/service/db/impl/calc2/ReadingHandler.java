@@ -8,7 +8,17 @@ import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
  * Created by rrozhkov on 1/17/2018.
  */
 public class ReadingHandler extends EntityHandler {
-    private static final ServiceConverterFactory converterFactory = new ServiceConverterFactory();
+    private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
+    public static class Holder {
+        public static final ReadingHandler INSTANCE = new ReadingHandler();
+    }
+
+    public static ReadingHandler instance(){
+        return Holder.INSTANCE;
+    }
+
+    private ReadingHandler() {
+    }
 
     @Override
     protected String getTableName() {

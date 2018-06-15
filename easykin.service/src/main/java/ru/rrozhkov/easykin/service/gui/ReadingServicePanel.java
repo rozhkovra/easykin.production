@@ -20,16 +20,16 @@ import java.util.Collection;
  * Created by rrozhkov on 11/28/2017.
  */
 public class ReadingServicePanel extends Panel {
+    private ReadingMeasureAdapter readingMeasureFacade;
     protected Panel readingCalcPanel;
     protected GUIPanel readingPanel;
-    protected IReading reading;
 
     public ReadingServicePanel(ServiceCalc serviceCalcBean, IReading reading) {
         super(null, serviceCalcBean);
-        this.reading = reading;
         this.readingPanel = new ReadingPanel(this, reading, calc.isPaid());
         // no parent for ReadingCalcPanel else recursion
         this.readingCalcPanel = new ReadingCalcPanel(null, calc);
+        this.readingMeasureFacade = new ReadingMeasureAdapter(reading);
         fill();
     }
 
@@ -46,7 +46,6 @@ public class ReadingServicePanel extends Panel {
 
     @Override
     public void updateBean() {
-        ReadingMeasureAdapter readingMeasureFacade = new ReadingMeasureAdapter(reading);
         for(ICalculation calculation : ((ServiceCalc)calc).calcs()) {
             if (calculation instanceof MeasureCalc) {
                 MeasureCalc calc = (MeasureCalc)calculation;
@@ -55,7 +54,7 @@ public class ReadingServicePanel extends Panel {
                     types.add(measure.getType());
                 }
                 calc.getNewMeasures().clear();
-                calc.getNewMeasures().addAll(new ReadingMeasureAdapter(reading).getMeasuresByType(types.toArray(new MeasureType[types.size()])));
+                calc.getNewMeasures().addAll(readingMeasureFacade.getMeasuresByType(types.toArray(new MeasureType[types.size()])));
             }else if(calculation.getType().isWater()) {
                 WaterCalc waterCalc = (WaterCalc)calculation;
                 waterCalc.setColdCurrentMesure(readingMeasureFacade.getColdMeasure());

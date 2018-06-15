@@ -1,15 +1,15 @@
 package ru.rrozhkov.easykin.service.gui;
 
+import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.core.gui.Form;
+import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
-import ru.rrozhkov.easykin.service.calc2.impl.convert.CalcReadingConverter;
+import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
 import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
-import ru.rrozhkov.easykin.core.convert.IConverter;
-import ru.rrozhkov.easykin.core.gui.Form;
-import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,10 +18,11 @@ import java.awt.*;
  * Created by rrozhkov on 4/16/2018.
  */
 public class ReadingServiceForm extends Form {
-    private static final ServiceFactory serviceFactory = new ServiceFactory();
-    private static final MeasureHandler measureHandler = new MeasureHandler();
-    private static final ReadingHandler readingHandler = new ReadingHandler();
-    private static final IConverter<ServiceCalc,IReading> converter = new CalcReadingConverter();
+    private static final ServiceFactory serviceFactory = ServiceFactory.instance();
+    private static final MeasureHandler measureHandler = MeasureHandler.instance();
+    private static final ReadingHandler readingHandler = ReadingHandler.instance();
+    private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
+    private static final IConverter<ServiceCalc,IReading> converter = converterFactory.calcReading();
 
     private IReading reading;
     protected ServiceCalc calc;

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.service.calc2.impl.measure;
+package ru.rrozhkov.easykin.service.calc2.impl.calculator;
 
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 

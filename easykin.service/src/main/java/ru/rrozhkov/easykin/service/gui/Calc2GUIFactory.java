@@ -14,8 +14,19 @@ import java.util.Collection;
  * Created by rrozhkov on 21.05.2018.
  */
 public class Calc2GUIFactory implements IModuleGUIFactory<ServiceCalc> {
-    final private static Calc2Builder calc2Builder = new Calc2Builder();
-    protected final static IGUIFactory guiFactory = GUIFactory.create();
+    private static final Calc2Builder calc2Builder = Calc2Builder.instance();
+    private static final IGUIFactory guiFactory = GUIFactory.create();
+
+    public static class Holder {
+        public static final Calc2GUIFactory INSTANCE = new Calc2GUIFactory();
+    }
+
+    public static Calc2GUIFactory instance(){
+        return Holder.INSTANCE;
+    }
+
+    private Calc2GUIFactory() {
+    }
 
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new ServiceTableModel(data));

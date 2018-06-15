@@ -1,8 +1,10 @@
-package ru.rrozhkov.easykin.model.service.calc.impl.electricity;
+package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityResult;
 
 public class ElectricityCalculator extends Calculator {
 	

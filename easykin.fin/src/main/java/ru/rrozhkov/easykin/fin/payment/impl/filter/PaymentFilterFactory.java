@@ -13,6 +13,9 @@ public class PaymentFilterFactory {
 		return PaymentFilterFactoryHolder.INSTANCE;
 	}
 
+	private PaymentFilterFactory() {
+	}
+
 	public IFilter<IPayment> noFree(){
 		return new NoFreeFilter();
 	}

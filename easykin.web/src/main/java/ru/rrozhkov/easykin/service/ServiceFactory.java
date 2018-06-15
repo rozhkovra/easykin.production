@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.service;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
+import ru.rrozhkov.easykin.service.calc.impl.calculator.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
@@ -13,7 +13,7 @@ import java.util.Date;
  * Created by rrozhkov on 14.05.2018.
  */
 public class ServiceFactory {
-    private static final CalculatorFactory calculatorFactory = new CalculatorFactory();
+    private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 
     public ServiceBean serviceBean(int num, String name, Date date, Money water, Money hotWater,
                                    Money electricity, Money gaz, Money heating, Money antenna,

@@ -1,6 +1,8 @@
-package ru.rrozhkov.easykin.model.service.calc.impl.def;
+package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
 
 
 public class DefaultCalculator extends Calculator {

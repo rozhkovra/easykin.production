@@ -1,21 +1,28 @@
-package ru.rrozhkov.easykin.model.service.calc.impl;
+package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalculator;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
-import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalculator;
+import ru.rrozhkov.easykin.service.calc2.impl.calculator.MeasureCalculator;
 
 public class CalculatorFactory {
+	public static class Holder {
+		public static final CalculatorFactory INSTANCE = new CalculatorFactory();
+	}
+
+	public static CalculatorFactory instance(){
+		return Holder.INSTANCE;
+	}
+
+	private CalculatorFactory() {
+	}
+
 	public ICalculator getCalculator(ICalculation bean){
 		if(bean instanceof MeasureCalc)
 			return new MeasureCalculator((MeasureCalc)bean);

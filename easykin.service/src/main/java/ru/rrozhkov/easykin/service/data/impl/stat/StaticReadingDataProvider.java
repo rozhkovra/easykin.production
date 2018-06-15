@@ -21,9 +21,9 @@ import java.util.Collection;
  * Created by rrozhkov on 12/7/2017.
  */
 public class StaticReadingDataProvider extends CollectionDataProvider<IReading> {
-    final private static ReadingBuilder readingBuilder = new ReadingBuilder();
-    final private static Calc2Factory calc2Factory = new Calc2Factory();
-    final private static RateService rateService = new RateService();
+    final private static ReadingBuilder readingBuilder = ReadingBuilder.instance();
+    final private static Calc2Factory calc2Factory = Calc2Factory.instance();
+    final private static RateService rateService = RateService.instance();
 
     public static Collection<IRate> rates2018_1 = (Collection)Arrays.asList(
             new Rate(RateType.WATERIN, Money.valueOf(15.29),DateUtil.parse("01.01.2018"),DateUtil.parse("30.06.2018")),
@@ -50,11 +50,19 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
             new Rate(RateType.INTERCOM, Money.valueOf(30.00),DateUtil.parse("01.07.2018"),DateUtil.parse("31.12.2018"))
     );
 
-    public StaticReadingDataProvider() {
+    public static class Holder {
+        public static final StaticReadingDataProvider INSTANCE = new StaticReadingDataProvider();
+    }
+
+    public static StaticReadingDataProvider instance(){
+        return Holder.INSTANCE;
+    }
+
+    private StaticReadingDataProvider() {
         super(CollectionUtil.<IReading>create());
     }
 
-    public static Collection<ServiceCalc> calcs() {
+    public Collection<ServiceCalc> calcs() {
         IReading prevReading = null;
         Collection<ServiceCalc> calcs = CollectionUtil.create();
         Collection<IReading> readings = readingBuilder.build();
@@ -69,7 +77,7 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
         return calcs;
     }
 
-    public static ServiceCalc getServiceCalc(IReading oldReading, IReading newReading, Collection rates) {
+    public ServiceCalc getServiceCalc(IReading oldReading, IReading newReading, Collection rates) {
         Collection<ICalculation> calculations = CollectionUtil.create();
         boolean paid = false;
         if(newReading.getDate().getTime() <= DateUtil.parse("30.04.2018").getTime()) {

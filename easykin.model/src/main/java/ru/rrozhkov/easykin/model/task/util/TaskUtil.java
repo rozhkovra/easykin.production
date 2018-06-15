@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
 public class TaskUtil {
-	final static private TaskFactory taskFactory = new TaskFactory();
+	final static private TaskFactory taskFactory = TaskFactory.instance();
 
 	public static boolean withPayment(ITask task){
 		String text = task.getName();

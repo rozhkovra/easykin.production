@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.model.service.calc.impl.CalculatorFactory;
+import ru.rrozhkov.easykin.service.calc.impl.calculator.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
 import ru.rrozhkov.easykin.core.gui.TableModel;
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by rrozhkov on 22.05.2018.
  */
 public class ServiceTableModel extends TableModel{
-    private static final CalculatorFactory calculatorFactory = new CalculatorFactory();
+    private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 
     public ServiceTableModel(Collection beans) {
         super(beans, new ServiceCalcTableStyle());
