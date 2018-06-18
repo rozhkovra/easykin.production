@@ -11,11 +11,9 @@ import ru.rrozhkov.easykin.task.db.impl.Task2PersonHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
-import ru.rrozhkov.easykin.task.impl.period.Period;
-import ru.rrozhkov.easykin.task.impl.period.PeriodTaskBuilder;
 
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.Collection;
 
 /**
  * Created by rrozhkov on 3/6/2017.
@@ -28,7 +26,6 @@ public class TaskService {
     private static final TaskHandler taskHandler = TaskHandler.instance();
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final AuthManager authManager = AuthManager.instance();
-    private static final PeriodTaskBuilder periodTaskBuilder = PeriodTaskBuilder.instance();
 
     public static class TaskServiceHolder {
         public static final TaskService INSTANCE = new TaskService();
@@ -67,8 +64,10 @@ public class TaskService {
         }
     }
 
-    public void createPeriod(Period period, Date untilDate, ITask source) {
-        periodTaskBuilder.create(period, untilDate, source);
+    public void createOrUpdate(Collection<ITask> tasks) {
+        for (ITask task : tasks) {
+            createOrUpdate(task);
+        }
     }
 
     protected int create(ITask task) throws SQLException {

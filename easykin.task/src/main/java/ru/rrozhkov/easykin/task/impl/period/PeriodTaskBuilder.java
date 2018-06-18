@@ -1,12 +1,13 @@
 package ru.rrozhkov.easykin.task.impl.period;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
-import ru.rrozhkov.easykin.task.service.impl.TaskService;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -14,7 +15,6 @@ import java.util.Date;
  */
 public class PeriodTaskBuilder {
     private static final TaskFactory taskFactory = TaskFactory.instance();
-    private static final TaskService taskService = TaskService.instance();
 
     public static class Holder {
         public static final PeriodTaskBuilder INSTANCE = new PeriodTaskBuilder();
@@ -27,20 +27,18 @@ public class PeriodTaskBuilder {
     private PeriodTaskBuilder() {
     }
 
-    public int create(Period period, Date untilDate, ITask source) {
+    public Collection<ITask> build(Period period, Date untilDate, ITask source) {
+        Collection<ITask> task = CollectionUtil.create();
         Date start = source.getPlanDate();
         Date end = untilDate;
         Date shiftDate = start;
-        int taskCounter = 0;
         while (shiftDate.getTime() < end.getTime()) {
-            ITask shift = taskFactory.createTask(-1, source.getName(), source.getCreateDate(),
+            task.add(taskFactory.createTask(-1, source.getName(), source.getCreateDate(),
                     shiftDate, Priority.priority(source.getPriority()), source.getCategory().getId(),
-                    source.getCategory().getName(), source.getCloseDate(), Status.status(source.getStatus()));
-            taskService.createOrUpdate(shift);
+                    source.getCategory().getName(), source.getCloseDate(), Status.status(source.getStatus())));
             shiftDate = shiftDate(shiftDate, period);
-            taskCounter++;
         }
-        return taskCounter;
+        return task;
     }
 
     private Date shiftDate(Date shiftDate, Period period) {
