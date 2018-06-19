@@ -10,9 +10,16 @@ import ru.rrozhkov.easykin.core.data.impl.SingleCollectionDataProvider;
 
 public class StaticServiceHistoryDataProvider extends SingleCollectionDataProvider<IService, ICar> {
 	final static private CarFactory carFactory = CarFactory.instance();
-	private static final StaticAutoServiceDataProvider dataProvider = new StaticAutoServiceDataProvider();
+	private static final StaticAutoServiceDataProvider dataProvider = StaticAutoServiceDataProvider.instance();
+	public static class Holder {
+		public static final StaticServiceHistoryDataProvider INSTANCE = new StaticServiceHistoryDataProvider();
+	}
 
-	public StaticServiceHistoryDataProvider() {
+	public static StaticServiceHistoryDataProvider instance(){
+		return Holder.INSTANCE;
+	}
+
+	private StaticServiceHistoryDataProvider() {
 		super(dataProvider.getData(), carFactory.createCar(Brend.TOYOTA, Model.VISTA, Body.SEDAN, 1995, 1.8));
 	}
 }

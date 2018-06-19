@@ -16,7 +16,8 @@ public class AutoServiceForm extends Form {
 	private Component priceLabel;
 	private Component dateLabel;
 	private IService service;
-	public AutoServiceForm(IGUIEditor parent, IService service) {
+
+	protected AutoServiceForm(IGUIEditor parent, IService service) {
 		super(parent);
 		this.service = service;
 		fill();

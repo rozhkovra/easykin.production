@@ -9,5 +9,6 @@ import java.util.Collection;
 public interface IModuleGUIFactory<T> {
     Component createTablePanel(IGUIEditor parent, Collection data);
     Component createEditor(IGUIEditor parent, T obj);
+    Component createView(IGUIEditor parent, T obj);
     Component createFilter(IGUIEditor parent);
 }

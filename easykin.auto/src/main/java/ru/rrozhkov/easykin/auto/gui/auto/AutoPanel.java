@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.auto.gui.auto;
 
 
+import ru.rrozhkov.easykin.auto.gui.auto.service.ServiceGUIFactory;
 import ru.rrozhkov.easykin.model.auto.ICar;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.core.gui.GUIFactory;

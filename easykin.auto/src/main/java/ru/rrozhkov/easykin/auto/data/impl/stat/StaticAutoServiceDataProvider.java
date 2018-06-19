@@ -1,18 +1,25 @@
 package ru.rrozhkov.easykin.auto.data.impl.stat;
 
-import ru.rrozhkov.easykin.model.auto.service.IService;
-import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
-import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.data.impl.CollectionDataProvider;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.model.auto.service.IService;
+import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
+import ru.rrozhkov.easykin.model.fin.Money;
 
 import java.util.Arrays;
 
 public class StaticAutoServiceDataProvider extends CollectionDataProvider<IService>{
 	private static final ServiceFactory serviceFactory = ServiceFactory.instance();
+	public static class Holder {
+		public static final StaticAutoServiceDataProvider INSTANCE = new StaticAutoServiceDataProvider();
+	}
 
-	public StaticAutoServiceDataProvider(){
+	public static StaticAutoServiceDataProvider instance(){
+		return Holder.INSTANCE;
+	}
+
+	private StaticAutoServiceDataProvider(){
         super(CollectionUtil.copy(Arrays.asList(
 				serviceFactory.createRepairService("Замена свечей", Money.valueOf(0.0), DateUtil.parse("04.01.2017")
 						, Arrays.asList(serviceFactory.createDetail("Свечи NGK 16мм", Money.valueOf(580.0), DateUtil.parse("04.01.2017"))

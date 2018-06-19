@@ -23,11 +23,18 @@ public class AutoGUIFactory implements IModuleGUIFactory<ICar> {
         return Holder.INSTANCE;
     }
 
+    private AutoGUIFactory(){
+    }
+
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.panelEmpty();
     }
 
     public Component createEditor(IGUIEditor parent, ICar car) {
+        return new CarForm(car);
+    }
+
+    public Component createView(IGUIEditor parent, ICar car) {
         return new CarForm(car);
     }
 

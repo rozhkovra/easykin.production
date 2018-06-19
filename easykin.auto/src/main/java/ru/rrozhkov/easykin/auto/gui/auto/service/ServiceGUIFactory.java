@@ -1,6 +1,6 @@
-package ru.rrozhkov.easykin.auto.gui.auto;
+package ru.rrozhkov.easykin.auto.gui.auto.service;
 
-import ru.rrozhkov.easykin.auto.gui.auto.service.AutoServiceForm;
+import ru.rrozhkov.easykin.auto.gui.auto.AutoTableModel;
 import ru.rrozhkov.easykin.model.auto.service.IService;
 import ru.rrozhkov.easykin.model.auto.service.impl.ServiceFactory;
 import ru.rrozhkov.easykin.model.fin.Money;
@@ -28,11 +28,18 @@ public class ServiceGUIFactory implements IModuleGUIFactory<IService> {
         return ServiceGUIFactoryHolder.INSTANCE;
     }
 
+    private ServiceGUIFactory() {
+    }
+
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new AutoTableModel(data));
     }
 
     public Component createEditor(IGUIEditor parent, IService service) {
+        return new AutoServiceEditor(parent,service);
+    }
+
+    public Component createView(IGUIEditor parent, IService service) {
         return new AutoServiceForm(parent,service);
     }
 

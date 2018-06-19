@@ -21,7 +21,7 @@ public class CarForm extends JPanel {
 	private Component yearLabel = null;
 	private Component volumeLabel = null;
 	private ICar car;
-	public CarForm(ICar car) {
+	protected CarForm(ICar car) {
 		this.car = car;
 		
 		setLayout(guiFactory.gridLayout(5,2));
