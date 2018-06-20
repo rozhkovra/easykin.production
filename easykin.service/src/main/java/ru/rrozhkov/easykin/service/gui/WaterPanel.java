@@ -4,67 +4,62 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTextField;
+import java.awt.Component;
 
-public class WaterPanel extends Panel{
-	public static String COLD_PREV_MESURE_LABEL_TEXT = "Хол. пред. сч1";
-	public static String COLD_CURRENT_MESURE_LABEL_TEXT = "Хол. тек. сч1";
-	public static String HOT_PREV_MESURE_LABEL_TEXT = "Гор. пред. сч1";
-	public static String HOT_CURRENT_MESURE_LABEL_TEXT = "Гор. тек. сч1";
-	public static String COLD_PREV_MESURE_LABEL_TEXT2 = "Хол. пред. сч2";
-	public static String COLD_CURRENT_MESURE_LABEL_TEXT2 = "Хол. тек. сч2";
-	public static String HOT_PREV_MESURE_LABEL_TEXT2 = "Гор. пред. сч2";
-	public static String HOT_CURRENT_MESURE_LABEL_TEXT2 = "Гор. тек. сч2";
-	public static String RATE_IN_LABEL_TEXT = "Тариф вход";
-	public static String RATE_OUT_LABEL_TEXT = "Тариф отвод";
+public class WaterPanel extends Panel {
 	private static final long serialVersionUID = 1L;
-	private JTextField coldPrevMesureField = null;
-	private JTextField coldCurrentMesureField = null;
-	private JTextField hotPrevMesureField = null;
-	private JTextField hotCurrentMesureField = null;
-	private JTextField coldPrevMesureField2 = null;
-	private JTextField coldCurrentMesureField2 = null;
-	private JTextField hotPrevMesureField2 = null;
-	private JTextField hotCurrentMesureField2 = null;
-	private JTextField rateInField = null;
-	private JTextField rateOutField = null;
-	private Component coldPrevMesureLabel = null;
-	private Component coldCurrentMesureLabel = null;
-	private Component hotPrevMesureLabel = null;
-	private Component hotCurrentMesureLabel = null;
-	private Component coldPrevMesureLabel2 = null;
-	private Component coldCurrentMesureLabel2 = null;
-	private Component hotPrevMesureLabel2 = null;
-	private Component hotCurrentMesureLabel2 = null;
-	private Component rateInLabel = null;
-	private Component rateOutLabel = null;
+	private JTextField coldPrevMeasureField;
+	private JTextField coldCurrentMeasureField;
+	private JTextField hotPrevMeasureField;
+	private JTextField hotCurrentMeasureField;
+	private JTextField coldPrevMeasureField2;
+	private JTextField coldCurrentMeasureField2;
+	private JTextField hotPrevMeasureField2;
+	private JTextField hotCurrentMeasureField2;
+	private JTextField rateInField;
+	private JTextField rateOutField;
+	private Component coldPrevMeasureLabel;
+	private Component coldCurrentMeasureLabel;
+	private Component hotPrevMeasureLabel;
+	private Component hotCurrentMeasureLabel;
+	private Component coldPrevMeasureLabel2;
+	private Component coldCurrentMeasureLabel2;
+	private Component hotPrevMeasureLabel2;
+	private Component hotCurrentMeasureLabel2;
+	private Component rateInLabel;
+	private Component rateOutLabel;
 
-	public WaterPanel(Panel parent, ICalculation calcBean) {
-		super(parent, calcBean);
-		fill();	 
+	public static GUIPanel create(GUIPanel parent, ICalculation calcBean) {
+		GUIPanel panel = new WaterPanel(parent, calcBean);
+		panel.fill();
+		return panel;
 	}
 
-	private void fill() {
+	private WaterPanel(GUIPanel parent, ICalculation calcBean) {
+		super(parent, calcBean);
+	}
+
+	public void fill() {
 		setLayout(guiFactory.gridLayout(15, 2));
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
-		add(getColdPrevMesureLabel());
-		add(getColdPrevMesureField()); 
-		add(getColdCurrentMesureLabel()); 
-		add(getColdCurrentMesureField());
-		add(getColdPrevMesureLabel2());
-		add(getColdPrevMesureField2());
-		add(getColdCurrentMesureLabel2());
-		add(getColdCurrentMesureField2());
-		add(getHotPrevMesureLabel());
-		add(getHotPrevMesureField()); 
-		add(getHotCurrentMesureLabel()); 
-		add(getHotCurrentMesureField());
-		add(getHotPrevMesureLabel2());
-		add(getHotPrevMesureField2());
-		add(getHotCurrentMesureLabel2());
-		add(getHotCurrentMesureField2());
+		add(getColdPrevMeasureLabel());
+		add(getColdPrevMeasureField());
+		add(getColdCurrentMeasureLabel());
+		add(getColdCurrentMeasureField());
+		add(getColdPrevMeasureLabel2());
+		add(getColdPrevMeasureField2());
+		add(getColdCurrentMeasureLabel2());
+		add(getColdCurrentMeasureField2());
+		add(getHotPrevMeasureLabel());
+		add(getHotPrevMeasureField());
+		add(getHotCurrentMeasureLabel());
+		add(getHotCurrentMeasureField());
+		add(getHotPrevMeasureLabel2());
+		add(getHotPrevMeasureField2());
+		add(getHotCurrentMeasureLabel2());
+		add(getHotCurrentMeasureField2());
 		add(getRateInLabel());
 		add(getRateInField());
 		add(getRateOutLabel());
@@ -85,7 +80,7 @@ public class WaterPanel extends Panel{
 
 	private Component getRateOutLabel() {
 		if(rateOutLabel == null)
-			rateOutLabel = guiFactory.label(RATE_OUT_LABEL_TEXT);
+			rateOutLabel = guiFactory.label("Тариф отвод");
 		return rateOutLabel;
 	}
 
@@ -100,140 +95,140 @@ public class WaterPanel extends Panel{
 
 	private Component getRateInLabel() {
 		if(rateInLabel == null)
-			rateInLabel = guiFactory.label(RATE_IN_LABEL_TEXT);
+			rateInLabel = guiFactory.label("Тариф вход");
 		return rateInLabel;
 	}
 
-	public JTextField getHotCurrentMesureField() {
-		if(hotCurrentMesureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMesure());
-			hotCurrentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			hotCurrentMesureField.getDocument().addDocumentListener(this);
+	public JTextField getHotCurrentMeasureField() {
+		if(hotCurrentMeasureField == null){
+			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMeasure());
+			hotCurrentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			hotCurrentMeasureField.getDocument().addDocumentListener(this);
 		}
-		return hotCurrentMesureField;
+		return hotCurrentMeasureField;
 	}
-	public JTextField getHotCurrentMesureField2() {
-		if(hotCurrentMesureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMesure2());
-			hotCurrentMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			hotCurrentMesureField2.getDocument().addDocumentListener(this);
+	public JTextField getHotCurrentMeasureField2() {
+		if(hotCurrentMeasureField2 == null){
+			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMeasure2());
+			hotCurrentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			hotCurrentMeasureField2.getDocument().addDocumentListener(this);
 		}
-		return hotCurrentMesureField2;
+		return hotCurrentMeasureField2;
 	}
 
-	private Component getHotCurrentMesureLabel() {
-		if(hotCurrentMesureLabel == null)
-			hotCurrentMesureLabel = guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT);
-		return hotCurrentMesureLabel;
+	private Component getHotCurrentMeasureLabel() {
+		if(hotCurrentMeasureLabel == null)
+			hotCurrentMeasureLabel = guiFactory.label("Гор. тек. сч1");
+		return hotCurrentMeasureLabel;
 	}
 
-	private Component getHotCurrentMesureLabel2() {
-		if(hotCurrentMesureLabel2 == null)
-			hotCurrentMesureLabel2 = guiFactory.label(HOT_CURRENT_MESURE_LABEL_TEXT2);
-		return hotCurrentMesureLabel2;
+	private Component getHotCurrentMeasureLabel2() {
+		if(hotCurrentMeasureLabel2 == null)
+			hotCurrentMeasureLabel2 = guiFactory.label("Гор. тек. сч2");
+		return hotCurrentMeasureLabel2;
 	}
 
-	public JTextField getHotPrevMesureField() {
-		if(hotPrevMesureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotPrevMesure());
-			hotPrevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			hotPrevMesureField.getDocument().addDocumentListener(this);
+	public JTextField getHotPrevMeasureField() {
+		if(hotPrevMeasureField == null){
+			String text = String.valueOf(((WaterCalc)calc).getHotPrevMeasure());
+			hotPrevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			hotPrevMeasureField.getDocument().addDocumentListener(this);
 		}
-		return hotPrevMesureField;
+		return hotPrevMeasureField;
 	}
 
-	public JTextField getHotPrevMesureField2() {
-		if(hotPrevMesureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotPrevMesure2());
-			hotPrevMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			hotPrevMesureField2.getDocument().addDocumentListener(this);
+	public JTextField getHotPrevMeasureField2() {
+		if(hotPrevMeasureField2 == null){
+			String text = String.valueOf(((WaterCalc)calc).getHotPrevMeasure2());
+			hotPrevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			hotPrevMeasureField2.getDocument().addDocumentListener(this);
 		}
-		return hotPrevMesureField2;
+		return hotPrevMeasureField2;
 	}
 
-	private Component getHotPrevMesureLabel() {
-		if(hotPrevMesureLabel == null)
-			hotPrevMesureLabel = guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT);
-		return hotPrevMesureLabel;
+	private Component getHotPrevMeasureLabel() {
+		if(hotPrevMeasureLabel == null)
+			hotPrevMeasureLabel = guiFactory.label("Гор. пред. сч1");
+		return hotPrevMeasureLabel;
 	}
 
-	private Component getHotPrevMesureLabel2() {
-		if(hotPrevMesureLabel2 == null)
-			hotPrevMesureLabel2 = guiFactory.label(HOT_PREV_MESURE_LABEL_TEXT2);
-		return hotPrevMesureLabel2;
+	private Component getHotPrevMeasureLabel2() {
+		if(hotPrevMeasureLabel2 == null)
+			hotPrevMeasureLabel2 = guiFactory.label("Гор. пред. сч2");
+		return hotPrevMeasureLabel2;
 	}
 
-	public JTextField getColdPrevMesureField(){
-		if(coldPrevMesureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdPrevMesure());
-			coldPrevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			coldPrevMesureField.getDocument().addDocumentListener(this);
+	public JTextField getColdPrevMeasureField(){
+		if(coldPrevMeasureField == null){
+			String text = String.valueOf(((WaterCalc)calc).getColdPrevMeasure());
+			coldPrevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			coldPrevMeasureField.getDocument().addDocumentListener(this);
 		}
-		return coldPrevMesureField;
+		return coldPrevMeasureField;
 	}
 
-	public JTextField getColdPrevMesureField2(){
-		if(coldPrevMesureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdPrevMesure2());
-			coldPrevMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			coldPrevMesureField2.getDocument().addDocumentListener(this);
+	public JTextField getColdPrevMeasureField2(){
+		if(coldPrevMeasureField2 == null){
+			String text = String.valueOf(((WaterCalc)calc).getColdPrevMeasure2());
+			coldPrevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			coldPrevMeasureField2.getDocument().addDocumentListener(this);
 		}
-		return coldPrevMesureField2;
+		return coldPrevMeasureField2;
 	}
 
-	public JTextField getColdCurrentMesureField(){
-		if(coldCurrentMesureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMesure());
-			coldCurrentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			coldCurrentMesureField.getDocument().addDocumentListener(this);
+	public JTextField getColdCurrentMeasureField(){
+		if(coldCurrentMeasureField == null){
+			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMeasure());
+			coldCurrentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			coldCurrentMeasureField.getDocument().addDocumentListener(this);
 		}
-		return coldCurrentMesureField;
+		return coldCurrentMeasureField;
 	}
 
-	public JTextField getColdCurrentMesureField2(){
-		if(coldCurrentMesureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMesure2());
-			coldCurrentMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			coldCurrentMesureField2.getDocument().addDocumentListener(this);
+	public JTextField getColdCurrentMeasureField2(){
+		if(coldCurrentMeasureField2 == null){
+			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMeasure2());
+			coldCurrentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			coldCurrentMeasureField2.getDocument().addDocumentListener(this);
 		}
-		return coldCurrentMesureField2;
+		return coldCurrentMeasureField2;
 	}
 
-	public Component getColdPrevMesureLabel(){
-		if(coldPrevMesureLabel == null)
-			coldPrevMesureLabel = guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT);
-		return coldPrevMesureLabel;
+	public Component getColdPrevMeasureLabel(){
+		if(coldPrevMeasureLabel == null)
+			coldPrevMeasureLabel = guiFactory.label("Хол. пред. сч1");
+		return coldPrevMeasureLabel;
 	}
 
-	public Component getColdPrevMesureLabel2(){
-		if(coldPrevMesureLabel2 == null)
-			coldPrevMesureLabel2 = guiFactory.label(COLD_PREV_MESURE_LABEL_TEXT2);
-		return coldPrevMesureLabel2;
+	public Component getColdPrevMeasureLabel2(){
+		if(coldPrevMeasureLabel2 == null)
+			coldPrevMeasureLabel2 = guiFactory.label("Хол. пред. сч2");
+		return coldPrevMeasureLabel2;
 	}
 
-	public Component getColdCurrentMesureLabel(){
-		if(coldCurrentMesureLabel == null)
-			coldCurrentMesureLabel = guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT);
-		return coldCurrentMesureLabel;
+	public Component getColdCurrentMeasureLabel(){
+		if(coldCurrentMeasureLabel == null)
+			coldCurrentMeasureLabel = guiFactory.label("Хол. тек. сч1");
+		return coldCurrentMeasureLabel;
 	}
 
-	public Component getColdCurrentMesureLabel2(){
-		if(coldCurrentMesureLabel2 == null)
-			coldCurrentMesureLabel2 = guiFactory.label(COLD_CURRENT_MESURE_LABEL_TEXT2);
-		return coldCurrentMesureLabel2;
+	public Component getColdCurrentMeasureLabel2(){
+		if(coldCurrentMeasureLabel2 == null)
+			coldCurrentMeasureLabel2 = guiFactory.label("Хол. тек. сч2");
+		return coldCurrentMeasureLabel2;
 	}
 
 	@Override
 	public void updateBean() {
 		WaterCalc bean = (WaterCalc)getCalc();
-		bean.setColdPrevMesure(CalcUtil.doubleNUllOrEmpty(getColdPrevMesureField().getText()));
-		bean.setColdCurrentMesure(CalcUtil.doubleNUllOrEmpty(getColdCurrentMesureField().getText()));
-		bean.setHotPrevMesure(CalcUtil.doubleNUllOrEmpty(getHotPrevMesureField().getText()));
-		bean.setHotCurrentMesure(CalcUtil.doubleNUllOrEmpty(getHotCurrentMesureField().getText()));
-		bean.setColdPrevMesure2(CalcUtil.doubleNUllOrEmpty(getColdPrevMesureField2().getText()));
-		bean.setColdCurrentMesure2(CalcUtil.doubleNUllOrEmpty(getColdCurrentMesureField2().getText()));
-		bean.setHotPrevMesure2(CalcUtil.doubleNUllOrEmpty(getHotPrevMesureField2().getText()));
-		bean.setHotCurrentMesure2(CalcUtil.doubleNUllOrEmpty(getHotCurrentMesureField2().getText()));
+		bean.setColdPrevMeasure(CalcUtil.doubleNUllOrEmpty(getColdPrevMeasureField().getText()));
+		bean.setColdCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getColdCurrentMeasureField().getText()));
+		bean.setHotPrevMeasure(CalcUtil.doubleNUllOrEmpty(getHotPrevMeasureField().getText()));
+		bean.setHotCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getHotCurrentMeasureField().getText()));
+		bean.setColdPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getColdPrevMeasureField2().getText()));
+		bean.setColdCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getColdCurrentMeasureField2().getText()));
+		bean.setHotPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getHotPrevMeasureField2().getText()));
+		bean.setHotCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getHotCurrentMeasureField2().getText()));
 		bean.setInRate(CalcUtil.moneyNUllOrEmpty(getRateInField().getText()));
 		bean.setOutRate(CalcUtil.moneyNUllOrEmpty(getRateOutField().getText()));
 	}

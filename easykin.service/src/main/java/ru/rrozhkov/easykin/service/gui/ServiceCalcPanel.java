@@ -3,18 +3,26 @@ package ru.rrozhkov.easykin.service.gui;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 
+import java.util.Collection;
+
 public class ServiceCalcPanel extends Panel {
 	private static final long serialVersionUID = 1L;
-	private static final PanelFactory panelFactory = new PanelFactory();
+	private static final PanelFactory panelFactory = PanelFactory.instance();
 
-	public ServiceCalcPanel(ICalculation serviceCalcBean) {
-		super(null, serviceCalcBean);
-        fill();
+	public static GUIPanel create(ICalculation serviceCalcBean) {
+		GUIPanel panel = new ServiceCalcPanel(serviceCalcBean);
+		panel.fill();
+		return panel;
 	}
 
-	private void fill() {
+	private ServiceCalcPanel(ICalculation serviceCalcBean) {
+		super(null, serviceCalcBean);
+	}
+
+	public void fill() {
 		setLayout(guiFactory.gridLayout(5, 4));
-        for(ICalculation bean : ((ServiceCalc)calc).calcs()){
+		Collection<ICalculation> calcs = ((ServiceCalc)calc).calcs();
+        for(ICalculation bean : calcs){
         	add(panelFactory.getPanel(this, bean));
         }
 		refresh();

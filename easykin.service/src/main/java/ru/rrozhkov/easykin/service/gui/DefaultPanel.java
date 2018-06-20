@@ -5,19 +5,25 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
-import javax.swing.*;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class DefaultPanel extends Panel { 
 	private static final long serialVersionUID = 1L;
 	private JTextField sumField;
-	private JLabel sumLabel;
+	private Component sumLabel;
 	
-	public DefaultPanel(Panel parent, ICalculation calcBean) {
+	public static GUIPanel create(GUIPanel parent, ICalculation calcBean) {
+		GUIPanel panel = new DefaultPanel(parent, calcBean);
+		panel.fill();
+		return panel;
+	}
+
+	private DefaultPanel(GUIPanel parent, ICalculation calcBean) {
 		super(parent, calcBean);
-		fill();
 	}
 	
-	private void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(5,2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
@@ -38,9 +44,9 @@ public class DefaultPanel extends Panel {
 		}
 		return sumField;
 	}
-	public JLabel getSumLabel(){
+	public Component getSumLabel(){
 		if(sumLabel == null)
-			sumLabel = (JLabel) guiFactory.label("Сумма");
+			sumLabel = guiFactory.label("Сумма");
 		return sumLabel;
 	}
 	@Override

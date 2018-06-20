@@ -1,43 +1,44 @@
-package ru.rrozhkov.easykin.service.gui;
+package ru.rrozhkov.easykin.service.gui.reading;
 
 import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
-import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
-import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
-import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
+import ru.rrozhkov.easykin.service.service.impl.ReadingService;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BoxLayout;
+import java.awt.Container;
 
 /**
  * Created by rrozhkov on 4/16/2018.
  */
 public class ReadingServiceForm extends Form {
-    private static final ServiceFactory serviceFactory = ServiceFactory.instance();
-    private static final MeasureHandler measureHandler = MeasureHandler.instance();
-    private static final ReadingHandler readingHandler = ReadingHandler.instance();
+    private static final ReadingService readingService = ReadingService.instance();
     private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
     private static final IConverter<ServiceCalc,IReading> converter = converterFactory.calcReading();
 
     private IReading reading;
-    protected ServiceCalc calc;
-    public ReadingServiceForm(IGUIEditor parent, ServiceCalc serviceCalcBean) {
+    private ServiceCalc calc;
+
+    public static Form create(IGUIEditor parent, ServiceCalc serviceCalcBean) {
+        Form form = new ReadingServiceForm(parent, serviceCalcBean);
+        form.fill();
+        return form;
+    }
+
+    private ReadingServiceForm(IGUIEditor parent, ServiceCalc serviceCalcBean) {
         super(parent);
         this.calc = serviceCalcBean;
         this.reading = converter.convert(calc);
-        fill();
     }
 
     @Override
-    protected void fill() {
+    public void fill() {
         setLayout(guiFactory.boxLayout(this, BoxLayout.Y_AXIS));
         add(guiFactory.labelEmpty());
-        add(new ReadingServicePanel(calc, reading));
+        add(ReadingServicePanel.create(calc, reading));
         Container buttonPanel = guiFactory.panelEmpty();
         buttonPanel.setLayout(guiFactory.boxLayout(buttonPanel, BoxLayout.X_AXIS));
         if (!calc.isPaid()) {
@@ -53,17 +54,7 @@ public class ReadingServiceForm extends Form {
     protected void ok() {
         if(!validateData())
             return;
-        try{
-            if(reading.getId()==-1) {
-                int id = readingHandler.insert(reading);
-                for(IMeasure measure : reading.getMeasures()) {
-                    IMeasure newMeasure = serviceFactory.createMeasure(-1, id, measure.getType(), measure.getValue());
-                    measureHandler.insert(newMeasure);
-                }
-            }
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
+        readingService.createOrUpdate(reading);
         parent.refresh();
     }
 }

@@ -5,50 +5,50 @@ import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.impl.DoubleSimpleCalc;
 
 public class WaterCalc extends DoubleSimpleCalc {
-	private double hotPrevMesure;
-	private double hotCurrentMesure;
-	private double hotPrevMesure2;
-	private double hotCurrentMesure2;
+	private double hotPrevMeasure;
+	private double hotCurrentMeasure;
+	private double hotPrevMeasure2;
+	private double hotCurrentMeasure2;
 	private Money inRate;
 	private Money outRate;
 	
-	public WaterCalc(double coldPrevMesure, double coldCurrentMesure,
-					 double coldPrevMesure2, double coldCurrentMesure2,
-					 double hotPrevMesure, double hotCurrentMesure,
-					 double hotPrevMesure2, double hotCurrentMesure2,
+	public WaterCalc(double coldPrevMeasure, double coldCurrentMeasure,
+					 double coldPrevMeasure2, double coldCurrentMeasure2,
+					 double hotPrevMeasure, double hotCurrentMeasure,
+					 double hotPrevMeasure2, double hotCurrentMeasure2,
 					 Money inRate, Money outRate, boolean isPaid) {
-		super(coldPrevMesure, coldCurrentMesure, coldPrevMesure2, coldCurrentMesure2, Money.valueOf(0.00), isPaid);
-		this.hotPrevMesure = hotPrevMesure;
-		this.hotCurrentMesure = hotCurrentMesure;
-		this.hotPrevMesure2 = hotPrevMesure2;
-		this.hotCurrentMesure2 = hotCurrentMesure2;
+		super(coldPrevMeasure, coldCurrentMeasure, coldPrevMeasure2, coldCurrentMeasure2, Money.valueOf(0.00), isPaid);
+		this.hotPrevMeasure = hotPrevMeasure;
+		this.hotCurrentMeasure = hotCurrentMeasure;
+		this.hotPrevMeasure2 = hotPrevMeasure2;
+		this.hotCurrentMeasure2 = hotCurrentMeasure2;
 		this.inRate = inRate;
 		this.outRate = outRate;
 	}
 	
-	public double getColdPrevMesure() {
+	public double getColdPrevMeasure() {
 		return getPrevMeasure();
 	}
-	public double getColdCurrentMesure() {
+	public double getColdCurrentMeasure() {
 		return getCurrentMeasure();
 	}
-	public double getColdPrevMesure2() {
+	public double getColdPrevMeasure2() {
 		return getPrevMeasure2();
 	}
-	public double getColdCurrentMesure2() {
+	public double getColdCurrentMeasure2() {
 		return getCurrentMeasure2();
 	}
-	public double getHotPrevMesure() {
-		return hotPrevMesure;
+	public double getHotPrevMeasure() {
+		return hotPrevMeasure;
 	}
-	public double getHotCurrentMesure() {
-		return hotCurrentMesure;
+	public double getHotCurrentMeasure() {
+		return hotCurrentMeasure;
 	}
-	public double getHotPrevMesure2() {
-		return hotPrevMesure2;
+	public double getHotPrevMeasure2() {
+		return hotPrevMeasure2;
 	}
-	public double getHotCurrentMesure2() {
-		return hotCurrentMesure2;
+	public double getHotCurrentMeasure2() {
+		return hotCurrentMeasure2;
 	}
 	public Money getInRate() {
 		return inRate;
@@ -56,17 +56,17 @@ public class WaterCalc extends DoubleSimpleCalc {
 	public Money getOutRate() {
 		return outRate;
 	}
-	public void setColdPrevMesure(double coldPrevMesure) {
-		setPrevMeasure(coldPrevMesure);
+	public void setColdPrevMeasure(double coldPrevMeasure) {
+		setPrevMeasure(coldPrevMeasure);
 	}
-	public void setColdCurrentMesure(double coldCurrentMesure) {
-		setCurrentMeasure(coldCurrentMesure);
+	public void setColdCurrentMeasure(double coldCurrentMeasure) {
+		setCurrentMeasure(coldCurrentMeasure);
 	}
-	public void setHotPrevMesure(double hotPrevMesure) {
-		this.hotPrevMesure = hotPrevMesure;
+	public void setHotPrevMeasure(double hotPrevMeasure) {
+		this.hotPrevMeasure = hotPrevMeasure;
 	}
-	public void setHotCurrentMesure(double hotCurrentMesure) {
-		this.hotCurrentMesure = hotCurrentMesure;
+	public void setHotCurrentMeasure(double hotCurrentMeasure) {
+		this.hotCurrentMeasure = hotCurrentMeasure;
 	}
 	public void setInRate(Money inRate) {
 		this.inRate = inRate;
@@ -74,17 +74,17 @@ public class WaterCalc extends DoubleSimpleCalc {
 	public void setOutRate(Money outRate) {
 		this.outRate = outRate;
 	}
-	public void setHotPrevMesure2(double hotPrevMesure2) {
-		this.hotPrevMesure2 = hotPrevMesure2;
+	public void setHotPrevMeasure2(double hotPrevMeasure2) {
+		this.hotPrevMeasure2 = hotPrevMeasure2;
 	}
-	public void setHotCurrentMesure2(double hotCurrentMesure2) {
-		this.hotCurrentMesure2 = hotCurrentMesure2;
+	public void setHotCurrentMeasure2(double hotCurrentMeasure2) {
+		this.hotCurrentMeasure2 = hotCurrentMeasure2;
 	}
-	public void setColdPrevMesure2(double coldPrevMesure) {
-		setPrevMeasure2(coldPrevMesure);
+	public void setColdPrevMeasure2(double coldPrevMeasure) {
+		setPrevMeasure2(coldPrevMeasure);
 	}
-	public void setColdCurrentMesure2(double coldCurrentMesure) {
-		setCurrentMeasure2(coldCurrentMesure);
+	public void setColdCurrentMeasure2(double coldCurrentMeasure) {
+		setCurrentMeasure2(coldCurrentMeasure);
 	}
 
 	public CalculationType getType() {

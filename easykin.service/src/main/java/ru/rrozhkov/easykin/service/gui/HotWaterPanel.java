@@ -4,48 +4,47 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class HotWaterPanel extends Panel{ 
-	public static String PREV_MESURE_LABEL_TEXT = "Пред. показания 1 сч";
-	public static String CURRENT_MESURE_LABEL_TEXT = "Тек. показания 1 сч";
-	public static String PREV_MESURE_LABEL_TEXT2 = "Пред. показания 2 сч";
-	public static String CURRENT_MESURE_LABEL_TEXT2 = "Тек. показания 2 сч";
-	public static String RATE_LABEL_TEXT = "Тариф";
-	public static String ODN_LABEL_TEXT = "ОДН";
 	private static final long serialVersionUID = 1L;
-	private JTextField prevMesureField = null;
-	private JTextField currentMesureField = null;
-	private JTextField prevMesureField2 = null;
-	private JTextField currentMesureField2 = null;
-	private JTextField rateField = null;
-	private JTextField odnField = null;
-	private Component prevMesureLabel = null;
-	private Component currentMesureLabel = null;
-	private Component prevMesureLabel2 = null;
-	private Component currentMesureLabel2 = null;
-	private Component rateLabel = null;
-	private Component odnLabel = null;
+	private JTextField prevMeasureField;
+	private JTextField currentMeasureField;
+	private JTextField prevMeasureField2;
+	private JTextField currentMeasureField2;
+	private JTextField rateField;
+	private JTextField odnField;
+	private Component prevMeasureLabel;
+	private Component currentMeasureLabel;
+	private Component prevMeasureLabel2;
+	private Component currentMeasureLabel2;
+	private Component rateLabel;
+	private Component odnLabel;
 	
-	public HotWaterPanel(Panel parent, ICalculation calcBean) {
-		super(parent, calcBean);
-		fill();	 
+	public static GUIPanel create(GUIPanel parent, ICalculation calcBean) {
+		GUIPanel panel = new HotWaterPanel(parent, calcBean);
+		panel.fill();
+		return panel;
 	}
 
-	private void fill() {
+	private HotWaterPanel(GUIPanel parent, ICalculation calcBean) {
+		super(parent, calcBean);
+	}
+
+	public void fill() {
 		setLayout(guiFactory.gridLayout(10, 2));
 
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
-		add(getPrevMesureLabel());
-		add(getPrevMesureField());
-		add(getCurrentMesureLabel());
-		add(getCurrentMesureField());
-		add(getPrevMesureLabel2());
-		add(getPrevMesureField2());
-		add(getCurrentMesureLabel2());
-		add(getCurrentMesureField2());
+		add(getPrevMeasureLabel());
+		add(getPrevMeasureField());
+		add(getCurrentMeasureLabel());
+		add(getCurrentMeasureField());
+		add(getPrevMeasureLabel2());
+		add(getPrevMeasureField2());
+		add(getCurrentMeasureLabel2());
+		add(getCurrentMeasureField2());
 		add(getRateLabel());
 		add(getRateField()); 
 		add(getOdnLabel()); 
@@ -55,40 +54,40 @@ public class HotWaterPanel extends Panel{
 		refresh();
 	}
 	
-	public JTextField getPrevMesureField(){
-		if(prevMesureField == null){
+	public JTextField getPrevMeasureField(){
+		if(prevMeasureField == null){
 			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure());
-			prevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			prevMesureField.getDocument().addDocumentListener(this);
+			prevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			prevMeasureField.getDocument().addDocumentListener(this);
 		}
-		return prevMesureField;
+		return prevMeasureField;
 	}
 
-	public JTextField getPrevMesureField2(){
-		if(prevMesureField2 == null){
+	public JTextField getPrevMeasureField2(){
+		if(prevMeasureField2 == null){
 			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure2());
-			prevMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			prevMesureField2.getDocument().addDocumentListener(this);
+			prevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			prevMeasureField2.getDocument().addDocumentListener(this);
 		}
-		return prevMesureField2;
+		return prevMeasureField2;
 	}
 
-	public JTextField getCurrentMesureField(){
-		if(currentMesureField == null){
+	public JTextField getCurrentMeasureField(){
+		if(currentMeasureField == null){
 			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure());
-			currentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			currentMesureField.getDocument().addDocumentListener(this);
+			currentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			currentMeasureField.getDocument().addDocumentListener(this);
 		}
-		return currentMesureField;
+		return currentMeasureField;
 	}
 
-	public JTextField getCurrentMesureField2(){
-		if(currentMesureField2 == null){
+	public JTextField getCurrentMeasureField2(){
+		if(currentMeasureField2 == null){
 			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure2());
-			currentMesureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			currentMesureField2.getDocument().addDocumentListener(this);
+			currentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			currentMeasureField2.getDocument().addDocumentListener(this);
 		}
-		return currentMesureField2;
+		return currentMeasureField2;
 	}
 
 	public JTextField getRateField(){
@@ -110,49 +109,49 @@ public class HotWaterPanel extends Panel{
 		return odnField;
 	}
 	
-	public Component getPrevMesureLabel(){
-		if(prevMesureLabel == null)
-			prevMesureLabel = guiFactory.label(PREV_MESURE_LABEL_TEXT);
-		return prevMesureLabel;
+	public Component getPrevMeasureLabel(){
+		if(prevMeasureLabel == null)
+			prevMeasureLabel = guiFactory.label("Пред. показания 1 сч");
+		return prevMeasureLabel;
 	}
 	
-	public Component getCurrentMesureLabel(){
-		if(currentMesureLabel == null)
-			currentMesureLabel = guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
-		return currentMesureLabel;
+	public Component getCurrentMeasureLabel(){
+		if(currentMeasureLabel == null)
+			currentMeasureLabel = guiFactory.label("Тек. показания 1 сч");
+		return currentMeasureLabel;
 	}
 
-	public Component getPrevMesureLabel2(){
-		if(prevMesureLabel2 == null)
-			prevMesureLabel2 = guiFactory.label(PREV_MESURE_LABEL_TEXT2);
-		return prevMesureLabel2;
+	public Component getPrevMeasureLabel2(){
+		if(prevMeasureLabel2 == null)
+			prevMeasureLabel2 = guiFactory.label("Пред. показания 2 сч");
+		return prevMeasureLabel2;
 	}
 
-	public Component getCurrentMesureLabel2(){
-		if(currentMesureLabel2 == null)
-			currentMesureLabel2 = guiFactory.label(CURRENT_MESURE_LABEL_TEXT2);
-		return currentMesureLabel2;
+	public Component getCurrentMeasureLabel2(){
+		if(currentMeasureLabel2 == null)
+			currentMeasureLabel2 = guiFactory.label("Тек. показания 2 сч");
+		return currentMeasureLabel2;
 	}
 
 	public Component getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = guiFactory.label(RATE_LABEL_TEXT);
+			rateLabel = guiFactory.label("Тариф");
 		return rateLabel;
 	}
 
 	public Component getOdnLabel(){
 		if(odnLabel == null)
-			odnLabel = guiFactory.label(ODN_LABEL_TEXT);
+			odnLabel = guiFactory.label("ОДН");
 		return odnLabel;
 	}
 
 	@Override
 	public void updateBean() {
 		HotWaterCalc bean = (HotWaterCalc)getCalc();
-		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
-		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
-		bean.setPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getPrevMesureField2().getText()));
-		bean.setCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField2().getText()));
+		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField().getText()));
+		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField().getText()));
+		bean.setPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField2().getText()));
+		bean.setCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField2().getText()));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
 //		bean.setOdn(CalcUtil.moneyNUllOrEmpty(getOdnField().getText()));
 	}

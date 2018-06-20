@@ -13,7 +13,8 @@ import ru.rrozhkov.easykin.service.data.impl.stat.StaticReadingDataProvider;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.Calc2GUIFactory;
 
-import java.awt.*;
+
+import java.awt.Component;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;

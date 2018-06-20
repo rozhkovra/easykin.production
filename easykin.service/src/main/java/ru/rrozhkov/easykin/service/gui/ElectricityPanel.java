@@ -4,37 +4,39 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTextField;
+import java.awt.Component;
+
 
 public class ElectricityPanel extends Panel{
-	public static String PREV_MESURE_LABEL_TEXT = "Предыдущие показания";
-	public static String CURRENT_MESURE_LABEL_TEXT = "Текущиу показания";
-	public static String RATE_LABEL_TEXT = "Тариф";
-	public static String ODN_LABEL_TEXT = "ОДН";
 	private static final long serialVersionUID = 1L;
-	private JTextField prevMesureField = null;
-	private JTextField currentMesureField = null;
-	private JTextField rateField = null;
-	private JTextField odnField = null;
-	private Component prevMesureLabel = null;
-	private Component currentMesureLabel = null;
-	private Component rateLabel = null;
-	private Component odnLabel = null;
+	private JTextField prevMeasureField;
+	private JTextField currentMeasureField;
+	private JTextField rateField;
+	private JTextField odnField;
+	private Component prevMeasureLabel;
+	private Component currentMeasureLabel;
+	private Component rateLabel;
+	private Component odnLabel;
 	
-	public ElectricityPanel(Panel parent, ICalculation bean) {
-		super(parent, bean);
-		fill();	 
+	public static GUIPanel create(GUIPanel parent, ICalculation bean) {
+		GUIPanel panel = new ElectricityPanel(parent, bean);
+		panel.fill();
+		return panel;
 	}
 
-	private void fill() {
+	private ElectricityPanel(GUIPanel parent, ICalculation bean) {
+		super(parent, bean);
+	}
+
+	public void fill() {
 		setLayout(guiFactory.gridLayout(7, 2));
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
-		add(getPrevMesureLabel()); 
-		add(getPrevMesureField()); 
-		add(getCurrentMesureLabel()); 
-		add(getCurrentMesureField()); 
+		add(getPrevMeasureLabel());
+		add(getPrevMeasureField());
+		add(getCurrentMeasureLabel());
+		add(getCurrentMeasureField());
 		add(getRateLabel()); 
 		add(getRateField()); 
 		add(getOdnLabel()); 
@@ -44,22 +46,22 @@ public class ElectricityPanel extends Panel{
 		refresh();
 	}
 	
-	public JTextField getPrevMesureField(){
-		if(prevMesureField == null){
+	public JTextField getPrevMeasureField(){
+		if(prevMeasureField == null){
 			String text = String.valueOf(((ElectricityCalc)calc).getPrevMeasure());
-			prevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			prevMesureField.getDocument().addDocumentListener(this);
+			prevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			prevMeasureField.getDocument().addDocumentListener(this);
 		}
-		return prevMesureField;
+		return prevMeasureField;
 	}
 
-	public JTextField getCurrentMesureField(){
-		if(currentMesureField == null){
+	public JTextField getCurrentMeasureField(){
+		if(currentMeasureField == null){
 			String text = String.valueOf(((ElectricityCalc)calc).getCurrentMeasure());
-			currentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			currentMesureField.getDocument().addDocumentListener(this);
+			currentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			currentMeasureField.getDocument().addDocumentListener(this);
 		}
-		return currentMesureField;
+		return currentMeasureField;
 	}
 	
 	public JTextField getRateField(){
@@ -80,35 +82,35 @@ public class ElectricityPanel extends Panel{
 		return odnField;
 	}
 	
-	public Component getPrevMesureLabel(){
-		if(prevMesureLabel == null)
-			prevMesureLabel = guiFactory.label(PREV_MESURE_LABEL_TEXT);
-		return prevMesureLabel;
+	public Component getPrevMeasureLabel(){
+		if(prevMeasureLabel == null)
+			prevMeasureLabel = guiFactory.label("Предыдущие показания");
+		return prevMeasureLabel;
 	}
 	
-	public Component getCurrentMesureLabel(){
-		if(currentMesureLabel == null)
-			currentMesureLabel = guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
-		return currentMesureLabel;
+	public Component getCurrentMeasureLabel(){
+		if(currentMeasureLabel == null)
+			currentMeasureLabel = guiFactory.label("Текущиу показания");
+		return currentMeasureLabel;
 	}
 	
 	public Component getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = guiFactory.label(RATE_LABEL_TEXT);
+			rateLabel = guiFactory.label("Тариф");
 		return rateLabel;
 	}
 
 	public Component getOdnLabel(){
 		if(odnLabel == null)
-			odnLabel = guiFactory.label(ODN_LABEL_TEXT);
+			odnLabel = guiFactory.label("ОДН");
 		return odnLabel;
 	}
 
 	@Override
 	public void updateBean() {
 		ElectricityCalc bean = (ElectricityCalc)getCalc();
-		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
-		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
+		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField().getText()));
+		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField().getText()));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
 		bean.setOdn(CalcUtil.moneyNUllOrEmpty(getOdnField().getText()));
 	}

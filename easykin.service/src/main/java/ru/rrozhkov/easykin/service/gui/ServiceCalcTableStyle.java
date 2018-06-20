@@ -1,16 +1,16 @@
 package ru.rrozhkov.easykin.service.gui;
 
-
-
 import ru.rrozhkov.easykin.core.gui.color.ColorManager;
 import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Font;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;

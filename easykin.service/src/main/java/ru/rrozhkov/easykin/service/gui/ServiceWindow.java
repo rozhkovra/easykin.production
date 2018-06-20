@@ -1,18 +1,24 @@
 package ru.rrozhkov.easykin.service.gui;
 
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.HeadlessException;
 import java.util.Locale;
 
-public class ServiceWindow extends JFrame{
+public class ServiceWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private static final PanelFactory panelFactory = new PanelFactory();
+	private static final PanelFactory panelFactory = PanelFactory.instance();
 
-	public ServiceWindow(JPanel panel) throws HeadlessException {
+	public static JFrame create(JPanel panel) {
+		return new ServiceWindow(panel);
+	}
+
+	private ServiceWindow(JPanel panel) throws HeadlessException {
 		super("EasyKin Калькулятор - Коммунальные услуги");
 		setIconImage(ImageUtil.imageByPath(this.getClass(), "/icon/service.png"));
 		setContentPane(panel);
@@ -23,12 +29,11 @@ public class ServiceWindow extends JFrame{
 
 	public static void main(String[] args){
 		Locale.setDefault(new Locale("en"));
-		ServiceCalc calc = (ServiceCalc) CalcFactory.createEmptyServiceCalc();
-
-		final ru.rrozhkov.easykin.service.gui.Panel panel = panelFactory.getPanel(null, calc);
+		ICalculation calc = CalcFactory.createEmptyServiceCalc();
+		final GUIPanel panel = panelFactory.getPanel(null, calc);
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new ServiceWindow(panel);
+				create(panel);
 			}
 		});
 	}

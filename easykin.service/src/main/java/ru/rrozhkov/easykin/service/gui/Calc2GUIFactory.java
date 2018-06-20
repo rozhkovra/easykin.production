@@ -6,8 +6,10 @@ import ru.rrozhkov.easykin.core.gui.GUIFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.service.gui.reading.ReadingCalcPanel;
+import ru.rrozhkov.easykin.service.gui.reading.ReadingServiceForm;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -36,8 +38,12 @@ public class Calc2GUIFactory implements IModuleGUIFactory<ServiceCalc> {
         if(calc==null) {
             calc = (ServiceCalc)calc2Builder.buildNew();
         }
-        return new ReadingServiceForm(parent, calc);
+        return ReadingServiceForm.create(parent, calc);
 
+    }
+
+    public Component createView(IGUIEditor parent, ServiceCalc calc) {
+        return ReadingCalcPanel.create((Panel)parent, calc);
     }
 
     public Component createFilter(IGUIEditor parent) {

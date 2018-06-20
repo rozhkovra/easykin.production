@@ -21,7 +21,7 @@ public abstract class Form extends JPanel {
         this.parent = parent;
     }
 
-    protected abstract void fill();
+    public abstract void fill();
 
     protected KeyListener keyListener(){
         return new KeyListener() {

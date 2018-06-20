@@ -1,5 +1,6 @@
-package ru.rrozhkov.easykin.service.gui;
+package ru.rrozhkov.easykin.service.gui.reading;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
@@ -10,10 +11,13 @@ import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
-import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.service.gui.GUIPanel;
+import ru.rrozhkov.easykin.service.gui.Panel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
 import java.util.Collection;
 
 /**
@@ -21,23 +25,28 @@ import java.util.Collection;
  */
 public class ReadingServicePanel extends Panel {
     private ReadingMeasureAdapter readingMeasureFacade;
-    protected Panel readingCalcPanel;
+    protected GUIPanel readingCalcPanel;
     protected GUIPanel readingPanel;
 
-    public ReadingServicePanel(ServiceCalc serviceCalcBean, IReading reading) {
-        super(null, serviceCalcBean);
-        this.readingPanel = new ReadingPanel(this, reading, calc.isPaid());
-        // no parent for ReadingCalcPanel else recursion
-        this.readingCalcPanel = new ReadingCalcPanel(null, calc);
-        this.readingMeasureFacade = new ReadingMeasureAdapter(reading);
-        fill();
+    public static GUIPanel create(ServiceCalc serviceCalcBean, IReading reading) {
+        GUIPanel panel = new ReadingServicePanel(serviceCalcBean, reading);
+        panel.fill();
+        return panel;
     }
 
-    private void fill() {
+    protected ReadingServicePanel(ServiceCalc serviceCalcBean, IReading reading) {
+        super(null, serviceCalcBean);
+        this.readingPanel = ReadingPanel.create(this, reading, calc.isPaid());
+        // no parent for ReadingCalcPanel else recursion
+        this.readingCalcPanel = ReadingCalcPanel.create(null, calc);
+        this.readingMeasureFacade = ReadingMeasureAdapter.create(reading);
+
+    }
+
+    public void fill() {
         setLayout(guiFactory.boxLayout(this, BoxLayout.Y_AXIS));
         JLabel label = (JLabel) guiFactory.label(((ServiceCalc) calc).getName());
-        Font font1 = new Font("SansSerif", Font.PLAIN, 30);
-        label.setFont(font1);
+        label.setFont(label.getFont().deriveFont(Font.PLAIN, 30));
         label.setHorizontalAlignment(JTextField.LEFT);
         add(label);
         add(readingPanel);
@@ -57,10 +66,10 @@ public class ReadingServicePanel extends Panel {
                 calc.getNewMeasures().addAll(readingMeasureFacade.getMeasuresByType(types.toArray(new MeasureType[types.size()])));
             }else if(calculation.getType().isWater()) {
                 WaterCalc waterCalc = (WaterCalc)calculation;
-                waterCalc.setColdCurrentMesure(readingMeasureFacade.getColdMeasure());
-                waterCalc.setColdCurrentMesure2(readingMeasureFacade.getColdMeasure2());
-                waterCalc.setHotCurrentMesure(readingMeasureFacade.getHotMeasure());
-                waterCalc.setHotCurrentMesure2(readingMeasureFacade.getHotMeasure2());
+                waterCalc.setColdCurrentMeasure(readingMeasureFacade.getColdMeasure());
+                waterCalc.setColdCurrentMeasure2(readingMeasureFacade.getColdMeasure2());
+                waterCalc.setHotCurrentMeasure(readingMeasureFacade.getHotMeasure());
+                waterCalc.setHotCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
             } else if (calculation.getType().isHotWater()) {
                 HotWaterCalc waterCalc = (HotWaterCalc)calculation;
                 waterCalc.setCurrentMeasure(readingMeasureFacade.getHotMeasure());

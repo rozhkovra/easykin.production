@@ -1,16 +1,17 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import javax.swing.*;
+
+import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 /**
  * Created by rrozhkov on 12/22/2017.
  */
-public abstract class GUIPanel extends JPanel  implements DocumentListener {
-    protected Panel parent;
+public abstract class GUIPanel extends JPanel implements DocumentListener {
+    protected GUIPanel parent;
 
-    public GUIPanel(Panel parent) {
+    public GUIPanel(GUIPanel parent) {
         this.parent = parent;
     }
 
@@ -35,4 +36,6 @@ public abstract class GUIPanel extends JPanel  implements DocumentListener {
     }
 
     abstract public void updateBean();
+
+    public abstract void fill();
 }

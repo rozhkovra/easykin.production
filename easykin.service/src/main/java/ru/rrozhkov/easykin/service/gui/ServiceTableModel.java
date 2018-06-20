@@ -16,7 +16,7 @@ import java.util.List;
 public class ServiceTableModel extends TableModel{
     private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 
-    public ServiceTableModel(Collection beans) {
+    protected ServiceTableModel(Collection beans) {
         super(beans, new ServiceCalcTableStyle());
     }
 

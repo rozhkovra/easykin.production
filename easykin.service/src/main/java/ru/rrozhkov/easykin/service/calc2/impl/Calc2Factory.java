@@ -37,8 +37,8 @@ public class Calc2Factory {
                                                   Collection<IRate> rates,
                                                   boolean isPaid) {
         Money hotRate = Money.valueOf(0.00);
-        Collection<IMeasure> oldMeasures = new ReadingMeasureAdapter(oldReading).getMeasuresByType(MeasureType.HOTWATER);
-        Collection<IMeasure> newMeasures = new ReadingMeasureAdapter(newReading).getMeasuresByType(MeasureType.HOTWATER);
+        Collection<IMeasure> oldMeasures = ReadingMeasureAdapter.create(oldReading).getMeasuresByType(MeasureType.HOTWATER);
+        Collection<IMeasure> newMeasures = ReadingMeasureAdapter.create(newReading).getMeasuresByType(MeasureType.HOTWATER);
         for(IRate rate : rates) {
             if(rate.getType().isHotWater()) {
                 hotRate = Money.valueOf(rate.getValue());
@@ -115,8 +115,8 @@ public class Calc2Factory {
                                                      Collection<IRate> rates,
                                                      boolean isPaid) {
         Money electricityRate = Money.valueOf(0.00);
-        Collection<IMeasure> oldMeasures = new ReadingMeasureAdapter(oldReading).getMeasuresByType(MeasureType.ELECTRICITY);
-        Collection<IMeasure> newMeasures = new ReadingMeasureAdapter(newReading).getMeasuresByType(MeasureType.ELECTRICITY);
+        Collection<IMeasure> oldMeasures = ReadingMeasureAdapter.create(oldReading).getMeasuresByType(MeasureType.ELECTRICITY);
+        Collection<IMeasure> newMeasures = ReadingMeasureAdapter.create(newReading).getMeasuresByType(MeasureType.ELECTRICITY);
 
         for(IRate rate : rates) {
             if(rate.getType().isElectricity()) {

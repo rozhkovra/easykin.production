@@ -4,36 +4,38 @@ import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class GazPanel extends Panel{ 
-	public static String PREV_MESURE_LABEL_TEXT = "Предыдущие показания";
-	public static String CURRENT_MESURE_LABEL_TEXT = "Текущие показания";
-	public static String RATE_LABEL_TEXT = "Тариф";
 	private static final long serialVersionUID = 1L;
-	private JTextField prevMesureField = null;
-	private JTextField currentMesureField = null;
+	private JTextField prevMeasureField = null;
+	private JTextField currentMeasureField = null;
 	private JTextField rateField = null;
-	private Component prevMesureLabel = null;
-	private Component currentMesureLabel = null;
+	private Component prevMeasureLabel = null;
+	private Component currentMeasureLabel = null;
 	private Component rateLabel = null;
 	
-	public GazPanel(Panel parent, ICalculation calcBean) {
-		super(parent, calcBean);
-		fill();
+	public static GUIPanel create(GUIPanel parent, ICalculation calcBean) {
+		GUIPanel panel = new GazPanel(parent, calcBean);
+		panel.fill();
+		return panel;
 	}
 
-	private void fill() {
+	private GazPanel(GUIPanel parent, ICalculation calcBean) {
+		super(parent, calcBean);
+	}
+
+	public void fill() {
 		setLayout(guiFactory.gridLayout(7, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getCalcTypeLabel());
 		add(guiFactory.labelEmpty());
-		add(getPrevMesureLabel()); 
-		add(getPrevMesureField()); 
-		add(getCurrentMesureLabel()); 
-		add(getCurrentMesureField()); 
+		add(getPrevMeasureLabel());
+		add(getPrevMeasureField());
+		add(getCurrentMeasureLabel());
+		add(getCurrentMeasureField());
 		add(getRateLabel()); 
 		add(getRateField()); 
 		add(guiFactory.labelEmpty());
@@ -41,22 +43,22 @@ public class GazPanel extends Panel{
 		refresh();
 	}
 	
-	public JTextField getPrevMesureField(){
-		if(prevMesureField == null){
+	public JTextField getPrevMeasureField(){
+		if(prevMeasureField == null){
 			String text = String.valueOf(((GazCalc)calc).getPrevMeasure());
-			prevMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			prevMesureField.getDocument().addDocumentListener(this);
+			prevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			prevMeasureField.getDocument().addDocumentListener(this);
 		}
-		return prevMesureField;
+		return prevMeasureField;
 	}
 
-	public JTextField getCurrentMesureField(){
-		if(currentMesureField == null){
+	public JTextField getCurrentMeasureField(){
+		if(currentMeasureField == null){
 			String text = String.valueOf(((GazCalc)calc).getCurrentMeasure());
-			currentMesureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			currentMesureField.getDocument().addDocumentListener(this);
+			currentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
+			currentMeasureField.getDocument().addDocumentListener(this);
 		}
-		return currentMesureField;
+		return currentMeasureField;
 	}
 	
 	public JTextField getRateField(){
@@ -68,29 +70,29 @@ public class GazPanel extends Panel{
 		return rateField;
 	}
 	
-	public Component getPrevMesureLabel(){
-		if(prevMesureLabel == null)
-			prevMesureLabel = guiFactory.label(PREV_MESURE_LABEL_TEXT);
-		return prevMesureLabel;
+	public Component getPrevMeasureLabel(){
+		if(prevMeasureLabel == null)
+			prevMeasureLabel = guiFactory.label("Предыдущие показания");
+		return prevMeasureLabel;
 	}
 	
-	public Component getCurrentMesureLabel(){
-		if(currentMesureLabel == null)
-			currentMesureLabel = guiFactory.label(CURRENT_MESURE_LABEL_TEXT);
-		return currentMesureLabel;
+	public Component getCurrentMeasureLabel(){
+		if(currentMeasureLabel == null)
+			currentMeasureLabel = guiFactory.label("Текущие показания");
+		return currentMeasureLabel;
 	}
 	
 	public Component getRateLabel(){
 		if(rateLabel == null)
-			rateLabel = guiFactory.label(RATE_LABEL_TEXT);
+			rateLabel = guiFactory.label("Тариф");
 		return rateLabel;
 	}
 
 	@Override
 	public void updateBean() {
 		GazCalc bean = (GazCalc)getCalc();
-		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMesureField().getText()));
-		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMesureField().getText()));
+		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField().getText()));
+		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField().getText()));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
 	}
 }

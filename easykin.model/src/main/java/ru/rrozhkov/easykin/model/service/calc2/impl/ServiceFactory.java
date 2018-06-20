@@ -32,6 +32,9 @@ public class ServiceFactory {
     public IMeasure createMeasure(int id, int readingId, MeasureType type, Object value){
         return new Measure(id, readingId, type, value);
     }
+    public IMeasure createMeasure(MeasureType type, Object value){
+        return new Measure(type, value);
+    }
     public IResult createMeasureResult(double delta, Money deltaSum, Money sum){
         return new MeasureResult(delta, deltaSum, sum);
     }

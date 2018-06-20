@@ -22,7 +22,11 @@ public class ReadingMeasureAdapter {
     protected double hotMeasure2;
     protected int electricityMeasure;
 
-    public ReadingMeasureAdapter(IReading reading) {
+    public static ReadingMeasureAdapter create(IReading reading) {
+        return new ReadingMeasureAdapter(reading);
+    }
+
+    private ReadingMeasureAdapter(IReading reading) {
         this.measures = CollectionUtil.copy(reading.getMeasures());
         this.coldMeasure = 0.0;
         this.coldMeasure2 = 0.0;
