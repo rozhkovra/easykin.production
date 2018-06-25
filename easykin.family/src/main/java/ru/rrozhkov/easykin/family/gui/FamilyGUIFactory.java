@@ -7,7 +7,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -29,7 +29,11 @@ public class FamilyGUIFactory implements IModuleGUIFactory<IPerson> {
     }
 
     public Component createEditor(IGUIEditor parent, IPerson person) {
-        return new PersonForm(parent,person);
+        return PersonForm.create(parent,person);
+    }
+
+    public Component createView(IGUIEditor parent, IPerson obj) {
+        return guiFactory.panelEmpty();
     }
 
     public Component createFilter(IGUIEditor parent) {
