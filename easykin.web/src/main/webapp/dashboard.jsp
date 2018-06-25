@@ -68,67 +68,31 @@
 <!-- /.box -->
 </div>
 <!-- /.col -->
-<div class="col-md-8">
+    <div class="col-md-8">
+      <!-- BAR CHART -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Statistics</h3>
 
-<!-- TABLE: FINANCE -->
-<div class="box box-info">
-<div class="box-header with-border">
-  <h3 class="box-title">Finance</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="chart">
+            <canvas id="barChart" style="height:230px"></canvas>
+          </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
 
-  <div class="box-tools pull-right">
-    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-    </button>
-    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-  </div>
-</div>
-<!-- /.box-header -->
-<div class="box-body">
-  <div class="table-responsive">
-    <table  id="payments" class="table no-margin">
-    <thead>
-    <tr>
-    <th>№</th>
-    <th>Категория</th>
-    <th>Назначение</th>
-    <th>Сумма</th>
-    <th>Дата</th>
-    </tr>
-    </thead>
-    <tbody>
-<%
-	final FinanceAdapter financeAdapter = adapterFactory.finance();
 
-	Collection<FinanceBean> payments = financeAdapter.finance();
-	for (FinanceBean payment : payments) {
-%>
-    <tr>
-    <td><%=payment.getNum()%></td>
-    <td><%=payment.getPayment().getCategory()%></td>
-    <td><%=payment.getPayment().getComment()%></td>
-    <td align="right"><%=payment.getPayment().getAmount()%></td>
-    <td align="center"><%=DateUtil.format(payment.getPayment().getDate())%></td>
-    </tr>
-<%
-	}
-%>
-    </tbody>
-    </table>
-  </div>
-  <!-- /.table-responsive -->
-</div>
-<!-- /.box-body -->
-<div class="box-footer clearfix">
-  <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-  <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-</div>
-<!-- /.box-footer -->
-</div>
-<!-- /.box -->
-
-</div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
     <div class="box">
     <div class="box-header">
     <h3 class="box-title">Services</h3>
@@ -140,15 +104,6 @@
     <th>№</th>
     <th>Период</th>
     <th>Дата</th>
-    <th>Вода</th>
-    <th>Гор.вода</th>
-    <th>Свет</th>
-    <th>Газ</th>
-    <th>Отопление</th>
-    <th>Антенна</th>
-    <th>Домофон</th>
-    <th>Квартплата</th>
-    <th>Кап.ремонт</th>
     <th>Итого</th>
     </tr>
     </thead>
@@ -163,15 +118,6 @@
     <td align="center"><%=++i%></td>
     <td ><span class="<%=service.getServiceClass()%>"><%=service.getName()%></span></td>
     <td align="center"><%=DateUtil.format(service.getDate())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getWater())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getHotWater())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getElectricity())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getGaz())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getHeating())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getAntenna())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getIntercom())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getHouse())%></td>
-    <td align="center"><%=FormatUtil.formatMoney(service.getRepair())%></td>
     <td style="<%=service.getTdStyle()%>text-align:right;"><%=FormatUtil.formatMoney(service.getItog())+(service.getNoPaid().free()?"":"/"+FormatUtil.formatMoney(service.getNoPaid()))%></td>
     </tr>
     <%
@@ -186,6 +132,67 @@
     <!--/.box-->
     </div>
     <!-- /.col -->
+
+
+    <div class="col-md-8">
+
+    <!-- TABLE: FINANCE -->
+    <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Finance</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <table  id="payments" class="table no-margin">
+        <thead>
+        <tr>
+        <th>№</th>
+        <th>Категория</th>
+        <th>Назначение</th>
+        <th>Сумма</th>
+        <th>Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+    <%
+    	final FinanceAdapter financeAdapter = adapterFactory.finance();
+
+    	Collection<FinanceBean> payments = financeAdapter.finance();
+    	for (FinanceBean payment : payments) {
+    %>
+        <tr>
+        <td><%=payment.getNum()%></td>
+        <td><%=payment.getPayment().getCategory()%></td>
+        <td><%=payment.getPayment().getComment()%></td>
+        <td align="right"><%=payment.getPayment().getAmount()%></td>
+        <td align="center"><%=DateUtil.format(payment.getPayment().getDate())%></td>
+        </tr>
+    <%
+    	}
+    %>
+        </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+      <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+      <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+    </div>
+    <!-- /.box-footer -->
+    </div>
+    <!-- /.box -->
+
+    </div>
+
 </div>
 <!-- /.row -->
 </section>
