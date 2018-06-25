@@ -5,8 +5,10 @@ import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class AuthForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -18,12 +20,17 @@ public class AuthForm extends Form {
 	private Component usernameLabel;
 	private Component passwordLabel;
 
-	public AuthForm(final IGUIEditor parent) {
+	public static Form create(final IGUIEditor parent) {
+		Form form = new AuthForm(parent);
+		form.fill();
+		return form;
+	}
+
+	private AuthForm(final IGUIEditor parent) {
 		super(parent);
-		fill();
 	}
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(3, 2));
 		add(getUsernameLabel());
 		add(getUsernameField());

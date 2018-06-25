@@ -3,8 +3,8 @@ package ru.rrozhkov.easykin.person.gui.auth;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import java.awt.HeadlessException;
 
 /**
  * Created by RRozhkov on 3/7/2017.
@@ -16,7 +16,7 @@ public class AuthWindow extends JFrame implements IGUIEditor {
         setIconImage(ImageUtil.imageByPath(getClass(), "/icon/key.png"));
         setSize(400, 150);
         getContentPane().removeAll();
-        getContentPane().add(new AuthForm(this));
+        getContentPane().add(AuthForm.create(this));
         this.finished = false;
     }
 

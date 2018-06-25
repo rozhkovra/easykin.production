@@ -5,7 +5,8 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-import java.awt.*;
+import java.awt.Component;
+
 
 public class PersonForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -20,13 +21,18 @@ public class PersonForm extends Form {
 
 	private IPerson person;
 
-	public PersonForm(IGUIEditor parent, IPerson person) {
+	public static Form create(final IGUIEditor parent, final IPerson person) {
+		Form form = new PersonForm(parent, person);
+		form.fill();
+		return form;
+	}
+
+	private PersonForm(IGUIEditor parent, IPerson person) {
 		super(parent);
 		this.person = person;
-		fill();
 	}
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(7, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());

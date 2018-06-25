@@ -2,7 +2,8 @@ package ru.rrozhkov.easykin.person.gui.auth;
 
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
-import javax.swing.*;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 /**
  * Created by rrozhkov on 6/28/2017.
@@ -13,7 +14,7 @@ public class AuthDialog extends JDialog implements IGUIEditor {
         super(owner, modal);
         setSize(400, 150);
         getContentPane().removeAll();
-        getContentPane().add(new AuthForm(this));
+        getContentPane().add(AuthForm.create(this));
     }
 
     public void edit(Object obj) {
