@@ -8,7 +8,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityResult
 
 public class ElectricityCalculator extends Calculator {
 	
-	public ElectricityCalculator(ElectricityCalc bean) {
+	protected ElectricityCalculator(ElectricityCalc bean) {
 		super(bean);
 	}
 

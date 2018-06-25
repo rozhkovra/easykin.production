@@ -13,7 +13,7 @@ import ru.rrozhkov.easykin.core.convert.IConverter;
 public class ServiceCalcConverter implements
 		IConverter<Collection<ServiceCalc>, Collection<IPayment>> {
 	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
-	final private static PaymentFactory paymentFactory = PaymentFactory.instance();
+	private static final PaymentFactory paymentFactory = PaymentFactory.instance();
 
 	protected ServiceCalcConverter() {
 	}
@@ -32,5 +32,4 @@ public class ServiceCalcConverter implements
 		}
 		return payments;
 	}
-
 }

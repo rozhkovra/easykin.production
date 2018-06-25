@@ -10,7 +10,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -36,15 +36,15 @@ public class ServiceGUIFactory implements IModuleGUIFactory<IService> {
     }
 
     public Component createEditor(IGUIEditor parent, IService service) {
-        return new AutoServiceEditor(parent,service);
+        return AutoServiceEditor.create(parent,service);
     }
 
     public Component createView(IGUIEditor parent, IService service) {
-        return new AutoServiceForm(parent,service);
+        return AutoServiceForm.create(parent, service);
     }
 
     public Component createFilter(IGUIEditor parent) {
         IService service = serviceFactory.createService("", Money.valueOf(0.00), DateUtil.today());
-        return new AutoServiceForm(parent,service);
+        return AutoServiceForm.create(parent, service);
     }
 }

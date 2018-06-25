@@ -7,7 +7,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterResult;
 
 public class WaterCalculator extends Calculator {
-	public WaterCalculator(WaterCalc calc) {
+	protected WaterCalculator(WaterCalc calc) {
 		super(calc);
 	}
 

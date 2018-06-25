@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazResult;
 
 public class GazCalculator extends Calculator {
-	public GazCalculator(GazCalc gaz) {
+	protected GazCalculator(GazCalc gaz) {
 		super(gaz);
 	}
 

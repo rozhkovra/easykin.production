@@ -8,8 +8,6 @@ import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
-import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
-import ru.rrozhkov.easykin.service.calc2.impl.calculator.MeasureCalculator;
 
 public class CalculatorFactory {
 	public static class Holder {
@@ -20,13 +18,11 @@ public class CalculatorFactory {
 		return Holder.INSTANCE;
 	}
 
-	private CalculatorFactory() {
+	protected CalculatorFactory() {
 	}
 
 	public ICalculator getCalculator(ICalculation bean){
-		if(bean instanceof MeasureCalc)
-			return new MeasureCalculator((MeasureCalc)bean);
-		else if(bean instanceof GazCalc)
+		if(bean instanceof GazCalc)
 			return new GazCalculator((GazCalc)bean);
 		else if (bean instanceof WaterCalc)
 			return new WaterCalculator((WaterCalc)bean);

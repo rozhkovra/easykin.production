@@ -11,7 +11,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.ServiceResult;
 public class ServiceCalculator extends Calculator {
 	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 
-	public ServiceCalculator(ICalculation calcBean) {
+	protected ServiceCalculator(ICalculation calcBean) {
 		super(calcBean);
 	}
 
