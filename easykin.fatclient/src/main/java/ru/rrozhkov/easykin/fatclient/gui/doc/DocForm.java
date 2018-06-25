@@ -5,8 +5,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-
-import java.awt.*;
+import java.awt.Component;
 
 public class DocForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -20,14 +19,19 @@ public class DocForm extends Form {
 	private Component dateLabel;
 	private IDoc doc;
 
-	public DocForm(IGUIEditor parent, IDoc doc) {
+	public static Form create(final IGUIEditor parent, final IDoc doc) {
+		Form form = new DocForm(parent, doc);
+		form.fill();
+		return form;
+	}
+
+	private DocForm(IGUIEditor parent, IDoc doc) {
 		super(parent);
 		this.doc = doc;
-		fill();
 	}
 	
-	protected void fill(){
-		setLayout(new GridLayout(7, 2));
+	public void fill(){
+		setLayout(guiFactory.gridLayout(7, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
 		add(getTypeLabel());
