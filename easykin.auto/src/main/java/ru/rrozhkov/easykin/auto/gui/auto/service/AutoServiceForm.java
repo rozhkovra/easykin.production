@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-import java.awt.*;
+import java.awt.Component;
 
 public class AutoServiceForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -17,13 +17,18 @@ public class AutoServiceForm extends Form {
 	private Component dateLabel;
 	private IService service;
 
-	protected AutoServiceForm(IGUIEditor parent, IService service) {
-		super(parent);
-		this.service = service;
-		fill();
+	public static Form create(final IGUIEditor parent, final IService service) {
+		Form form = new AutoServiceForm(parent, service);
+		form.fill();
+		return form;
 	}
 
-	protected void fill(){
+	private AutoServiceForm(final IGUIEditor parent, final IService service) {
+		super(parent);
+		this.service = service;
+	}
+
+	public void fill(){
 		setLayout(guiFactory.gridLayout(5,2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
