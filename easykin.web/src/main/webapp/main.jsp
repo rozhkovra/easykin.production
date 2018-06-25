@@ -8,13 +8,14 @@
 <%
 	String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
 	String subModuleId = request.getParameter("subModuleId")!=null?String.valueOf(request.getParameter("subModuleId")):"";
+	String module = moduleId.isEmpty()?moduleId:Module.name(moduleId);
 %>
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h4><%=Module.name(moduleId)%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh" style="cursor:pointer;"></i></h4>
+      <h4><%=module%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh" style="cursor:pointer;"></i></h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><%=Module.name(moduleId)%></li>
+        <li class="active"><%=module%></li>
       </ol>
     </section>
 <%
@@ -44,6 +45,9 @@
 %><jsp:include page="task/index.jsp"/>
 <%
       }
+    } else {
+%><jsp:include page="dashboard.jsp"/>
+<%
     }
 %>
 </div>

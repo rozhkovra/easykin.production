@@ -28,8 +28,18 @@ public class TaskAdapter {
     final private static TaskBuilder taskBuilder = TaskBuilder.instance();
     final private static TaskBeanFactory taskBeanFactory = TaskBeanFactory.instance();
 
-    public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
-        TaskFilterBean bean = filter(request);
+    public Collection<TaskBean> toDoTasks() {
+        IPerson person = authManager.signedPerson();
+        Date fromDate = DateUtil.firstDayOfMonth();
+        Date toDate = DateUtil.lastDayOfMonth();
+        int priorityId = -1;
+        int categoryId = -1;
+        int statusId = Status.status(Status.OPEN);
+        TaskFilterBean filter = taskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
+        return tasks(filter);
+    }
+
+    private Collection<TaskBean> tasks(TaskFilterBean bean) {
         Collection<ITask> tasks = taskBuilder.build(bean);
         Collection<TaskBean> taskBeans = CollectionUtil.create();
         int num = 0;
@@ -62,6 +72,12 @@ public class TaskAdapter {
             taskBeans.add(taskBeanFactory.taskBean(++num,task,taskClass,dateClass,comments,doneHtml));
         }
         return taskBeans;
+    }
+
+    public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
+        TaskFilterBean bean = filter(request);
+        Collection<ITask> tasks = taskBuilder.build(bean);
+        return tasks(bean);
     }
 
     public TaskFilterBean filter(javax.servlet.http.HttpServletRequest request) {

@@ -39,6 +39,15 @@ public class DateUtil {
 	}
 	public static Date today(){return new Date();}
 	public static String todayWeek(){return formatWeek(today());}
+	public static Date firstDayOfMonth(Date date){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.DATE, cal.getActualMinimum(Calendar.DATE));
+		return cal.getTime();
+	}
+	public static Date firstDayOfMonth(){
+		return firstDayOfMonth(today());
+	}
 	public static Date lastDayOfMonth(Date date){
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
