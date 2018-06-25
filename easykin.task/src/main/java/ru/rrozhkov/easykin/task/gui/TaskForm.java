@@ -14,8 +14,10 @@ import ru.rrozhkov.easykin.task.impl.period.PeriodTaskBuilder;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
@@ -45,13 +47,18 @@ public class TaskForm extends Form {
 	
 	private ITask task;
 	
-	public TaskForm(IGUIEditor parent, ITask task) {
+	public static Form create(final IGUIEditor parent, final ITask task) {
+		Form form = new TaskForm(parent, task);
+		form.fill();
+		return form;
+	}
+
+	private TaskForm(IGUIEditor parent, ITask task) {
 		super(parent);
 		this.task = task;
-		fill();
 	}
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(10, 2));
 		add(guiFactory.labelEmpty());
 		if(!task.getStatus().isClose()){

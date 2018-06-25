@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.task.gui;
 
-
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
@@ -10,8 +9,9 @@ import ru.rrozhkov.easykin.core.gui.GUIFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,11 +26,16 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 	private IGUIEditor parent;
 	private Component addButton;
 
-	public TaskEditor(IGUIEditor parent, ITask task) {
+	public static JPanel create(final IGUIEditor parent, final ITask task) {
+		TaskEditor editor = new TaskEditor(parent, task);
+		editor.fill();
+		return editor;
+	}
+
+	private TaskEditor(IGUIEditor parent, ITask task) {
 		super();
 		this.task = task;
 		this.parent = parent;
-		fill();
 	}
 
 	private void fill(){

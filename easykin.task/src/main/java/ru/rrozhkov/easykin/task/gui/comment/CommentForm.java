@@ -6,8 +6,8 @@ import ru.rrozhkov.easykin.task.service.impl.CommentService;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class CommentForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -18,13 +18,18 @@ public class CommentForm extends Form {
 	private Component textLabel;
 	private IComment comment;
 
-	public CommentForm(IGUIEditor parent, IComment comment) {
+	public static Form create(final IGUIEditor parent, final IComment comment) {
+		Form form = new CommentForm(parent, comment);
+		form.fill();
+		return form;
+	}
+
+	private CommentForm(IGUIEditor parent, IComment comment) {
 		super(parent);
 		this.comment = comment;
-		fill();
 	}
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(4, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
@@ -62,5 +67,4 @@ public class CommentForm extends Form {
 	protected boolean validateData() {
 		return !"".equals(comment.getText());
 	}
-
 }

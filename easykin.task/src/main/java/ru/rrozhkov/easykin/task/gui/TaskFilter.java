@@ -8,8 +8,8 @@ import ru.rrozhkov.easykin.core.filter.IFilter;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComboBox;
+import java.awt.Component;
 import java.util.Collection;
 
 public class TaskFilter extends Form {
@@ -21,12 +21,17 @@ public class TaskFilter extends Form {
 	private Component priorityLabel;
 	private Component statusLabel;
 
-	public TaskFilter(IGUIEditor parent){
+	public static Form create(final IGUIEditor parent) {
+		Form form = new TaskFilter(parent);
+		form.fill();
+		return form;
+	}
+
+	private TaskFilter(IGUIEditor parent){
 		super(parent);
-		fill();
 	}
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(3, 2));
 		add(getPriorityLabel()); 
 		add(getPriorityComboBox()); 

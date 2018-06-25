@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -24,15 +24,19 @@ public class TaskGUIFactory implements IModuleGUIFactory<ITask> {
     }
 
     public Component createTaskForm(IGUIEditor parent, ITask task){
-        return new TaskForm(parent, task);
+        return TaskForm.create(parent, task);
     }
     public Component createFilter(IGUIEditor parent){
-        return new TaskFilter(parent);
+        return TaskFilter.create(parent);
     }
     public Component createTablePanel(IGUIEditor parent, Collection data) {
         return guiFactory.tablePanel(parent, new TaskTableModel(data));
     }
     public Component createEditor(IGUIEditor parent, ITask task) {
-        return new TaskEditor(parent, task);
+        return TaskEditor.create(parent, task);
+    }
+
+    public Component createView(IGUIEditor parent, ITask obj) {
+        return guiFactory.panelEmpty();
     }
 }

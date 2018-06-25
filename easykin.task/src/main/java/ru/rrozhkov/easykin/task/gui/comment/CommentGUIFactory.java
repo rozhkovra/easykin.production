@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -28,7 +28,11 @@ public class CommentGUIFactory implements IModuleGUIFactory<IComment> {
     }
 
     public Component createEditor(IGUIEditor parent, IComment comment) {
-        return new CommentForm(parent,comment);
+        return CommentForm.create(parent, comment);
+    }
+
+    public Component createView(IGUIEditor parent, IComment obj) {
+        return guiFactory.panelEmpty();
     }
 
     public Component createFilter(IGUIEditor parent) {
