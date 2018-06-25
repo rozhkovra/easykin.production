@@ -11,8 +11,9 @@ import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class ActivityForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -37,13 +38,18 @@ public class ActivityForm extends Form {
 
 	private IActivity activity;
 
-	public ActivityForm(IGUIEditor parent, IActivity activity) {
+	public static Form create(IGUIEditor parent, IActivity activity) {
+		Form form = new ActivityForm(parent, activity);
+		form.fill();
+		return form;
+	}
+
+	private ActivityForm(IGUIEditor parent, IActivity activity) {
 		super(parent);
 		this.activity = activity;
-		fill();
 	}
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(9, 2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());

@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -28,7 +28,11 @@ public class ActivityGUIFactory implements IModuleGUIFactory<IActivity> {
     }
 
     public Component createEditor(IGUIEditor parent, IActivity activity) {
-        return new ActivityForm(parent,activity);
+        return ActivityForm.create(parent, activity);
+    }
+
+    public Component createView(IGUIEditor parent, IActivity obj) {
+        return guiFactory.panelEmpty();
     }
 
     public Component createFilter(IGUIEditor parent) {
