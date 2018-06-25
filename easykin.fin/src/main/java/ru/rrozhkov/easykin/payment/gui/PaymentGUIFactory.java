@@ -6,7 +6,8 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import java.awt.*;
+
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -28,7 +29,11 @@ public class PaymentGUIFactory implements IModuleGUIFactory<IPayment> {
     }
 
     public Component createEditor(IGUIEditor parent, IPayment payment) {
-        return new PaymentForm(parent,payment);
+        return PaymentForm.create(parent, payment);
+    }
+
+    public Component createView(IGUIEditor parent, IPayment obj) {
+        return guiFactory.panelEmpty();
     }
 
     public Component createFilter(IGUIEditor parent) {

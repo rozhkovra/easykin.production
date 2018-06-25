@@ -5,7 +5,8 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-import java.awt.*;
+import java.awt.Component;
+
 
 public class PaymentForm extends Form {
 	private static final long serialVersionUID = 1L;
@@ -19,18 +20,19 @@ public class PaymentForm extends Form {
 	private Component categoryField;
 	private Component categoryLabel;
 	
-	public PaymentForm(IGUIEditor parent, IPayment payment) {
+	public static Form create(final IGUIEditor parent, final IPayment payment) {
+		Form form = new PaymentForm(parent, payment);
+		form.fill();
+		return form;
+	}
+
+	private PaymentForm(IGUIEditor parent, IPayment payment) {
 		super(parent);
 		this.payment = payment;
 		fill();
 	}
-
-	public PaymentForm(IGUIEditor parent) {
-		this(parent, null);
-	}
-
 	
-	protected void fill(){
+	public void fill(){
 		setLayout(guiFactory.gridLayout(6,2));
 		add(guiFactory.labelEmpty());
 		add(guiFactory.labelEmpty());
