@@ -47,10 +47,3 @@
 </div>
 </div>
 </section>
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#payments').DataTable()
-  })
-</script>

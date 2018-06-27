@@ -55,26 +55,3 @@
 </div>
 </div>
 </section>
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#tasks').DataTable()
-  })
-
-  $('[id^=done]').click(
-    function(){
-      var id = $(this).attr('id').replace('done','');
-      if (confirm("Выполнить задачу "+id+"?")) {
-        $.post(
-          "task/done.jsp",
-          {
-            taskId: id
-          }
-        ).done(function() { location.reload(); })
-           .fail(function(data) { alert("Ошибка выполнения"); })
-           .always(function() { alert("Задача "+id+" выполнена."); });
-       }
-    }
-  );
-</script>

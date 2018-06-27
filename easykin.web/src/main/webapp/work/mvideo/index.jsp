@@ -51,10 +51,3 @@
 </div>
 </div>
 </section>
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#activities').DataTable()
-  })
-</script>

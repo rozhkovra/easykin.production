@@ -65,10 +65,3 @@
 </div>
 </div>
 </section>
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#services').DataTable()
-  })
-</script>

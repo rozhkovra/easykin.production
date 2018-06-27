@@ -51,12 +51,3 @@
     }
 %>
 </div>
-
-<!-- page script -->
-<script>
-  $('[id^=refresh]').click(
-    function(){
-        location.reload();
-    }
-  );
-</script>

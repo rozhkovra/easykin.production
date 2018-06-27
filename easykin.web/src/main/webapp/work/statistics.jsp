@@ -20,11 +20,3 @@
 </div>
 </div>
 </section>
-
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#activitiesstatistics').DataTable()
-  })
-</script>
