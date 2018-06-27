@@ -2,6 +2,7 @@
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.service.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.finance.*"%>
@@ -32,6 +33,7 @@
   <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
   <ul class="todo-list">
 <%
+    UrlConfigurator urlConfigurator = new UrlConfigurator();
 	final AdapterFactory adapterFactory = new AdapterFactory();
 	final TaskAdapter taskAdapter = adapterFactory.task();
 	Collection<TaskBean> tasks = taskAdapter.toDoTasks();
@@ -62,7 +64,7 @@
 </div>
 <!-- /.box-body -->
 <div class="box-footer clearfix no-border">
-  <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+  <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.TASK)%>">Задачи</a>
 </div>
 </div>
 <!-- /.box -->
@@ -183,11 +185,6 @@
       <!-- /.table-responsive -->
     </div>
     <!-- /.box-body -->
-    <div class="box-footer clearfix">
-      <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-      <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-    </div>
-    <!-- /.box-footer -->
     </div>
     <!-- /.box -->
 
