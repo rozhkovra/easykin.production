@@ -80,7 +80,7 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
     public ServiceCalc getServiceCalc(IReading oldReading, IReading newReading, Collection rates) {
         Collection<ICalculation> calculations = CollectionUtil.create();
         boolean paid = false;
-        if(newReading.getDate().getTime() <= DateUtil.parse("30.04.2018").getTime()) {
+        if(newReading.getDate().getTime() <= DateUtil.parse("31.05.2018").getTime()) {
             paid = true;
         }
         calculations.add(calc2Factory.createWaterCalc(oldReading, newReading, rates, paid));

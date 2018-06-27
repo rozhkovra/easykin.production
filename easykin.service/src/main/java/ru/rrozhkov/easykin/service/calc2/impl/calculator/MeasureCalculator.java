@@ -13,7 +13,7 @@ import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 public class MeasureCalculator extends Calculator {
     private static final ServiceFactory serviceFactory = ServiceFactory.instance();
 
-    protected MeasureCalculator(MeasureCalc calc) {
+    public MeasureCalculator(MeasureCalc calc) {
         super(calc);
     }
 
