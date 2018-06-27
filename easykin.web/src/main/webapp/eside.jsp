@@ -1,21 +1,20 @@
-<%@ page import="ru.rrozhkov.easykin.module.*"%>
+<%@ page import="java.util.*"%>
+<%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
-<%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.category.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.task.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.person.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.person.util.*"%>
-<%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
-<%@ page import="ru.rrozhkov.easykin.task.*"%>
-<%@ page import="ru.rrozhkov.easykin.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.filter.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.collection.*"%>
-<%@ page import="ru.rrozhkov.easykin.task.db.impl.*"%>
+<%@ page import="ru.rrozhkov.easykin.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.category.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.task.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.person.*"%>
+<%@ page import="ru.rrozhkov.easykin.model.person.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
-<%@ page import="java.util.*"%>
-<%@ page import="org.hsqldb.jdbc.*"%>
+<%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.db.impl.*"%>
+<%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
     UrlConfigurator urlConfigurator = new UrlConfigurator();
