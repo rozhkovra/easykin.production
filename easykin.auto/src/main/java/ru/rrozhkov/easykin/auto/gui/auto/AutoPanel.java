@@ -9,11 +9,12 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 import java.util.Collection;
 
 
-public class AutoPanel extends JPanel{
+public class AutoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final static IGUIFactory guiFactory = GUIFactory.create();
 	private IModuleGUIFactory autoFactory = AutoGUIFactory.instance();

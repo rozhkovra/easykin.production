@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.module;
 
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 import java.util.HashMap;
 import java.util.Map;
 

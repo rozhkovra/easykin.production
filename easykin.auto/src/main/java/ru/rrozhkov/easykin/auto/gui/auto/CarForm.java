@@ -4,8 +4,9 @@ import ru.rrozhkov.easykin.model.auto.ICar;
 import ru.rrozhkov.easykin.core.gui.GUIFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Component;
+
 
 public class CarForm extends JPanel {
 	private static final long serialVersionUID = 1L;

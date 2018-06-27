@@ -9,7 +9,7 @@ import ru.rrozhkov.easykin.core.filter.IFilter;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Created by rrozhkov on 8/14/2017.

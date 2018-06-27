@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.module;
 
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
 /**
  * Created by rrozhkov on 3/28/2018.

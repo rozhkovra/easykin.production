@@ -2,11 +2,9 @@ package ru.rrozhkov.easykin.core.gui;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
-import javax.swing.*;
+import javax.swing.JTable;
 
-
-
-public class Table extends JTable{
+public class Table extends JTable {
 	private static final long serialVersionUID = 1L;
 
 	protected TableModel model;

@@ -3,7 +3,8 @@ package ru.rrozhkov.easykin.fatclient.gui.style.impl.custom;
 import ru.rrozhkov.easykin.core.gui.style.impl.TableStyle;
 import ru.rrozhkov.easykin.model.doc.IDoc;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 
 /**
  * Created by rrozhkov on 3/13/2017.

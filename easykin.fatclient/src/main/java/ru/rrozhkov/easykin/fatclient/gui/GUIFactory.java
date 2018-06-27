@@ -4,7 +4,7 @@ import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Created by rrozhkov on 4/19/2018.

@@ -12,6 +12,11 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
+            <groupId>ru.rrozhkov.easykin.core</groupId>
+            <artifactId>easykin.core</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
             <groupId>ru.rrozhkov.easykin.model</groupId>
             <artifactId>easykin.model</artifactId>
             <version>${version}</version>

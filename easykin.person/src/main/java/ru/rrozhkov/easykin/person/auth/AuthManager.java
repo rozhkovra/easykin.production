@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.person.db.impl.AuthHandler;
 import ru.rrozhkov.easykin.person.gui.auth.AuthDialog;
 import ru.rrozhkov.easykin.person.gui.auth.AuthWindow;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 /**
  * Created by rrozhkov on 3/6/2017.

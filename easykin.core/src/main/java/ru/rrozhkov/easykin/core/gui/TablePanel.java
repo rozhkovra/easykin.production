@@ -2,7 +2,10 @@ package ru.rrozhkov.easykin.core.gui;
 
 import ru.rrozhkov.easykin.core.gui.listener.TableOnClickListener;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class TablePanel extends JPanel {
 	private static final long serialVersionUID = 1L;

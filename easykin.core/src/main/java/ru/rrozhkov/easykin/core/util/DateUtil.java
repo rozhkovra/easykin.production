@@ -23,14 +23,12 @@ public class DateUtil {
 	public static String format(Date date){
 		return SDF.format(date);
 	}
-
 	public static String formatWeek(Date date){
 		return SDFWEEKDAY.format(date);
 	}
 	public static String formatWeek(){
 		return SDFWEEKDAY.format(today());
 	}
-	
 	public static String formatSql(Date date){
 		return SQLSDF.format(date);
 	}

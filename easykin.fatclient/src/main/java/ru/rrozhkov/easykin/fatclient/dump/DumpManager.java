@@ -24,6 +24,7 @@ import java.util.Collection;
  * Created by rrozhkov on 6/23/2017.
  */
 public class DumpManager {
+    // TODO extract modules
     final private static String STORAGE = "F:/temp/easykin.production";
     final private static ModuleManager moduleManager = ModuleManager.instance();
     final private static AuthManager authManager = AuthManager.instance();

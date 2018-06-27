@@ -2,8 +2,8 @@ package ru.rrozhkov.easykin.fatclient.gui.image;
 
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
 /**
  * Created by rrozhkov on 3/3/2017.

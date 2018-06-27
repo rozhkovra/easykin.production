@@ -12,7 +12,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;

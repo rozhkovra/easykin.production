@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.core.gui;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**

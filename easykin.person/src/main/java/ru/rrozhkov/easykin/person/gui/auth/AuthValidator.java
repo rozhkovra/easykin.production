@@ -2,7 +2,8 @@ package ru.rrozhkov.easykin.person.gui.auth;
 
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 
-import javax.swing.*;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  * Created by rrozhkov on 6/28/2017.

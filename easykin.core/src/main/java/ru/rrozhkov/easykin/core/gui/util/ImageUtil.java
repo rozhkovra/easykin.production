@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.core.gui.util;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 import java.net.URL;
 
 /**

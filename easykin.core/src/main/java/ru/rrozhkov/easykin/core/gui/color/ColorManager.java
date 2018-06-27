@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.core.gui.color;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Created by rrozhkov on 3/6/2017.
