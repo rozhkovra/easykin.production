@@ -32,6 +32,7 @@
 </thead>
 <tbody>
 <%
+    TaskUrlConfigurator urlConfigurator = new TaskUrlConfigurator();
 	final AdapterFactory adapterFactory = new AdapterFactory();
 	final TaskAdapter taskAdapter = adapterFactory.task();
 	Collection<TaskBean> tasks = taskAdapter.tasks(request);
@@ -39,7 +40,7 @@
 %>
 <tr >
 <td align="center"><%=taskBean.getNum()%></td>
-<td align="center"><span class="<%=taskBean.getTaskClass()%>"><%=taskBean.getTask().getId()%></span></td>
+<td align="center"><a href="<%=urlConfigurator.getTaskViewUrl(request, session, taskBean)%>"><span class="<%=taskBean.getTaskClass()%>"><%=taskBean.getTask().getId()%></span></a></td>
 <td ><%=taskBean.getTask().getName()%><br/><span style="font-size:12px;"><%=taskBean.getComments()%></span></td>
 <td align="center"><span class="<%=taskBean.getDateClass()%>"><%=DateUtil.format(taskBean.getTask().getPlanDate())%></span></td>
 <td align="center"><%=taskBean.getTask().getCategory().getName()%></td>

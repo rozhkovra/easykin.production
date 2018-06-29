@@ -1,9 +1,13 @@
 <%@ page import="ru.rrozhkov.easykin.core.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
+<%
+  UrlConfigurator urlConfigurator = new UrlConfigurator();
+%>
 <header class="main-header">
   <!-- Logo -->
-  <a href="index.jsp" class="logo">
+  <a href="<%=urlConfigurator.getBaseUrl(request, session)%>" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
     <img src="icon/logo.ico" width="40" height="40" class="img-circle" alt="Logo Image">

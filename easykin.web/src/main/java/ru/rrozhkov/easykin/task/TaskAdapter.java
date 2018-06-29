@@ -76,7 +76,6 @@ public class TaskAdapter {
 
     public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
         TaskFilterBean bean = filter(request);
-        Collection<ITask> tasks = taskBuilder.build(bean);
         return tasks(bean);
     }
 

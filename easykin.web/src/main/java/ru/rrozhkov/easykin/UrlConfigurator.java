@@ -14,44 +14,49 @@ public class UrlConfigurator {
     final private static AdapterFactory adapterFactory = new AdapterFactory();
     final private static TaskAdapter taskAdapter = adapterFactory.task();
 
-    public static String getFilterUrl(HttpServletRequest request, HttpSession session) {
-        TaskFilterBean filterBean = taskAdapter.filter(request);
-        return getFilterUrl(session.getId(), filterBean);
+    public String getBaseUrl(HttpServletRequest request, HttpSession session) {
+        return request.getContextPath()+"/easykin";
     }
 
-    public static String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId) {
+    public String getFilterUrl(HttpServletRequest request, HttpSession session) {
+        TaskFilterBean filterBean = taskAdapter.filter(request);
+        return getFilterUrl(request, session, filterBean);
+    }
+
+    public String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId) {
         TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setModuleId(moduleId);
-        return getFilterUrl(session.getId(), filterBean);
+        return getFilterUrl(request, session, filterBean);
     }
 
-    public static String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId, String subModule) {
+    public String getFilterUrlForModule(HttpServletRequest request, HttpSession session, String moduleId, String subModule) {
         TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setModuleId(moduleId);
         filterBean.setSubModuleId(subModule);
-        return getFilterUrl(session.getId(), filterBean);
+        return getFilterUrl(request, session, filterBean);
     }
 
-    public static String getFilterUrlForCategory(HttpServletRequest request, HttpSession session, int categoryId) {
+    public String getFilterUrlForCategory(HttpServletRequest request, HttpSession session, int categoryId) {
         TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setCategoryId(categoryId);
-        return getFilterUrl(session.getId(), filterBean);
+        return getFilterUrl(request, session, filterBean);
     }
 
-    public static String getFilterUrlForStatus(HttpServletRequest request, HttpSession session, int statusId) {
+    public String getFilterUrlForStatus(HttpServletRequest request, HttpSession session, int statusId) {
         TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setStatusId(statusId);
-        return getFilterUrl(session.getId(), filterBean);
+        return getFilterUrl(request, session, filterBean);
     }
 
-    public static String getFilterUrlForPriority(HttpServletRequest request, HttpSession session, int priorityId) {
+    public String getFilterUrlForPriority(HttpServletRequest request, HttpSession session, int priorityId) {
         TaskFilterBean filterBean = taskAdapter.filter(request);
         filterBean.setPriority(priorityId);
-        return getFilterUrl(session.getId(), filterBean);
+        return getFilterUrl(request, session, filterBean);
     }
 
-    public static String getFilterUrl(String sessionId, TaskFilterBean filterBean) {
-        return new StringBuilder("index.jsp").append("?session=").append(sessionId)
+    public String getFilterUrl(HttpServletRequest request, HttpSession session, TaskFilterBean filterBean) {
+        return new StringBuilder(getBaseUrl(request, session))
+                .append("?session=").append(session.getId())
                 .append("&priorityId=").append(filterBean.getPriorityId())
                 .append("&categoryId=").append(filterBean.getCategoryId())
                 .append("&moduleId=").append(filterBean.getModuleId())
@@ -61,14 +66,14 @@ public class UrlConfigurator {
                 .append("&toDate=").append(DateUtil.format(filterBean.getToDate())).toString();
     }
 
-    public static String getCategoryClass(HttpServletRequest request, int curCategoryId) {
+    public String getCategoryClass(HttpServletRequest request, int curCategoryId) {
         int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
         if (categoryId == curCategoryId)
             return "active";
         return "";
     }
 
-    public static String getModuleClass(HttpServletRequest request, String curModuleId) {
+    public String getModuleClass(HttpServletRequest request, String curModuleId) {
         String moduleId = request.getParameter("moduleId")!=null?String.valueOf(request.getParameter("moduleId")):"";
         if (curModuleId.equals(moduleId))
             return "active";

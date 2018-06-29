@@ -41,10 +41,13 @@
             } else if(SubModule.STATISTICS.equals(subModuleId)) {
 %><jsp:include page="service/statistics.jsp"/><%
             }
-        } else {
-%><jsp:include page="task/index.jsp"/>
-<%
-      }
+        } else if (Module.TASK.equals(moduleId) || Module.FAMILY.equals(moduleId)) {
+            if(SubModule.VIEW.equals(subModuleId)) {
+%><jsp:include page="task/view.jsp"/>
+<%          }  else  {
+%><jsp:include page="task/index.jsp"/><%
+            }
+        }
     } else {
 %><jsp:include page="dashboard.jsp"/>
 <%

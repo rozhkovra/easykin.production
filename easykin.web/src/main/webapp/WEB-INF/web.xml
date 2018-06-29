@@ -5,6 +5,15 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+    <servlet>
+        <servlet-name>easykinServlet</servlet-name>
+        <servlet-class>ru.rrozhkov.easykin.http.EasyKinServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>easykinServlet</servlet-name>
+        <url-pattern>/easykin</url-pattern>
+    </servlet-mapping>
+
   <jsp-config>
   	<jsp-property-group>
     		<url-pattern>*.jsp</url-pattern>

@@ -8,4 +8,6 @@ public class SubModule {
     public static final String INFO = "info";
     public static final String RATES = "rates";
     public static final String STATISTICS = "statistics";
+    public static final String VIEW = "view";
+    public static final String EDIT = "edit";
 }
