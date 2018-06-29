@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exe4j version="4.6" transformSequenceNumber="1">
-  <directoryPresets config="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/10.0.0" />
-  <application name="EasyKin" distributionSourceDir="F:/temp/EasyKin/easykin.fatclient/exe">
+  <directoryPresets config="F:/temp/easykin.production/easykin.fatclient/src/main/resources/icon" />
+  <application name="EasyKin" distributionSourceDir="F:/temp/easykin.production/easykin.fatclient/exe">
     <languages>
       <principalLanguage id="en" customLocalizationFile="" />
     </languages>
   </application>
-  <executable name="EasyKin-10.0.0" type="2" iconSet="true" iconFile="F:/temp/EasyKin/easykin.fatclient/icon/logo.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" amd64="false">
+  <executable name="EasyKin-11.0.0" type="2" iconSet="true" iconFile="F:/temp/easykin.production/easykin.fatclient/src/main/resources/icon/logo.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false" amd64="false">
     <messageSet />
     <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" companyName="" productVersion="" />
   </executable>
-  <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="F:/projects/workspace_rrozhkov/EasyKin/icon/splash.png" java6SplashScreen="false">
+  <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="" java6SplashScreen="false">
     <text>
       <statusLine x="20" y="20" text="" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
       <versionLine x="20" y="40" text="version %VERSION%" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
@@ -23,18 +23,18 @@
       <envVar name="JDK_HOME" />
     </searchSequence>
     <classPath>
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/lib/easykin.lib/10.0.0/easykin.lib-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/model/easykin.model/10.0.0/easykin.model-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/fin/easykin.fin/10.0.0/easykin.fin-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/task/easykin.task/10.0.0/easykin.task-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/service/easykin.service/10.0.0/easykin.service-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/family/easykin.family/10.0.0/easykin.family-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/auto/easykin.auto/10.0.0/easykin.auto-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/easykin/10.0.0/easykin-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/module/easykin.module/10.0.0/easykin.module-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/10.0.0/easykin.person-10.0.0.jar" failOnError="false" />
-      <archive location="C:/Users/RRozhkov/.m2/repository/ru/rrozhkov/easykin/work/easykin.work/10.0.0/easykin.work-10.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/core/easykin.core/11.0.0/easykin.core-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/model/easykin.model/11.0.0/easykin.model-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/fin/easykin.fin/11.0.0/easykin.fin-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/task/easykin.task/11.0.0/easykin.task-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/service/easykin.service/11.0.0/easykin.service-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/family/easykin.family/11.0.0/easykin.family-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/auto/easykin.auto/11.0.0/easykin.auto-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/fatclient/easykin.fatclient/11.0.0/easykin.fatclient-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/module/easykin.module/11.0.0/easykin.module-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/11.0.0/easykin.person-11.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/work/easykin.work/11.0.0/easykin.work-11.0.0.jar" failOnError="false" />
     </classPath>
     <nativeLibraryDirectories />
   </java>

@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.web</groupId>
   <artifactId>easykin.web</artifactId>
   <packaging>war</packaging>
-  <version>10.0.0</version>
+  <version>11.0.0</version>
   <name>easykin.web</name>
   <url>http://maven.apache.org</url>
   <dependencies>

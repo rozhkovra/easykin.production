@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.fatclient</groupId>
   <artifactId>easykin.fatclient</artifactId>
   <packaging>jar</packaging>
-  <version>10.0.0</version>
+  <version>11.0.0</version>
   <name>easykin.fatclient</name>
   <url>http://maven.apache.org</url>
 
