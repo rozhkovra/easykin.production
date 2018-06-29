@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.core</groupId>
   <artifactId>easykin.core</artifactId>
   <packaging>jar</packaging>
-  <version>11.0.0</version>
+  <version>12.0.0</version>
   <name>easykin.core</name>
   <url>http://maven.apache.org</url>
   <dependencies>
