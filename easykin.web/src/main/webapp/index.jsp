@@ -1,4 +1,5 @@
 <%@ page import="ru.rrozhkov.easykin.core.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.easykin.person.auth.*"%>
 <%@ page import="java.util.*"%>
@@ -88,33 +89,31 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <jsp:include page="header.jsp"/>
-<%
-	String signout = request.getParameter("signout")!=null?String.valueOf(request.getParameter("signout")):"";
-	if (!signout.isEmpty()) {
-	    AuthManager.instance().signOut();
-	}
-
-	String username = request.getParameter("username")!=null?String.valueOf(request.getParameter("username")):"";
-	String password = request.getParameter("password")!=null?String.valueOf(request.getParameter("password")):"";
-	if (!username.isEmpty() && !password.isEmpty()) {
-		AuthManager.instance().signIn(username, password);
-    }
-
-	if (!AuthManager.instance().isSignedIn()) {
-		if (!username.isEmpty() && !password.isEmpty()) {
-%><span style="color:red;">Не верно указан логин или пароль!</span>
-<%
-		}
-%>
-<jsp:include page="login.jsp"/>
-<%
-	} else {
-%>
 <jsp:include page="eside.jsp"/>
-<jsp:include page="main.jsp"/>
+<div class="content-wrapper">
 <%
-	}
+    WebModuleManager moduleManager = new WebModuleManager(request);
 %>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h4><%=moduleManager.module()%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh" style="cursor:pointer;"></i></h4>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><%=moduleManager.module()%></li>
+      </ol>
+    </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">
+    <div class="box-body">
+    <jsp:include page="<%=moduleManager.url()%>"/>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+</div>
 </div>
 </body>
 </html>

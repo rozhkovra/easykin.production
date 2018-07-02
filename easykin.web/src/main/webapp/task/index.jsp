@@ -3,16 +3,7 @@
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<section class="content">
-<div class="row">
-<div class="col-xs-12">
-<div class="box">
-<div class="box-header">
 <jsp:include page="/task/filter.jsp"/>
-<!-- /.form group -->
-</div>
-
-<div class="box-body">
 <table id="tasks" width="100%"  class="table table-bordered table-striped">
   <col width="30"/>
   <col width="30"/>
@@ -51,8 +42,3 @@
 %>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-</section>

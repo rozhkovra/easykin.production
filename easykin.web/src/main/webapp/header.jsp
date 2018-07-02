@@ -24,7 +24,7 @@
 
     <div class="navbar-custom-menu">
     <span><%=DateUtil.formatWeek()%></span>
-    <span><a href="index.jsp?signout=signout">Выйти</a></span>
+    <span><a href="<%=urlConfigurator.getBaseUrl(request, session)%>?signout=signout">Выйти</a></span>
 
     </div>
   </nav>

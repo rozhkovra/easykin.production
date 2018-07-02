@@ -3,15 +3,6 @@
 <%@ page import="ru.rrozhkov.easykin.payment.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<section class="content">
-<div class="row">
-<div class="col-xs-12">
-
-<div class="box">
-<div class="box-header">
-</div>
-
-<div class="box-body">
 <table id="payments" class="table table-bordered table-hover">
 <thead>
 <tr>
@@ -41,8 +32,3 @@
 %>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-</section>

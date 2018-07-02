@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
-<%@ page import="ru.rrozhkov.easykin.model.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>

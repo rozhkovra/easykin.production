@@ -28,6 +28,9 @@ public class ModuleManager {
     private String moduleClass(String module){
         return ROOT+"." + module + ".Module";
     }
+    public boolean isActive(String module) {
+        return activeModules().contains(module);
+    }
     public boolean exist(String module){
         return classManager.exist(moduleClass(module));
     }

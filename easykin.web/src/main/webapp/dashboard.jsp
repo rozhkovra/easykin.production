@@ -5,8 +5,6 @@
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.service.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
-<%@ page import="ru.rrozhkov.easykin.finance.*"%>
-<%@ page import="ru.rrozhkov.easykin.work.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <section class="content">
 <div class="row">
@@ -88,38 +86,7 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
-<table id="activities" class="table table-bordered table-hover">
-<thead>
-<tr>
-<th>№</th>
-<th>Дата</th>
-<th>Часы</th>
-<th>Тип задачи</th>
-<th>ID задачи</th>
-<th>Номер релиза</th>
-<th>Комментарий</th>
-</tr>
-</thead>
-<tbody>
-<%
-	final WorkAdapter workAdapter = adapterFactory.work();
-	Collection<ActivityBean> activities = workAdapter.activities();
-	for(ActivityBean bean : activities){
-%>
-<tr>
-<td ><%=bean.getNum()%></td>
-<td ><span class="<%=bean.getDateClass()%>"><%=DateUtil.format(bean.getActivity().getDate())%></span></td>
-<td align="right"><%=bean.getActivity().getTime()%></td>
-<td align="center;"><%=String.valueOf(bean.getActivity().getTaskType())%></td>
-<td align="center;"><%=bean.getActivity().getName()%></td>
-<td align="center;"><%=String.valueOf(bean.getActivity().getReleaseType())%></td>
-<td align="center;"><%=bean.getActivity().getDesc()%></td>
-</tr>
-<%
-	}
-%>
-</tbody>
-</table>
+      <jsp:include page="work/mvideo/index.jsp"/>
       </div>
       <!-- /.table-responsive -->
     </div>
@@ -190,35 +157,7 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
-        <table  id="payments" class="table no-margin">
-        <thead>
-        <tr>
-        <th>№</th>
-        <th>Категория</th>
-        <th>Назначение</th>
-        <th>Сумма</th>
-        <th>Дата</th>
-        </tr>
-        </thead>
-        <tbody>
-    <%
-    	final FinanceAdapter financeAdapter = adapterFactory.finance();
-
-    	Collection<FinanceBean> payments = financeAdapter.finance();
-    	for (FinanceBean payment : payments) {
-    %>
-        <tr>
-        <td><%=payment.getNum()%></td>
-        <td><%=payment.getPayment().getCategory()%></td>
-        <td><%=payment.getPayment().getComment()%></td>
-        <td align="right"><%=payment.getPayment().getAmount()%></td>
-        <td align="center"><%=DateUtil.format(payment.getPayment().getDate())%></td>
-        </tr>
-    <%
-    	}
-    %>
-        </tbody>
-        </table>
+      <jsp:include page="fin/index.jsp"/>
       </div>
       <!-- /.table-responsive -->
     </div>
@@ -243,9 +182,7 @@
           </div>
         </div>
         <div class="box-body">
-          <div class="chart">
-            <canvas id="barChart" style="height:230px"></canvas>
-          </div>
+        <jsp:include page="service/statistics.jsp"/>
         </div>
         <!-- /.box-body -->
       </div>
