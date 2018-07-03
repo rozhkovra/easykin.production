@@ -96,10 +96,10 @@
 %>
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h4><%=moduleManager.module()%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh" style="cursor:pointer;"></i></h4>
+      <h4><%=moduleManager.moduleName()%>&nbsp;&nbsp;<i id="refresh" class="fa fa-refresh" style="cursor:pointer;"></i></h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><%=moduleManager.module()%></li>
+        <li class="active"><%=moduleManager.moduleName()%></li>
       </ol>
     </section>
     <section class="content">

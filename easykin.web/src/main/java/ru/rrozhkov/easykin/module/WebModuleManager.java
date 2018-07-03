@@ -23,6 +23,10 @@ public class WebModuleManager {
                 ?String.valueOf(request.getParameter("subModuleId")):"index";
     }
 
+    public String moduleName() {
+        return Module.name(module());
+    }
+
     public String url() {
         String module = module();
         if (moduleManager.isActive(module)) {

@@ -45,7 +45,7 @@
 <div class="box-header">
   <i class="ion ion-clipboard"></i>
 
-  <h3 class="box-title">To Do List</h3>
+  <h3 class="box-title">Задачи</h3>
 
 </div>
 <!-- /.box-header -->
@@ -83,7 +83,7 @@
 </div>
 <!-- /.box-body -->
 <div class="box-footer clearfix no-border">
-  <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.TASK)%>">Задачи</a>
+  <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.TASK)%>">Подробно</a>
 </div>
 </div>
 <!-- /.box -->
@@ -95,7 +95,7 @@
     <!-- TABLE: WORK -->
     <div class="box box-info">
     <div class="box-header with-border">
-      <h3 class="box-title">Work</h3>
+      <h3 class="box-title">Работа</h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -122,7 +122,7 @@
     <div class="col-md-5">
     <div class="box">
     <div class="box-header">
-    <h3 class="box-title">Services</h3>
+    <h3 class="box-title">Комуналльные услуги</h3>
     </div>
     <div class="box-body">
     <jsp:include page="service/short.jsp"/>
@@ -139,7 +139,7 @@
     <!-- TABLE: FINANCE -->
     <div class="box box-info">
     <div class="box-header with-border">
-      <h3 class="box-title">Finance</h3>
+      <h3 class="box-title">Финансы</h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -167,7 +167,7 @@
       <!-- BAR CHART -->
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Statistics</h3>
+          <h3 class="box-title">Комуналльные платежи - Статистика</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
