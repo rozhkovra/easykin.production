@@ -4,6 +4,8 @@ import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.core.filter.IFilter;
 
+import java.util.Date;
+
 public class PaymentFilterFactory {
 	public static class PaymentFilterFactoryHolder {
 		public static final PaymentFilterFactory INSTANCE = new PaymentFilterFactory();
@@ -22,4 +24,5 @@ public class PaymentFilterFactory {
 	public IFilter<IPayment> status(PaymentStatus status){
 		return new StatusFilter(status);
 	}
+	public IFilter<IPayment> betweenDate(Date start, Date end) {return new BetweenDateFilter(start, end);}
 }

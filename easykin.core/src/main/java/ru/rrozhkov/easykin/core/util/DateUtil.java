@@ -36,6 +36,12 @@ public class DateUtil {
 		return SDFSERVICE.format(date);
 	}
 	public static Date today(){return new Date();}
+	public static boolean isToday(Date date){
+		Date today = today();
+		return today.getDate() == date.getDate()
+				&& today.getMonth() == date.getMonth()
+				&& today.getYear() == date.getYear();
+	}
 	public static String todayWeek(){return formatWeek(today());}
 	public static Date firstDayOfMonth(Date date){
 		Calendar cal = Calendar.getInstance();

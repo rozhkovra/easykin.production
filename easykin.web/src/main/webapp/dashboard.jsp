@@ -6,9 +6,39 @@
 <%@ page import="ru.rrozhkov.easykin.service.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
+<%
+    UrlConfigurator urlConfigurator = new UrlConfigurator();
+%>
 <section class="content">
 <div class="row">
-<div class="col-md-4">
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-gray">
+    <div class="inner">
+      <h3>10</h3>
+
+      <p>Просрочено</p>
+    </div>
+    <div class="icon">
+      <i class="fa fa-tasks"></i>
+    </div>
+    <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.TASK)%>"class="small-box-footer">Подробно <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+<div class="col-lg-3 col-xs-6">
+<jsp:include page="work/mvideo/box.jsp"/>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+<jsp:include page="service/box.jsp"/>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+<jsp:include page="payment/box.jsp"/>
+</div>
+</div>
+<div class="row">
+<div class="col-md-5">
 
 <!-- TO DO List -->
 <div class="box box-primary">
@@ -17,22 +47,12 @@
 
   <h3 class="box-title">To Do List</h3>
 
-  <div class="box-tools pull-right">
-    <ul class="pagination pagination-sm inline">
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
-  </div>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
   <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
   <ul class="todo-list">
 <%
-    UrlConfigurator urlConfigurator = new UrlConfigurator();
 	final AdapterFactory adapterFactory = new AdapterFactory();
 	final TaskAdapter taskAdapter = adapterFactory.task();
 	Collection<TaskBean> tasks = taskAdapter.toDoTasks();
@@ -70,7 +90,7 @@
 </div>
 <!-- /.col -->
 
-    <div class="col-md-8">
+    <div class="col-md-7">
 
     <!-- TABLE: WORK -->
     <div class="box box-info">
@@ -99,40 +119,13 @@
 
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
     <div class="box">
     <div class="box-header">
     <h3 class="box-title">Services</h3>
     </div>
     <div class="box-body">
-    <table id="services" class="table table-bordered table-hover">
-    <thead>
-    <tr>
-    <th>№</th>
-    <th>Период</th>
-    <th>Дата</th>
-    <th>Итого</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%
-    	int i = 0;
-    	final ServiceAdapter adapter = adapterFactory.service();
-        Collection<ServiceBean> services = adapter.services();
-        for (ServiceBean service : services){
-    %>
-    <tr>
-    <td align="center"><%=++i%></td>
-    <td ><span class="<%=service.getServiceClass()%>"><%=service.getName()%></span></td>
-    <td align="center"><%=DateUtil.format(service.getDate())%></td>
-    <td style="<%=service.getTdStyle()%>text-align:right;"><%=FormatUtil.formatMoney(service.getItog())+(service.getNoPaid().free()?"":"/"+FormatUtil.formatMoney(service.getNoPaid()))%></td>
-    </tr>
-    <%
-        }
-
-    %>
-    </tbody>
-    </table>
+    <jsp:include page="service/short.jsp"/>
     </div>
     <!--/.box-body-->
     </div>
@@ -141,7 +134,7 @@
     <!-- /.col -->
 
 
-    <div class="col-md-8">
+    <div class="col-md-7">
 
     <!-- TABLE: FINANCE -->
     <div class="box box-info">
