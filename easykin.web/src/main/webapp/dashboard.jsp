@@ -29,7 +29,25 @@
 </div>
 <!-- /.box-header -->
 <div class="box-body">
-    <jsp:include page="task/todo.jsp"/>
+          <!-- Custom Tabs -->
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab_1" data-toggle="tab">В работе</a></li>
+              <li><a href="#tab_2" data-toggle="tab">Просрочка</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                    <jsp:include page="task/todo.jsp"/>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                    <jsp:include page="task/overdue.jsp"/>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- nav-tabs-custom -->
 </div>
 <!-- /.box-body -->
 <div class="box-footer clearfix no-border">
