@@ -18,11 +18,14 @@
 	        && !Priority.SIMPLE.equals(task.getPriority())) {
           count++;
         }
-
 	}
+    String color = "green";
+    if (count>0) {
+        color = "gray";
+    }
 %>
   <!-- small box -->
-  <div class="small-box bg-gray">
+  <div class="small-box bg-<%=color%>">
     <div class="inner">
       <h3><%=count%></h3>
 
