@@ -22,8 +22,8 @@
     String color = "green";
     if (count>0) {
         color = "gray";
-    }
 %>
+<div class="col-lg-3 col-xs-6">
   <!-- small box -->
   <div class="small-box bg-<%=color%>">
     <div class="inner">
@@ -36,3 +36,7 @@
     </div>
     <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.TASK)%>"class="small-box-footer">Подробно <i class="fa fa-arrow-circle-right"></i></a>
   </div>
+</div>
+<%
+    }
+%>

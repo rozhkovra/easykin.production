@@ -5,18 +5,11 @@
 %>
 <section class="content">
 <div class="row">
-    <div class="col-lg-3 col-xs-6">
-        <jsp:include page="task/box.jsp"/>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-        <jsp:include page="work/mvideo/box.jsp"/>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-        <jsp:include page="service/box.jsp"/>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-        <jsp:include page="payment/box.jsp"/>
-    </div>
+    <jsp:include page="task/box.jsp"/>
+    <jsp:include page="work/mvideo/box.jsp"/>
+    <jsp:include page="service/box.jsp"/>
+    <jsp:include page="payment/box.jsp"/>
+    <jsp:include page="fin/box.jsp"/>
 </div>
 <div class="row">
 <div class="col-md-5">
