@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.service.calc2.impl.convert;
 
+import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.RateType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
@@ -37,7 +38,7 @@ public class RateConverter implements IEntityConverter {
             public IRate convert(ResultSet result){
                 try{
                     return serviceFactory.createRate(result.getInt("id"), RateType.type(result.getString("rateType"))
-                            , result.getString("rateValue"), result.getDate("dateFrom"), result.getDate("dateTo"));
+                            , Money.valueOf(result.getString("rateValue")), result.getDate("dateFrom"), result.getDate("dateTo"));
                 }catch(SQLException e){
                     e.printStackTrace();
                 }
