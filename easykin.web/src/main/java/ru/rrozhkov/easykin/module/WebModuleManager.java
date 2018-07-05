@@ -24,7 +24,7 @@ public class WebModuleManager {
     }
 
     public String moduleName() {
-        return Module.name(module());
+        return module().isEmpty()?"":Module.name(module());
     }
 
     public String url() {
