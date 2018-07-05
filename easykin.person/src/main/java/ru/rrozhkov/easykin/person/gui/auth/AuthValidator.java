@@ -13,7 +13,7 @@ public class AuthValidator {
 
     public boolean validateAuthForm(JTextField username, JPasswordField password){
         return !username.getText().isEmpty()
-                && !password.getText().isEmpty();
+                && password.getPassword().length > 0;
     }
     public boolean validateSignedUsername(String username){
         return authManager.isSignedIn() && username.equals(authManager.signedPerson().getUsername());

@@ -78,7 +78,7 @@ public class AuthForm extends Form {
 			JOptionPane.showMessageDialog((Component)parent, "Username is already signed in!!!");
 			return;
 		}
-		authManager.signIn(getUsernameField().getText(), getPasswordField().getText());
+		authManager.signIn(getUsernameField().getText(), String.valueOf(getPasswordField().getPassword()));
 		if (!authManager.isSignedIn()) {
 			JOptionPane.showMessageDialog((Component) parent, "Username or password incorrect!!!");
 		} else
@@ -87,6 +87,6 @@ public class AuthForm extends Form {
 
 	protected boolean validateData(){
 		return !getUsernameField().getText().isEmpty()
-				&& !getPasswordField().getText().isEmpty();
+				&& getPasswordField().getPassword().length > 0;
 	}
 }
