@@ -17,7 +17,6 @@ public class EasyKinServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT+6:00"));
         String signout = req.getParameter("signout")!=null?String.valueOf(req.getParameter("signout")):"";
         if (!signout.isEmpty()) {
             authManager.signOut();

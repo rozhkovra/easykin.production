@@ -1,14 +1,14 @@
 package ru.rrozhkov.easykin.fatclient;
 
+import ru.rrozhkov.easykin.core.db.impl.HSQLDBServer;
 import ru.rrozhkov.easykin.fatclient.gui.EasyKinWindow;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
-import ru.rrozhkov.easykin.core.db.impl.HSQLDBServer;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class EasyKin {
     static final HSQLDBServer dbServer = new HSQLDBServer("easykin", "file:data/easykin");
@@ -16,7 +16,6 @@ public class EasyKin {
 
     public static void main( String[] args ) {
         Locale.setDefault(new Locale("en"));
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT+6:00"));
         dbServer.start();
         auth();
         start();
