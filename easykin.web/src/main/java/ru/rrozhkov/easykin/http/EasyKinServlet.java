@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.TimeZone;
 
 /**
  * Created by rrozhkov on 29.06.2018.
@@ -16,6 +17,7 @@ public class EasyKinServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+6:00"));
         String signout = req.getParameter("signout")!=null?String.valueOf(req.getParameter("signout")):"";
         if (!signout.isEmpty()) {
             authManager.signOut();
