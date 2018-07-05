@@ -1,11 +1,10 @@
 <%@ page import="java.util.*"%>
 <%@ page import="org.hsqldb.jdbc.*"%>
 <%@ page import="ru.rrozhkov.easykin.*"%>
-<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
-<%@ page import="ru.rrozhkov.easykin.core.filter.util.*"%>
-<%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.collection.*"%>
-<%@ page import="ru.rrozhkov.easykin.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.filter.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.core.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.category.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.person.*"%>
@@ -15,6 +14,7 @@
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.db.impl.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.impl.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
     UrlConfigurator urlConfigurator = new UrlConfigurator();
@@ -76,8 +76,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.INDEX)%>">Активности</a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>">Статистика</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.INDEX)%>"><i class="fa fa-hourglass-half"></i> Активности</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>"><i class="fa fa-tasks"></i> Статистика</a></li>
           </ul>
         </li>
         <li class="active treeview">
@@ -88,10 +88,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INDEX)%>">Платежи</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INDEX)%>"><i class="fa fa-money"></i> Платежи</a></li>
             <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.RATES )%>">Тарифы</a></li>
             <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INFO )%>">Инфо</a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>">Статистика</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>"><i class="fa fa-tasks"></i> Статистика</a></li>
           </ul>
         </li>
 <%      if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
