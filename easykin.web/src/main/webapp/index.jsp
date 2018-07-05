@@ -79,12 +79,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="shortcut icon" href="icon/logo.ico" />
 
-  <!-- EasyKin scripts -->
-  <script src="js/easykin.work.js"></script>
-  <script src="js/easykin.service.js"></script>
-  <script src="js/easykin.payment.js"></script>
-  <script src="js/easykin.task.js"></script>
-  <script src="js/easykin.core.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -115,5 +109,13 @@
     </section>
 </div>
 </div>
+
+<!-- EasyKin scripts -->
+  <script src="js/easykin.work.js"></script>
+  <script src="js/easykin.service.js"></script>
+  <script src="js/easykin.payment.js"></script>
+  <script src="js/easykin.task.js"></script>
+  <script src="js/easykin.core.js"></script>
+  <script src="js/easykin.finance.js"></script>
 </body>
 </html>
