@@ -1,3 +1,4 @@
+$( document ).ready(
 $(function () {
     $('#services').DataTable()
 
@@ -61,3 +62,4 @@ $(function () {
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
 })
+);

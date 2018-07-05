@@ -1,3 +1,4 @@
+$( document ).ready(
 $(function () {
     $('#tasks').DataTable()
     $('[id^=done]').click(
@@ -34,3 +35,4 @@ $(function () {
         }
     )
 })
+);

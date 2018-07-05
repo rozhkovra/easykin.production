@@ -1,3 +1,5 @@
-$(function () {
-    $('#payments').DataTable()
-})
+$( document ).ready(
+    $(function () {
+        $('#payments').DataTable()
+    })
+);

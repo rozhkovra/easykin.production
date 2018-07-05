@@ -1,4 +1,6 @@
-$(function () {
-    $('#activities').DataTable()
-    $('#activitiesstatistics').DataTable()
-})
+$( document ).ready(
+    $(function () {
+        $('#activities').DataTable()
+        $('#activitiesstatistics').DataTable()
+    })
+);
