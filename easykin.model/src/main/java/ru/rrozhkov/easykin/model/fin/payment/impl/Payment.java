@@ -29,7 +29,7 @@ public class Payment implements IPayment {
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
 
 	public PaymentCategory getCategory() {

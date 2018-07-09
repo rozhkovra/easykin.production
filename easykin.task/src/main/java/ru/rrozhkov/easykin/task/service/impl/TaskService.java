@@ -1,7 +1,9 @@
 package ru.rrozhkov.easykin.task.service.impl;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
+import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.model.task.ITask2Payment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.model.task.util.TaskUtil;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
@@ -26,6 +28,7 @@ public class TaskService {
     private static final TaskHandler taskHandler = TaskHandler.instance();
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final AuthManager authManager = AuthManager.instance();
+    private static final PaymentFactory paymentFactory = PaymentFactory.instance();
 
     public static class TaskServiceHolder {
         public static final TaskService INSTANCE = new TaskService();
@@ -44,7 +47,7 @@ public class TaskService {
             if (taskId == -1) {
                 taskId = create(task);
             } else {
-                taskHandler.update(task);
+                update(task);
             }
         }catch(Exception ex){
             ex.printStackTrace();
@@ -78,6 +81,20 @@ public class TaskService {
             IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
             int paymentId = paymentHandler.insert(payment);
             t2paymentHandler.insert(taskFactory.createTask2Payment(-1, paymentId, taskId));
+        }
+        return taskId;
+    }
+
+    protected int update(ITask task) throws SQLException {
+        int taskId = task.getId();
+        taskHandler.update(task);
+        if(TaskUtil.withPayment(task)) {
+            ITask2Payment t2p = t2paymentHandler.selectForTask(taskId);
+            int paymentId = t2p.getPaymentId();
+            IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
+            payment = paymentFactory.createPayment(paymentId, payment.getCategory(), payment.getComment(),
+                        payment.getAmount(), payment.getDate(), payment.getStatus());
+            paymentHandler.update(payment);
         }
         return taskId;
     }
