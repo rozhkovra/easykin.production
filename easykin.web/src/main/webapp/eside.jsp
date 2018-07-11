@@ -70,7 +70,7 @@
         </li>
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span><%=ru.rrozhkov.easykin.module.Module.name(ru.rrozhkov.easykin.module.Module.WORK)%></span>
+            <i class="fa fa-industry"></i> <span><%=ru.rrozhkov.easykin.module.Module.name(ru.rrozhkov.easykin.module.Module.WORK)%></span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -82,16 +82,16 @@
         </li>
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span><%=ru.rrozhkov.easykin.module.Module.name(ru.rrozhkov.easykin.module.Module.SERVICE)%></span>
+            <i class="fa fa-recycle"></i> <span><%=ru.rrozhkov.easykin.module.Module.name(ru.rrozhkov.easykin.module.Module.SERVICE)%></span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INDEX)%>"><i class="fa fa-money"></i> Платежи</a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.RATES )%>">Тарифы</a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INFO )%>">Инфо</a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>"><i class="fa fa-tasks"></i> Статистика</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.RATES )%>"><i class="fa fa-calculator"></i> Тарифы</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.INFO )%>"><i class="fa fa-info"></i> Инфо</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.SERVICE, ru.rrozhkov.easykin.module.SubModule.STATISTICS )%>"><i class="fa fa-bar-chart-o"></i> Статистика</a></li>
           </ul>
         </li>
 <%      if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
