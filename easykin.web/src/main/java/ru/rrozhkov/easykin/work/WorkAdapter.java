@@ -3,10 +3,7 @@ package ru.rrozhkov.easykin.work;
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by rrozhkov on 14.05.2018.
@@ -53,5 +50,9 @@ public class WorkAdapter {
             groupActivityBeans.add(workBeanFactory.groupActivityBean(++i, key, activitiesMap.get(key)));
         }
         return groupActivityBeans;
+    }
+
+    public Collection<ActivityBean> shortActivities() {
+        return ((List)activities()).subList(0,6);
     }
 }

@@ -16,6 +16,7 @@ import ru.rrozhkov.easykin.core.util.DateUtil;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by rrozhkov on 11.05.2018.
@@ -36,7 +37,7 @@ public class TaskAdapter {
         int categoryId = -1;
         int statusId = Status.status(Status.OPEN);
         TaskFilterBean filter = taskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
-        return tasks(filter);
+        return ((List)tasks(filter)).subList(0, 5);
     }
 
     private Collection<TaskBean> tasks(TaskFilterBean bean) {
