@@ -85,6 +85,7 @@ public class ActivityForm extends Form {
 					ReleaseType.R1400,
 					ReleaseType.R1500,
 					ReleaseType.NORELEASE,
+					ReleaseType.L4,
 					ReleaseType.ANOTHER
 			));
 			releaseTypeComboBox.setSelectedItem(activity.getReleaseType());

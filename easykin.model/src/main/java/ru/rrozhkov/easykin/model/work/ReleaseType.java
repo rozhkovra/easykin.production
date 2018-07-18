@@ -15,6 +15,7 @@ public enum ReleaseType {
     R1400("14.0.0"),
     R1500("15.0.0"),
     NORELEASE("Вне релиза"),
+    L4("L4"),
     ANOTHER("Другое");
 
     private final String name;
@@ -50,6 +51,9 @@ public enum ReleaseType {
             return R1500;
         else if(NORELEASE.toString().equals(str))
             return NORELEASE;
+        else if(L4.toString().equals(str))
+            return L4;
+
         return ANOTHER;
     }
 }
