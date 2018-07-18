@@ -5,18 +5,8 @@
 %>
 <section class="content">
 <div class="row">
-    <div class="alert alert-info alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-info"></i> Сообщение!</h4>
-        На сегодня запланировано 5 задач!
-    </div>
-    <div class="alert alert-warning alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-warning"></i> Сообщение!</h4>
-        Есть <b>2</b> просроченные задачи!<br/>
-        Коммунальные услуги к оплате: <b>4 967,82</b> руб.<br/>
-        К оплате: <b>3 400,00</b> руб.
-    </div>
+    <jsp:include page="task/alert.jsp"/>
+    <jsp:include page="fin/alert.jsp"/>
 </div>
 <div class="row">
     <jsp:include page="task/box.jsp"/>
