@@ -36,7 +36,7 @@
 <!-- payment box -->
 <div class="small-box bg-<%=color%>">
     <div class="inner">
-        <h3><%=FormatUtil.formatMoney(paid)%></h3>
+        <h3><%=FormatUtil.formatMoney(paid)%> <i class="fa fa-rub"></i></h3>
 
         <p>Оплачено</p>
     </div>
