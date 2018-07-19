@@ -7,9 +7,7 @@
 <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
 <ul class="overdue-list">
 <%
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final TaskAdapter taskAdapter = adapterFactory.task();
-	Collection<TaskBean> tasks = taskAdapter.toDoTasks();
+	Collection<TaskBean> tasks = (Collection<TaskBean>)request.getAttribute("toDoTasks");
 	for(TaskBean taskBean : tasks){
 	    ITask task = taskBean.getTask();
         if (Status.OPEN.equals(task.getStatus())

@@ -17,9 +17,7 @@
 </thead>
 <tbody>
 <%
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final WorkAdapter workAdapter = adapterFactory.work();
-	Collection<ActivityBean> activities = workAdapter.shortActivities();
+	Collection<ActivityBean> activities = (Collection<ActivityBean>)request.getAttribute("shortActivities");
 	for(ActivityBean bean : activities){
 %>
 <tr>

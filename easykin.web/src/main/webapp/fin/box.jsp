@@ -11,9 +11,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
     UrlConfigurator urlConfigurator = new UrlConfigurator();
-    final AdapterFactory adapterFactory = new AdapterFactory();
-    final FinanceAdapter financeAdapter = adapterFactory.finance();
-    Collection<FinanceBean> finances = financeAdapter.finance();
+    Collection<FinanceBean> finances = (Collection<FinanceBean>)request.getAttribute("finance");
     Date start = DateUtil.firstDayOfMonth();
     Date end = DateUtil.lastDayOfMonth();
     Money noPaid = new Money();
@@ -24,11 +22,14 @@
             noPaid.add(finance.getPayment().getAmount());
         }
     }
-    String color = "green";
+
     if (!noPaid.free()) {
-        color = "yellow";
+        String color = "yellow";
         if(noPaid.getValue() > 21700.00) {
             color = "red";
+        }
+        if (noPaid.getValue() < 1000.00) {
+            color = "green";
         }
 %>
 <div class="col-lg-3 col-xs-6">

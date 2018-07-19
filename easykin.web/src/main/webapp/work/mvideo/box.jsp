@@ -5,9 +5,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
     UrlConfigurator urlConfigurator = new UrlConfigurator();
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final WorkAdapter workAdapter = adapterFactory.work();
-	Collection<ActivityBean> activities = workAdapter.activities();
+	Collection<ActivityBean> activities = (Collection<ActivityBean>)request.getAttribute("activities");
 	int hours = 0;
 	for(ActivityBean bean : activities){
 		if (DateUtil.isToday(bean.getActivity().getDate())) {

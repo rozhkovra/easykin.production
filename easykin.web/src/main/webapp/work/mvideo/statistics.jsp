@@ -13,9 +13,7 @@
 </thead>
 <tbody>
 <%
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final WorkAdapter workAdapter = adapterFactory.work();
-	Collection<GroupActivityBean> activities = workAdapter.groupActivities();
+	Collection<GroupActivityBean> activities = (Collection<GroupActivityBean>)request.getAttribute("groupActivities");
 	for(GroupActivityBean bean : activities) {
 %>
 <tr>

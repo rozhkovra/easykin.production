@@ -15,9 +15,7 @@
 </thead>
 <tbody>
 <%
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final PaymentAdapter paymentAdapter = adapterFactory.payment();
-	Collection<PaymentBean> payments = paymentAdapter.payments();
+	Collection<PaymentBean> payments = (Collection<PaymentBean>)request.getAttribute("payments");
 	for (PaymentBean payment : payments) {
 %>
 <tr>

@@ -24,9 +24,7 @@
 <tbody>
 <%
     TaskUrlConfigurator urlConfigurator = new TaskUrlConfigurator();
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final TaskAdapter taskAdapter = adapterFactory.task();
-	Collection<TaskBean> tasks = taskAdapter.tasks(request);
+    Collection<TaskBean> tasks = (Collection<TaskBean>)request.getAttribute("tasks");
 	for(TaskBean taskBean : tasks){
 %>
 <tr >

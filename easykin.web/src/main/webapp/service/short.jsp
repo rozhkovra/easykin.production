@@ -16,9 +16,7 @@
 <tbody>
 <%
 	int i = 0;
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final ServiceAdapter serviceAdapter = adapterFactory.service();
-	Collection<ServiceBean> beans = serviceAdapter.services();
+	Collection<ServiceBean> beans = (Collection<ServiceBean>)request.getAttribute("services");
 	for(ServiceBean service : beans){
 %>
 <tr>

@@ -7,16 +7,13 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
 	UrlConfigurator urlConfigurator = new UrlConfigurator();
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final ServiceAdapter serviceAdapter = adapterFactory.service();
-	Collection<ServiceBean> beans = serviceAdapter.services();
-	Money noPaid = new Money();
+	Collection<ServiceBean> beans = (Collection<ServiceBean>)request.getAttribute("services");	Money noPaid = new Money();
 	for(ServiceBean service : beans){
 		noPaid.add(service.getNoPaid());
 	}
-	String color = "green";
+
 	if (!noPaid.free()) {
-		color = "yellow";
+		String color = "yellow";
 		if(noPaid.getValue() > 5000.00) {
 			color = "red";
 		}

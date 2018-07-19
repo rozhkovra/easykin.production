@@ -7,6 +7,8 @@
 <div class="row">
     <jsp:include page="task/alert.jsp"/>
     <jsp:include page="fin/alert.jsp"/>
+    <jsp:include page="service/alert.jsp"/>
+    <jsp:include page="work/mvideo/alert.jsp"/>
 </div>
 <div class="row">
     <jsp:include page="task/box.jsp"/>

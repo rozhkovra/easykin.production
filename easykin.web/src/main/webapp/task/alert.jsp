@@ -5,10 +5,7 @@
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
-    TaskUrlConfigurator urlConfigurator = new TaskUrlConfigurator();
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final TaskAdapter taskAdapter = adapterFactory.task();
-	Collection<TaskBean> tasks = taskAdapter.tasks(request);
+	Collection<TaskBean> tasks = (Collection<TaskBean>)request.getAttribute("tasks");
 	int overdueCount = 0;
 	int todayCount = 0;
 	String result = "";

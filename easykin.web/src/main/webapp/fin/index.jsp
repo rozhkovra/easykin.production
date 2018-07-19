@@ -15,10 +15,7 @@
 </thead>
 <tbody>
 <%
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final FinanceAdapter financeAdapter = adapterFactory.finance();
-
-	Collection<FinanceBean> payments = financeAdapter.finance();
+	Collection<FinanceBean> payments = (Collection<FinanceBean>)request.getAttribute("finance");
 	for (FinanceBean payment : payments) {
 %>
 <tr>

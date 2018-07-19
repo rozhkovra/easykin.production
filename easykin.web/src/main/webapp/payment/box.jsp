@@ -11,9 +11,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
     UrlConfigurator urlConfigurator = new UrlConfigurator();
-    final AdapterFactory adapterFactory = new AdapterFactory();
-    final PaymentAdapter paymentAdapter = adapterFactory.payment();
-    Collection<PaymentBean> payments = paymentAdapter.payments();
+    Collection<PaymentBean> payments = (Collection<PaymentBean>)request.getAttribute("payments");
     Date start = DateUtil.firstDayOfMonth();
     Date end = DateUtil.lastDayOfMonth();
     Money paid = new Money();

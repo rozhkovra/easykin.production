@@ -10,10 +10,7 @@
 <%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
-    UrlConfigurator urlConfigurator = new UrlConfigurator();
-    final AdapterFactory adapterFactory = new AdapterFactory();
-    final FinanceAdapter financeAdapter = adapterFactory.finance();
-    Collection<FinanceBean> finances = financeAdapter.finance();
+    Collection<FinanceBean> finances = (Collection<FinanceBean>)request.getAttribute("finance");
     Date start = DateUtil.firstDayOfMonth();
     Date end = DateUtil.lastDayOfMonth();
     Money noPaid = new Money();
@@ -25,10 +22,17 @@
         }
     }
     if (!noPaid.free()) {
+        String color = "warning";
+        if (noPaid.getValue() > 21700.00) {
+            color = "danger";
+        }
+        if (noPaid.getValue() < 1000.00) {
+            color = "success";
+        }
 %>
-<div class="alert alert-warning alert-dismissible">
+<div class="alert alert-<%=color%> alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><i class="icon fa fa-warning"></i> Сообщение!</h4>
+    <h4><i class="icon fa fa-money"></i> Сообщение!</h4>
     К оплате: <b><%=noPaid%></b> руб.
 </div>
 <%

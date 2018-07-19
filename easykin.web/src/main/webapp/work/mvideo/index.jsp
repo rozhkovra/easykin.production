@@ -17,10 +17,8 @@
 </thead>
 <tbody>
 <%
-	final AdapterFactory adapterFactory = new AdapterFactory();
-	final WorkAdapter workAdapter = adapterFactory.work();
-	Collection<ActivityBean> activities = workAdapter.activities();
-	for(ActivityBean bean : activities){
+Collection<ActivityBean> activities = (Collection<ActivityBean>)request.getAttribute("activities");
+for(ActivityBean bean : activities){
 %>
 <tr>
 <td ><%=bean.getNum()%></td>
