@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
 import javax.swing.JTextField;
@@ -38,7 +38,7 @@ public class DefaultPanel extends Panel {
 	
 	public JTextField getSumField(){
 		if(sumField == null){
-			String sum = FormatUtil.formatEditMoney(((DefaultCalc)calc).getPrice());
+			String sum = FormatUtil.formatEditMoney(calc.getAmount());
 			sumField = (JTextField) guiFactory.fieldCalc(10, sum, calc.isPaid());
 			sumField.getDocument().addDocumentListener(this);
 		}
@@ -51,7 +51,7 @@ public class DefaultPanel extends Panel {
 	}
 	@Override
 	public void updateBean() {
-		DefaultCalc bean = (DefaultCalc)getCalc();
-		bean.setPrice(CalcUtil.moneyNUllOrEmpty(getSumField().getText()));
+		Calculation bean = (Calculation)getCalc();
+		bean.setAmount(CalcUtil.moneyNUllOrEmpty(getSumField().getText()));
 	}
 }

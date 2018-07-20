@@ -14,4 +14,8 @@ public class HotWaterCalc extends MeasureCalc {
     public HotWaterCalc(Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
         super(CalculationType.HOTWATER,oldMeasures, newMeasures, rate, isPaid);
     }
+
+    public HotWaterCalc(int id, int readingId, Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures, Money sum, boolean isPaid) {
+        super(id, readingId, CalculationType.HOTWATER, sum, isPaid, oldMeasures, newMeasures);
+    }
 }

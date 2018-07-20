@@ -95,6 +95,12 @@ public class SwingGuiFactory implements IGUIFactory {
         return new JCheckBox(text);
     }
 
+    public Component checkBox(String text, boolean flag) {
+        JCheckBox box = (JCheckBox)checkBox(text);
+        box.setSelected(flag);
+        return box;
+    }
+
     public LayoutManager boxLayout(Container comp, int direction) {
         return new BoxLayout(comp, direction);
     }

@@ -49,4 +49,27 @@ public enum CalculationType {
 	public boolean isRepair() {
 		return this.equals(REPAIR);
 	}
+
+	public static CalculationType type(String type) {
+		if(HEATING.toString().equals(type))
+			return HEATING;
+		else if(ANTENNA.toString().equals(type))
+			return ANTENNA;
+		else if(INTERCOM.toString().equals(type))
+			return INTERCOM;
+		else if(ELECTRICITY.toString().equals(type))
+			return ELECTRICITY;
+		else if(GAZ.toString().equals(type))
+			return GAZ;
+		else if(WATER.toString().equals(type))
+			return WATER;
+		else if(HOTWATER.toString().equals(type))
+			return HOTWATER;
+		else if(HOUSE.toString().equals(type))
+			return HOUSE;
+		else if(REPAIR.toString().equals(type))
+			return REPAIR;
+
+		return null;
+	}
 }

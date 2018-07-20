@@ -1,9 +1,12 @@
 package ru.rrozhkov.easykin.service.calc2.impl;
 
+import ru.rrozhkov.easykin.core.filter.IFilter;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Reading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
+import ru.rrozhkov.easykin.service.db.impl.calc2.CalcHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
 import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureFilterFactory;
@@ -19,6 +22,7 @@ public class ReadingBuilder {
 	private static final ReadingHandler readingHandler = ReadingHandler.instance();
 	private static final ServiceFactory serviceFactory = ServiceFactory.instance();
 	private static final MeasureFilterFactory measureFilterFactory = MeasureFilterFactory.instance();
+	final private static CalcHandler calcHandler = CalcHandler.instance();
 
 	public static class Holder {
 		public static final ReadingBuilder INSTANCE = new ReadingBuilder();
@@ -35,7 +39,8 @@ public class ReadingBuilder {
 		IReading reading = null;
 		try {
 			Collection<IMeasure> measures = measureHandler.selectForReading(id);
-			reading = serviceFactory.createReading(id, date, measures);
+			Collection<ICalculation> calcs = calcHandler.selectForReading(id);
+			reading = serviceFactory.createReading(id, date, measures, calcs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,9 +67,16 @@ public class ReadingBuilder {
 		try {
 			Collection<IReading> readings = readingHandler.select();
 			Collection<IMeasure> measures = measureHandler.select();
-			for(IReading reading : readings){
+			Collection<ICalculation> cals = calcHandler.select();
+			for(final IReading reading : readings){
 				reading.getMeasures().clear();
 				reading.getMeasures().addAll(FilterUtil.filter(measures, measureFilterFactory.readingFilter(reading.getId())));
+				reading.getCalcs().clear();
+				reading.getCalcs().addAll(FilterUtil.filter(cals, new IFilter<ICalculation>() {
+					public boolean filter(ICalculation obj) {
+						return obj.getReadingId()==reading.getId();
+					}
+				}));
 			}
 			return readings;
 		} catch (Exception e) {

@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.model.service.calc.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
+import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 
 public abstract class DoubleSimpleCalc extends SimpleCalc {
 	protected double prevMeasure2;
@@ -8,8 +9,8 @@ public abstract class DoubleSimpleCalc extends SimpleCalc {
 
 	public DoubleSimpleCalc(double prevMeasure2, double currentMeasure2,
 							double prevMeasure, double currentMeasure,
-							Money rate, boolean isPaid) {
-		super(prevMeasure, currentMeasure,rate, isPaid);
+							Money rate, boolean isPaid, CalculationType type) {
+		super(prevMeasure, currentMeasure,rate, isPaid, type);
 		this.prevMeasure2 = prevMeasure2;
 		this.currentMeasure2 = currentMeasure2;
 	}

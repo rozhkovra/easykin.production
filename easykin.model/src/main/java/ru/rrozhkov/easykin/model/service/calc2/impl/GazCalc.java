@@ -14,4 +14,8 @@ public class GazCalc extends MeasureCalc{
     public GazCalc(Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
         super(CalculationType.GAZ,oldMeasures, newMeasures, rate, isPaid);
     }
+
+    public GazCalc(int id, int readingId, CalculationType type, Money sum, boolean isPaid, Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures) {
+        super(id, readingId, type, sum, isPaid, oldMeasures, newMeasures);
+    }
 }

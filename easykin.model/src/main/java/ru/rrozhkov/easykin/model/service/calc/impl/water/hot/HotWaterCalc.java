@@ -6,13 +6,8 @@ import ru.rrozhkov.easykin.model.service.calc.impl.DoubleSimpleCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.OdnSimpleCalc;
 
 public class HotWaterCalc extends DoubleSimpleCalc {
-	
-	public HotWaterCalc(double hotPrevMesure2, double hotCurrentMesure2, double hotPrevMesure, double hotCurrentMesure,
+	public HotWaterCalc(double hotPrevMeasure2, double hotCurrentMeasure2, double hotPrevMeasure, double hotCurrentMeasure,
 			Money rate, boolean isPaid) {
-		super(hotPrevMesure2,hotCurrentMesure2,hotPrevMesure, hotCurrentMesure, rate, isPaid);
-	}
-
-	public CalculationType getType() {
-		return CalculationType.HOTWATER;
+		super(hotPrevMeasure2,hotCurrentMeasure2,hotPrevMeasure, hotCurrentMeasure, rate, isPaid, CalculationType.HOTWATER);
 	}
 }

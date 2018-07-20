@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
@@ -29,10 +28,8 @@ public class PanelFactory {
 			return ElectricityPanel.create(parent, bean);
 		else if (bean instanceof HotWaterCalc)
 			return HotWaterPanel.create(parent, bean);
-		else if (bean instanceof DefaultCalc)
-			return DefaultPanel.create(parent, bean);
 		else if (bean instanceof ServiceCalc)
 			return ServiceCalcPanel.create(bean);
-		return null;
+		return DefaultPanel.create(parent, bean);
 	}
 }

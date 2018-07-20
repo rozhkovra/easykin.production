@@ -1,17 +1,16 @@
 package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
 
 
 public class DefaultCalculator extends Calculator {
-	protected DefaultCalculator(DefaultCalc calcBean) {
+	protected DefaultCalculator(ICalculation calcBean) {
 		super(calcBean);
 	}
 
 	public DefaultResult calculate() {
-		DefaultCalc calcBean = (DefaultCalc)getCalc();
-		return new DefaultResult(calcBean.getPrice());
+		return new DefaultResult(getCalc().getAmount());
 	}
 }

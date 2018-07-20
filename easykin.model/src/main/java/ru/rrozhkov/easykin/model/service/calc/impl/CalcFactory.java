@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.model.service.calc.impl;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
@@ -38,8 +37,8 @@ public class CalcFactory {
 		return new GazCalc(gazPrevMesure, gazCurrentMesure, gazRate, isPaid);
 	}
 
-	public static ICalculation createDefaultCalc(CalculationType name, Money sum, boolean isPaid) {
-		return new DefaultCalc(name, sum, isPaid);
+	public static ICalculation createDefaultCalc(CalculationType type, Money price, boolean isPaid) {
+		return new Calculation(-1, -1, type,  isPaid, price);
 	}
 
 	public static ICalculation createServiceCalc(String name, Collection<ICalculation> beans) {

@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.service.calc.impl.calculator;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
@@ -34,10 +33,8 @@ public class CalculatorFactory {
 			return new ElectricityCalculator((ElectricityCalc)bean);
 		else if (bean instanceof HotWaterCalc)
 			return new HotWaterCalculator((HotWaterCalc) bean);
-		else if (bean instanceof DefaultCalc)
-			return new DefaultCalculator((DefaultCalc) bean);
 		else if (bean instanceof ServiceCalc)
 			return new ServiceCalculator(bean);
-		return null;
+		return new DefaultCalculator(bean);
 	}
 }

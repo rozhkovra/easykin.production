@@ -1,5 +1,7 @@
 package ru.rrozhkov.easykin.model.service.calc2.impl;
 
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
+import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
@@ -14,19 +16,21 @@ public class Reading implements IReading {
     protected int id;
     protected Date date;
     protected Collection<IMeasure> measures;
+    protected Collection<ICalculation> calcs;
 
     public Reading(int id, Date date) {
-        this(id,date, CollectionUtil.<IMeasure>create());
+        this(id, date, CollectionUtil.<IMeasure>create(), CollectionUtil.<ICalculation>create());
     }
 
     public Reading(Date date, Collection<IMeasure> measures) {
-        this(-1, date,measures);
+        this(-1, date, measures, CollectionUtil.<ICalculation>create());
     }
 
-    public Reading(int id, Date date, Collection<IMeasure> measures) {
+    public Reading(int id, Date date, Collection<IMeasure> measures, Collection<ICalculation> calcs) {
         this.id = id;
         this.date = date;
         this.measures = measures;
+        this.calcs = calcs;
     }
 
     public Date getDate() {
@@ -35,6 +39,10 @@ public class Reading implements IReading {
 
     public Collection<IMeasure> getMeasures() {
         return measures;
+    }
+
+    public Collection<ICalculation> getCalcs() {
+        return calcs;
     }
 
     public int getId() {
@@ -47,10 +55,17 @@ public class Reading implements IReading {
         reading.setId(-1);
         Collection<IMeasure> newMeasures = CollectionUtil.create();
         for(IMeasure measure : measures) {
-            IMeasure newMeasure = (IMeasure)((Measure)measure).clone();
+            IMeasure newMeasure = ((Measure)measure).clone();
             newMeasures.add(newMeasure);
         }
         reading.setMeasures(newMeasures);
+        Collection<ICalculation> newCalcs = CollectionUtil.create();
+        for(ICalculation calculation : calcs) {
+            ICalculation newCalculation = ((Calculation)calculation).clone();
+            newCalcs.add(newCalculation);
+        }
+        reading.setMeasures(newMeasures);
+        reading.setCalcs(newCalcs);
         return reading;
     }
 
@@ -60,5 +75,9 @@ public class Reading implements IReading {
 
     public void setMeasures(Collection<IMeasure> measures) {
         this.measures = measures;
+    }
+
+    public void setCalcs(Collection<ICalculation> calcs) {
+        this.calcs = calcs;
     }
 }

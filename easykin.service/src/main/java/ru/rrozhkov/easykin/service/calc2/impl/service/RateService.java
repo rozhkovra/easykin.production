@@ -29,7 +29,7 @@ public class RateService {
         try {
             rates = rateHandler.selectForDate(date);
         } catch (Exception e) {
-            rates = StaticReadingDataProvider.rates2018_1;
+            rates = StaticReadingDataProvider.rates2018_2;
         }
         return rates;
     }

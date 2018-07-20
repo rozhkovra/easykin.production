@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.model.service.calc.impl;
 
+import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.core.util.DateUtil;
-
 
 import java.util.Collection;
 import java.util.Date;
@@ -14,14 +14,14 @@ public class ServiceCalc extends Calculation {
 	private Collection<ICalculation> beans;
 
 	public ServiceCalc(String name, Collection<ICalculation> beans) {
-		super(false);
+		super(-1, -1, CalculationType.ALL, false, Money.valueOf(0));
 		this.name = name;
 		this.beans = beans;
-		this.date = new Date();
+		this.date = DateUtil.today();
 	}
 
 	public ServiceCalc(Date date, Collection<ICalculation> beans) {
-		super(false);
+		super(-1, -1, CalculationType.ALL, false, Money.valueOf(0));
 		this.name = DateUtil.formatService(date);
 		this.beans = beans;
 		this.date = date;
@@ -37,10 +37,6 @@ public class ServiceCalc extends Calculation {
 
 	public Date getDate() {
 		return date;
-	}
-	
-	public CalculationType getType() {
-		return CalculationType.ALL;
 	}
 
 	@Override

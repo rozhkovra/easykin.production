@@ -27,6 +27,7 @@ public interface IGUIFactory {
     Table table(TableModel tableModel);
     Component comboBoxFilled(Collection priorities);
     Component checkBox(String text);
+    Component checkBox(String text, boolean flag);
     LayoutManager boxLayout(Container comp, int direction);
     LayoutManager gridLayout(int rows, int cols);
     Dimension size(int width, int height);

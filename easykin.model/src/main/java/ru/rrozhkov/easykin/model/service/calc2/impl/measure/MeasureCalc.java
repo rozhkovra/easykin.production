@@ -20,6 +20,12 @@ public class MeasureCalc extends RateCalc {
         this.newMeasures = newMeasures;
     }
 
+    public MeasureCalc(int id, int readingId, CalculationType type, Money rate, boolean isPaid, Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures) {
+        super(id, readingId, type, rate, isPaid);
+        this.oldMeasures = oldMeasures;
+        this.newMeasures = newMeasures;
+    }
+
     public Collection<IMeasure> getOldMeasures() {
         return oldMeasures;
     }

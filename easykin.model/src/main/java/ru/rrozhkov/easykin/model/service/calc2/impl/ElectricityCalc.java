@@ -14,4 +14,8 @@ public class ElectricityCalc extends MeasureCalc {
     public ElectricityCalc(Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
         super(CalculationType.ELECTRICITY,oldMeasures, newMeasures, rate, isPaid);
     }
+
+    public ElectricityCalc(int id, int readingId, Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures, Money rate, boolean isPaid) {
+        super(id, readingId, CalculationType.ELECTRICITY, rate, isPaid, oldMeasures, newMeasures);
+    }
 }

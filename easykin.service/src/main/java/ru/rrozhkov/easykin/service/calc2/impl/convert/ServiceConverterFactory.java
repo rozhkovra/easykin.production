@@ -35,6 +35,8 @@ public class ServiceConverterFactory {
     public IEntityConverter measure(){return new MeasureConverter();}
     public IEntityConverter reading(){return new ReadingConverter();}
     public IEntityConverter rate(){return new RateConverter();}
+    public IEntityConverter calc(){return new CalcConverter();}
+
     public IConverter calcReading() {
         return new IConverter<ServiceCalc, IReading>() {
             public IReading convert(ServiceCalc entry) {

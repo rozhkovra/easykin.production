@@ -1,7 +1,10 @@
 package ru.rrozhkov.easykin.model.service.calc;
 
-public interface ICalculation {
+import ru.rrozhkov.easykin.core.db.IEntity;
+import ru.rrozhkov.easykin.model.fin.IPayable;
+
+public interface ICalculation extends IPayable, IEntity {
 	int getId();
 	CalculationType getType();
-	boolean isPaid();
+	int getReadingId();
 }

@@ -22,7 +22,7 @@ public class MeasureCalculator extends Calculator {
         int curr = CalcUtil.summ(mCalc.getNewMeasures());
         int prev = CalcUtil.summ(mCalc.getOldMeasures());
         int delta = curr-prev;
-        Money deltaSum = MoneyFactory.create(mCalc.getPrice()).multiply(delta);
+        Money deltaSum = MoneyFactory.create(mCalc.getAmount()).multiply(delta);
         return serviceFactory.createMeasureResult(delta, deltaSum, deltaSum);
     }
 }

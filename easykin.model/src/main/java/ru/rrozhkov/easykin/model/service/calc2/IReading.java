@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.model.service.calc2;
 
 import ru.rrozhkov.easykin.core.db.IEntity;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 
 import java.util.Collection;
 import java.util.Date;
@@ -12,4 +13,5 @@ public interface IReading extends Cloneable, IEntity{
     int getId();
     Date getDate();
     Collection<IMeasure> getMeasures();
+    Collection<ICalculation> getCalcs();
 }
