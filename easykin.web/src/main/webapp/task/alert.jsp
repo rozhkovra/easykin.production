@@ -17,6 +17,9 @@
 	        && !Priority.SIMPLE.equals(task.getPriority())) {
           overdueCount++;
         }
+        if (DateUtil.isToday(task.getPlanDate())) {
+            todayCount++;
+        }
 	}
     if (overdueCount > 0 || todayCount > 0) {
         result += "<li>Просрочено задач - <b>"+overdueCount+"</b></li>";

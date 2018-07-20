@@ -13,11 +13,12 @@ public class DateUtil {
 	private static final DateFormat SDFSERVICE = new SimpleDateFormat("MMMMM yyyy", new Locale("ru"));
 	private static final DateFormat SQLSDF = new SimpleDateFormat("yyyy-MM-dd");
 	static {
-		TimeZone.setDefault(TimeZone.getTimeZone("GMT+6:00"));
-		SDF.setTimeZone(TimeZone.getTimeZone("GMT+6:00"));
-		SDFWEEKDAY.setTimeZone(TimeZone.getTimeZone("GMT+6:00"));
-		SDFSERVICE.setTimeZone(TimeZone.getTimeZone("GMT+6:00"));
-		SQLSDF.setTimeZone(TimeZone.getTimeZone("GMT+6:00"));
+		TimeZone zone = TimeZone.getTimeZone("GMT+6:00");
+		TimeZone.setDefault(zone);
+		SDF.setTimeZone(zone);
+		SDFWEEKDAY.setTimeZone(zone);
+		SDFSERVICE.setTimeZone(zone);
+		SQLSDF.setTimeZone(zone);
 	}
 	
 	public static Date parse(String date){
