@@ -9,7 +9,13 @@
     <packaging>jar</packaging>
     <version>12.0.0</version>
     <name>easykin.work</name>
-    <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>ru.rrozhkov.easykin</groupId>
+        <artifactId>easykin.production</artifactId>
+        <version>12.0.0</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>ru.rrozhkov.easykin.core</groupId>
