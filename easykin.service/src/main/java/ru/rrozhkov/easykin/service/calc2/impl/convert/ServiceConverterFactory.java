@@ -55,13 +55,15 @@ public class ServiceConverterFactory {
                 if(entry instanceof ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc) {
                     measures.add(serviceFactory.createMeasure(MeasureType.ELECTRICITY,
                             ((ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc)entry).getCurrentMeasure()));
-                }else if(entry instanceof ElectricityCalc) {
+                } else if(entry instanceof ElectricityCalc) {
                     measures.addAll(((ElectricityCalc)entry).getNewMeasures());
-                }else if (entry instanceof WaterCalc) {
+                } else if (entry instanceof ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc) {
                     measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure()));
                     measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure2()));
                     measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure()));
                     measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure2()));
+                } else if(entry instanceof ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc) {
+                    measures.addAll(((ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc)entry).getNewMeasures());
                 }
                 return measures;
             }

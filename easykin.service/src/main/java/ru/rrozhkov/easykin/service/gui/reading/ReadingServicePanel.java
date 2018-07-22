@@ -56,15 +56,7 @@ public class ReadingServicePanel extends Panel {
     @Override
     public void updateBean() {
         for(ICalculation calculation : ((ServiceCalc)calc).calcs()) {
-            if (calculation instanceof MeasureCalc) {
-                MeasureCalc calc = (MeasureCalc)calculation;
-                Collection<MeasureType> types = CollectionUtil.create();
-                for(IMeasure measure : calc.getNewMeasures()) {
-                    types.add(measure.getType());
-                }
-                calc.getNewMeasures().clear();
-                calc.getNewMeasures().addAll(readingMeasureFacade.getMeasuresByType(types.toArray(new MeasureType[types.size()])));
-            }else if(calculation.getType().isWater()) {
+            if(calculation.getType().isWater()) {
                 WaterCalc waterCalc = (WaterCalc)calculation;
                 waterCalc.setColdCurrentMeasure(readingMeasureFacade.getColdMeasure());
                 waterCalc.setColdCurrentMeasure2(readingMeasureFacade.getColdMeasure2());
@@ -77,6 +69,14 @@ public class ReadingServicePanel extends Panel {
             } else if (calculation.getType().isElectricity()) {
                 ElectricityCalc elecCalc = (ElectricityCalc)calculation;
                 elecCalc.setCurrentMeasure(readingMeasureFacade.getElectricityMeasure());
+            } else if (calculation instanceof MeasureCalc) {
+                MeasureCalc calc = (MeasureCalc)calculation;
+                Collection<MeasureType> types = CollectionUtil.create();
+                for(IMeasure measure : calc.getNewMeasures()) {
+                    types.add(measure.getType());
+                }
+                calc.getNewMeasures().clear();
+                calc.getNewMeasures().addAll(readingMeasureFacade.getMeasuresByType(types.toArray(new MeasureType[types.size()])));
             }
         }
     }

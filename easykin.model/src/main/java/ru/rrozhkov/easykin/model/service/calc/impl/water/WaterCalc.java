@@ -13,11 +13,26 @@ public class WaterCalc extends DoubleSimpleCalc {
 	private Money outRate;
 
 	public WaterCalc(double coldPrevMeasure, double coldCurrentMeasure,
+						  double coldPrevMeasure2, double coldCurrentMeasure2,
+						  double hotPrevMeasure, double hotCurrentMeasure,
+						  double hotPrevMeasure2, double hotCurrentMeasure2,
+						  Money inRate, Money outRate, boolean isPaid) {
+		super(coldPrevMeasure, coldCurrentMeasure, coldPrevMeasure2, coldCurrentMeasure2, Money.valueOf(0.00), isPaid, CalculationType.WATER);
+		this.hotPrevMeasure = hotPrevMeasure;
+		this.hotCurrentMeasure = hotCurrentMeasure;
+		this.hotPrevMeasure2 = hotPrevMeasure2;
+		this.hotCurrentMeasure2 = hotCurrentMeasure2;
+		this.inRate = inRate;
+		this.outRate = outRate;
+	}
+
+	public WaterCalc(int id, int readingId,
+					 double coldPrevMeasure, double coldCurrentMeasure,
 					 double coldPrevMeasure2, double coldCurrentMeasure2,
 					 double hotPrevMeasure, double hotCurrentMeasure,
 					 double hotPrevMeasure2, double hotCurrentMeasure2,
 					 Money inRate, Money outRate, boolean isPaid) {
-		super(coldPrevMeasure, coldCurrentMeasure, coldPrevMeasure2, coldCurrentMeasure2, Money.valueOf(0.00), isPaid, CalculationType.WATER);
+		super(id, readingId, coldPrevMeasure, coldCurrentMeasure, coldPrevMeasure2, coldCurrentMeasure2, Money.valueOf(0.00), isPaid, CalculationType.WATER);
 		this.hotPrevMeasure = hotPrevMeasure;
 		this.hotCurrentMeasure = hotCurrentMeasure;
 		this.hotPrevMeasure2 = hotPrevMeasure2;

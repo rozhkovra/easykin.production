@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
 
 
 public class DefaultCalculator extends Calculator {
-	protected DefaultCalculator(ICalculation calcBean) {
+	public DefaultCalculator(ICalculation calcBean) {
 		super(calcBean);
 	}
 

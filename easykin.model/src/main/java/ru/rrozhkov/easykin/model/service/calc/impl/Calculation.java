@@ -1,9 +1,12 @@
 package ru.rrozhkov.easykin.model.service.calc.impl;
 
+import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
+
+import java.util.Date;
 
 public class Calculation implements ICalculation {
 	private int id;
@@ -12,6 +15,7 @@ public class Calculation implements ICalculation {
 	private Money amount;
 	private IPayment payment;
 	private CalculationType type;
+	private Date payDate = DateUtil.today();
 
 	public Calculation(int id, int readingId, CalculationType type, boolean isPaid, Money amount) {
 		this.id = id;
@@ -52,6 +56,10 @@ public class Calculation implements ICalculation {
 
 	public Money getAmount() {
 		return amount;
+	}
+
+	public Date getPayDate() {
+		return payDate;
 	}
 
 	public void setAmount(Money amount) {

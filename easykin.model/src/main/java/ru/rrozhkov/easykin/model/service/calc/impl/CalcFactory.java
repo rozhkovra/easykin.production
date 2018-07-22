@@ -21,6 +21,12 @@ public class CalcFactory {
 		return new WaterCalc(coldPrevMesure, coldCurrentMesure, coldPrevMesure2, coldCurrentMesure2, hotPrevMesure
 				, hotCurrentMesure, hotPrevMesure2, hotCurrentMesure2,inRate, outRate, isPaid);
 	}
+
+	public static ICalculation createWaterCalc(int id, int readingId, int coldPrevMesure, int coldCurrentMesure, int coldPrevMesure2, int coldCurrentMesure2
+			, int hotPrevMesure, int hotCurrentMesure, int hotPrevMesure2, int hotCurrentMesure2, Money inRate, Money outRate, boolean isPaid) {
+		return new WaterCalc(id, readingId, coldPrevMesure, coldCurrentMesure, coldPrevMesure2, coldCurrentMesure2, hotPrevMesure
+				, hotCurrentMesure, hotPrevMesure2, hotCurrentMesure2,inRate, outRate, isPaid);
+	}
 	
 	public static ICalculation createHotWaterCalc(int hotPrevMesure, int hotCurrentMesure, int hotPrevMesure2, int hotCurrentMesure2
 								, Money rate, boolean isPaid) {

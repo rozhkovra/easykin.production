@@ -1,22 +1,22 @@
 package ru.rrozhkov.easykin.service.calc2.impl;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
-import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
-import ru.rrozhkov.easykin.model.service.calc2.IRate;
-import ru.rrozhkov.easykin.model.service.calc2.IReading;
-import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
+import ru.rrozhkov.easykin.model.service.calc2.*;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.RateCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.HotWaterCalc;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc;
 import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by rrozhkov on 12/11/2017.
@@ -45,77 +45,39 @@ public class Calc2Factory {
             }
         }
         boolean isPaid = false;
+        int calcId = -1;
         if (newReading.getCalcs()!=null) {
             ICalculation calc = ServiceCalcUtil.getCalcByType(newReading.getCalcs(), CalculationType.HOTWATER);
             isPaid = calc != null && calc.isPaid();
+            calcId = calc.getId();
         }
-        return new HotWaterCalc(-1, newReading.getId(), oldMeasures, newMeasures, hotRate, isPaid);
+        return new HotWaterCalc(calcId, newReading.getId(), oldMeasures, newMeasures, hotRate, isPaid);
 
     }
 
     public ICalculation createWaterCalc(IReading oldReading,
                                                IReading newReading,
                                                Collection<IRate> rates) {
-        Collection<IMeasure> oldMeasures = oldReading.getMeasures();
-        Collection<IMeasure> newMeasures = newReading.getMeasures();
-        int coldWater1Prev = 0;
-        int coldWater1Curr = 0;
-        int coldWater2Prev = 0;
-        int coldWater2Curr = 0;
-        int hotWater1Prev = 0;
-        int hotWater1Curr = 0;
-        int hotWater2Prev = 0;
-        int hotWater2Curr = 0;
-        Money inRate = Money.valueOf(0.00);
-        Money outRate = Money.valueOf(0.00);
-        for(IMeasure measure : newMeasures) {
-            if(measure.getType().isColdWater()) {
-                int coldWater = (Integer)measure.getValue();
-                if(coldWater1Curr==0) {
-                    coldWater1Curr = coldWater;
-                } else {
-                    coldWater2Curr = coldWater;
-                }
-            } else if(measure.getType().isHotWater()) {
-                int hotWater = (Integer)measure.getValue();
-                if(hotWater1Curr==0) {
-                    hotWater1Curr = hotWater;
-                } else {
-                    hotWater2Curr = hotWater;
-                }
-            }
-        }
-        for(IMeasure measure : oldMeasures) {
-            if(measure.getType().isColdWater()) {
-                int coldWater = (Integer)measure.getValue();
-                if(coldWater1Prev==0) {
-                    coldWater1Prev = coldWater;
-                } else {
-                    coldWater2Prev = coldWater;
-                }
-            } else if(measure.getType().isHotWater()) {
-                int hotWater = (Integer)measure.getValue();
-                if(hotWater1Prev==0) {
-                    hotWater1Prev = hotWater;
-                } else {
-                    hotWater2Prev = hotWater;
-                }
-            }
-        }
+        Collection<IMeasure> oldMeasures = ReadingMeasureAdapter.create(oldReading).getMeasuresByType(MeasureType.COLDWATER);
+        Collection<IMeasure> newMeasures = ReadingMeasureAdapter.create(newReading).getMeasuresByType(MeasureType.COLDWATER);
+        oldMeasures.addAll(ReadingMeasureAdapter.create(oldReading).getMeasuresByType(MeasureType.HOTWATER));
+        newMeasures.addAll(ReadingMeasureAdapter.create(newReading).getMeasuresByType(MeasureType.HOTWATER));
+        Map<RateType, Money> mapRates = CollectionUtil.map();
         for(IRate rate : rates) {
             if(rate.getType().isWaterIn()) {
-                inRate = Money.valueOf(rate.getValue());
+                mapRates.put(rate.getType(),Money.valueOf(rate.getValue()));
             } else if(rate.getType().isWaterOut()) {
-                outRate = Money.valueOf(rate.getValue());
+                mapRates.put(rate.getType(),Money.valueOf(rate.getValue()));
             }
         }
         boolean isPaid = false;
+        int calcId = -1;
         if (newReading.getCalcs()!=null) {
             ICalculation calc = ServiceCalcUtil.getCalcByType(newReading.getCalcs(), CalculationType.WATER);
             isPaid = calc != null && calc.isPaid();
+            calcId = calc.getId();
         }
-        return CalcFactory.createWaterCalc(coldWater1Prev, coldWater1Curr, coldWater2Prev, coldWater2Curr,
-                hotWater1Prev, hotWater1Curr, hotWater2Prev, hotWater2Curr, inRate, outRate, isPaid);
+        return new WaterCalc(calcId, newReading.getId(), CalculationType.WATER, mapRates, isPaid, oldMeasures, newMeasures);
 
     }
 

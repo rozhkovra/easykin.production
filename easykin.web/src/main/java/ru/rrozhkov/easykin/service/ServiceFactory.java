@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.service;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.service.calc.impl.calculator.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;

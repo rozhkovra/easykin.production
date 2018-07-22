@@ -6,7 +6,7 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 /**
  * Created by rrozhkov on 11/1/2017.
  */
-public class Measure implements IMeasure{
+public class Measure implements IMeasure {
     protected int id;
     protected int readingId;
     protected MeasureType type;

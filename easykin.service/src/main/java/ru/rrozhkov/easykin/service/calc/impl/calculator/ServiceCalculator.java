@@ -7,11 +7,12 @@ import ru.rrozhkov.easykin.model.service.calc.IResult;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceResult;
+import ru.rrozhkov.easykin.service.CalculatorFactory;
 
 public class ServiceCalculator extends Calculator {
 	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
 
-	protected ServiceCalculator(ICalculation calcBean) {
+	public ServiceCalculator(ICalculation calcBean) {
 		super(calcBean);
 	}
 

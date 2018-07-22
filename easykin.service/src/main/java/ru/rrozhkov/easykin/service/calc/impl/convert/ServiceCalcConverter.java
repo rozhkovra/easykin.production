@@ -5,7 +5,7 @@ import java.util.Collection;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.service.calc.impl.calculator.CalculatorFactory;
+import ru.rrozhkov.easykin.service.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
