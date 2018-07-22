@@ -6,7 +6,7 @@
 
     <groupId>ru.rrozhkov.easykin</groupId>
     <artifactId>easykin.production</artifactId>
-    <version>12.0.0</version>
+    <version>14.0.0</version>
     <packaging>pom</packaging>
 
     <dependencyManagement>
