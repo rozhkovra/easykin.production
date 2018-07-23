@@ -76,7 +76,7 @@ public class TaskHandler extends EntityHandler {
 		StringBuilder select = new StringBuilder();
 		select.append("SELECT ").append(getTableName()).append(".*, CATEGORY.NAME as CATEGORYNAME FROM ").append(getTableName())
 				.append(" INNER JOIN CATEGORY ON ").append(getTableName()).append(".CATEGORYID = CATEGORY.ID")
-				.append(" INNER JOIN TASK2PERSON ON TASK2PERSON.TASK = ").append(getTableName()).append(".ID");
+				.append(" INNER JOIN TASK2PERSON ON TASK2PERSON.TASK = ").append(getTableName()).append(".ID AND TASK2PERSON.PERSON=").append(bean.getPersonId());
 		select.append(" WHERE 1=1");
 		if (bean.getStatusId()>0) {
 			select.append(" AND ").append(getTableName()).append(".STATUSID = ").append(bean.getStatusId());
