@@ -37,7 +37,11 @@ public class TaskAdapter {
         int categoryId = -1;
         int statusId = Status.status(Status.OPEN);
         TaskFilterBean filter = taskFilterFactory.bean(statusId, categoryId, priorityId, fromDate, toDate, person.getId());
-        return ((List)tasks(filter)).subList(0, 5);
+        Collection<TaskBean> tasks = tasks(filter);
+        if (tasks.size() > 5) {
+            tasks = ((List)tasks).subList(0, 5);
+        }
+        return tasks;
     }
 
     private Collection<TaskBean> tasks(TaskFilterBean bean) {

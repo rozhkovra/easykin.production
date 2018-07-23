@@ -53,6 +53,10 @@ public class WorkAdapter {
     }
 
     public Collection<ActivityBean> shortActivities() {
-        return ((List)activities()).subList(0,6);
+        Collection<ActivityBean> activities = activities();
+        if (activities.size() > 6) {
+            activities = ((List) activities).subList(0, 6);
+        }
+        return activities;
     }
 }
