@@ -8,17 +8,18 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class DateUtil {
+	private static final TimeZone timeZone = TimeZone.getTimeZone("GMT+6:00");
 	private static final DateFormat SDF = new SimpleDateFormat("dd.MM.yyyy");
 	private static final DateFormat SDFWEEKDAY = new SimpleDateFormat("dd MMMMM yyyy, EEEE ", new Locale("ru"));
 	private static final DateFormat SDFSERVICE = new SimpleDateFormat("MMMMM yyyy", new Locale("ru"));
 	private static final DateFormat SQLSDF = new SimpleDateFormat("yyyy-MM-dd");
+
 	static {
-		TimeZone zone = TimeZone.getTimeZone("GMT+6:00");
-		TimeZone.setDefault(zone);
-		SDF.setTimeZone(zone);
-		SDFWEEKDAY.setTimeZone(zone);
-		SDFSERVICE.setTimeZone(zone);
-		SQLSDF.setTimeZone(zone);
+		TimeZone.setDefault(timeZone);
+		SDF.setTimeZone(timeZone);
+		SDFWEEKDAY.setTimeZone(timeZone);
+		SDFSERVICE.setTimeZone(timeZone);
+		SQLSDF.setTimeZone(timeZone);
 	}
 	
 	public static Date parse(String date){
