@@ -34,4 +34,8 @@ public enum Priority {
 		}
     	return prio;
     }
+
+	public boolean isSimple() {
+		return SIMPLE.equals(this);
+	}
 }

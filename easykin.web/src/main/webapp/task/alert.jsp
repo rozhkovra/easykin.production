@@ -12,20 +12,21 @@
 
 	for(TaskBean taskBean : tasks){
 	    ITask task = taskBean.getTask();
-	    if (Status.OPEN.equals(task.getStatus())
-	        && new Date().getTime()>task.getPlanDate().getTime()
-	        && !Priority.SIMPLE.equals(task.getPriority())) {
-          overdueCount++;
-        }
-        if (DateUtil.isToday(task.getPlanDate())) {
-            todayCount++;
+	    if (task.getStatus().isOpen() && !task.getPriority().isSimple()) {
+	        if (DateUtil.future(task.getPlanDate())
+	            && !DateUtil.isToday(task.getPlanDate())) {
+                overdueCount++;
+            }
+            if (DateUtil.isToday(task.getPlanDate())) {
+                todayCount++;
+            }
         }
 	}
-    if (overdueCount > 0 || todayCount > 0) {
+    if (overdueCount > 0) {
         result += "<li>Просрочено задач - <b>"+overdueCount+"</b></li>";
     }
     if (todayCount > 0) {
-        result += "<li>На сегодня задач - <b>"+overdueCount+"</b></li>";
+        result += "<li>На сегодня задач - <b>"+todayCount+"</b></li>";
     }
     if (!result.isEmpty()) {
 %>
