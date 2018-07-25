@@ -1,18 +1,18 @@
 package ru.rrozhkov.easykin.service.calc.impl.convert;
 
-import java.util.Collection;
-
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.service.CalculatorFactory;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.core.collection.CollectionUtil;
-import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.service.CalculatorAbstractFactory;
+
+import java.util.Collection;
 
 public class ServiceCalcConverter implements
 		IConverter<Collection<ServiceCalc>, Collection<IPayment>> {
-	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
+	private static final CalculatorAbstractFactory calculatorFactory = CalculatorAbstractFactory.instance();
 	private static final PaymentFactory paymentFactory = PaymentFactory.instance();
 
 	protected ServiceCalcConverter() {

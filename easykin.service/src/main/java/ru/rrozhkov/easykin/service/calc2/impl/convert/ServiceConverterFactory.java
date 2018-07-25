@@ -12,6 +12,7 @@ import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Reading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
+import ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc2;
 
 import java.util.Collection;
 
@@ -62,8 +63,8 @@ public class ServiceConverterFactory {
                     measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure2()));
                     measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure()));
                     measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure2()));
-                } else if(entry instanceof ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc) {
-                    measures.addAll(((ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc)entry).getNewMeasures());
+                } else if(entry instanceof WaterCalc2) {
+                    measures.addAll(((WaterCalc2)entry).getNewMeasures());
                 }
                 return measures;
             }

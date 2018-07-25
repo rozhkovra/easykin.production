@@ -8,9 +8,10 @@ import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceResult;
 import ru.rrozhkov.easykin.service.CalculatorFactory;
+import ru.rrozhkov.easykin.service.CalculatorAbstractFactory;
 
 public class ServiceCalculator extends Calculator {
-	private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
+	private static final CalculatorAbstractFactory calculatorFactory = CalculatorAbstractFactory.instance();
 
 	public ServiceCalculator(ICalculation calcBean) {
 		super(calcBean);

@@ -12,8 +12,8 @@ import java.util.Map;
 /**
  * Created by rrozhkov on 22.07.2018.
  */
-public class WaterCalc extends MeasureCalc {
-    public WaterCalc(int id, int readingId, CalculationType type, Map<RateType, Money> rates, boolean isPaid, Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures) {
+public class WaterCalc2 extends MeasureCalc {
+    public WaterCalc2(int id, int readingId, CalculationType type, Map<RateType, Money> rates, boolean isPaid, Collection<IMeasure> oldMeasures, Collection<IMeasure> newMeasures) {
         super(id, readingId, type, rates, isPaid, oldMeasures, newMeasures);
     }
 }

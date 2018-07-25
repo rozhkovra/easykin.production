@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterResult;
@@ -9,7 +10,7 @@ import ru.rrozhkov.easykin.service.calculator.WaterCalculator;
 public class WaterCalculatorAdapter extends Calculator {
 	private static final WaterCalculator waterCalculator = new WaterCalculator();
 
-	public WaterCalculatorAdapter(WaterCalc calc) {
+	public WaterCalculatorAdapter(ICalculation calc) {
 		super(calc);
 	}
 

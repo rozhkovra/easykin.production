@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by rrozhkov on 14.05.2018.
  */
 public class ServiceFactory {
-    private static final CalculatorFactory calculatorFactory = CalculatorFactory.instance();
+    private static final CalculatorAbstractFactory calculatorFactory = CalculatorAbstractFactory.instance();
 
     public ServiceBean serviceBean(int num, String name, Date date, Money water, Money hotWater,
                                    Money electricity, Money gaz, Money heating, Money antenna,

@@ -2,8 +2,9 @@ package ru.rrozhkov.easykin.model.service.calc.impl.gaz;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.impl.Result;
+import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
 
-public class GazResult extends Result {
+public class GazResult extends DefaultResult {
 	private double delta;
 	
 	public GazResult(double delta, Money sum) {

@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.service.calc2.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
+import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.IResult;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
@@ -14,7 +15,7 @@ public class MeasureCalculatorAdapter extends Calculator {
     private static final ServiceFactory serviceFactory = ServiceFactory.instance();
     private static final MeasureCalculator measureCalculator = new MeasureCalculator();
 
-    public MeasureCalculatorAdapter(MeasureCalc calc) {
+    public MeasureCalculatorAdapter(ICalculation calc) {
         super(calc);
     }
 

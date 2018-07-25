@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.model.service.calc.impl.water;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.service.calc.impl.Result;
+import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
 
-public class WaterResult extends Result {
+public class WaterResult extends DefaultResult {
 	private double coldDelta;
 	private Money coldSum;
 	private double hotDelta;

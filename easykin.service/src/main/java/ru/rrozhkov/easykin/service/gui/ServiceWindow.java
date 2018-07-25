@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.CalcFactory;
+import ru.rrozhkov.easykin.service.calc.impl.CalcFactory;
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
 import javax.swing.JFrame;
