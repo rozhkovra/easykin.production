@@ -18,10 +18,10 @@ public class WaterCalculatorAdapter extends Calculator {
 		WaterCalc calc = (WaterCalc)getCalc();
 		Money rateIn = calc.getInRate();
 		Money rateOut = calc.getOutRate();
-		int currCold = (int)calc.getColdCurrentMeasure()+(int)calc.getColdCurrentMeasure2();
-		int prevCold = (int)calc.getColdPrevMeasure()+(int)calc.getColdPrevMeasure2();
-		int currHot = (int)calc.getHotCurrentMeasure()+(int)calc.getHotCurrentMeasure2();
-		int prevHot = (int)calc.getHotPrevMeasure()+(int)calc.getHotPrevMeasure2();
+		int currCold = calc.getColdCurrentMeasure();
+		int prevCold = calc.getColdPrevMeasure();
+		int currHot = calc.getHotCurrentMeasure();
+		int prevHot = calc.getHotPrevMeasure();
 		double result = waterCalculator.calculate(rateIn.getValue(), rateOut.getValue(), currCold, prevCold, currHot, prevHot);
 		Money sum = Money.valueOf(result);
 		return new WaterResult(0, Money.valueOf(0.0), 0, Money.valueOf(0.0), sum);

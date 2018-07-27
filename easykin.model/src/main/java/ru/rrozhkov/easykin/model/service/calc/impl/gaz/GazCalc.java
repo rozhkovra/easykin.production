@@ -2,11 +2,13 @@ package ru.rrozhkov.easykin.model.service.calc.impl.gaz;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.model.service.calc.impl.SimpleCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.MeasureCalc;
 
-public class GazCalc extends SimpleCalc {
-	public GazCalc(double gazPrevMeasure, double gazCurrentMeasure,
+import java.util.Collection;
+
+public class GazCalc extends MeasureCalc {
+	public GazCalc(Collection<Integer> prevMeasure, Collection<Integer> currentMeasure,
 			Money gazRate, boolean isPaid) {
-		super(gazPrevMeasure, gazCurrentMeasure,gazRate,isPaid,CalculationType.GAZ);
+		super(prevMeasure, currentMeasure,gazRate,isPaid, CalculationType.GAZ);
 	}
 }

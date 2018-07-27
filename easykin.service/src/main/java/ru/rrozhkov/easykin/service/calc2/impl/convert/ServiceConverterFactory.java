@@ -59,10 +59,10 @@ public class ServiceConverterFactory {
                 } else if(entry instanceof ElectricityCalc) {
                     measures.addAll(((ElectricityCalc)entry).getNewMeasures());
                 } else if (entry instanceof ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc) {
-                    measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure()));
-                    measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure2()));
-                    measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure()));
-                    measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure2()));
+                    measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure(0)));
+                    measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure(1)));
+                    measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure(0)));
+                    measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure(1)));
                 } else if(entry instanceof WaterCalc2) {
                     measures.addAll(((WaterCalc2)entry).getNewMeasures());
                 }

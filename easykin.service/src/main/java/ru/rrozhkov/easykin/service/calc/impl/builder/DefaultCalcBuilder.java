@@ -10,6 +10,7 @@ import ru.rrozhkov.easykin.service.ICalcBuilder;
  * Created by rrozhkov on 24.07.2018.
  */
 public class DefaultCalcBuilder implements ICalcBuilder {
+    private static final int VERSION = 1;
     private CalculationType type;
     private Money price;
     private boolean isPaid;
@@ -24,6 +25,6 @@ public class DefaultCalcBuilder implements ICalcBuilder {
     }
 
     public ICalculation build() {
-        return new Calculation(-1, -1, type,  isPaid, price);
+        return new Calculation(-1, -1, type,  isPaid, price, VERSION);
     }
 }

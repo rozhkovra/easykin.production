@@ -15,6 +15,7 @@ import java.util.Date;
  * Created by rrozhkov on 1/17/2018.
  */
 public class ServiceFactory {
+    private static final int VERSION = 2;
     public static class Holder {
         public static final ServiceFactory INSTANCE = new ServiceFactory();
     }
@@ -45,6 +46,6 @@ public class ServiceFactory {
         return new Rate(id, type, Money.valueOf(value), dateFrom, dateTo);
     }
     public ICalculation createCalc(int id, int readingId, CalculationType type, boolean isPaid, Money amount){
-        return new Calculation(id, readingId, type, isPaid, amount);
+        return new Calculation(id, readingId, type, isPaid, amount, VERSION);
     }
 }

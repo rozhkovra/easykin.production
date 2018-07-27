@@ -1,19 +1,19 @@
 package ru.rrozhkov.easykin.service.gui;
 
+import ru.rrozhkov.easykin.core.gui.GUIFactory;
+import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.model.fin.util.FormatUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
-import ru.rrozhkov.easykin.service.CalculatorFactory;
-import ru.rrozhkov.easykin.core.gui.GUIFactory;
-import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.service.CalculatorAbstractFactory;
+import ru.rrozhkov.easykin.service.CalculatorFactory;
 
 import javax.swing.JLabel;
 import java.awt.Component;
 import java.awt.Font;
 
 public abstract class Panel extends GUIPanel{
-	private static final CalculatorAbstractFactory calculatorFactory = CalculatorAbstractFactory.instance();
+	private static final CalculatorAbstractFactory calculatorFactory = CalculatorFactory.instance();
 	protected final static IGUIFactory guiFactory = GUIFactory.create();
 	private static final long serialVersionUID = 1L;
 	private Component itogoLabel = null;

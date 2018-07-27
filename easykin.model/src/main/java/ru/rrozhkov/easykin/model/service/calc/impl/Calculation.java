@@ -16,13 +16,15 @@ public class Calculation implements ICalculation {
 	private IPayment payment;
 	private CalculationType type;
 	private Date payDate = DateUtil.today();
+	private int version = 0;
 
-	public Calculation(int id, int readingId, CalculationType type, boolean isPaid, Money amount) {
+	public Calculation(int id, int readingId, CalculationType type, boolean isPaid, Money amount, int version) {
 		this.id = id;
 		this.isPaid = isPaid;
 		this.readingId = readingId;
 		this.amount = amount;
 		this.type = type;
+		this.version = version;
 	}
 
 	public Calculation(int id, int readingId, CalculationType type, IPayment payment) {
@@ -81,4 +83,7 @@ public class Calculation implements ICalculation {
 		return calculation;
 	}
 
+	public int getVersion() {
+		return version;
+	}
 }

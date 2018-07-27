@@ -3,11 +3,17 @@ package ru.rrozhkov.easykin.service.calc2.impl;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
+
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
+import ru.rrozhkov.easykin.model.service.calc2.impl.RateCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc2;
+import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
 import ru.rrozhkov.easykin.service.ICalcBuilder;
 import ru.rrozhkov.easykin.service.calc.impl.CalcFactory;
-import ru.rrozhkov.easykin.service.calc2.impl.builder.*;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.MeasureCalcBuilder;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.RateCalcBuilder;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.WaterCalcBuilder;
 import ru.rrozhkov.easykin.service.calc2.impl.factory.AbstractService2Factory;
 
 import java.util.Arrays;
@@ -38,7 +44,7 @@ public class Calc2Factory {
     public ICalculation createWaterCalc(IReading oldReading,
                                                IReading newReading,
                                                Collection<IRate> rates) {
-        ICalcBuilder builder = AbstractService2Factory.instance(CalculationType.WATER).getCalcBuilder();
+        ICalcBuilder builder = AbstractService2Factory.instance(WaterCalc2.class).getCalcBuilder();
         ((WaterCalcBuilder)builder).init(oldReading, newReading, rates);
         return builder.build();
     }
@@ -74,7 +80,7 @@ public class Calc2Factory {
     }
 
     private ICalculation createRateCalc(IReading newReading, Collection<IRate> rates, CalculationType type) {
-        ICalcBuilder builder = AbstractService2Factory.instance(type).getCalcBuilder();
+        ICalcBuilder builder = AbstractService2Factory.instance(RateCalc.class).getCalcBuilder();
         ((RateCalcBuilder)builder).init(newReading, rates, type);
         return builder.build();
     }
@@ -82,7 +88,7 @@ public class Calc2Factory {
     private ICalculation createMeasureCalc(IReading oldReading,
                                            IReading newReading,
                                            Collection<IRate> rates, CalculationType type) {
-        ICalcBuilder builder = AbstractService2Factory.instance(type).getCalcBuilder();
+        ICalcBuilder builder = AbstractService2Factory.instance(MeasureCalc.class).getCalcBuilder();
         ((MeasureCalcBuilder)builder).init(oldReading, newReading, rates, type);
         return builder.build();
     }

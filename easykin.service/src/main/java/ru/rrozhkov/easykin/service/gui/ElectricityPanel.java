@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.service.gui;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
@@ -13,12 +14,10 @@ public class ElectricityPanel extends Panel{
 	private JTextField prevMeasureField;
 	private JTextField currentMeasureField;
 	private JTextField rateField;
-	private JTextField odnField;
 	private Component prevMeasureLabel;
 	private Component currentMeasureLabel;
 	private Component rateLabel;
-	private Component odnLabel;
-	
+
 	public static GUIPanel create(GUIPanel parent, ICalculation bean) {
 		GUIPanel panel = new ElectricityPanel(parent, bean);
 		panel.fill();
@@ -39,8 +38,6 @@ public class ElectricityPanel extends Panel{
 		add(getCurrentMeasureField());
 		add(getRateLabel()); 
 		add(getRateField()); 
-		add(getOdnLabel()); 
-		add(getOdnField());
 		add(guiFactory.labelEmpty());
 		add(getItogoLabel()); 
 		refresh();
@@ -72,15 +69,6 @@ public class ElectricityPanel extends Panel{
 		}
 		return rateField;
 	}
-
-	public JTextField getOdnField(){
-		if(odnField == null){
-			String text = String.valueOf(((ElectricityCalc)calc).getOdn());
-			odnField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
-			odnField.getDocument().addDocumentListener(this);
-		}
-		return odnField;
-	}
 	
 	public Component getPrevMeasureLabel(){
 		if(prevMeasureLabel == null)
@@ -100,18 +88,11 @@ public class ElectricityPanel extends Panel{
 		return rateLabel;
 	}
 
-	public Component getOdnLabel(){
-		if(odnLabel == null)
-			odnLabel = guiFactory.label("ОДН");
-		return odnLabel;
-	}
-
 	@Override
 	public void updateBean() {
 		ElectricityCalc bean = (ElectricityCalc)getCalc();
-		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField().getText()));
-		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField().getText()));
+		bean.setPrevMeasure(CollectionUtil.create(CalcUtil.intNUllOrEmpty(getPrevMeasureField().getText())));
+		bean.setCurrentMeasure(CollectionUtil.create(CalcUtil.intNUllOrEmpty(getCurrentMeasureField().getText())));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
-		bean.setOdn(CalcUtil.moneyNUllOrEmpty(getOdnField().getText()));
 	}
 }

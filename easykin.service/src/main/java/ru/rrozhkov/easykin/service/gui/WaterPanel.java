@@ -101,7 +101,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getHotCurrentMeasureField() {
 		if(hotCurrentMeasureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMeasure());
+			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMeasure(0));
 			hotCurrentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotCurrentMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -109,7 +109,7 @@ public class WaterPanel extends Panel {
 	}
 	public JTextField getHotCurrentMeasureField2() {
 		if(hotCurrentMeasureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMeasure2());
+			String text = String.valueOf(((WaterCalc)calc).getHotCurrentMeasure(1));
 			hotCurrentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotCurrentMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -130,7 +130,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getHotPrevMeasureField() {
 		if(hotPrevMeasureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotPrevMeasure());
+			String text = String.valueOf(((WaterCalc)calc).getHotPrevMeasure(0));
 			hotPrevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotPrevMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -139,7 +139,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getHotPrevMeasureField2() {
 		if(hotPrevMeasureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getHotPrevMeasure2());
+			String text = String.valueOf(((WaterCalc)calc).getHotPrevMeasure(1));
 			hotPrevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			hotPrevMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -160,7 +160,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getColdPrevMeasureField(){
 		if(coldPrevMeasureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdPrevMeasure());
+			String text = String.valueOf(((WaterCalc)calc).getColdPrevMeasure(0));
 			coldPrevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldPrevMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -169,7 +169,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getColdPrevMeasureField2(){
 		if(coldPrevMeasureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdPrevMeasure2());
+			String text = String.valueOf(((WaterCalc)calc).getColdPrevMeasure(1));
 			coldPrevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldPrevMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -178,7 +178,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getColdCurrentMeasureField(){
 		if(coldCurrentMeasureField == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMeasure());
+			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMeasure(0));
 			coldCurrentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldCurrentMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -187,7 +187,7 @@ public class WaterPanel extends Panel {
 
 	public JTextField getColdCurrentMeasureField2(){
 		if(coldCurrentMeasureField2 == null){
-			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMeasure2());
+			String text = String.valueOf(((WaterCalc)calc).getColdCurrentMeasure(1));
 			coldCurrentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			coldCurrentMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -221,15 +221,15 @@ public class WaterPanel extends Panel {
 	@Override
 	public void updateBean() {
 		WaterCalc bean = (WaterCalc)getCalc();
-		bean.setColdPrevMeasure(CalcUtil.doubleNUllOrEmpty(getColdPrevMeasureField().getText()));
-		bean.setColdCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getColdCurrentMeasureField().getText()));
-		bean.setHotPrevMeasure(CalcUtil.doubleNUllOrEmpty(getHotPrevMeasureField().getText()));
-		bean.setHotCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getHotCurrentMeasureField().getText()));
-		bean.setColdPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getColdPrevMeasureField2().getText()));
-		bean.setColdCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getColdCurrentMeasureField2().getText()));
-		bean.setHotPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getHotPrevMeasureField2().getText()));
-		bean.setHotCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getHotCurrentMeasureField2().getText()));
-		bean.setInRate(CalcUtil.moneyNUllOrEmpty(getRateInField().getText()));
-		bean.setOutRate(CalcUtil.moneyNUllOrEmpty(getRateOutField().getText()));
+//		bean.setColdPrevMeasure(CalcUtil.doubleNUllOrEmpty(getColdPrevMeasureField().getText()));
+//		bean.setColdCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getColdCurrentMeasureField().getText()));
+//		bean.setHotPrevMeasure(CalcUtil.doubleNUllOrEmpty(getHotPrevMeasureField().getText()));
+//		bean.setHotCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getHotCurrentMeasureField().getText()));
+//		bean.setColdPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getColdPrevMeasureField2().getText()));
+//		bean.setColdCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getColdCurrentMeasureField2().getText()));
+//		bean.setHotPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getHotPrevMeasureField2().getText()));
+//		bean.setHotCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getHotCurrentMeasureField2().getText()));
+//		bean.setInRate(CalcUtil.moneyNUllOrEmpty(getRateInField().getText()));
+//		bean.setOutRate(CalcUtil.moneyNUllOrEmpty(getRateOutField().getText()));
 	}
 }

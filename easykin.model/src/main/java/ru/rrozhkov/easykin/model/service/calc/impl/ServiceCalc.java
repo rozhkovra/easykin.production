@@ -9,19 +9,20 @@ import java.util.Collection;
 import java.util.Date;
 
 public class ServiceCalc extends Calculation {
+	private static final int VERSION = 1;
 	private Date date;
 	private String name;
 	private Collection<ICalculation> beans;
 
 	public ServiceCalc(String name, Collection<ICalculation> beans) {
-		super(-1, -1, CalculationType.ALL, false, Money.valueOf(0));
+		super(-1, -1, CalculationType.ALL, false, Money.valueOf(0), VERSION);
 		this.name = name;
 		this.beans = beans;
 		this.date = DateUtil.today();
 	}
 
 	public ServiceCalc(Date date, Collection<ICalculation> beans) {
-		super(-1, -1, CalculationType.ALL, false, Money.valueOf(0));
+		super(-1, -1, CalculationType.ALL, false, Money.valueOf(0), VERSION);
 		this.name = DateUtil.formatService(date);
 		this.beans = beans;
 		this.date = date;

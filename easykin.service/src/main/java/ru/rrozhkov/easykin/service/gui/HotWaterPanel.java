@@ -56,7 +56,7 @@ public class HotWaterPanel extends Panel{
 	
 	public JTextField getPrevMeasureField(){
 		if(prevMeasureField == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure());
+			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure(0));
 			prevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			prevMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -65,7 +65,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getPrevMeasureField2(){
 		if(prevMeasureField2 == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure2());
+			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure(1));
 			prevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			prevMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -74,7 +74,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getCurrentMeasureField(){
 		if(currentMeasureField == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure());
+			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure(0));
 			currentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			currentMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -83,7 +83,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getCurrentMeasureField2(){
 		if(currentMeasureField2 == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure2());
+			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure(1));
 			currentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			currentMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -147,12 +147,12 @@ public class HotWaterPanel extends Panel{
 
 	@Override
 	public void updateBean() {
-		HotWaterCalc bean = (HotWaterCalc)getCalc();
-		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField().getText()));
-		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField().getText()));
-		bean.setPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField2().getText()));
-		bean.setCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField2().getText()));
-		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
+//		HotWaterCalc bean = (HotWaterCalc)getCalc();
+//		bean.setPrevMeasure(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField().getText()));
+//		bean.setCurrentMeasure(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField().getText()));
+//		bean.setPrevMeasure2(CalcUtil.doubleNUllOrEmpty(getPrevMeasureField2().getText()));
+//		bean.setCurrentMeasure2(CalcUtil.doubleNUllOrEmpty(getCurrentMeasureField2().getText()));
+//		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
 //		bean.setOdn(CalcUtil.moneyNUllOrEmpty(getOdnField().getText()));
 	}
 }

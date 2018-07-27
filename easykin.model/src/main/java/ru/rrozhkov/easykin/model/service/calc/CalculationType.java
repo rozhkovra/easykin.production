@@ -49,6 +49,9 @@ public enum CalculationType {
 	public boolean isRepair() {
 		return this.equals(REPAIR);
 	}
+	public boolean isAll() {
+		return this.equals(ALL);
+	}
 
 	public static CalculationType type(String type) {
 		if(HEATING.toString().equals(type))

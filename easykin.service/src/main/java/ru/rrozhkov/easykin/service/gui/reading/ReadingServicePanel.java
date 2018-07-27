@@ -58,17 +58,17 @@ public class ReadingServicePanel extends Panel {
         for(ICalculation calculation : ((ServiceCalc)calc).calcs()) {
             if(calculation.getType().isWater()) {
                 WaterCalc waterCalc = (WaterCalc)calculation;
-                waterCalc.setColdCurrentMeasure(readingMeasureFacade.getColdMeasure());
-                waterCalc.setColdCurrentMeasure2(readingMeasureFacade.getColdMeasure2());
-                waterCalc.setHotCurrentMeasure(readingMeasureFacade.getHotMeasure());
-                waterCalc.setHotCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
+//                waterCalc.setColdCurrentMeasure(readingMeasureFacade.getColdMeasure());
+//                waterCalc.setColdCurrentMeasure2(readingMeasureFacade.getColdMeasure2());
+//                waterCalc.setHotCurrentMeasure(readingMeasureFacade.getHotMeasure());
+//                waterCalc.setHotCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
             } else if (calculation.getType().isHotWater()) {
                 HotWaterCalc waterCalc = (HotWaterCalc)calculation;
-                waterCalc.setCurrentMeasure(readingMeasureFacade.getHotMeasure());
-                waterCalc.setCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
+//                waterCalc.setCurrentMeasure(readingMeasureFacade.getHotMeasure());
+//                waterCalc.setCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
             } else if (calculation.getType().isElectricity()) {
                 ElectricityCalc elecCalc = (ElectricityCalc)calculation;
-                elecCalc.setCurrentMeasure(readingMeasureFacade.getElectricityMeasure());
+//                elecCalc.setCurrentMeasure(readingMeasureFacade.getElectricityMeasure());
             } else if (calculation instanceof MeasureCalc) {
                 MeasureCalc calc = (MeasureCalc)calculation;
                 Collection<MeasureType> types = CollectionUtil.create();
