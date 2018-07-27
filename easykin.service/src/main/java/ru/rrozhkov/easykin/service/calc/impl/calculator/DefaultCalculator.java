@@ -2,7 +2,7 @@ package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
+import ru.rrozhkov.easykin.model.service.calc.impl.DefaultResult;
 
 
 public class DefaultCalculator extends Calculator {

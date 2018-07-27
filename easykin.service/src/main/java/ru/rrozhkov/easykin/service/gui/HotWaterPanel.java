@@ -1,8 +1,7 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
-import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
+import ru.rrozhkov.easykin.model.service.calc.impl.MeasureCalc;
 
 import javax.swing.JTextField;
 import java.awt.Component;
@@ -56,7 +55,7 @@ public class HotWaterPanel extends Panel{
 	
 	public JTextField getPrevMeasureField(){
 		if(prevMeasureField == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure(0));
+			String text = String.valueOf(((MeasureCalc)calc).getPrevMeasure(0));
 			prevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			prevMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -65,7 +64,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getPrevMeasureField2(){
 		if(prevMeasureField2 == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getPrevMeasure(1));
+			String text = String.valueOf(((MeasureCalc)calc).getPrevMeasure(1));
 			prevMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			prevMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -74,7 +73,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getCurrentMeasureField(){
 		if(currentMeasureField == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure(0));
+			String text = String.valueOf(((MeasureCalc)calc).getCurrentMeasure(0));
 			currentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			currentMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -83,7 +82,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getCurrentMeasureField2(){
 		if(currentMeasureField2 == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getCurrentMeasure(1));
+			String text = String.valueOf(((MeasureCalc)calc).getCurrentMeasure(1));
 			currentMeasureField2 = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			currentMeasureField2.getDocument().addDocumentListener(this);
 		}
@@ -92,7 +91,7 @@ public class HotWaterPanel extends Panel{
 
 	public JTextField getRateField(){
 		if(rateField == null){
-			String text = String.valueOf(((HotWaterCalc)calc).getRate());
+			String text = String.valueOf(((MeasureCalc)calc).getRate());
 			rateField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			rateField.getDocument().addDocumentListener(this);
 		}

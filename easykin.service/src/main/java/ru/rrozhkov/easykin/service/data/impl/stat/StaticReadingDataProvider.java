@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.data.impl.CollectionDataProvider;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
+import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
@@ -67,14 +68,14 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
     public ServiceCalc getServiceCalc(IReading oldReading, IReading newReading, Collection rates) {
         Collection<ICalculation> calculations = CollectionUtil.create();
         calculations.add(calc2Factory.createWaterCalc(oldReading, newReading, rates));
-        calculations.add(calc2Factory.createHotWaterCalc(oldReading, newReading, rates));
-        calculations.add(calc2Factory.createElectricityCalc(oldReading, newReading, rates));
-        calculations.add(calc2Factory.createGazCalc(newReading, rates));
-        calculations.add(calc2Factory.createHeatingCalc(newReading, rates));
-        calculations.add(calc2Factory.createRepairCalc(newReading, rates));
-        calculations.add(calc2Factory.createAntennaCalc(newReading, rates));
-        calculations.add(calc2Factory.createIntercomCalc(newReading, rates));
-        calculations.add(calc2Factory.createHouseCalc(newReading, rates));
+        calculations.add(calc2Factory.createMeasureCalc(CalculationType.HOTWATER, oldReading, newReading, rates));
+        calculations.add(calc2Factory.createMeasureCalc(CalculationType.ELECTRICITY, oldReading, newReading, rates));
+        calculations.add(calc2Factory.createRateCalc(CalculationType.GAZ, newReading, rates));
+        calculations.add(calc2Factory.createRateCalc(CalculationType.HEATING, newReading, rates));
+        calculations.add(calc2Factory.createRateCalc(CalculationType.REPAIR, newReading, rates));
+        calculations.add(calc2Factory.createRateCalc(CalculationType.ANTENNA, newReading, rates));
+        calculations.add(calc2Factory.createRateCalc(CalculationType.INTERCOM, newReading, rates));
+        calculations.add(calc2Factory.createRateCalc(CalculationType.HOUSE, newReading, rates));
         return new ServiceCalc(newReading.getDate(),calculations);
     }
 }

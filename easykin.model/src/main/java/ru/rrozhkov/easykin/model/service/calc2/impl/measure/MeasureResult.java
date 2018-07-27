@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.model.service.calc2.impl.measure;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.service.calc.impl.def.DefaultResult;
+import ru.rrozhkov.easykin.model.service.calc.impl.DefaultResult;
 
 /**
  * Created by rrozhkov on 12/27/2017.

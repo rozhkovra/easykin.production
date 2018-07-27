@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.service.calc.impl.factory;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.ICalculator;
+import ru.rrozhkov.easykin.service.ICalcBuildBean;
 import ru.rrozhkov.easykin.service.calc.impl.builder.DefaultCalcBuilder;
 import ru.rrozhkov.easykin.service.ICalcBuilder;
 import ru.rrozhkov.easykin.service.calc.impl.calculator.DefaultCalculator;
@@ -11,8 +12,8 @@ import ru.rrozhkov.easykin.service.calc.impl.calculator.DefaultCalculator;
  */
 public class DefaultServiceFactory extends AbstractServiceFactory {
     @Override
-    public ICalcBuilder getCalcBuilder() {
-        return new DefaultCalcBuilder();
+    public ICalculation buildCalculation(ICalcBuildBean bean) {
+        return new DefaultCalcBuilder(bean).build();
     }
 
     @Override

@@ -2,10 +2,10 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.gaz.GazCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.water.hot.HotWaterCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.GazCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.WaterCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.HotWaterCalc;
 
 public class PanelFactory {
 	public static class Holder {

@@ -2,7 +2,8 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.MeasureCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
 import javax.swing.JTextField;
@@ -45,7 +46,7 @@ public class ElectricityPanel extends Panel{
 	
 	public JTextField getPrevMeasureField(){
 		if(prevMeasureField == null){
-			String text = String.valueOf(((ElectricityCalc)calc).getPrevMeasure());
+			String text = String.valueOf(((MeasureCalc)calc).getPrevMeasure());
 			prevMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			prevMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -54,7 +55,7 @@ public class ElectricityPanel extends Panel{
 
 	public JTextField getCurrentMeasureField(){
 		if(currentMeasureField == null){
-			String text = String.valueOf(((ElectricityCalc)calc).getCurrentMeasure());
+			String text = String.valueOf(((MeasureCalc)calc).getCurrentMeasure());
 			currentMeasureField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			currentMeasureField.getDocument().addDocumentListener(this);
 		}
@@ -63,7 +64,7 @@ public class ElectricityPanel extends Panel{
 	
 	public JTextField getRateField(){
 		if(rateField == null){
-			String text = String.valueOf(((ElectricityCalc)calc).getRate());
+			String text = String.valueOf(((MeasureCalc)calc).getRate());
 			rateField = (JTextField) guiFactory.fieldCalc(5, text, calc.isPaid());
 			rateField.getDocument().addDocumentListener(this);
 		}

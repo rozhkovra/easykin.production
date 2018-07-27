@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.service.calc.impl.gaz;
+package ru.rrozhkov.easykin.model.service.calc.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.service.calc.impl.water;
+package ru.rrozhkov.easykin.model.service.calc.impl;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.fin.Money;

@@ -5,7 +5,7 @@ import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc;
+import ru.rrozhkov.easykin.model.service.calc.impl.WaterCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
@@ -53,12 +53,12 @@ public class ServiceConverterFactory {
         return new IConverter<ICalculation, Collection<IMeasure>>() {
             public Collection<IMeasure> convert(ICalculation entry) {
                 Collection<IMeasure> measures = CollectionUtil.create();
-                if(entry instanceof ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc) {
+                if(entry instanceof ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc) {
                     measures.add(serviceFactory.createMeasure(MeasureType.ELECTRICITY,
-                            ((ru.rrozhkov.easykin.model.service.calc.impl.electricity.ElectricityCalc)entry).getCurrentMeasure()));
+                            ((ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc)entry).getCurrentMeasure()));
                 } else if(entry instanceof ElectricityCalc) {
                     measures.addAll(((ElectricityCalc)entry).getNewMeasures());
-                } else if (entry instanceof ru.rrozhkov.easykin.model.service.calc.impl.water.WaterCalc) {
+                } else if (entry instanceof WaterCalc) {
                     measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure(0)));
                     measures.add(serviceFactory.createMeasure(MeasureType.COLDWATER,((WaterCalc)entry).getColdCurrentMeasure(1)));
                     measures.add(serviceFactory.createMeasure(MeasureType.HOTWATER,((WaterCalc)entry).getHotCurrentMeasure(0)));
