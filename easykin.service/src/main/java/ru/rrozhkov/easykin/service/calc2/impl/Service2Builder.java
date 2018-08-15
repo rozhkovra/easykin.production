@@ -11,20 +11,20 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 31.05.2018.
  */
-public class Calc2Builder {
+public class Service2Builder {
     private static final ReadingBuilder readingBuilder = ReadingBuilder.instance();
     private static final Calc2Factory calcFactory = Calc2Factory.instance();
     private static final RateService rateService = RateService.instance();
 
     public static class Holder {
-        public static final Calc2Builder INSTANCE = new Calc2Builder();
+        public static final Service2Builder INSTANCE = new Service2Builder();
     }
 
-    public static Calc2Builder instance(){
+    public static Service2Builder instance(){
         return Holder.INSTANCE;
     }
 
-    private Calc2Builder() {
+    private Service2Builder() {
     }
 
     public ICalculation buildNew() {

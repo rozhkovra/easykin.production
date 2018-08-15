@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.service.calc2.impl.factory;
 
 import ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc2;
-import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc.impl.factory.AbstractServiceFactory;
 
 /**

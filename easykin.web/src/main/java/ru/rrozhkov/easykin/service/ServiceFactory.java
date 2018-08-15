@@ -12,8 +12,6 @@ import java.util.Date;
  * Created by rrozhkov on 14.05.2018.
  */
 public class ServiceFactory {
-    private static final CalculatorAbstractFactory calculatorFactory = CalculatorAbstractFactory.instance();
-
     public ServiceBean serviceBean(int num, String name, Date date, Money water, Money hotWater,
                                    Money electricity, Money gaz, Money heating, Money antenna,
                                    Money intercom, Money house, Money repair, Money itog, Money noPaid,
@@ -28,16 +26,16 @@ public class ServiceFactory {
                 return serviceBean(0
                         , entry.getName()
                         , entry.getDate()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.WATER)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.HOTWATER)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.ELECTRICITY)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.GAZ)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.HEATING)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.ANTENNA)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.INTERCOM)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.HOUSE)).calculate().getResult()
-                        , calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(entry, CalculationType.REPAIR)).calculate().getResult()
-                        , calculatorFactory.getCalculator(entry).calculate().getResult()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.WATER).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.HOTWATER).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.ELECTRICITY).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.GAZ).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.HEATING).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.ANTENNA).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.INTERCOM).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.HOUSE).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.REPAIR).getAmount()
+                        , ServiceCalcUtil.getSum(entry)
                         , ServiceCalcUtil.getNoPaidSum(entry)
                         , ""
                         , "");

@@ -3,13 +3,10 @@ package ru.rrozhkov.easykin.service.gui.reading;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.WaterCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.HotWaterCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.MeasureType;
-import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
+import ru.rrozhkov.easykin.model.service.calc2.impl.MeasureCalc;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingMeasureAdapter;
 import ru.rrozhkov.easykin.service.gui.GUIPanel;
 import ru.rrozhkov.easykin.service.gui.Panel;
@@ -57,17 +54,17 @@ public class ReadingServicePanel extends Panel {
     public void updateBean() {
         for(ICalculation calculation : ((ServiceCalc)calc).calcs()) {
             if(calculation.getType().isWater()) {
-                WaterCalc waterCalc = (WaterCalc)calculation;
+//                WaterCalc waterCalc = (WaterCalc)calculation;
 //                waterCalc.setColdCurrentMeasure(readingMeasureFacade.getColdMeasure());
 //                waterCalc.setColdCurrentMeasure2(readingMeasureFacade.getColdMeasure2());
 //                waterCalc.setHotCurrentMeasure(readingMeasureFacade.getHotMeasure());
 //                waterCalc.setHotCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
             } else if (calculation.getType().isHotWater()) {
-                HotWaterCalc waterCalc = (HotWaterCalc)calculation;
+//                HotWaterCalc waterCalc = (HotWaterCalc)calculation;
 //                waterCalc.setCurrentMeasure(readingMeasureFacade.getHotMeasure());
 //                waterCalc.setCurrentMeasure2(readingMeasureFacade.getHotMeasure2());
             } else if (calculation.getType().isElectricity()) {
-                ElectricityCalc elecCalc = (ElectricityCalc)calculation;
+//                ElectricityCalc elecCalc = (ElectricityCalc)calculation;
 //                elecCalc.setCurrentMeasure(readingMeasureFacade.getElectricityMeasure());
             } else if (calculation instanceof MeasureCalc) {
                 MeasureCalc calc = (MeasureCalc)calculation;

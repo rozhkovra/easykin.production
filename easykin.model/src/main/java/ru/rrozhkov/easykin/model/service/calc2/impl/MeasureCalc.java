@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.model.service.calc2.impl.measure;
+package ru.rrozhkov.easykin.model.service.calc2.impl;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;

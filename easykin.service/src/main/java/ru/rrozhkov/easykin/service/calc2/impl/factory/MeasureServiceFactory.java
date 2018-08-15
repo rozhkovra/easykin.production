@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.service.calc2.impl.factory;
 
+import ru.rrozhkov.easykin.model.service.calc.ICalcBean;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.ICalculator;
-import ru.rrozhkov.easykin.service.ICalcBuildBean;
-import ru.rrozhkov.easykin.service.calc2.impl.builder.MeasureCalcBuilder;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.Calc2Builder;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.bean.ICalc2Bean;
 import ru.rrozhkov.easykin.service.calc2.impl.calculator.MeasureCalculatorAdapter;
 
 /**
@@ -11,13 +11,7 @@ import ru.rrozhkov.easykin.service.calc2.impl.calculator.MeasureCalculatorAdapte
  */
 public class MeasureServiceFactory extends AbstractService2Factory {
     @Override
-    public ICalculation buildCalculation(ICalcBuildBean bean) {
-        return new MeasureCalcBuilder(bean).build();
+    public ICalculation buildCalculation(ICalcBean bean) {
+        return new Calc2Builder((ICalc2Bean)bean, new MeasureCalculatorAdapter(bean)).build();
     }
-
-    @Override
-    public ICalculator getCalculator(ICalculation calculation) {
-        return new MeasureCalculatorAdapter(calculation);
-    }
-
 }

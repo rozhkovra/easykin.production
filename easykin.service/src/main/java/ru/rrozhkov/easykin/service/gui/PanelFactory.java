@@ -1,11 +1,6 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.GazCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.WaterCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.HotWaterCalc;
 
 public class PanelFactory {
 	public static class Holder {
@@ -20,15 +15,13 @@ public class PanelFactory {
 	}
 
 	public GUIPanel getPanel(Panel parent, ICalculation bean){
-		if(bean instanceof GazCalc)
-			return GazPanel.create(parent, bean);
-		else if (bean instanceof WaterCalc)
+		if(bean.getType().isGaz()
+				|| bean.getType().isHotWater()
+				|| bean.getType().isElectricity())
+			return MeasurePanel.create(parent, bean);
+		else if (bean.getType().isWater())
 			return WaterPanel.create(parent, bean);
-		else if (bean instanceof ElectricityCalc)
-			return ElectricityPanel.create(parent, bean);
-		else if (bean instanceof HotWaterCalc)
-			return HotWaterPanel.create(parent, bean);
-		else if (bean instanceof ServiceCalc)
+		else if (bean.getType().isAll())
 			return ServiceCalcPanel.create(bean);
 		return DefaultPanel.create(parent, bean);
 	}

@@ -7,8 +7,8 @@ import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.RateCalc;
 import ru.rrozhkov.easykin.model.service.calc2.impl.WaterCalc2;
-import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureCalc;
-import ru.rrozhkov.easykin.service.ICalcBuildBean;
+import ru.rrozhkov.easykin.model.service.calc2.impl.MeasureCalc;
+import ru.rrozhkov.easykin.model.service.calc.ICalcBean;
 import ru.rrozhkov.easykin.service.calc.impl.CalcFactory;
 import ru.rrozhkov.easykin.service.calc2.impl.builder.bean.CalcBuilderFactory;
 import ru.rrozhkov.easykin.service.calc2.impl.factory.AbstractService2Factory;
@@ -46,7 +46,7 @@ public class Calc2Factory {
         return getCalculation(MeasureCalc.class, calcBuilderBeanFactory.measure(oldReading, newReading, rates, type));
     }
 
-    private ICalculation getCalculation(Class clazz, ICalcBuildBean bean) {
+    private ICalculation getCalculation(Class clazz, ICalcBean bean) {
         return AbstractService2Factory.instance(clazz).buildCalculation(bean);
     }
 

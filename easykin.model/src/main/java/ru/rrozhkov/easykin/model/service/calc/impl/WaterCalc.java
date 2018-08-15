@@ -4,8 +4,6 @@ import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.MoneyFactory;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.MeasureCalc;
 
 public class WaterCalc extends Calculation {
 	private static final int VERSION = 1;

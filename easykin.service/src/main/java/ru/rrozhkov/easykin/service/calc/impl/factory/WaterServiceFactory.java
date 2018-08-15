@@ -1,9 +1,8 @@
 package ru.rrozhkov.easykin.service.calc.impl.factory;
 
+import ru.rrozhkov.easykin.model.service.calc.ICalcBean;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.ICalculator;
-import ru.rrozhkov.easykin.service.ICalcBuildBean;
-import ru.rrozhkov.easykin.service.calc.impl.builder.WaterCalcBuilder;
+import ru.rrozhkov.easykin.service.calc.impl.builder.CalcBuilder;
 import ru.rrozhkov.easykin.service.calc.impl.calculator.WaterCalculatorAdapter;
 
 /**
@@ -11,12 +10,7 @@ import ru.rrozhkov.easykin.service.calc.impl.calculator.WaterCalculatorAdapter;
  */
 public class WaterServiceFactory extends AbstractServiceFactory {
     @Override
-    public ICalculation buildCalculation(ICalcBuildBean bean) {
-        return new WaterCalcBuilder(bean).build();
-    }
-
-    @Override
-    public ICalculator getCalculator(ICalculation calc) {
-        return new WaterCalculatorAdapter(calc);
+    public ICalculation buildCalculation(ICalcBean bean) {
+        return new CalcBuilder(bean, new WaterCalculatorAdapter(bean)).build();
     }
 }

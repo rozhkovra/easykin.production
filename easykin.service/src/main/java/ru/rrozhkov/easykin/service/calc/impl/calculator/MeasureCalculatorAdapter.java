@@ -1,26 +1,29 @@
 package ru.rrozhkov.easykin.service.calc.impl.calculator;
 
 import ru.rrozhkov.easykin.model.fin.Money;
-import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.Calculator;
-import ru.rrozhkov.easykin.model.service.calc.impl.MeasureCalc;
-import ru.rrozhkov.easykin.model.service.calc.impl.MeasureResult;
+import ru.rrozhkov.easykin.model.service.calc.ICalcBean;
+import ru.rrozhkov.easykin.model.service.calc.IServiceResult;
+import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalculator;
+import ru.rrozhkov.easykin.model.service.calc.impl.ServiceResult;
+import ru.rrozhkov.easykin.service.calc.impl.builder.bean.MeasureBean;
+import ru.rrozhkov.easykin.service.calc.impl.builder.bean.MeasureBeanAdapter;
 import ru.rrozhkov.easykin.service.calculator.MeasureCalculator;
 
-public class MeasureCalculatorAdapter extends Calculator {
-	private static final MeasureCalculator measureCalculator = new MeasureCalculator();
-
-	public MeasureCalculatorAdapter(ICalculation bean) {
+public class MeasureCalculatorAdapter extends ServiceCalculator {
+	public MeasureCalculatorAdapter(ICalcBean bean) {
 		super(bean);
 	}
 
-	public MeasureResult calculate() {
-		MeasureCalc calcBean = (MeasureCalc)getCalc();
-		int currMeasure = calcBean.getCurrentMeasure();
-		int prevMeasure = calcBean.getPrevMeasure();
+	public IServiceResult calculate() {
+
+		MeasureBean calcBean = (MeasureBean) getCalcBean();
+		MeasureBeanAdapter beanAdapter = new MeasureBeanAdapter(calcBean);
+		int currMeasure = beanAdapter.getCurrentMeasure();
+		int prevMeasure = beanAdapter.getPrevMeasure();
 		double rate = calcBean.getRate().getValue();
-		double delta = calcBean.getCurrentMeasure() - calcBean.getPrevMeasure();
-		Money sum = Money.valueOf(measureCalculator.calculate(currMeasure, prevMeasure, rate));
-		return new MeasureResult(delta, sum);
+		MeasureCalculator measureCalculator = new MeasureCalculator(currMeasure, prevMeasure, rate);
+		double dSum = (Double)measureCalculator.calculate().getResult();
+		Money sum = Money.valueOf(dSum);
+		return new ServiceResult(sum);
 	}
 }

@@ -1,22 +1,17 @@
 package ru.rrozhkov.easykin.service.calc2.impl.factory;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.ICalculator;
-import ru.rrozhkov.easykin.service.ICalcBuildBean;
-import ru.rrozhkov.easykin.service.calc.impl.calculator.DefaultCalculator;
-import ru.rrozhkov.easykin.service.calc2.impl.builder.RateCalcBuilder;
+import ru.rrozhkov.easykin.model.service.calc.ICalcBean;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.Calc2Builder;
+import ru.rrozhkov.easykin.service.calc2.impl.builder.bean.ICalc2Bean;
+import ru.rrozhkov.easykin.service.calc2.impl.calculator.RateCalculator;
 
 /**
  * Created by rrozhkov on 24.07.2018.
  */
 public class RateServiceFactory extends AbstractService2Factory {
     @Override
-    public ICalculation buildCalculation(ICalcBuildBean bean) {
-        return new RateCalcBuilder(bean).build();
-    }
-
-    @Override
-    public ICalculator getCalculator(ICalculation calculation) {
-        return new DefaultCalculator(calculation);
+    public ICalculation buildCalculation(ICalcBean bean) {
+        return new Calc2Builder((ICalc2Bean)bean, new RateCalculator(bean)).build();
     }
 }

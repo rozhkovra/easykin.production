@@ -2,14 +2,14 @@ package ru.rrozhkov.easykin.service.calc.impl.builder.bean;
 
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.service.ICalcBuildBean;
+import ru.rrozhkov.easykin.model.service.calc.ICalcBean;
 
 import java.util.Collection;
 
 /**
  * Created by rrozhkov on 27.07.2018.
  */
-public class MeasureBean implements ICalcBuildBean {
+public class MeasureBean implements ICalcBean {
     private Collection<Integer> prevMeasure;
     private Collection<Integer> currentMeasure;
     private Money rate;

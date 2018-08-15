@@ -3,14 +3,13 @@ package ru.rrozhkov.easykin.service.calc2.impl.builder.bean;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
-import ru.rrozhkov.easykin.service.ICalcBuildBean;
 
 import java.util.Collection;
 
 /**
  * Created by rrozhkov on 27.07.2018.
  */
-public class MeasureBean implements ICalcBuildBean {
+public class MeasureBean implements ICalc2Bean {
     private IReading oldReading;
     private IReading newReading;
     private Collection<IRate> rates;
@@ -37,5 +36,9 @@ public class MeasureBean implements ICalcBuildBean {
 
     public CalculationType getType() {
         return type;
+    }
+
+    public boolean isPaid() {
+        return false;
     }
 }

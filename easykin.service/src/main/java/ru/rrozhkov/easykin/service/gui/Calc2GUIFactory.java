@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.service.calc2.impl.Calc2Builder;
+import ru.rrozhkov.easykin.service.calc2.impl.Service2Builder;
 import ru.rrozhkov.easykin.core.gui.GUIFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
@@ -16,7 +16,7 @@ import java.util.Collection;
  * Created by rrozhkov on 21.05.2018.
  */
 public class Calc2GUIFactory implements IModuleGUIFactory<ServiceCalc> {
-    private static final Calc2Builder calc2Builder = Calc2Builder.instance();
+    private static final Service2Builder calc2Builder = Service2Builder.instance();
     private static final IGUIFactory guiFactory = GUIFactory.create();
 
     public static class Holder {

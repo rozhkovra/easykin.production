@@ -3,10 +3,8 @@ package ru.rrozhkov.easykin.model.service.calc2.impl;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.service.calc.CalculationType;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.IResult;
 import ru.rrozhkov.easykin.model.service.calc.impl.Calculation;
 import ru.rrozhkov.easykin.model.service.calc2.*;
-import ru.rrozhkov.easykin.model.service.calc2.impl.measure.MeasureResult;
 
 import java.util.Collection;
 import java.util.Date;
@@ -38,9 +36,6 @@ public class ServiceFactory {
     }
     public IMeasure createMeasure(MeasureType type, Object value){
         return new Measure(type, value);
-    }
-    public IResult createMeasureResult(double delta, Money deltaSum, Money sum){
-        return new MeasureResult(delta, deltaSum, sum);
     }
     public IRate createRate(int id, RateType type, Object value, Date dateFrom, Date dateTo){
         return new Rate(id, type, Money.valueOf(value), dateFrom, dateTo);

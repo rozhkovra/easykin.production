@@ -60,12 +60,13 @@ public class Reading implements IReading {
         }
         reading.setMeasures(newMeasures);
         Collection<ICalculation> newCalcs = CollectionUtil.create();
-        for(ICalculation calculation : calcs) {
+/*        for(ICalculation calculation : calcs) {
             ICalculation newCalculation = ((Calculation)calculation).clone();
             newCalcs.add(newCalculation);
         }
-        reading.setMeasures(newMeasures);
+*/
         reading.setCalcs(newCalcs);
+        reading.setMeasures(newMeasures);
         return reading;
     }
 

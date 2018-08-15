@@ -1,12 +1,10 @@
 package ru.rrozhkov.easykin.service.gui;
 
-import ru.rrozhkov.easykin.model.service.calc.CalculationType;
-import ru.rrozhkov.easykin.service.CalculatorFactory;
-import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
-import ru.rrozhkov.easykin.service.CalculatorAbstractFactory;
-import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
 import ru.rrozhkov.easykin.core.gui.TableModel;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.model.service.calc.CalculationType;
+import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
+import ru.rrozhkov.easykin.service.calc.impl.util.ServiceCalcUtil;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,8 +13,6 @@ import java.util.List;
  * Created by rrozhkov on 22.05.2018.
  */
 public class ServiceTableModel extends TableModel{
-    private static final CalculatorAbstractFactory calculatorFactory = CalculatorAbstractFactory.instance();
-
     protected ServiceTableModel(Collection beans) {
         super(beans, new ServiceCalcTableStyle());
     }
@@ -29,25 +25,25 @@ public class ServiceTableModel extends TableModel{
             case 1:
                 return DateUtil.format(calc.getDate());
             case 2:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.WATER)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.WATER).getAmount().toString();
             case 3:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.HOTWATER)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.HOTWATER).getAmount().toString();
             case 4:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.ELECTRICITY)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.ELECTRICITY).getAmount().toString();
             case 5:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.GAZ)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.GAZ).getAmount().toString();
             case 6:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.HEATING)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.HEATING).getAmount().toString();
             case 7:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.ANTENNA)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.ANTENNA).getAmount().toString();
             case 8:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.INTERCOM)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.INTERCOM).getAmount().toString();
             case 9:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.HOUSE)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.HOUSE).getAmount().toString();
             case 10:
-                return calculatorFactory.getCalculator(ServiceCalcUtil.getCalcByType(calc, CalculationType.REPAIR)).calculate().toString();
+                return ServiceCalcUtil.getCalcByType(calc, CalculationType.REPAIR).getAmount().toString();
             case 11:
-                return calculatorFactory.getCalculator(calc).calculate().toString()+(!ServiceCalcUtil.getNoPaidSum(calc).free()?" ("+ServiceCalcUtil.getNoPaidSum(calc)+")":"");
+                return ServiceCalcUtil.getSum(calc)+(!ServiceCalcUtil.getNoPaidSum(calc).free()?" ("+ServiceCalcUtil.getNoPaidSum(calc)+")":"");
         }
         return "";
     }

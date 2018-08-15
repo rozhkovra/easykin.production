@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc.impl.ElectricityCalc;
 import ru.rrozhkov.easykin.model.service.calc.impl.MeasureCalc;
 import ru.rrozhkov.easykin.service.gui.util.CalcUtil;
 
@@ -10,7 +9,7 @@ import javax.swing.JTextField;
 import java.awt.Component;
 
 
-public class ElectricityPanel extends Panel{
+public class MeasurePanel extends Panel{
 	private static final long serialVersionUID = 1L;
 	private JTextField prevMeasureField;
 	private JTextField currentMeasureField;
@@ -20,12 +19,12 @@ public class ElectricityPanel extends Panel{
 	private Component rateLabel;
 
 	public static GUIPanel create(GUIPanel parent, ICalculation bean) {
-		GUIPanel panel = new ElectricityPanel(parent, bean);
+		GUIPanel panel = new MeasurePanel(parent, bean);
 		panel.fill();
 		return panel;
 	}
 
-	private ElectricityPanel(GUIPanel parent, ICalculation bean) {
+	private MeasurePanel(GUIPanel parent, ICalculation bean) {
 		super(parent, bean);
 	}
 
@@ -91,7 +90,7 @@ public class ElectricityPanel extends Panel{
 
 	@Override
 	public void updateBean() {
-		ElectricityCalc bean = (ElectricityCalc)getCalc();
+		MeasureCalc bean = (MeasureCalc)getCalc();
 		bean.setPrevMeasure(CollectionUtil.create(CalcUtil.intNUllOrEmpty(getPrevMeasureField().getText())));
 		bean.setCurrentMeasure(CollectionUtil.create(CalcUtil.intNUllOrEmpty(getCurrentMeasureField().getText())));
 		bean.setRate(CalcUtil.moneyNUllOrEmpty(getRateField().getText()));
