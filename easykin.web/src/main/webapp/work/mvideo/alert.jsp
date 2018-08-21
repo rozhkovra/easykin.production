@@ -15,18 +15,28 @@
 	}
 	result+="</ul>";
 	String color = "danger";
-	if (hours>4 && hours<=8) {
+	if (hours > 4 && hours < 8) {
 		color = "warning";
+	} else if (hours == 8) {
+		color = "success";
 	}
-	if (hours != 8) {
 %>
 <div class="alert alert-<%=color%> alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h4><i class="icon fa fa-hourglass-half"></i> Сообщение!</h4>
+<%
+	if (hours != 8) {
+%>
     Отработано: <b><%=hours%></b> часов.
-    <%=result%>
-    Осталось: <b><%=8-hours%></b> часов.
-</div>
 <%
 	}
 %>
+    <%=result%>
+<%
+	if (hours != 8) {
+%>
+    Осталось: <b><%=8-hours%></b> часов.
+<%
+	}
+%>
+</div>

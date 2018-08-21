@@ -27,6 +27,20 @@ public class WebModuleManager {
         return module().isEmpty()?"":Module.name(module());
     }
 
+    public String alertUrl() {
+        String module = module();
+        if (moduleManager.isActive(module)) {
+            if (Module.WORK.equals(module)) {
+                module = module+"/mvideo";
+            }
+            if (Module.FAMILY.equals(module)) {
+                module = Module.TASK;
+            }
+            return new StringBuilder(module).append("/alert.jsp").toString();
+        }
+        return "alert.jsp";
+    }
+
     public String url() {
         String module = module();
         if (moduleManager.isActive(module)) {

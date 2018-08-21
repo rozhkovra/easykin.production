@@ -9,24 +9,28 @@
 	int overdueCount = 0;
 	int todayCount = 0;
 	String result = "";
+	String overdueResult = "";
+	String todayResult = "";
 
 	for(TaskBean taskBean : tasks){
 	    ITask task = taskBean.getTask();
 	    if (task.getStatus().isOpen() && !task.getPriority().isSimple()) {
 	        if (DateUtil.future(task.getPlanDate())
 	            && !DateUtil.isToday(task.getPlanDate())) {
+	            overdueResult += "<li>" + task.getId() + " " + task.getName() + "</li>";
                 overdueCount++;
             }
             if (DateUtil.isToday(task.getPlanDate())) {
+                todayResult += "<li>" + task.getId() + " " + task.getName() + "</li>";
                 todayCount++;
             }
         }
 	}
     if (overdueCount > 0) {
-        result += "<li>Просрочено задач - <b>"+overdueCount+"</b></li>";
+        result += "<b>Просрочено задач: ("+overdueCount+")</b><br/>" + overdueResult;
     }
     if (todayCount > 0) {
-        result += "<li>На сегодня задач - <b>"+todayCount+"</b></li>";
+        result += "<b>На сегодня задач ("+todayCount+")</b><br/>" + todayResult;
     }
     if (!result.isEmpty()) {
 %>

@@ -5,16 +5,9 @@
 %>
 <section class="content">
 <div class="row">
-    <jsp:include page="task/alert.jsp"/>
-    <jsp:include page="fin/alert.jsp"/>
-    <jsp:include page="service/alert.jsp"/>
-    <jsp:include page="work/mvideo/alert.jsp"/>
-</div>
-<div class="row">
     <jsp:include page="task/box.jsp"/>
     <jsp:include page="work/mvideo/box.jsp"/>
     <jsp:include page="service/box.jsp"/>
-    <jsp:include page="payment/box.jsp"/>
     <jsp:include page="fin/box.jsp"/>
 </div>
 <div class="row">
