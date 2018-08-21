@@ -33,6 +33,9 @@ public class Module {
     public static final String AUTO = "auto";
     public static final String NOTE = "note";
 
+    // integration level
+    public static final String JIRA = "jira";
+
     public static final Map<String, String> module2name = new HashMap<String, String>() {
         {
             put(AUTO, "Машина");
@@ -43,6 +46,7 @@ public class Module {
             put(SERVICE, "Коммунальные услуги");
             put(TASK, "Задачи");
             put(WORK, "Работа");
+            put(JIRA, "Jira");
         }
     };
     public static final Map<String, String> name2module = new HashMap<String, String>() {
@@ -55,6 +59,7 @@ public class Module {
             put("Коммунальные услуги", SERVICE);
             put("Задачи", TASK);
             put("Работа", WORK);
+            put("Jira", JIRA);
         }
     };
 
@@ -68,6 +73,7 @@ public class Module {
             put(SERVICE, ImageUtil.scaleImage(25, 25, imageManager.service(getClass())));
             put(TASK, ImageUtil.scaleImage(25, 25, imageManager.tasks(getClass())));
             put(WORK, ImageUtil.scaleImage(25, 25, imageManager.work(getClass())));
+            put(JIRA, null);
         }
     };
     public static String name(String module){
