@@ -106,7 +106,9 @@
     </section>
     <section class="content">
     <div class="row">
-      <jsp:include page="<%=moduleManager.alertUrl()%>"/>
+    <div class="col-xs-12">
+    <jsp:include page="<%=moduleManager.alertUrl()%>"/>
+    </div>
     </div>
     <div class="row">
     <div class="col-xs-12">
