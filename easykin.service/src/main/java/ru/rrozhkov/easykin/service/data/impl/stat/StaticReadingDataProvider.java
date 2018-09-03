@@ -76,6 +76,6 @@ public class StaticReadingDataProvider extends CollectionDataProvider<IReading> 
         calculations.add(calc2Factory.createRateCalc(CalculationType.ANTENNA, newReading, rates));
         calculations.add(calc2Factory.createRateCalc(CalculationType.INTERCOM, newReading, rates));
         calculations.add(calc2Factory.createRateCalc(CalculationType.HOUSE, newReading, rates));
-        return new ServiceCalc(newReading.getDate(),calculations);
+        return new ServiceCalc(newReading,calculations);
     }
 }
