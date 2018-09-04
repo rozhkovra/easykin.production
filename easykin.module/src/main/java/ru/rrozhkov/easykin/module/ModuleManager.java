@@ -63,7 +63,7 @@ public class ModuleManager {
         try {
             method = classManager.method(clazz, methodName);
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         if (method==null)
             return null;

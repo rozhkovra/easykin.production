@@ -55,32 +55,56 @@ public class EasyKinServlet extends HttpServlet {
     private void fillData(HttpServletRequest req) {
         Date start = new Date();
         String module = req.getParameter("moduleId");
-        if (module==null || Module.FIN.equals(module)) {
+        if (module==null) {
+            final FinanceAdapter financeAdapter = adapterFactory.finance();
+            req.setAttribute("finance", financeAdapter.finance());
+            System.out.println(new Date().getTime() - start.getTime());
+            start = new Date();
+            final WorkAdapter workAdapter = adapterFactory.work();
+            req.setAttribute("activities", workAdapter.activities());
+            req.setAttribute("shortActivities", workAdapter.shortActivities());
+            System.out.println(new Date().getTime() - start.getTime());
+            start = new Date();
+            final TaskAdapter taskAdapter = adapterFactory.task();
+            req.setAttribute("tasks", taskAdapter.toDoTasks());
+            req.setAttribute("toDoTasks", taskAdapter.toDoTasks());
+            System.out.println(new Date().getTime() - start.getTime());
+            start = new Date();
+            final ServiceAdapter serviceAdapter = adapterFactory.service();
+            req.setAttribute("services", serviceAdapter.services());
+            System.out.println(new Date().getTime() - start.getTime());
+            start = new Date();
+            final PaymentAdapter paymentAdapter = adapterFactory.payment();
+            req.setAttribute("payments", paymentAdapter.payments());
+            System.out.println(new Date().getTime() - start.getTime());
+            return;
+        }
+        if (Module.FIN.equals(module)) {
             final FinanceAdapter financeAdapter = adapterFactory.finance();
             req.setAttribute("finance", financeAdapter.finance());
         }
         System.out.println(new Date().getTime() - start.getTime());
-        if (module==null || Module.WORK.equals(module)) {
+        if (Module.WORK.equals(module)) {
             final WorkAdapter workAdapter = adapterFactory.work();
             req.setAttribute("activities", workAdapter.activities());
             req.setAttribute("shortActivities", workAdapter.shortActivities());
             req.setAttribute("groupActivities", workAdapter.groupActivities());
         }
         System.out.println(new Date().getTime() - start.getTime());
-        if (module==null || Module.TASK.equals(module) || Module.FAMILY.equals(module)) {
+        if (Module.TASK.equals(module) || Module.FAMILY.equals(module)) {
             final TaskAdapter taskAdapter = adapterFactory.task();
             req.setAttribute("tasks", taskAdapter.tasks(req));
             req.setAttribute("toDoTasks", taskAdapter.toDoTasks());
         }
         System.out.println(new Date().getTime() - start.getTime());
-        if (module==null || Module.SERVICE.equals(module)) {
+        if (Module.SERVICE.equals(module)) {
             final ServiceAdapter serviceAdapter = adapterFactory.service();
             req.setAttribute("services", serviceAdapter.services());
         }
         System.out.println(new Date().getTime() - start.getTime());
-        if (module==null || Module.PAYMENT.equals(module)) {
+        if (Module.PAYMENT.equals(module)) {
             final PaymentAdapter paymentAdapter = adapterFactory.payment();
-            req.setAttribute("payments",paymentAdapter.payments());
+            req.setAttribute("payments", paymentAdapter.payments());
         }
         System.out.println(new Date().getTime() - start.getTime());
     }
