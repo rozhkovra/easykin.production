@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.fatclient.dump;
 
 import ru.rrozhkov.easykin.model.category.ICategory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
+import ru.rrozhkov.easykin.model.fin.payment.impl.Payment;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Status;
@@ -52,8 +53,11 @@ public class DumpManager {
             builder.append(converter.sqlInsert(task)).append(";");
         Collection<IPayment> payments = (Collection<IPayment>) moduleManager.invoke(Module.FIN, "finance");
         converter = paymentConverterFactory.payment();
-        for (IPayment payment : payments)
+        int id = 0;
+        for (IPayment payment : payments) {
+            ((Payment)payment).setId(++id);
             builder.append(converter.sqlInsert(payment)).append(";");
+        }
         writeDump(builder.toString());
     }
     public void writeDump(String s){
