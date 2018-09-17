@@ -23,7 +23,7 @@ public class ModuleManager {
     }
 
     public Collection<String> activeModules(){
-        return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.FAMILY, Module.WORK,Module.SERVICE);
+        return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.FAMILY, Module.WORK,Module.SERVICE, Module.JIRA);
     }
     private String moduleClass(String module){
         return ROOT+"." + module + ".Module";

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.jira;
+package ru.rrozhkov.easykin.jira.impl;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,6 +26,7 @@ public class TaskBuilder {
                 String name = jsonobject.getString("key");
                 JSONObject fields = jsonobject.getJSONObject("fields");
                 JSONObject status = fields.getJSONObject("status");
+                name += " " + fields.getString("summary");
                 System.out.println(name+" "+status.getString("name"));
                 tasks.add(new JiraTask(name, status.getString("name")));
             }
