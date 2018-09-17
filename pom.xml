@@ -30,5 +30,7 @@
         <module>easykin.web</module>
         <module>easykin.webservice</module>
         <module>easykin.work</module>
+        <module>easykin.rest</module>
+        <module>easykin.jira</module>
     </modules>
 </project>
