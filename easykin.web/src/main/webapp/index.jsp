@@ -86,6 +86,7 @@
   <script src="js/easykin.task.js"></script>
   <script src="js/easykin.core.js"></script>
   <script src="js/easykin.finance.js"></script>
+  <script src="js/easykin.jira.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

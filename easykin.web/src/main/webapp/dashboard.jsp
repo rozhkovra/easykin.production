@@ -9,6 +9,7 @@
     <jsp:include page="work/mvideo/box.jsp"/>
     <jsp:include page="service/box.jsp"/>
     <jsp:include page="fin/box.jsp"/>
+    <jsp:include page="jira/box.jsp"/>
 </div>
 <div class="row">
 <div class="col-md-5">
@@ -76,12 +77,15 @@
     <div class="col-md-5">
         <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Комуналльные услуги</h3>
+            <h3 class="box-title">Jira</h3>
         </div>
         <div class="box-body">
-            <jsp:include page="service/short.jsp"/>
+            <jsp:include page="jira/index.jsp"/>
         </div>
         <!--/.box-body-->
+        <div class="box-footer clearfix no-border">
+            <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.JIRA)%>">Подробно</a>
+        </div>
         </div>
         <!--/.box-->
     </div>
@@ -109,7 +113,20 @@
 <!-- /.row -->
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-5">
+        <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Комуналльные услуги</h3>
+        </div>
+        <div class="box-body">
+            <jsp:include page="service/short.jsp"/>
+        </div>
+        <!--/.box-body-->
+        </div>
+        <!--/.box-->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-7">
       <!-- BAR CHART -->
       <div class="box box-success">
         <div class="box-header with-border">

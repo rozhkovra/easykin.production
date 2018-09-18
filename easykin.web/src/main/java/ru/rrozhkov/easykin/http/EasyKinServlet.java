@@ -78,6 +78,10 @@ public class EasyKinServlet extends HttpServlet {
             final PaymentAdapter paymentAdapter = adapterFactory.payment();
             req.setAttribute("payments", paymentAdapter.payments());
             System.out.println(new Date().getTime() - start.getTime());
+            start = new Date();
+            final JiraTaskAdapter jiraTaskAdapter = adapterFactory.jiraTask();
+            req.setAttribute("jiratasks", jiraTaskAdapter.tasks());
+            System.out.println(new Date().getTime() - start.getTime());
             return;
         }
         if (Module.FIN.equals(module)) {
