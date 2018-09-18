@@ -23,12 +23,13 @@ public class TaskBuilder {
             JSONArray jsonarray = myResponse.getJSONArray("issues");
             for (int i = 0; i < jsonarray.length(); i++) {
                 JSONObject jsonobject = jsonarray.getJSONObject(i);
-                String name = jsonobject.getString("key");
                 JSONObject fields = jsonobject.getJSONObject("fields");
                 JSONObject status = fields.getJSONObject("status");
-                name += " " + fields.getString("summary");
-                System.out.println(name+" "+status.getString("name"));
-                tasks.add(new JiraTask(name, status.getString("name")));
+                String key = jsonobject.getString("key");
+                String name = fields.getString("summary");
+                String statusName = status.getString("name");
+                System.out.println(name+" "+statusName);
+                tasks.add(new JiraTask(key, name, statusName));
             }
 
         } catch (IOException e) {

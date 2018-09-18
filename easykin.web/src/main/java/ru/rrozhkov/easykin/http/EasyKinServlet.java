@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.http;
 
 import ru.rrozhkov.easykin.AdapterFactory;
 import ru.rrozhkov.easykin.finance.FinanceAdapter;
+import ru.rrozhkov.easykin.jira.JiraTaskAdapter;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
@@ -105,6 +106,11 @@ public class EasyKinServlet extends HttpServlet {
         if (Module.PAYMENT.equals(module)) {
             final PaymentAdapter paymentAdapter = adapterFactory.payment();
             req.setAttribute("payments", paymentAdapter.payments());
+        }
+        System.out.println(new Date().getTime() - start.getTime());
+        if (Module.JIRA.equals(module)) {
+            final JiraTaskAdapter jiraTaskAdapter = adapterFactory.jiraTask();
+            req.setAttribute("jiratasks", jiraTaskAdapter.tasks());
         }
         System.out.println(new Date().getTime() - start.getTime());
     }

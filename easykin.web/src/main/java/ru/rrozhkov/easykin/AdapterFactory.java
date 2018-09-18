@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin;
 
 import ru.rrozhkov.easykin.finance.FinanceAdapter;
+import ru.rrozhkov.easykin.jira.JiraTaskAdapter;
 import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.service.ServiceAdapter;
 import ru.rrozhkov.easykin.task.TaskAdapter;
@@ -24,5 +25,8 @@ public class AdapterFactory {
     }
     public FinanceAdapter finance() {
         return new FinanceAdapter();
+    }
+    public JiraTaskAdapter jiraTask() {
+        return new JiraTaskAdapter();
     }
 }

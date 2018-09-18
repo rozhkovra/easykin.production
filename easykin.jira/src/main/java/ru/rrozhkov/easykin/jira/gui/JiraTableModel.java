@@ -1,9 +1,7 @@
 package ru.rrozhkov.easykin.jira.gui;
 
 import ru.rrozhkov.easykin.core.gui.TableModel;
-import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
-import ru.rrozhkov.easykin.model.task.ITask;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,8 +20,10 @@ public class JiraTableModel extends TableModel {
             case 0:
                 return "#";
             case 1:
-                return task.getName();
+                return task.getKey();
             case 2:
+                return task.getName();
+            case 3:
                 return task.getStatus();
         }
         return "";
