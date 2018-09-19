@@ -10,4 +10,5 @@ public class SubModule {
     public static final String STATISTICS = "statistics";
     public static final String VIEW = "view";
     public static final String EDIT = "edit";
+    public static final String WORKLOG = "worklog";
 }

@@ -60,12 +60,25 @@
 <%
 	for(String module : moduleManager.activeModules()){
 	    if (!module.equals(ru.rrozhkov.easykin.module.Module.SERVICE) &&
-	        !module.equals(ru.rrozhkov.easykin.module.Module.WORK)) {
+	        !module.equals(ru.rrozhkov.easykin.module.Module.WORK) &&
+	        !module.equals(ru.rrozhkov.easykin.module.Module.JIRA)) {
 %><li class="<%=urlConfigurator.getModuleClass(request, module)%>"><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, module)%>"><i class="fa fa-circle-o"></i> <%=ru.rrozhkov.easykin.module.Module.name(module)%></a></li>
 <%
         }
 	}
 %>
+          </ul>
+        </li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-industry"></i> <span><%=ru.rrozhkov.easykin.module.Module.name(ru.rrozhkov.easykin.module.Module.JIRA)%></span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.JIRA, ru.rrozhkov.easykin.module.SubModule.INDEX)%>"><i class="fa fa-hourglass-half"></i> Задачи</a></li>
+            <li><a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.JIRA, ru.rrozhkov.easykin.module.SubModule.WORKLOG)%>"><i class="fa fa-hourglass-half"></i> Активности</a></li>
           </ul>
         </li>
         <li class="active treeview">

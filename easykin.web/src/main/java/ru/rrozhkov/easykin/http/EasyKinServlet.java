@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.http;
 import ru.rrozhkov.easykin.AdapterFactory;
 import ru.rrozhkov.easykin.finance.FinanceAdapter;
 import ru.rrozhkov.easykin.jira.JiraTaskAdapter;
+import ru.rrozhkov.easykin.jira.JiraWorkLogAdapter;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
@@ -82,6 +83,10 @@ public class EasyKinServlet extends HttpServlet {
             final JiraTaskAdapter jiraTaskAdapter = adapterFactory.jiraTask();
             req.setAttribute("jiratasks", jiraTaskAdapter.tasks());
             System.out.println(new Date().getTime() - start.getTime());
+            start = new Date();
+            final JiraWorkLogAdapter jiraWorkLogAdapter = new JiraWorkLogAdapter();
+            req.setAttribute("jiraworklog", jiraWorkLogAdapter.worklogs());
+            System.out.println(new Date().getTime() - start.getTime());
             return;
         }
         if (Module.FIN.equals(module)) {
@@ -115,6 +120,8 @@ public class EasyKinServlet extends HttpServlet {
         if (Module.JIRA.equals(module)) {
             final JiraTaskAdapter jiraTaskAdapter = adapterFactory.jiraTask();
             req.setAttribute("jiratasks", jiraTaskAdapter.tasks());
+            final JiraWorkLogAdapter jiraWorkLogAdapter = new JiraWorkLogAdapter();
+            req.setAttribute("jiraworklog", jiraWorkLogAdapter.worklogs());
         }
         System.out.println(new Date().getTime() - start.getTime());
     }

@@ -5,9 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
-import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraTaskConverter;
 import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraWorkLogConverter;
-import ru.rrozhkov.easykin.model.jira.JiraTask;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
 import ru.rrozhkov.easykin.rest.client.RestClient;
 
@@ -33,7 +31,7 @@ public class WorkLogBuilder {
     }
 
 
-    public Collection<JiraWorkLog> worlklogs() {
+    public Collection<JiraWorkLog> worklogs() {
         Collection<JiraWorkLog> worlklogs = CollectionUtil.create();
         try {
             String result = RestClient.instance().send(USER_WORKLOG, new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc"));
@@ -51,6 +49,6 @@ public class WorkLogBuilder {
 
 
     public static void main(String[] args) {
-        WorkLogBuilder.instance().worlklogs();
+        WorkLogBuilder.instance().worklogs();
     }
 }
