@@ -13,6 +13,7 @@ public class DateUtil {
 	private static final DateFormat SDFWEEKDAY = new SimpleDateFormat("dd MMMMM yyyy, EEEE ", new Locale("ru"));
 	private static final DateFormat SDFSERVICE = new SimpleDateFormat("MMMMM yyyy", new Locale("ru"));
 	private static final DateFormat SQLSDF = new SimpleDateFormat("yyyy-MM-dd");
+	private static final DateFormat SDFJSON = new SimpleDateFormat("yyyy-MM-dd");
 
 	static {
 		TimeZone.setDefault(timeZone);
@@ -76,5 +77,12 @@ public class DateUtil {
 	}
 	public static boolean future(Date date) {
 		return DateUtil.today().getTime() > date.getTime();
+	}
+	public static Date parseJSON(String date){
+		try{
+			return SDFJSON.parse(date);
+		}catch(Exception e){
+			return null;
+		}
 	}
 }
