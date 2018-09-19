@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 public class Module {
     private static final IModuleGUIFactory guiJiraFactory = JiraGUIFactory.instance();
-    private static final TaskBuilder taskBuilder = new TaskBuilder();
+    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
 
     public static Component createPanel(IGUIEditor parent){
         return guiJiraFactory.createTablePanel(parent, tasks());

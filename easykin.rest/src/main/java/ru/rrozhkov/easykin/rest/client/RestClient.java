@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.rest.client;
 
 import org.apache.http.*;
 import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -18,10 +17,19 @@ import java.io.InputStreamReader;
  * Created by rrozhkov on 24.07.2018.
  */
 public class RestClient {
+    public static class Holder {
+        public static final RestClient INSTANCE = new RestClient();
+    }
 
-    public String send(String url)  throws IOException {
-        HttpRequestBase req = new HttpGet(url);
-        Credentials creds = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+    public static RestClient instance(){
+        return Holder.INSTANCE;
+    }
+
+    private RestClient() {
+    }
+
+    public String send(String url, Credentials creds)  throws IOException {
+        HttpRequestBase req = new HttpGet(url);;
         req.addHeader(BasicScheme.authenticate(creds, "utf-8", false));
         HttpClient httpClient = HttpClientBuilder.create().build();
         req.addHeader("Accept", "application/json");

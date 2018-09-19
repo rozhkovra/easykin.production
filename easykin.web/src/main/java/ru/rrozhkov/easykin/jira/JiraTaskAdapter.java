@@ -10,7 +10,7 @@ import java.util.Collection;
  * Created by rrozhkov on 11.05.2018.
  */
 public class JiraTaskAdapter {
-    private static final TaskBuilder taskBuilder = new TaskBuilder();
+    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
 
     public Collection<JiraTaskBean> tasks() {
         Collection<JiraTask> tasks = taskBuilder.tasks();
