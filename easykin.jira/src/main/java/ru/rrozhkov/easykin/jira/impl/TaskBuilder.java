@@ -17,7 +17,7 @@ import java.util.Collection;
  * Created by rrozhkov on 17.09.2018.
  */
 public class TaskBuilder {
-    public static final String ASSIGNEE_BUGS = "https://jira.mvideo.ru/jira/rest/api/2/search?jql=assignee=lux_rozhkov%20AND%20issuetype=Bug";
+    public static final String ASSIGNEE_BUGS = "https://jira.mvideo.ru/jira/rest/api/2/search?jql=assignee=currentuser()%20AND%20issuetype=Bug";
     public static final IConverter<JSONObject, JiraTask> jiraTaskConverter = new JSONJiraTaskConverter();
 
     public static TaskBuilder create(Credentials credentials){
