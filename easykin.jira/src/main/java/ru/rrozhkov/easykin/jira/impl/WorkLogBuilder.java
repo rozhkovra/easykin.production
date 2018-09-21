@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.jira.impl;
 
+import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,22 +20,20 @@ public class WorkLogBuilder {
     public static final String USER_WORKLOG = "https://jira.mvideo.ru/jira/rest/api/latest/search?jql=worklogDate%3E%272018-01-01%27%20AND%20worklogAuthor=%27lux_rozhkov%27&fields=worklog";
     public static final IConverter<JSONObject, Collection<JiraWorkLog>> jiraWorkLogConverter = new JSONJiraWorkLogConverter();
 
-    public static class Holder {
-        public static final WorkLogBuilder INSTANCE = new WorkLogBuilder();
+    public static WorkLogBuilder create(Credentials credentials){
+        return new WorkLogBuilder(credentials);
     }
 
-    public static WorkLogBuilder instance(){
-        return Holder.INSTANCE;
-    }
+    private Credentials credentials;
 
-    private WorkLogBuilder() {
+    private WorkLogBuilder(Credentials credentials) {
+        this.credentials = credentials;
     }
-
 
     public Collection<JiraWorkLog> worklogs() {
         Collection<JiraWorkLog> worlklogs = CollectionUtil.create();
         try {
-            String result = RestClient.instance().send(USER_WORKLOG, new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc"));
+            String result = RestClient.instance().send(USER_WORKLOG, credentials);
             JSONObject myResponse = new JSONObject(result);
             JSONArray jsonarray = myResponse.getJSONArray("issues");
             for (Object obj : jsonarray) {
@@ -49,6 +48,7 @@ public class WorkLogBuilder {
 
 
     public static void main(String[] args) {
-        WorkLogBuilder.instance().worklogs();
+        Credentials credentials = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+        WorkLogBuilder.create(credentials).worklogs();
     }
 }

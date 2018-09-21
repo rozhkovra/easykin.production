@@ -1,5 +1,7 @@
 package ru.rrozhkov.easykin.jira;
 
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 import ru.rrozhkov.easykin.jira.gui.JiraGUIFactory;
@@ -14,7 +16,8 @@ import java.util.Collection;
  */
 public class Module {
     private static final IModuleGUIFactory guiJiraFactory = JiraGUIFactory.instance();
-    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
+    private static final Credentials credentials = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+    private static final TaskBuilder taskBuilder = TaskBuilder.create(credentials);
 
     public static Component createPanel(IGUIEditor parent){
         return guiJiraFactory.createTablePanel(parent, tasks());

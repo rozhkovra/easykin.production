@@ -1,18 +1,23 @@
 package ru.rrozhkov.easykin.jira;
 
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.jira.impl.TaskBuilder;
 import ru.rrozhkov.easykin.jira.impl.WorkLogBuilder;
+import ru.rrozhkov.easykin.model.jira.JiraTask;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
-import ru.rrozhkov.easykin.model.work.IActivity;
 
 import java.util.*;
 
 /**
- * Created by rrozhkov on 11.05.2018.
+ * Created by rrozhkov on 20.09.2018.
  */
-public class JiraWorkLogAdapter {
-    private static final WorkLogBuilder workLogBuilder = WorkLogBuilder.instance();
+public class JiraAdapter {
+    private static final Credentials credentials = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+    private static final TaskBuilder taskBuilder = TaskBuilder.create(credentials);
+    private static final WorkLogBuilder workLogBuilder = WorkLogBuilder.create(credentials);
 
     public Collection<JiraWorkLogBean> worklogs() {
         Collection<JiraWorkLog> worklogs = workLogBuilder.worklogs();
@@ -42,5 +47,15 @@ public class JiraWorkLogAdapter {
             }
         }
         return worklogBeans;
+    }
+
+    public Collection<JiraTaskBean> tasks() {
+        Collection<JiraTask> tasks = taskBuilder.tasks();
+        Collection<JiraTaskBean> taskBeans = CollectionUtil.create();
+        int i = 0;
+        for (JiraTask task : tasks) {
+            taskBeans.add(new JiraTaskBean(++i, task));
+        }
+        return taskBeans;
     }
 }

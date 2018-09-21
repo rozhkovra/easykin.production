@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.jira.impl;
 
+import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,21 +20,20 @@ public class TaskBuilder {
     public static final String ASSIGNEE_BUGS = "https://jira.mvideo.ru/jira/rest/api/2/search?jql=assignee=lux_rozhkov%20AND%20issuetype=Bug";
     public static final IConverter<JSONObject, JiraTask> jiraTaskConverter = new JSONJiraTaskConverter();
 
-    public static class TaskBuilderHolder {
-        public static final TaskBuilder INSTANCE = new TaskBuilder();
+    public static TaskBuilder create(Credentials credentials){
+        return new TaskBuilder(credentials);
     }
 
-    public static TaskBuilder instance(){
-        return TaskBuilderHolder.INSTANCE;
-    }
+    private Credentials credentials;
 
-    private TaskBuilder() {
+    private TaskBuilder(Credentials credentials) {
+        this.credentials = credentials;
     }
 
     public Collection<JiraTask> tasks() {
         Collection<JiraTask> tasks = CollectionUtil.create();
         try {
-            String result = RestClient.instance().send(ASSIGNEE_BUGS, new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc"));
+            String result = RestClient.instance().send(ASSIGNEE_BUGS, credentials);
             JSONObject myResponse = new JSONObject(result);
             JSONArray jsonarray = myResponse.getJSONArray("issues");
             for (Object obj : jsonarray) {
@@ -47,6 +47,7 @@ public class TaskBuilder {
     }
 
     public static void main(String[] args) {
-        TaskBuilder.instance().tasks();
+        Credentials credentials = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+        TaskBuilder.create(credentials).tasks();
     }
 }

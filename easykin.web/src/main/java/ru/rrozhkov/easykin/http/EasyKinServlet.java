@@ -2,8 +2,7 @@ package ru.rrozhkov.easykin.http;
 
 import ru.rrozhkov.easykin.AdapterFactory;
 import ru.rrozhkov.easykin.finance.FinanceAdapter;
-import ru.rrozhkov.easykin.jira.JiraTaskAdapter;
-import ru.rrozhkov.easykin.jira.JiraWorkLogAdapter;
+import ru.rrozhkov.easykin.jira.JiraAdapter;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
@@ -80,12 +79,11 @@ public class EasyKinServlet extends HttpServlet {
             req.setAttribute("payments", paymentAdapter.payments());
             System.out.println(new Date().getTime() - start.getTime());
             start = new Date();
-            final JiraTaskAdapter jiraTaskAdapter = adapterFactory.jiraTask();
-            req.setAttribute("jiratasks", jiraTaskAdapter.tasks());
+            final JiraAdapter jiraAdapter = adapterFactory.jira();
+            req.setAttribute("jiratasks", jiraAdapter.tasks());
             System.out.println(new Date().getTime() - start.getTime());
             start = new Date();
-            final JiraWorkLogAdapter jiraWorkLogAdapter = new JiraWorkLogAdapter();
-            req.setAttribute("jiraworklog", jiraWorkLogAdapter.worklogs());
+            req.setAttribute("jiraworklog", jiraAdapter.worklogs());
             System.out.println(new Date().getTime() - start.getTime());
             return;
         }
@@ -118,10 +116,9 @@ public class EasyKinServlet extends HttpServlet {
         }
         System.out.println(new Date().getTime() - start.getTime());
         if (Module.JIRA.equals(module)) {
-            final JiraTaskAdapter jiraTaskAdapter = adapterFactory.jiraTask();
-            req.setAttribute("jiratasks", jiraTaskAdapter.tasks());
-            final JiraWorkLogAdapter jiraWorkLogAdapter = new JiraWorkLogAdapter();
-            req.setAttribute("jiraworklog", jiraWorkLogAdapter.worklogs());
+            final JiraAdapter jiraAdapter = adapterFactory.jira();
+            req.setAttribute("jiratasks", jiraAdapter.tasks());
+            req.setAttribute("jiraworklog", jiraAdapter.worklogs());
         }
         System.out.println(new Date().getTime() - start.getTime());
     }
