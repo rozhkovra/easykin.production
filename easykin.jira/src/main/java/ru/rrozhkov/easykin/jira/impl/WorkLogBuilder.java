@@ -1,11 +1,11 @@
 package ru.rrozhkov.easykin.jira.impl;
 
 import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
 import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraWorkLogConverter;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
 import ru.rrozhkov.easykin.rest.client.RestClient;
@@ -48,7 +48,7 @@ public class WorkLogBuilder {
 
 
     public static void main(String[] args) {
-        Credentials credentials = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+        Credentials credentials = JiraAuthManager.credentials();
         WorkLogBuilder.create(credentials).worklogs();
     }
 }

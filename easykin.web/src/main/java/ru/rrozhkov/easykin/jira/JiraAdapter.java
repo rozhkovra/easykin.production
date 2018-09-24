@@ -1,9 +1,9 @@
 package ru.rrozhkov.easykin.jira;
 
 import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
 import ru.rrozhkov.easykin.jira.impl.TaskBuilder;
 import ru.rrozhkov.easykin.jira.impl.WorkLogBuilder;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
@@ -15,7 +15,7 @@ import java.util.*;
  * Created by rrozhkov on 20.09.2018.
  */
 public class JiraAdapter {
-    private static final Credentials credentials = new UsernamePasswordCredentials("lux_rozhkov", "5AkynjQc");
+    private static final Credentials credentials = JiraAuthManager.credentials();
     private static final TaskBuilder taskBuilder = TaskBuilder.create(credentials);
     private static final WorkLogBuilder workLogBuilder = WorkLogBuilder.create(credentials);
 
