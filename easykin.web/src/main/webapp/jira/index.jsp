@@ -23,7 +23,7 @@
 %>
 <tr>
 <td align="center"><%=taskBean.getNum()%></td>
-<td><b><%=taskBean.getTask().getKey()%></b></td>
+<td><b><a href="https://jira.mvideo.ru/jira/browse/<%=taskBean.getTask().getKey()%>"><%=taskBean.getTask().getKey()%></a></b></td>
 <td align="center"><%=taskBean.getTask().getStatus()%></td>
 <td><%=taskBean.getTask().getName()%></td>
 </tr>

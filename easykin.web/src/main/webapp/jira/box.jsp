@@ -17,22 +17,22 @@
 	for(JiraTaskBean taskBean : tasks){
 	    JiraTask task = taskBean.getTask();
         if ("OPEN".equals(task.getStatus().toUpperCase())) {
-            open+=" "+task.getKey();
+            open+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
         }
         if ("ON HOLD".equals(task.getStatus().toUpperCase())) {
-            hold+=" "+task.getKey();
+            hold+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
         }
         if ("IN ANALYSIS".equals(task.getStatus().toUpperCase())) {
-            analysis+=" "+task.getKey();
+            analysis+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
         }
         if ("IN DEVELOPMENT".equals(task.getStatus().toUpperCase())) {
-            inDev+=" "+task.getKey();
+            inDev+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
         }
         if ("READY FOR CODE REVIEW".equals(task.getStatus().toUpperCase())) {
-            rfcr+=" "+task.getKey();
+            rfcr+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
         }
         if ("READY FOR BUILD".equals(task.getStatus().toUpperCase())) {
-            rfb+=" "+task.getKey();
+            rfb+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
         }
 	}
 %>
