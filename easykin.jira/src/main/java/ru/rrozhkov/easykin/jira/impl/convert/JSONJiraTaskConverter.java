@@ -9,7 +9,7 @@ import ru.rrozhkov.easykin.model.jira.JiraTask;
  */
 public class JSONJiraTaskConverter implements
         IConverter<JSONObject, JiraTask> {
-    public JSONJiraTaskConverter() {
+    protected JSONJiraTaskConverter() {
     }
 
     public JiraTask convert(JSONObject jsonobject) {

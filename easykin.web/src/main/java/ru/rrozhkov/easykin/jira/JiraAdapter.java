@@ -1,9 +1,7 @@
 package ru.rrozhkov.easykin.jira;
 
-import org.apache.http.auth.Credentials;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.util.DateUtil;
-import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
 import ru.rrozhkov.easykin.jira.impl.TaskBuilder;
 import ru.rrozhkov.easykin.jira.impl.WorkLogBuilder;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
@@ -15,9 +13,8 @@ import java.util.*;
  * Created by rrozhkov on 20.09.2018.
  */
 public class JiraAdapter {
-    private static final Credentials credentials = JiraAuthManager.credentials();
-    private static final TaskBuilder taskBuilder = TaskBuilder.create(credentials);
-    private static final WorkLogBuilder workLogBuilder = WorkLogBuilder.create(credentials);
+    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
+    private static final WorkLogBuilder workLogBuilder = WorkLogBuilder.instance();
 
     public Collection<JiraWorkLogBean> worklogs() {
         Collection<JiraWorkLog> worklogs = workLogBuilder.worklogs();
@@ -36,7 +33,6 @@ public class JiraAdapter {
             dayTime.put(worklog.getDate(), curTime);
         }
 
-
         Collection<JiraWorkLogBean> worklogBeans = CollectionUtil.create();
         int i = 0;
         for (JiraWorkLog worklog : worklogs) {
@@ -50,10 +46,9 @@ public class JiraAdapter {
     }
 
     public Collection<JiraTaskBean> tasks() {
-        Collection<JiraTask> tasks = taskBuilder.tasks();
         Collection<JiraTaskBean> taskBeans = CollectionUtil.create();
         int i = 0;
-        for (JiraTask task : tasks) {
+        for (JiraTask task : taskBuilder.tasks()) {
             taskBeans.add(new JiraTaskBean(++i, task));
         }
         return taskBeans;

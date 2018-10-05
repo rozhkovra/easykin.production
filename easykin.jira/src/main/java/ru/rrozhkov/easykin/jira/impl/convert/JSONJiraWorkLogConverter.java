@@ -1,11 +1,13 @@
 package ru.rrozhkov.easykin.jira.impl.convert;
 
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.core.util.DateUtil;
-import ru.rrozhkov.easykin.model.jira.JiraTask;
+import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
 
 import java.util.Collection;
@@ -16,7 +18,8 @@ import java.util.Date;
  */
 public class JSONJiraWorkLogConverter implements
         IConverter<JSONObject, Collection<JiraWorkLog>> {
-    public JSONJiraWorkLogConverter() {
+    private static final Credentials credentials = JiraAuthManager.credentials();
+    protected JSONJiraWorkLogConverter() {
     }
 
     public Collection<JiraWorkLog> convert(JSONObject jsonobject) {
@@ -28,7 +31,8 @@ public class JSONJiraWorkLogConverter implements
         for (Object obj : worklogs) {
             JSONObject worklogEntry = (JSONObject)obj;
             JSONObject author = worklogEntry.getJSONObject("author");
-            if ("lux_rozhkov".equals(author.getString("name"))) {
+            String username = ((UsernamePasswordCredentials)credentials).getUserName();
+            if (username.equals(author.getString("name"))) {
                 String comment = worklogEntry.getString("comment");
                 Date date = DateUtil.parseJSON(worklogEntry.getString("started"));
                 int time = worklogEntry.getInt("timeSpentSeconds") / 3600;

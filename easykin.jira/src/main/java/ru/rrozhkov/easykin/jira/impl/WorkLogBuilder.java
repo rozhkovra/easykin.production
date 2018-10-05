@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
-import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraWorkLogConverter;
+import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraConverterFactory;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
 import ru.rrozhkov.easykin.rest.client.RestClient;
 
@@ -18,16 +18,14 @@ import java.util.Collection;
  */
 public class WorkLogBuilder {
     public static final String USER_WORKLOG = "https://jira.mvideo.ru/jira/rest/api/latest/search?jql=worklogDate%3E%272018-01-01%27%20AND%20worklogAuthor=%27lux_rozhkov%27&fields=worklog";
-    public static final IConverter<JSONObject, Collection<JiraWorkLog>> jiraWorkLogConverter = new JSONJiraWorkLogConverter();
+    public static final IConverter<JSONObject, Collection<JiraWorkLog>> jiraWorkLogConverter = JSONJiraConverterFactory.instance().worklog();
+    private static final Credentials credentials = JiraAuthManager.credentials();
 
-    public static WorkLogBuilder create(Credentials credentials){
-        return new WorkLogBuilder(credentials);
+    public static WorkLogBuilder instance(){
+        return new WorkLogBuilder();
     }
 
-    private Credentials credentials;
-
-    private WorkLogBuilder(Credentials credentials) {
-        this.credentials = credentials;
+    private WorkLogBuilder() {
     }
 
     public Collection<JiraWorkLog> worklogs() {
@@ -48,7 +46,6 @@ public class WorkLogBuilder {
 
 
     public static void main(String[] args) {
-        Credentials credentials = JiraAuthManager.credentials();
-        WorkLogBuilder.create(credentials).worklogs();
+        WorkLogBuilder.instance().worklogs();
     }
 }

@@ -20,12 +20,12 @@ public class JiraAuthManager {
             try {
                 URL iconUrl = JiraAuthManager.class.getResource("/"+jiraProperties);
                 property.load(iconUrl.openStream());
+                String user = property.getProperty("user");
+                String pass = property.getProperty("pass");
+                credentials = new UsernamePasswordCredentials(user, pass);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String user = property.getProperty("user");
-            String pass = property.getProperty("pass");
-            credentials = new UsernamePasswordCredentials(user, pass);
         }
         return credentials;
     }

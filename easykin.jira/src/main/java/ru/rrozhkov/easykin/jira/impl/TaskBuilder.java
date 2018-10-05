@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
-import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraTaskConverter;
+import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraConverterFactory;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
 import ru.rrozhkov.easykin.rest.client.RestClient;
 
@@ -18,16 +18,14 @@ import java.util.Collection;
  */
 public class TaskBuilder {
     public static final String ASSIGNEE_BUGS = "https://jira.mvideo.ru/jira/rest/api/2/search?jql=assignee=currentuser()%20AND%20issuetype=Bug";
-    public static final IConverter<JSONObject, JiraTask> jiraTaskConverter = new JSONJiraTaskConverter();
+    public static final IConverter<JSONObject, JiraTask> jiraTaskConverter = JSONJiraConverterFactory.instance().task();
+    private static final Credentials credentials = JiraAuthManager.credentials();
 
-    public static TaskBuilder create(Credentials credentials){
-        return new TaskBuilder(credentials);
+    public static TaskBuilder instance(){
+        return new TaskBuilder();
     }
 
-    private Credentials credentials;
-
-    private TaskBuilder(Credentials credentials) {
-        this.credentials = credentials;
+    private TaskBuilder() {
     }
 
     public Collection<JiraTask> tasks() {
@@ -47,7 +45,6 @@ public class TaskBuilder {
     }
 
     public static void main(String[] args) {
-        Credentials credentials = JiraAuthManager.credentials();
-        TaskBuilder.create(credentials).tasks();
+        TaskBuilder.instance().tasks();
     }
 }
