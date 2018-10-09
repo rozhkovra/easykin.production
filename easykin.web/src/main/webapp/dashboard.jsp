@@ -1,6 +1,8 @@
 <%@ page import="ru.rrozhkov.easykin.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
+    ModuleManager moduleManager = ModuleManager.instance();
     UrlConfigurator urlConfigurator = new UrlConfigurator();
 %>
 <section class="content">
@@ -12,6 +14,10 @@
     <jsp:include page="jira/box.jsp"/>
 </div>
 <div class="row">
+<%
+    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.TASK)) {
+%>
+
 <div class="col-md-5">
 <!-- TO DO List -->
 <div class="box box-primary">
@@ -50,7 +56,10 @@
 <!-- /.box -->
 </div>
 <!-- /.col -->
-
+<%
+    }
+    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.WORK)) {
+%>
     <div class="col-md-7">
 
     <!-- TABLE: WORK -->
@@ -72,8 +81,14 @@
     </div>
     <!-- /.box -->
     </div>
+<%
+    }
+%>
 </div>
 <div class="row">
+<%
+    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.JIRA)) {
+%>
     <div class="col-md-5">
         <div class="box">
         <div class="box-header">
@@ -91,6 +106,10 @@
     </div>
     <!-- /.col -->
     <div class="col-md-7">
+<%
+    }
+    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.FIN)) {
+%>
 
     <!-- TABLE: FINANCE -->
     <div class="box box-info">
@@ -109,9 +128,14 @@
     <!-- /.box -->
 
     </div>
+<%
+    }
+%>
 </div>
 <!-- /.row -->
-
+<%
+    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.SERVICE)) {
+%>
 <div class="row">
     <div class="col-md-5">
         <div class="box">
@@ -142,5 +166,8 @@
     </div>
 </div>
 <!-- /.row -->
+<%
+    }
+%>
 
 </section>

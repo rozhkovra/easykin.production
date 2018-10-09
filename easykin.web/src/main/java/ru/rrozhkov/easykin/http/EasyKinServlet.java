@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.AdapterFactory;
 import ru.rrozhkov.easykin.finance.FinanceAdapter;
 import ru.rrozhkov.easykin.jira.JiraAdapter;
 import ru.rrozhkov.easykin.module.Module;
+import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.service.ServiceAdapter;
@@ -23,6 +24,7 @@ import java.util.Date;
 public class EasyKinServlet extends HttpServlet {
     private final AuthManager authManager = AuthManager.instance();
     private final AdapterFactory adapterFactory = new AdapterFactory();
+    ModuleManager moduleManager = ModuleManager.instance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -57,34 +59,49 @@ public class EasyKinServlet extends HttpServlet {
         Date start = new Date();
         String module = req.getParameter("moduleId");
         if (module==null) {
-            final FinanceAdapter financeAdapter = adapterFactory.finance();
-            req.setAttribute("finance", financeAdapter.finance());
-            System.out.println(new Date().getTime() - start.getTime());
-            start = new Date();
-            final WorkAdapter workAdapter = adapterFactory.work();
-            req.setAttribute("activities", workAdapter.activities());
-            req.setAttribute("shortActivities", workAdapter.shortActivities());
-            System.out.println(new Date().getTime() - start.getTime());
-            start = new Date();
-            final TaskAdapter taskAdapter = adapterFactory.task();
-            req.setAttribute("tasks", taskAdapter.toDoTasks());
-            req.setAttribute("toDoTasks", taskAdapter.toDoTasks());
-            System.out.println(new Date().getTime() - start.getTime());
-            start = new Date();
-            final ServiceAdapter serviceAdapter = adapterFactory.service();
-            req.setAttribute("services", serviceAdapter.services());
-            System.out.println(new Date().getTime() - start.getTime());
-            start = new Date();
-            final PaymentAdapter paymentAdapter = adapterFactory.payment();
-            req.setAttribute("payments", paymentAdapter.payments());
-            System.out.println(new Date().getTime() - start.getTime());
-            start = new Date();
-            final JiraAdapter jiraAdapter = adapterFactory.jira();
-            req.setAttribute("jiratasks", jiraAdapter.tasks());
-            System.out.println(new Date().getTime() - start.getTime());
-            start = new Date();
-            req.setAttribute("jiraworklog", jiraAdapter.worklogs());
-            System.out.println(new Date().getTime() - start.getTime());
+            if (moduleManager.isActive(Module.FIN)) {
+                final FinanceAdapter financeAdapter = adapterFactory.finance();
+                req.setAttribute("finance", financeAdapter.finance());
+                System.out.println(new Date().getTime() - start.getTime());
+                start = new Date();
+            }
+            if (moduleManager.isActive(Module.WORK)) {
+                final WorkAdapter workAdapter = adapterFactory.work();
+                req.setAttribute("activities", workAdapter.activities());
+                req.setAttribute("shortActivities", workAdapter.shortActivities());
+                System.out.println(new Date().getTime() - start.getTime());
+                start = new Date();
+            }
+            if (moduleManager.isActive(Module.TASK)) {
+                final TaskAdapter taskAdapter = adapterFactory.task();
+                req.setAttribute("tasks", taskAdapter.toDoTasks());
+                req.setAttribute("toDoTasks", taskAdapter.toDoTasks());
+                System.out.println(new Date().getTime() - start.getTime());
+                start = new Date();
+            }
+            if (moduleManager.isActive(Module.SERVICE)) {
+                final ServiceAdapter serviceAdapter = adapterFactory.service();
+                req.setAttribute("services", serviceAdapter.services());
+                System.out.println(new Date().getTime() - start.getTime());
+                start = new Date();
+            }
+            if (moduleManager.isActive(Module.PAYMENT)) {
+                final PaymentAdapter paymentAdapter = adapterFactory.payment();
+                req.setAttribute("payments", paymentAdapter.payments());
+                System.out.println(new Date().getTime() - start.getTime());
+                start = new Date();
+            }
+            if (moduleManager.isActive(Module.JIRA)) {
+                final JiraAdapter jiraAdapter = adapterFactory.jira();
+                req.setAttribute("jiratasks", jiraAdapter.tasks());
+                System.out.println(new Date().getTime() - start.getTime());
+                start = new Date();
+                req.setAttribute("jiraworklog", jiraAdapter.worklogs());
+                System.out.println(new Date().getTime() - start.getTime());
+            }
+            return;
+        }
+        if (!moduleManager.isActive(module)) {
             return;
         }
         if (Module.FIN.equals(module)) {

@@ -8,8 +8,13 @@
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
+    ModuleManager moduleManager = ModuleManager.instance();
+    if (!moduleManager.isActive(ru.rrozhkov.easykin.module.Module.FIN)) {
+        return;
+    }
     UrlConfigurator urlConfigurator = new UrlConfigurator();
     Collection<FinanceBean> finances = (Collection<FinanceBean>)request.getAttribute("finance");
     Date start = DateUtil.firstDayOfMonth();

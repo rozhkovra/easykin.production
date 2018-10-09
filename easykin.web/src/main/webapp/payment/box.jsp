@@ -7,9 +7,15 @@
 <%@ page import="ru.rrozhkov.easykin.model.fin.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.payment.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.core.filter.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
+    ModuleManager moduleManager = ModuleManager.instance();
+    if (!moduleManager.isActive(ru.rrozhkov.easykin.module.Module.PAYMENT)) {
+        return;
+    }
+
     UrlConfigurator urlConfigurator = new UrlConfigurator();
     Collection<PaymentBean> payments = (Collection<PaymentBean>)request.getAttribute("payments");
     Date start = DateUtil.firstDayOfMonth();

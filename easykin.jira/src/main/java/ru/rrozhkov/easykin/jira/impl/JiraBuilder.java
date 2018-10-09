@@ -9,7 +9,6 @@ import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
 import ru.rrozhkov.easykin.rest.client.RestClient;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collection;
 
 /**

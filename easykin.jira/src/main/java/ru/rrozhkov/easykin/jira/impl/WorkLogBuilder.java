@@ -16,7 +16,7 @@ public class WorkLogBuilder extends JiraBuilder<JiraWorkLog> {
         return new WorkLogBuilder(USER_WORKLOG, JSONJiraConverterFactory.instance().worklog());
     }
 
-    public WorkLogBuilder(String url, IConverter converter) {
+    private WorkLogBuilder(String url, IConverter converter) {
         super(url, converter);
     }
 

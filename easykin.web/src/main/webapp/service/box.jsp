@@ -3,9 +3,14 @@
 <%@ page import="ru.rrozhkov.easykin.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.util.*"%>
 <%@ page import="ru.rrozhkov.easykin.model.fin.*"%>
+<%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="java.util.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%
+    ModuleManager moduleManager = ModuleManager.instance();
+    if (!moduleManager.isActive(ru.rrozhkov.easykin.module.Module.SERVICE)) {
+        return;
+    }
 	UrlConfigurator urlConfigurator = new UrlConfigurator();
 	Collection<ServiceBean> beans = (Collection<ServiceBean>)request.getAttribute("services");	Money noPaid = new Money();
 	for(ServiceBean service : beans){
