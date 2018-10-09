@@ -8,6 +8,7 @@ import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
+import ru.rrozhkov.easykin.model.jira.JiraBeanFactory;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
 
 import java.util.Collection;
@@ -19,6 +20,8 @@ import java.util.Date;
 public class JSONJiraWorkLogConverter implements
         IConverter<JSONObject, Collection<JiraWorkLog>> {
     private static final Credentials credentials = JiraAuthManager.credentials();
+    private static final JiraBeanFactory jiraBeanFactory = JiraBeanFactory.instance();
+
     protected JSONJiraWorkLogConverter() {
     }
 
@@ -37,7 +40,7 @@ public class JSONJiraWorkLogConverter implements
                 Date date = DateUtil.parseJSON(worklogEntry.getString("started"));
                 int time = worklogEntry.getInt("timeSpentSeconds") / 3600;
                 System.out.println(key + "\t" + comment + "\t" + worklogEntry.getString("started") + "\t" + time);
-                worklogsList.add(new JiraWorkLog(date, time, key, comment));
+                worklogsList.add(jiraBeanFactory.worklog(date, time, key, comment));
             }
         }
         return worklogsList;

@@ -11,7 +11,7 @@ public class JiraWorkLog {
     protected String name;
     protected String desc;
 
-    public JiraWorkLog(Date date, int time, String name, String desc) {
+    protected JiraWorkLog(Date date, int time, String name, String desc) {
         this.date = date;
         this.time = time;
         this.name = name;

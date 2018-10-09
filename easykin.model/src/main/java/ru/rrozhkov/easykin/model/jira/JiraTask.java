@@ -8,7 +8,7 @@ public class JiraTask {
     private String name;
     private String status;
 
-    public JiraTask(String key, String name, String status) {
+    protected JiraTask(String key, String name, String status) {
         this.key = key;
         this.name = name;
         this.status = status;

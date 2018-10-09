@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.jira.impl.convert;
 
 import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.model.jira.JiraBeanFactory;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
 
 /**
@@ -9,6 +10,7 @@ import ru.rrozhkov.easykin.model.jira.JiraTask;
  */
 public class JSONJiraTaskConverter implements
         IConverter<JSONObject, JiraTask> {
+    private static final JiraBeanFactory jiraBeanFactory = JiraBeanFactory.instance();
     protected JSONJiraTaskConverter() {
     }
 
@@ -18,6 +20,6 @@ public class JSONJiraTaskConverter implements
         String key = jsonobject.getString("key");
         String name = fields.getString("summary");
         String statusName = status.getString("name");
-        return new JiraTask(key, name, statusName);
+        return jiraBeanFactory.task(key, name, statusName);
     }
 }
