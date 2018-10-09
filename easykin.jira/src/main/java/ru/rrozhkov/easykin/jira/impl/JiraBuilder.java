@@ -9,6 +9,7 @@ import ru.rrozhkov.easykin.jira.auth.JiraAuthManager;
 import ru.rrozhkov.easykin.rest.client.RestClient;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -36,7 +37,12 @@ public class JiraBuilder<T> {
             JSONArray jsonarray = myResponse.getJSONArray("issues");
             for (Object obj : jsonarray) {
                 JSONObject jsonobject = (JSONObject)obj;
-                beans.add(converter.convert(jsonobject));
+                Object res = converter.convert(jsonobject);
+                if (res instanceof Collection) {
+                    beans.addAll((Collection)res);
+                } else {
+                    beans.add((T)res);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
