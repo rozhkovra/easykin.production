@@ -118,14 +118,15 @@
               </ul>
             </li>
 <%      }
-        if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
-%>
-            <li class="header">Статус</li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, -1)%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, Status.status(Status.OPEN))%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>
-            <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, Status.status(Status.CLOSE))%>"><i class="fa fa-circle-o text-green"></i> <span><%=Status.CLOSE%></span></a></li>
-<%      }
     }
+            if (ru.rrozhkov.easykin.module.Module.TASK.equals(moduleId)) {
+    %>
+                <li class="header">Статус</li>
+                <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, -1)%>"><i class="fa fa-circle-o text-aqua"></i> <span>Все</span></a></li>
+                <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, Status.status(Status.OPEN))%>"><i class="fa fa-circle-o text-yellow"></i> <span><%=Status.OPEN%></span></a></li>
+                <li><a href="<%=urlConfigurator.getFilterUrlForStatus(request, session, Status.status(Status.CLOSE))%>"><i class="fa fa-circle-o text-green"></i> <span><%=Status.CLOSE%></span></a></li>
+    <%      }
+
 %>
       </ul>
     </section>
