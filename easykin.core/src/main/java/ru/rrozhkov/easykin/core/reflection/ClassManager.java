@@ -7,12 +7,7 @@ import java.lang.reflect.Method;
  */
 public class ClassManager {
     public boolean exist(String clazz){
-        try{
-            Class.forName(clazz);
-        }catch (ClassNotFoundException e) {
-            return false;
-        }
-        return true;
+        return clazz(clazz)!=null;
     }
 
     public Class clazz(String clazz){

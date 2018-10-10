@@ -40,14 +40,13 @@ public class ModuleManager {
             clazzs.add(getInterface(obj.getClass()));
         }
         Class clazz = classManager.clazz(moduleClass(module));
-        Method method = null;
+        Method method;
         try {
             method = classManager.method(clazz, methodName, clazzs.toArray(new Class[clazzs.size()]));
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        if (method==null)
             return null;
+        }
+
         try {
             return method.invoke(null, params);
         } catch (IllegalAccessException e) {
@@ -63,10 +62,9 @@ public class ModuleManager {
         try {
             method = classManager.method(clazz, methodName);
         } catch (NoSuchMethodException e) {
-            //e.printStackTrace();
-        }
-        if (method==null)
             return null;
+        }
+
         try {
             return method.invoke(null);
         } catch (IllegalAccessException e) {
@@ -82,11 +80,5 @@ public class ModuleManager {
             clazz = clazz.getSuperclass();
         }
         return clazz.getInterfaces()[0];
-    }
-
-    public static void main(String[] args){
-        ModuleManager moduleManager = new ModuleManager();
-        System.out.println("Baby:"+ moduleManager.exist(Module.BABY));
-        System.out.println("Auto:" + moduleManager.exist(Module.PAYMENT));
     }
 }
