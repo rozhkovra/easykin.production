@@ -7,13 +7,13 @@
     <groupId>ru.rrozhkov.easykin.work</groupId>
     <artifactId>easykin.work</artifactId>
     <packaging>jar</packaging>
-    <version>14.0.0</version>
+    <version>15.0.0</version>
     <name>easykin.work</name>
 
     <parent>
         <groupId>ru.rrozhkov.easykin</groupId>
         <artifactId>easykin.production</artifactId>
-        <version>14.0.0</version>
+        <version>15.0.0</version>
     </parent>
 
     <dependencies>

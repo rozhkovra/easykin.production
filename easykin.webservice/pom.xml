@@ -4,7 +4,7 @@
   <groupId>ru.rrozhkov.easykin.ws</groupId>
   <artifactId>easykin.webservice</artifactId>
   <packaging>jar</packaging>
-  <version>14.0.0</version>
+  <version>15.0.0</version>
   <name>easykin.webservice</name>
   <url>http://maven.apache.org</url>
 
@@ -12,7 +12,7 @@
   <parent>
     <groupId>ru.rrozhkov.easykin</groupId>
     <artifactId>easykin.production</artifactId>
-    <version>14.0.0</version>
+    <version>15.0.0</version>
   </parent>
 
   <dependencies>
