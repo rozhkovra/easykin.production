@@ -19,7 +19,11 @@ public class PaymentFilterFactory {
 	}
 
 	public IFilter<IPayment> noFree(){
-		return new NoFreeFilter();
+		return new IFilter<IPayment>() {
+			public boolean filter(IPayment obj) {
+				return !obj.getAmount().free();
+			}
+		};
 	}
 	public IFilter<IPayment> status(PaymentStatus status){
 		return new StatusFilter(status);

@@ -1,11 +1,8 @@
 package ru.rrozhkov.easykin.payment.db.impl;
 
-import ru.rrozhkov.easykin.core.db.IEntity;
 import ru.rrozhkov.easykin.payment.impl.convert.PaymentConverterFactory;
 import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
-
-import java.sql.SQLException;
 
 /**
  * Created by rrozhkov on 8/25/2017.

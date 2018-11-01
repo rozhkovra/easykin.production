@@ -21,6 +21,7 @@ public class DateUtil {
 		SDFWEEKDAY.setTimeZone(timeZone);
 		SDFSERVICE.setTimeZone(timeZone);
 		SQLSDF.setTimeZone(timeZone);
+		SDFJSON.setTimeZone(timeZone);
 	}
 	
 	public static Date parse(String date){
@@ -38,7 +39,7 @@ public class DateUtil {
 		return SDFWEEKDAY.format(date);
 	}
 	public static String formatWeek(){
-		return SDFWEEKDAY.format(today());
+		return todayWeek();
 	}
 	public static String formatSql(Date date){
 		return SQLSDF.format(date);
@@ -71,9 +72,6 @@ public class DateUtil {
 	}
 	public static Date lastDayOfMonth(){
 		return lastDayOfMonth(today());
-	}
-	public static Date shiftDate(Date source, long shiftMillis) {
-		return new Date(source.getTime() + shiftMillis);
 	}
 	public static boolean future(Date date) {
 		return DateUtil.today().getTime() > date.getTime();

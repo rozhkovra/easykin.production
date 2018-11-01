@@ -140,7 +140,7 @@
     <div class="col-md-5">
         <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Комуналльные услуги</h3>
+            <h3 class="box-title">Коммунальные услуги</h3>
         </div>
         <div class="box-body">
             <jsp:include page="service/short.jsp"/>
@@ -154,7 +154,7 @@
       <!-- BAR CHART -->
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Комуналльные платежи - Статистика</h3>
+          <h3 class="box-title">Коммунальные платежи - Статистика</h3>
         </div>
         </div>
         <div class="box-body">
