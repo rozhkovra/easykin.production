@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.jira.impl;
 
 import org.apache.http.auth.Credentials;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
@@ -45,6 +46,8 @@ public class JiraBuilder<T> {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException jsone) {
+            jsone.printStackTrace();
         }
         return beans;
     }
