@@ -47,7 +47,11 @@ public class ShortPanel extends Panel {
 			((Calculation)calc).setPaid(true);
 		}
 		try {
-			calcHandler.update(calc);
+			if (calc.getId()==-1) {
+				calcHandler.insert(calc);
+			} else {
+				calcHandler.update(calc);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

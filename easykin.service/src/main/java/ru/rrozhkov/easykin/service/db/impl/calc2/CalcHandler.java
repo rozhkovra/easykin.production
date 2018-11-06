@@ -48,6 +48,6 @@ public class CalcHandler extends EntityHandler {
     protected String getInsert() {
         return "INSERT INTO " + getTableName()
                 + "(ID, PAID, READINGID, CALCTYPE, AMOUNT)"
-                + " VALUES(#id#, #paid#, #reqdingid#, '#calctype#', #amount#)";
+                + " VALUES(#id#, #paid#, #readingid#, '#calctype#', #amount#)";
     }
 }
