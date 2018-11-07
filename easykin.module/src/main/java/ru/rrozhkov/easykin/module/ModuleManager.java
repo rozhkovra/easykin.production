@@ -2,6 +2,12 @@ package ru.rrozhkov.easykin.module;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.reflection.ClassManager;
+import ru.rrozhkov.easykin.model.module.IModule;
+import ru.rrozhkov.easykin.model.module.IPerson2Module;
+import ru.rrozhkov.easykin.model.person.IPerson;
+import ru.rrozhkov.easykin.module.db.impl.ModuleHandler;
+import ru.rrozhkov.easykin.module.db.impl.Person2ModuleHandler;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,6 +19,11 @@ import java.util.Collection;
 public class ModuleManager {
     private static final ClassManager classManager = new ClassManager();
     public static final String ROOT = "ru.rrozhkov.easykin";
+    private static final AuthManager authManager = AuthManager.instance();
+    private static final Person2ModuleHandler person2ModuleHandler = Person2ModuleHandler.instance();
+    private static final ModuleHandler moduleHandler = ModuleHandler.instance();
+
+    private Collection<String> activeModules = CollectionUtil.create();
 
     public static class Holder {
         public static final ModuleManager INSTANCE = new ModuleManager();
@@ -23,7 +34,22 @@ public class ModuleManager {
     }
 
     public Collection<String> activeModules(){
-        return CollectionUtil.create(Module.TASK,Module.FIN,Module.PAYMENT,Module.FAMILY, Module.WORK,Module.SERVICE, Module.JIRA);
+        if (activeModules.isEmpty()) {
+            IPerson person = authManager.signedPerson();
+            try {
+                Collection<IPerson2Module> person2Modules = person2ModuleHandler.selectForPerson(person.getId());
+                for (IPerson2Module person2Module : person2Modules) {
+                    Collection<IModule> modules = moduleHandler.selectForId(person2Module.getModuleId());
+                    if(!modules.isEmpty()) {
+                        IModule module = CollectionUtil.get(modules, 0);
+                        activeModules.add(module.getName());
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return activeModules;
     }
     private String moduleClass(String module){
         return ROOT+"." + module + ".Module";
