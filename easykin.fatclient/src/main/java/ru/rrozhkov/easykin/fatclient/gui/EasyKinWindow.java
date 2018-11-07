@@ -116,7 +116,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
                 tabbedPane.addTab(Module.name(module), Module.icon(module), easyKinGuiFactory.createPanel(module, this));
             }
 
-            if(currentIndex!=-1)
+            if(currentIndex!=-1 && tabbedPane.getTabCount()!=0)
                 tabbedPane.setSelectedIndex(currentIndex);
         }
         return tabbedPane;
@@ -193,6 +193,7 @@ public class EasyKinWindow extends JFrame implements IGUIEditor {
             public void actionPerformed(ActionEvent e) {
                 int authCode = authManager.authDialog(EasyKinWindow.this);
                 if (authCode == IGUIEditor.CODE_OK) {
+                    moduleManager.activeModules().clear();
                     refresh();
                 }
             }
