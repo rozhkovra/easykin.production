@@ -1,7 +1,7 @@
 package ru.rrozhkov.easykin.person.gui.auth;
 
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
-import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
+import ru.rrozhkov.easykin.resources.ImageManager;
 
 import javax.swing.JFrame;
 import java.awt.HeadlessException;
@@ -11,9 +11,10 @@ import java.awt.HeadlessException;
  */
 public class AuthWindow extends JFrame implements IGUIEditor {
     private boolean finished = false;
+    final static private ImageManager imageManager = ImageManager.instance();
     public AuthWindow() throws HeadlessException {
         super("Авторизация");
-        setIconImage(ImageUtil.imageByPath(getClass(), "/icon/key.png"));
+        setIconImage(imageManager.keyImg(getClass()));
         setSize(400, 150);
         getContentPane().removeAll();
         getContentPane().add(AuthForm.create(this));

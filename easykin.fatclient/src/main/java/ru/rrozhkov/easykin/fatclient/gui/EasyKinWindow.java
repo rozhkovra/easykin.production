@@ -2,7 +2,6 @@ package ru.rrozhkov.easykin.fatclient.gui;
 
 import ru.rrozhkov.easykin.fatclient.context.EasyKinContext;
 import ru.rrozhkov.easykin.fatclient.dump.DumpManager;
-import ru.rrozhkov.easykin.fatclient.gui.image.ImageManager;
 import ru.rrozhkov.easykin.fatclient.gui.util.TabbedPaneAnalyzer;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
@@ -10,6 +9,7 @@ import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
 import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
+import ru.rrozhkov.easykin.resources.ImageManager;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

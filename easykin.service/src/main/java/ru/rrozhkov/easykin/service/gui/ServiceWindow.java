@@ -1,8 +1,8 @@
 package ru.rrozhkov.easykin.service.gui;
 
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
+import ru.rrozhkov.easykin.resources.ImageManager;
 import ru.rrozhkov.easykin.service.calc.impl.CalcFactory;
-import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +12,7 @@ import java.util.Locale;
 public class ServiceWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static final PanelFactory panelFactory = PanelFactory.instance();
+	final static private ImageManager imageManager = ImageManager.instance();
 
 	public static JFrame create(JPanel panel) {
 		return new ServiceWindow(panel);
@@ -19,7 +20,7 @@ public class ServiceWindow extends JFrame {
 
 	private ServiceWindow(JPanel panel) throws HeadlessException {
 		super("EasyKin Калькулятор - Коммунальные услуги");
-		setIconImage(ImageUtil.imageByPath(this.getClass(), "/icon/service.png"));
+		setIconImage(imageManager.serviceImg(this.getClass()));
 		setContentPane(panel);
     	setExtendedState(ServiceWindow.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  

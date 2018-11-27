@@ -106,5 +106,10 @@
           <artifactId>easykin.jira</artifactId>
           <version>${version}</version>
       </dependency>
-    </dependencies>
+      <dependency>
+          <groupId>ru.rrozhkov.easykin.resources</groupId>
+          <artifactId>easykin.resources</artifactId>
+          <version>${version}</version>
+      </dependency>
+  </dependencies>
 </project>

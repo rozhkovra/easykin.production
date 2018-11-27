@@ -1,6 +1,6 @@
 package ru.rrozhkov.easykin.module;
 
-import ru.rrozhkov.easykin.core.gui.util.ImageUtil;
+import ru.rrozhkov.easykin.resources.ImageManager;
 
 import javax.swing.ImageIcon;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by rrozhkov on 8/14/2017.
  */
 public class Module {
-    final static private ImageManager imageManager = new ImageManager();
+    final static private ImageManager imageManager = ImageManager.instance();
     // First level
     public static final String PERSON = "person";
     public static final String FAMILY = "family";
@@ -67,12 +67,12 @@ public class Module {
         {
             put(AUTO, null);
             put(PERSON, null);
-            put(FAMILY, ImageUtil.scaleImage(25,25,imageManager.family(getClass())));
-            put(FIN, ImageUtil.scaleImage(25,25,imageManager.finance(getClass())));
-            put(PAYMENT, ImageUtil.scaleImage(25, 25, imageManager.payment(getClass())));
-            put(SERVICE, ImageUtil.scaleImage(25, 25, imageManager.service(getClass())));
-            put(TASK, ImageUtil.scaleImage(25, 25, imageManager.tasks(getClass())));
-            put(WORK, ImageUtil.scaleImage(25, 25, imageManager.work(getClass())));
+            put(FAMILY, imageManager.family(getClass()));
+            put(FIN, imageManager.finance(getClass()));
+            put(PAYMENT, imageManager.payment(getClass()));
+            put(SERVICE, imageManager.service(getClass()));
+            put(TASK, imageManager.tasks(getClass()));
+            put(WORK, imageManager.work(getClass()));
             put(JIRA, null);
         }
     };
