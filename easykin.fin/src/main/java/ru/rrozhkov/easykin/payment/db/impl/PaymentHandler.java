@@ -30,7 +30,7 @@ public class PaymentHandler extends EntityHandler {
 
     @Override
     protected String getSelect() {
-        return "SELECT * "+getTableName()
+        return "SELECT * FROM "+getTableName()
                 +" ORDER BY STATUSID, CATEGORYID";
     }
 
