@@ -10,6 +10,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 
 import java.awt.Component;
+import java.util.Collection;
 
 /**
  * Created by rrozhkov on 8/14/2017.
@@ -20,15 +21,23 @@ public class Module {
     private static final KinFilterFactory kinFilterFactory = KinFilterFactory.instance();
 
     public static Component createPanel(IGUIEditor parent){
-        return familyGUIFactory.createTablePanel(parent, kinPersonService.persons());
+        return familyGUIFactory.createTablePanel(parent, persons());
     }
 
     public static Component createKidsPanel(IGUIEditor parent){
-        IFilter filter = kinFilterFactory.create(new KinType[]{KinType.SUN, KinType.DAUGHTER});
-        return familyGUIFactory.createTablePanel(parent, kinPersonService.persons(filter));
+        return familyGUIFactory.createTablePanel(parent, kids());
     }
 
     public static Component createEditor(IGUIEditor parent, IKinPerson person){
         return familyGUIFactory.createEditor(parent, person);
+    }
+
+    private static Collection persons() {
+        return kinPersonService.persons();
+    }
+
+    private static Collection kids() {
+        IFilter filter = kinFilterFactory.create(new KinType[]{KinType.SUN, KinType.DAUGHTER});
+        return kinPersonService.persons(filter);
     }
 }

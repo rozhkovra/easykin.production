@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.service;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
+import ru.rrozhkov.easykin.service.service.impl.CalculationService;
 
 import java.util.Calendar;
 import java.util.Collection;
@@ -13,11 +14,12 @@ import java.util.GregorianCalendar;
  */
 public class ServiceAdapter {
     private static final ServiceFactory serviceFactory = new ServiceFactory();
+    private static final CalculationService calculationService = CalculationService.instance();
     private static final IConverter<ServiceCalc, ServiceBean> converter = serviceFactory.calc2BeanConverter();
 
     public Collection<ServiceBean> services() {
         Collection<ServiceBean> beans = CollectionUtil.create();
-        Collection<ServiceCalc> calcs = Module.calcs();
+        Collection<ServiceCalc> calcs = calcs();
         for (ServiceCalc calc : calcs) {
             ServiceBean bean = converter.convert(calc);
             if (calc.isPaid()) {
@@ -33,7 +35,7 @@ public class ServiceAdapter {
 
     public Collection<ServiceBean> services(int year) {
         Collection<ServiceBean> beans = CollectionUtil.create();
-        Collection<ServiceCalc> calcs = Module.calcs();
+        Collection<ServiceCalc> calcs = calcs();
         for (ServiceCalc calc : calcs) {
             ServiceBean bean = converter.convert(calc);
             if (calc.isPaid()) {
@@ -50,5 +52,9 @@ public class ServiceAdapter {
             }
         }
         return beans;
+    }
+
+    private static Collection calcs(){
+        return calculationService.calcs();
     }
 }

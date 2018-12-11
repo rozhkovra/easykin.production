@@ -29,7 +29,7 @@ public class Module {
         return guiJiraFactory.createFilter(parent);
     }
 
-    public static Collection tasks(){
+    private static Collection tasks(){
         return taskBuilder.tasks();
     }
 

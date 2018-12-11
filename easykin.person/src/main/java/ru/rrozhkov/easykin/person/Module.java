@@ -19,7 +19,7 @@ public class Module {
     public static Component createEditor(IGUIEditor parent, IPerson person){
         return personGUIFactory.createEditor(parent,person);
     }
-    public static Collection persons(){
+    private static Collection persons(){
         return personService.persons();
     }
 }

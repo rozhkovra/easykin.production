@@ -12,6 +12,7 @@ import ru.rrozhkov.easykin.service.calc.impl.convert.ServiceConverterFactory;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticReadingDataProvider;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticServiceCalcDataProvider;
 import ru.rrozhkov.easykin.service.gui.Calc2GUIFactory;
+import ru.rrozhkov.easykin.service.service.impl.CalculationService;
 
 
 import java.awt.Component;
@@ -26,10 +27,8 @@ import java.util.List;
 public class Module {
     private static IModuleGUIFactory calc2Factory = Calc2GUIFactory.instance();
     private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
+    private static final CalculationService calculationService = CalculationService.instance();
     private static final IConverter<Collection<ServiceCalc>, Collection<IPayment>> converter = converterFactory.serviceCalcConverter();
-    private static final StaticReadingDataProvider readingDataProvider = StaticReadingDataProvider.instance();
-    private static final StaticServiceCalcDataProvider serviceCalcDataProvider = StaticServiceCalcDataProvider.instance();
-
 
     public static Component createPanel(IGUIEditor parent){
         return calc2Factory.createTablePanel(parent, calcs());
@@ -47,15 +46,7 @@ public class Module {
         return converter.convert(calcs());
     }
 
-    public static Collection calcs() {
-        Collection collection = CollectionUtil.create();
-        collection.addAll(readingDataProvider.calcs());
-        collection.addAll(serviceCalcDataProvider.getData());
-        Collections.sort((List) collection, new Comparator<ServiceCalc>() {
-            public int compare(ServiceCalc o1, ServiceCalc o2) {
-                return DateUtil.formatSql(o2.getDate()).compareTo(DateUtil.formatSql(o1.getDate()));
-            }
-        });
-        return collection;
+    private static Collection calcs(){
+        return calculationService.calcs();
     }
 }

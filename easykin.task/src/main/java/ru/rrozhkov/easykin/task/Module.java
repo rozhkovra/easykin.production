@@ -38,7 +38,7 @@ public class Module {
         return guiTaskFactory.createFilter(parent);
     }
 
-    public static Collection tasks(){
+    private static Collection tasks(){
         Collection collection;
         IPerson person = authManager.signedPerson();
         if(person!=null)

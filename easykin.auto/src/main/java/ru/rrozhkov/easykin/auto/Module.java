@@ -35,10 +35,10 @@ public class Module {
     public static Collection payments(){
         return converter.convert(services());
     }
-    public static Collection services() {
+    private static Collection services() {
         return autoProvider.getData();
     }
-    public static ICar car() {
+    private static ICar car() {
         return autoProvider.getSingleData();
     }
 }

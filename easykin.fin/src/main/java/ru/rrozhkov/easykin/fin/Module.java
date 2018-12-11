@@ -34,6 +34,7 @@ public class Module {
     public static Component createEditor(IGUIEditor parent, IPayment payment){
         return financeFactory.createEditor(parent,payment);
     }
+
     public static Collection finance(){
         Collection collection = CollectionUtil.create();
         for(String module : moduleManager.activeModules()) {
