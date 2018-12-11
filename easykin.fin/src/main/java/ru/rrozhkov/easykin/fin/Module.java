@@ -42,11 +42,7 @@ public class Module {
                 collection.addAll(payments);
             }
         }
-        try {
-            collection.addAll(paymentHandler.select());
-        }catch(Exception e){
 
-        }
         Collections.sort((List) collection, new Comparator<IPayment>() {
             public int compare(IPayment o1, IPayment o2) {
                 return DateUtil.formatSql(o1.getDate()).compareTo(DateUtil.formatSql(o2.getDate()));
