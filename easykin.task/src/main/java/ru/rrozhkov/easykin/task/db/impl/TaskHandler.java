@@ -17,12 +17,12 @@ import java.util.Map;
 public class TaskHandler extends EntityHandler {
 	final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
 
-	public static class TaskHandlerHolder {
-		public static final TaskHandler INSTANCE = new TaskHandler();
+	private static class Holder {
+		private static final TaskHandler INSTANCE = new TaskHandler();
 	}
 
-	public static TaskHandler instance(){
-		return TaskHandlerHolder.INSTANCE;
+	protected static TaskHandler instance(){
+		return Holder.INSTANCE;
 	}
 
 	private TaskHandler() {

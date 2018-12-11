@@ -3,7 +3,6 @@ package ru.rrozhkov.easykin.service.db.impl.calc2;
 import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
-import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
 
 import java.util.Collection;
@@ -15,11 +14,11 @@ public class CalcHandler extends EntityHandler {
     private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
     private String selectForReading = "SELECT * FROM "+getTableName()+" WHERE READINGID=#readingid#";
 
-    public static class Holder {
-        public static final CalcHandler INSTANCE = new CalcHandler();
+    private static class Holder {
+        private static final CalcHandler INSTANCE = new CalcHandler();
     }
 
-    public static CalcHandler instance(){
+    protected static CalcHandler instance(){
         return Holder.INSTANCE;
     }
 

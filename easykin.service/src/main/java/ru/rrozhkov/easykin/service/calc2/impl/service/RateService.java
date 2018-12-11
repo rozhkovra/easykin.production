@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.service.calc2.impl.service;
 import ru.rrozhkov.easykin.model.service.calc2.IRate;
 import ru.rrozhkov.easykin.service.data.impl.stat.StaticReadingDataProvider;
 import ru.rrozhkov.easykin.service.db.impl.calc2.RateHandler;
+import ru.rrozhkov.easykin.service.db.impl.calc2.ServiceCalc2HandlerFactory;
 
 import java.util.Collection;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
  * Created by rrozhkov on 07.06.2018.
  */
 public class RateService {
-    final private static RateHandler rateHandler = RateHandler.instance();
+    final private static RateHandler rateHandler = ServiceCalc2HandlerFactory.instance().rate();
 
     public static class Holder {
         public static final RateService INSTANCE = new RateService();

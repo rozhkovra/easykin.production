@@ -1,16 +1,17 @@
 package ru.rrozhkov.easykin.task.service.impl;
 
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.model.task.IComment;
-import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
 
 /**
  * Created by rrozhkov on 06.06.2018.
  */
 public class CommentService {
-    private static final CommentHandler commentHandler = CommentHandler.instance();
+    private static final EntityHandler commentHandler = TaskHandlerFactory.instance().comment();
 
     public static class CommentServiceHolder {
-        public static final CommentService INSTANCE = new CommentService();
+        private static final CommentService INSTANCE = new CommentService();
     }
 
     private CommentService() {

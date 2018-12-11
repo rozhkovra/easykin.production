@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.ws.task;
 
-import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
 import ru.rrozhkov.easykin.ws.bean.TaskBean;
 import ru.rrozhkov.easykin.ws.convert.WSConverterFactory;
 
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  */
 @WebService(serviceName="EasyKinTask", portName="EasyKinTaskPort", targetNamespace="http://rrozhkov.ru/easykin/task")
 public class EasyKinTaskService {
-    private static final TaskHandler taskHandler = TaskHandler.instance();
+    private static final EntityHandler taskHandler = TaskHandlerFactory.instance().task();
     @WebMethod
     public int add(TaskBean bean) {
         try {

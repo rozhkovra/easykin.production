@@ -1,8 +1,9 @@
 package ru.rrozhkov.easykin.task.service.impl;
 
-import ru.rrozhkov.easykin.model.category.ICategory;
-import ru.rrozhkov.easykin.task.db.impl.CategoryHandler;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.model.category.ICategory;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
 
 import java.util.Collection;
 
@@ -10,10 +11,10 @@ import java.util.Collection;
  * Created by rrozhkov on 06.06.2018.
  */
 public class CategoryService {
-    private static final CategoryHandler categoryHandler = CategoryHandler.instance();
+    private static final EntityHandler categoryHandler = TaskHandlerFactory.instance().category();
 
     public static class CategoryServiceHolder {
-        public static final CategoryService INSTANCE = new CategoryService();
+        private static final CategoryService INSTANCE = new CategoryService();
     }
 
     private CategoryService() {

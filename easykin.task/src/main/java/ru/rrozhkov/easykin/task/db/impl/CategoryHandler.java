@@ -7,14 +7,14 @@ import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 public class CategoryHandler extends EntityHandler {
 	final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
 
-	public static class CategoryHandlerHolder {
-		public static final CategoryHandler INSTANCE = new CategoryHandler();
+	private static class CategoryHandlerHolder {
+		private static final CategoryHandler INSTANCE = new CategoryHandler();
 	}
 
 	private CategoryHandler() {
 	}
 
-	public static CategoryHandler instance(){
+	protected static CategoryHandler instance(){
 		return CategoryHandlerHolder.INSTANCE;
 	}
 

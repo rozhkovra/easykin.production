@@ -10,12 +10,12 @@ import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 public class Task2PersonHandler extends EntityHandler {
     final private static TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
 
-    public static class Task2PersonHandlerHolder {
-        public static final Task2PersonHandler INSTANCE = new Task2PersonHandler();
+    private static class Holder {
+        private static final Task2PersonHandler INSTANCE = new Task2PersonHandler();
     }
 
-    public static Task2PersonHandler instance(){
-        return Task2PersonHandlerHolder.INSTANCE;
+    protected static Task2PersonHandler instance(){
+        return Holder.INSTANCE;
     }
 
     private Task2PersonHandler() {

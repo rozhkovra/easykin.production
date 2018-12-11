@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.task.service.impl;
 
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.model.task.ITask;
@@ -9,8 +10,8 @@ import ru.rrozhkov.easykin.model.task.util.TaskUtil;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.db.impl.Task2PaymentHandler;
-import ru.rrozhkov.easykin.task.db.impl.Task2PersonHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 
@@ -22,10 +23,10 @@ import java.util.Collection;
  */
 public class TaskService {
     private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
-    private static final Task2PaymentHandler t2paymentHandler = Task2PaymentHandler.instance();
-    private static final Task2PersonHandler t2personHandler = Task2PersonHandler.instance();
+    private static final Task2PaymentHandler t2paymentHandler = TaskHandlerFactory.instance().task2Payment();
+    private static final EntityHandler t2personHandler = TaskHandlerFactory.instance().task2Person();
     private static final PaymentHandler paymentHandler = PaymentHandler.instance();
-    private static final TaskHandler taskHandler = TaskHandler.instance();
+    private static final TaskHandler taskHandler = TaskHandlerFactory.instance().task();
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final AuthManager authManager = AuthManager.instance();
     private static final PaymentFactory paymentFactory = PaymentFactory.instance();

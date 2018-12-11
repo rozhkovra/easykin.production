@@ -9,11 +9,11 @@ import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
  */
 public class ReadingHandler extends EntityHandler {
     private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
-    public static class Holder {
-        public static final ReadingHandler INSTANCE = new ReadingHandler();
+    private static class Holder {
+        private static final ReadingHandler INSTANCE = new ReadingHandler();
     }
 
-    public static ReadingHandler instance(){
+    protected static ReadingHandler instance(){
         return Holder.INSTANCE;
     }
 

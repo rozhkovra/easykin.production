@@ -16,11 +16,11 @@ public class RateHandler extends EntityHandler {
     private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
     private final String selectForDate = "SELECT * FROM " + getTableName() + " WHERE '#rateDate#' between DATEFROM and DATETO";
 
-    public static class Holder {
-        public static final RateHandler INSTANCE = new RateHandler();
+    private static class Holder {
+        private static final RateHandler INSTANCE = new RateHandler();
     }
 
-    public static RateHandler instance(){
+    protected static RateHandler instance(){
         return Holder.INSTANCE;
     }
 

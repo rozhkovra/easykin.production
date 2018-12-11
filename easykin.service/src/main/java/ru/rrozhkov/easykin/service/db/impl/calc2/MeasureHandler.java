@@ -15,11 +15,11 @@ public class MeasureHandler extends EntityHandler {
 
     private String selectForReading = "SELECT * FROM "+getTableName()+" WHERE READINGID=#readingid#";
 
-    public static class Holder {
-        public static final MeasureHandler INSTANCE = new MeasureHandler();
+    private static class Holder {
+        private static final MeasureHandler INSTANCE = new MeasureHandler();
     }
 
-    public static MeasureHandler instance(){
+    protected static MeasureHandler instance(){
         return Holder.INSTANCE;
     }
 

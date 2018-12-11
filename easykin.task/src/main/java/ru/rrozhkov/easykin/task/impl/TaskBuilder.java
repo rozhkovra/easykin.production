@@ -6,6 +6,7 @@ import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.task.comment.impl.filter.CommentFilterFactory;
+import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
@@ -15,16 +16,16 @@ import java.util.Date;
 
 public class TaskBuilder {
 	final private static CommentFilterFactory commentFilterFactory = CommentFilterFactory.instance();
-	final private static CommentHandler commentHandler = CommentHandler.instance();
-	final private static TaskHandler taskHandler = TaskHandler.instance();
+	final private static CommentHandler commentHandler = TaskHandlerFactory.instance().comment();
+	final private static TaskHandler taskHandler = TaskHandlerFactory.instance().task();
 	final private static TaskFactory taskFactory = TaskFactory.instance();
 
-	public static class TaskBuilderHolder {
-		public static final TaskBuilder INSTANCE = new TaskBuilder();
+	private static class Holder {
+		private static final TaskBuilder INSTANCE = new TaskBuilder();
 	}
 
 	public static TaskBuilder instance(){
-		return TaskBuilderHolder.INSTANCE;
+		return Holder.INSTANCE;
 	}
 
 	private TaskBuilder() {

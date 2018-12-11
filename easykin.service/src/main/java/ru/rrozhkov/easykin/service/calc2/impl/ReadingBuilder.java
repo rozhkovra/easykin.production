@@ -1,28 +1,29 @@
 package ru.rrozhkov.easykin.service.calc2.impl;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.core.filter.IFilter;
+import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
 import ru.rrozhkov.easykin.model.service.calc.ICalculation;
 import ru.rrozhkov.easykin.model.service.calc2.IMeasure;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.Reading;
 import ru.rrozhkov.easykin.model.service.calc2.impl.ServiceFactory;
+import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureFilterFactory;
 import ru.rrozhkov.easykin.service.db.impl.calc2.CalcHandler;
 import ru.rrozhkov.easykin.service.db.impl.calc2.MeasureHandler;
-import ru.rrozhkov.easykin.service.db.impl.calc2.ReadingHandler;
-import ru.rrozhkov.easykin.service.calc2.impl.filter.MeasureFilterFactory;
-import ru.rrozhkov.easykin.core.collection.CollectionUtil;
-import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.service.db.impl.calc2.ServiceCalc2HandlerFactory;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 public class ReadingBuilder {
-	private static final MeasureHandler measureHandler = MeasureHandler.instance();
-	private static final ReadingHandler readingHandler = ReadingHandler.instance();
+	private static final MeasureHandler measureHandler = ServiceCalc2HandlerFactory.instance().measure();
+	private static final EntityHandler readingHandler = ServiceCalc2HandlerFactory.instance().reading();
 	private static final ServiceFactory serviceFactory = ServiceFactory.instance();
 	private static final MeasureFilterFactory measureFilterFactory = MeasureFilterFactory.instance();
-	final private static CalcHandler calcHandler = CalcHandler.instance();
+	final private static CalcHandler calcHandler = ServiceCalc2HandlerFactory.instance().calc();
 
 	public static class Holder {
 		public static final ReadingBuilder INSTANCE = new ReadingBuilder();

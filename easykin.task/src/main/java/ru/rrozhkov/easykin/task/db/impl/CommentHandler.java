@@ -13,12 +13,12 @@ public class CommentHandler extends EntityHandler {
 	final private String selectForPerson = "SELECT * FROM "+getTableName()
 			+" INNER JOIN TASK2PERSON ON TASK2PERSON.TASK = COMMENT.TASKID AND TASK2PERSON.PERSON=#person#";
 
-	public static class CommentHandlerHolder {
-		public static final CommentHandler INSTANCE = new CommentHandler();
+	private static class Holder {
+		private static final CommentHandler INSTANCE = new CommentHandler();
 	}
 
-	public static CommentHandler instance(){
-		return CommentHandlerHolder.INSTANCE;
+	protected static CommentHandler instance(){
+		return Holder.INSTANCE;
 	}
 
 	private CommentHandler() {
