@@ -13,6 +13,7 @@ import ru.rrozhkov.easykin.task.impl.period.Period;
 import ru.rrozhkov.easykin.task.impl.period.PeriodTaskBuilder;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
+import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -26,8 +27,8 @@ import java.util.Date;
 public class TaskForm extends Form {
 	private static final long serialVersionUID = 1L;
 	private static final TaskFactory taskFactory = TaskFactory.instance();
-	private static final TaskService taskService = TaskService.instance();
-	private static final CategoryService categoryService = CategoryService.instance();
+	private static final TaskService taskService = TaskServiceFactory.instance().task();
+	private static final CategoryService categoryService = TaskServiceFactory.instance().category();
 	private static final PeriodTaskBuilder periodTaskBuilder = PeriodTaskBuilder.instance();
 
 	private JTextField nameField;

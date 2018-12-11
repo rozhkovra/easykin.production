@@ -13,15 +13,15 @@ import java.util.Collection;
 public class CategoryService {
     private static final EntityHandler categoryHandler = TaskHandlerFactory.instance().category();
 
-    public static class CategoryServiceHolder {
+    private static class Holder {
         private static final CategoryService INSTANCE = new CategoryService();
     }
 
     private CategoryService() {
     }
 
-    public static CategoryService instance(){
-        return CategoryServiceHolder.INSTANCE;
+    protected static CategoryService instance(){
+        return Holder.INSTANCE;
     }
 
     public Collection<ICategory> categories() {

@@ -31,12 +31,12 @@ public class TaskService {
     private static final AuthManager authManager = AuthManager.instance();
     private static final PaymentFactory paymentFactory = PaymentFactory.instance();
 
-    public static class TaskServiceHolder {
-        public static final TaskService INSTANCE = new TaskService();
+    private static class Holder {
+        private static final TaskService INSTANCE = new TaskService();
     }
 
-    public static TaskService instance(){
-        return TaskServiceHolder.INSTANCE;
+    protected static TaskService instance(){
+        return Holder.INSTANCE;
     }
 
     private TaskService() {

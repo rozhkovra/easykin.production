@@ -10,15 +10,15 @@ import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
 public class CommentService {
     private static final EntityHandler commentHandler = TaskHandlerFactory.instance().comment();
 
-    public static class CommentServiceHolder {
+    private static class Holder {
         private static final CommentService INSTANCE = new CommentService();
     }
 
     private CommentService() {
     }
 
-    public static CommentService instance(){
-        return CommentServiceHolder.INSTANCE;
+    protected static CommentService instance(){
+        return Holder.INSTANCE;
     }
 
     public int createOrUpdate(IComment comment){

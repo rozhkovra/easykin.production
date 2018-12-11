@@ -7,6 +7,7 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.module.Module;
 import ru.rrozhkov.easykin.module.ModuleManager;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
+import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 import ru.rrozhkov.easykin.ws.bean.CategoryBean;
 import ru.rrozhkov.easykin.ws.bean.PaymentBean;
 import ru.rrozhkov.easykin.ws.bean.PersonBean;
@@ -20,7 +21,7 @@ import java.util.Collection;
 
 @WebService(serviceName="EasyKin", portName="EasyKinPort", targetNamespace="http://rrozhkov.ru/easykin")
 public class EasyKinService {
-	private static final CategoryService categoryService = CategoryService.instance();
+	private static final CategoryService categoryService = TaskServiceFactory.instance().category();
 	private static final ModuleManager moduleManager = ModuleManager.instance();
 
 	@WebMethod

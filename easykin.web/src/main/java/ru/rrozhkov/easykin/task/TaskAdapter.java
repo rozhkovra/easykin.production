@@ -13,6 +13,7 @@ import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
 import java.util.Collection;
 import java.util.Date;
@@ -24,7 +25,7 @@ import java.util.List;
 public class TaskAdapter {
     final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
     final private static AuthManager authManager = AuthManager.instance();
-    final private static TaskService taskService = TaskService.instance();
+    final private static TaskService taskService = TaskServiceFactory.instance().task();
     final private static TaskFactory taskFactory = TaskFactory.instance();
     final private static TaskBuilder taskBuilder = TaskBuilder.instance();
     final private static TaskBeanFactory taskBeanFactory = TaskBeanFactory.instance();

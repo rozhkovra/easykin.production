@@ -5,13 +5,14 @@ import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.task.service.impl.CommentService;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
 import javax.swing.JTextField;
 import java.awt.Component;
 
 public class CommentForm extends Form {
 	private static final long serialVersionUID = 1L;
-	private static final CommentService commentService = CommentService.instance();
+	private static final CommentService commentService = TaskServiceFactory.instance().comment();
 	private static final TaskFactory taskFactory = TaskFactory.instance();
 
 	private JTextField textField;
