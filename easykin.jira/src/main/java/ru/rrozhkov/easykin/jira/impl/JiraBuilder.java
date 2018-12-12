@@ -16,13 +16,10 @@ import java.util.Collection;
  * Created by rrozhkov on 09.10.2018.
  */
 public class JiraBuilder<T> {
-    private IConverter<JSONObject, T> converter;
-    private String url;
     private static final Credentials credentials = JiraAuthManager.credentials();
 
-    public static JiraBuilder create(String url, IConverter converter){
-        return new JiraBuilder(url, converter);
-    }
+    private IConverter<JSONObject, T> converter;
+    private String url;
 
     protected JiraBuilder(String url, IConverter converter) {
         this.url = url;

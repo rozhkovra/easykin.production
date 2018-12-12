@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.jira;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.jira.impl.JiraBuilderFactory;
 import ru.rrozhkov.easykin.jira.impl.TaskBuilder;
 import ru.rrozhkov.easykin.jira.impl.WorkLogBuilder;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
@@ -13,8 +14,8 @@ import java.util.*;
  * Created by rrozhkov on 20.09.2018.
  */
 public class JiraAdapter {
-    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
-    private static final WorkLogBuilder workLogBuilder = WorkLogBuilder.instance();
+    private static final TaskBuilder taskBuilder = JiraBuilderFactory.instance().task();
+    private static final WorkLogBuilder workLogBuilder = JiraBuilderFactory.instance().workLog();
 
     public Collection<JiraWorkLogBean> worklogs() {
         Collection<JiraWorkLog> worklogs = workLogBuilder.worklogs();

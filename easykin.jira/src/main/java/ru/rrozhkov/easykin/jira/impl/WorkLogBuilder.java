@@ -1,6 +1,5 @@
 package ru.rrozhkov.easykin.jira.impl;
 
-import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.jira.impl.convert.JSONJiraConverterFactory;
 import ru.rrozhkov.easykin.model.jira.JiraWorkLog;
 
@@ -12,12 +11,16 @@ import java.util.Collection;
 public class WorkLogBuilder extends JiraBuilder<JiraWorkLog> {
     public static final String USER_WORKLOG = "https://jira.mvideo.ru/jira/rest/api/latest/search?jql=worklogDate%3E%272018-01-01%27%20AND%20worklogAuthor=%27lux_rozhkov%27&fields=worklog";
 
-    public static WorkLogBuilder instance(){
-        return new WorkLogBuilder(USER_WORKLOG, JSONJiraConverterFactory.instance().worklog());
+    private static class Holder {
+        private static final WorkLogBuilder INSTANCE = new WorkLogBuilder();
     }
 
-    private WorkLogBuilder(String url, IConverter converter) {
-        super(url, converter);
+    protected static WorkLogBuilder instance(){
+        return Holder.INSTANCE;
+    }
+
+    private WorkLogBuilder() {
+        super(USER_WORKLOG, JSONJiraConverterFactory.instance().worklog());
     }
 
     public Collection<JiraWorkLog> worklogs() {

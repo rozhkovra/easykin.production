@@ -21,8 +21,8 @@ import java.util.Date;
 public class JSONJiraConverterFactory {
     private static final Credentials credentials = JiraAuthManager.credentials();
     private static final JiraBeanFactory jiraBeanFactory = JiraBeanFactory.instance();
-    public static class Holder {
-        public static final JSONJiraConverterFactory INSTANCE = new JSONJiraConverterFactory();
+    private static class Holder {
+        private static final JSONJiraConverterFactory INSTANCE = new JSONJiraConverterFactory();
     }
 
     public static JSONJiraConverterFactory instance(){

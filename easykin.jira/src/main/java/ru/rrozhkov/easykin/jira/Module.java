@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.jira;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 import ru.rrozhkov.easykin.jira.gui.JiraGUIFactory;
+import ru.rrozhkov.easykin.jira.impl.JiraBuilderFactory;
 import ru.rrozhkov.easykin.jira.impl.TaskBuilder;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
 
@@ -14,7 +15,7 @@ import java.util.Collection;
  */
 public class Module {
     private static final IModuleGUIFactory guiJiraFactory = JiraGUIFactory.instance();
-    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
+    private static final TaskBuilder taskBuilder = JiraBuilderFactory.instance().task();
 
     public static Component createPanel(IGUIEditor parent){
         return guiJiraFactory.createTablePanel(parent, tasks());

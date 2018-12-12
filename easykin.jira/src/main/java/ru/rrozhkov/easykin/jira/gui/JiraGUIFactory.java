@@ -15,8 +15,8 @@ import java.util.Collection;
 public class JiraGUIFactory implements IModuleGUIFactory<ITask> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
-    public static class Holder {
-        public static final JiraGUIFactory INSTANCE = new JiraGUIFactory();
+    private static class Holder {
+        private static final JiraGUIFactory INSTANCE = new JiraGUIFactory();
     }
 
     public static JiraGUIFactory instance(){
