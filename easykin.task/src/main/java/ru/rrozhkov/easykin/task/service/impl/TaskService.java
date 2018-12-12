@@ -35,7 +35,7 @@ public class TaskService {
         private static final TaskService INSTANCE = new TaskService();
     }
 
-    protected static TaskService instance(){
+    static TaskService instance(){
         return Holder.INSTANCE;
     }
 

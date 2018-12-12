@@ -9,8 +9,9 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
-import ru.rrozhkov.easykin.task.impl.period.Period;
-import ru.rrozhkov.easykin.task.impl.period.PeriodTaskBuilder;
+import ru.rrozhkov.easykin.task.impl.Period;
+import ru.rrozhkov.easykin.task.impl.PeriodTaskBuilder;
+import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
 import ru.rrozhkov.easykin.task.service.impl.CategoryService;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
@@ -29,7 +30,7 @@ public class TaskForm extends Form {
 	private static final TaskFactory taskFactory = TaskFactory.instance();
 	private static final TaskService taskService = TaskServiceFactory.instance().task();
 	private static final CategoryService categoryService = TaskServiceFactory.instance().category();
-	private static final PeriodTaskBuilder periodTaskBuilder = PeriodTaskBuilder.instance();
+	private static final PeriodTaskBuilder periodTaskBuilder = TaskBuilderFactory.instance().periodTask();
 
 	private JTextField nameField;
 	private JTextField planDateField;

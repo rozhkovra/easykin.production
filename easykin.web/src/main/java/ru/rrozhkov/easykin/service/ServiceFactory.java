@@ -12,6 +12,17 @@ import java.util.Date;
  * Created by rrozhkov on 14.05.2018.
  */
 public class ServiceFactory {
+    private static class Holder {
+        private static final ServiceFactory INSTANCE = new ServiceFactory();
+    }
+
+    public static ServiceFactory instance(){
+        return Holder.INSTANCE;
+    }
+
+    private ServiceFactory() {
+    }
+
     public ServiceBean serviceBean(int num, String name, Date date, Money water, Money hotWater,
                                    Money electricity, Money gaz, Money heating, Money antenna,
                                    Money intercom, Money house, Money repair, Money itog, Money noPaid,

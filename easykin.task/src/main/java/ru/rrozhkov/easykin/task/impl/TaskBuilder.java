@@ -24,7 +24,7 @@ public class TaskBuilder {
 		private static final TaskBuilder INSTANCE = new TaskBuilder();
 	}
 
-	public static TaskBuilder instance(){
+	static TaskBuilder instance(){
 		return Holder.INSTANCE;
 	}
 

@@ -13,7 +13,7 @@ public class ReadingHandler extends EntityHandler {
         private static final ReadingHandler INSTANCE = new ReadingHandler();
     }
 
-    protected static ReadingHandler instance(){
+    static ReadingHandler instance(){
         return Holder.INSTANCE;
     }
 

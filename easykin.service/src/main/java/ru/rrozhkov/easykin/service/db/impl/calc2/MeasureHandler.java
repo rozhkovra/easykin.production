@@ -19,7 +19,7 @@ public class MeasureHandler extends EntityHandler {
         private static final MeasureHandler INSTANCE = new MeasureHandler();
     }
 
-    protected static MeasureHandler instance(){
+    static MeasureHandler instance(){
         return Holder.INSTANCE;
     }
 

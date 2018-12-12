@@ -17,7 +17,7 @@ public class CommentService {
     private CommentService() {
     }
 
-    protected static CommentService instance(){
+    static CommentService instance(){
         return Holder.INSTANCE;
     }
 

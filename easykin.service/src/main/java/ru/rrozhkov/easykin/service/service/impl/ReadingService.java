@@ -16,11 +16,11 @@ public class ReadingService {
     private static final EntityHandler readingHandler = ServiceCalc2HandlerFactory.instance().reading();
     private static final EntityHandler calcHandler = ServiceCalc2HandlerFactory.instance().calc();
 
-    public static class Holder {
-        public static final ReadingService INSTANCE = new ReadingService();
+    private static class Holder {
+        private static final ReadingService INSTANCE = new ReadingService();
     }
 
-    public static ReadingService instance(){
+    static ReadingService instance(){
         return Holder.INSTANCE;
     }
 

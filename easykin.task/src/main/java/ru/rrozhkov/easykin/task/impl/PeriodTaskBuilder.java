@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.task.impl.period;
+package ru.rrozhkov.easykin.task.impl;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.task.ITask;
@@ -16,11 +16,11 @@ import java.util.Date;
 public class PeriodTaskBuilder {
     private static final TaskFactory taskFactory = TaskFactory.instance();
 
-    public static class Holder {
-        public static final PeriodTaskBuilder INSTANCE = new PeriodTaskBuilder();
+    private static class Holder {
+        private static final PeriodTaskBuilder INSTANCE = new PeriodTaskBuilder();
     }
 
-    public static PeriodTaskBuilder instance(){
+    static PeriodTaskBuilder instance(){
         return Holder.INSTANCE;
     }
 

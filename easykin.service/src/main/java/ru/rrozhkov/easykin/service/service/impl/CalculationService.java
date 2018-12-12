@@ -18,11 +18,11 @@ public class CalculationService {
     private static final StaticReadingDataProvider readingDataProvider = StaticReadingDataProvider.instance();
     private static final StaticServiceCalcDataProvider serviceCalcDataProvider = StaticServiceCalcDataProvider.instance();
 
-    public static class Holder {
-        public static final CalculationService INSTANCE = new CalculationService();
+    private static class Holder {
+        private static final CalculationService INSTANCE = new CalculationService();
     }
 
-    public static CalculationService instance(){
+    static CalculationService instance(){
         return Holder.INSTANCE;
     }
 

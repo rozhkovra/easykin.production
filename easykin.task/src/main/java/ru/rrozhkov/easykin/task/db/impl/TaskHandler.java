@@ -21,7 +21,7 @@ public class TaskHandler extends EntityHandler {
 		private static final TaskHandler INSTANCE = new TaskHandler();
 	}
 
-	protected static TaskHandler instance(){
+	static TaskHandler instance(){
 		return Holder.INSTANCE;
 	}
 

@@ -20,7 +20,7 @@ public class RateHandler extends EntityHandler {
         private static final RateHandler INSTANCE = new RateHandler();
     }
 
-    protected static RateHandler instance(){
+    static RateHandler instance(){
         return Holder.INSTANCE;
     }
 

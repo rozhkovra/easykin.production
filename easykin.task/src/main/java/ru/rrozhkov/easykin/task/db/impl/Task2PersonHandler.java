@@ -14,7 +14,7 @@ public class Task2PersonHandler extends EntityHandler {
         private static final Task2PersonHandler INSTANCE = new Task2PersonHandler();
     }
 
-    protected static Task2PersonHandler instance(){
+    static Task2PersonHandler instance(){
         return Holder.INSTANCE;
     }
 

@@ -8,6 +8,7 @@ import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
+import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
@@ -27,7 +28,7 @@ public class TaskAdapter {
     final private static AuthManager authManager = AuthManager.instance();
     final private static TaskService taskService = TaskServiceFactory.instance().task();
     final private static TaskFactory taskFactory = TaskFactory.instance();
-    final private static TaskBuilder taskBuilder = TaskBuilder.instance();
+    final private static TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
     final private static TaskBeanFactory taskBeanFactory = TaskBeanFactory.instance();
 
     public Collection<TaskBean> toDoTasks() {

@@ -1,4 +1,4 @@
-package ru.rrozhkov.easykin.task.impl.period;
+package ru.rrozhkov.easykin.task.impl;
 
 /**
  * Created by rrozhkov on 14.06.2018.

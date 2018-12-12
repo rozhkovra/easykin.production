@@ -6,6 +6,7 @@ import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.TaskGUIFactory;
 import ru.rrozhkov.easykin.task.impl.TaskBuilder;
+import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
@@ -20,7 +21,7 @@ import java.util.Collection;
 public class Module {
     private static final IModuleGUIFactory guiTaskFactory = TaskGUIFactory.instance();
     private static final TaskFactory taskFactory = TaskFactory.instance();
-    private static final TaskBuilder taskBuilder = TaskBuilder.instance();
+    private static final TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
     private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
     private static final AuthManager authManager = AuthManager.instance();
 

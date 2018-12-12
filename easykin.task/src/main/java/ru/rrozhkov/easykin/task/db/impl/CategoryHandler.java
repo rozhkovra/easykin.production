@@ -14,7 +14,7 @@ public class CategoryHandler extends EntityHandler {
 	private CategoryHandler() {
 	}
 
-	protected static CategoryHandler instance(){
+	static CategoryHandler instance(){
 		return CategoryHandlerHolder.INSTANCE;
 	}
 

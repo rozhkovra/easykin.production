@@ -1,14 +1,13 @@
 package ru.rrozhkov.easykin.service.gui.reading;
 
-import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.model.service.calc2.IReading;
 import ru.rrozhkov.easykin.service.calc2.impl.ReadingBuilder;
 import ru.rrozhkov.easykin.service.calc2.impl.Service2Builder;
-import ru.rrozhkov.easykin.service.calc2.impl.convert.ServiceConverterFactory;
 import ru.rrozhkov.easykin.service.service.impl.ReadingService;
+import ru.rrozhkov.easykin.service.service.impl.ServiceCalc2ServiceFactory;
 
 import javax.swing.BoxLayout;
 import java.awt.Container;
@@ -19,9 +18,7 @@ import java.awt.Container;
 public class ReadingServiceForm extends Form {
     private static final Service2Builder calc2Builder = Service2Builder.instance();
     private static final ReadingBuilder readingBuilder = ReadingBuilder.instance();
-    private static final ReadingService readingService = ReadingService.instance();
-    private static final ServiceConverterFactory converterFactory = ServiceConverterFactory.instance();
-    private static final IConverter<ServiceCalc,IReading> converter = converterFactory.calcReading();
+    private static final ReadingService readingService = ServiceCalc2ServiceFactory.instance().reading();
 
     private IReading reading;
     private ServiceCalc calc;

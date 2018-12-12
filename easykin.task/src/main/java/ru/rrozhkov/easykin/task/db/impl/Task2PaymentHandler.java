@@ -26,7 +26,7 @@ public class Task2PaymentHandler extends EntityHandler {
     private Task2PaymentHandler() {
     }
 
-    protected static Task2PaymentHandler instance(){
+    static Task2PaymentHandler instance(){
         return Holder.INSTANCE;
     }
 

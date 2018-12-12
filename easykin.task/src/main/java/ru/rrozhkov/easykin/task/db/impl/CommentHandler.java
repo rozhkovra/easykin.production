@@ -17,7 +17,7 @@ public class CommentHandler extends EntityHandler {
 		private static final CommentHandler INSTANCE = new CommentHandler();
 	}
 
-	protected static CommentHandler instance(){
+	static CommentHandler instance(){
 		return Holder.INSTANCE;
 	}
 

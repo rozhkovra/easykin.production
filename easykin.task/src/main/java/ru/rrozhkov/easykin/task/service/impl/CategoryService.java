@@ -20,7 +20,7 @@ public class CategoryService {
     private CategoryService() {
     }
 
-    protected static CategoryService instance(){
+    static CategoryService instance(){
         return Holder.INSTANCE;
     }
 

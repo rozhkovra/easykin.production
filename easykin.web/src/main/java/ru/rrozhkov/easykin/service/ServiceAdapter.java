@@ -4,6 +4,7 @@ import ru.rrozhkov.easykin.model.service.calc.impl.ServiceCalc;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.convert.IConverter;
 import ru.rrozhkov.easykin.service.service.impl.CalculationService;
+import ru.rrozhkov.easykin.service.service.impl.ServiceCalc2ServiceFactory;
 
 import java.util.Calendar;
 import java.util.Collection;
@@ -13,9 +14,8 @@ import java.util.GregorianCalendar;
  * Created by rrozhkov on 14.05.2018.
  */
 public class ServiceAdapter {
-    private static final ServiceFactory serviceFactory = new ServiceFactory();
-    private static final CalculationService calculationService = CalculationService.instance();
-    private static final IConverter<ServiceCalc, ServiceBean> converter = serviceFactory.calc2BeanConverter();
+    private static final CalculationService calculationService = ServiceCalc2ServiceFactory.instance().calc();
+    private static final IConverter<ServiceCalc, ServiceBean> converter = ServiceFactory.instance().calc2BeanConverter();
 
     public Collection<ServiceBean> services() {
         Collection<ServiceBean> beans = CollectionUtil.create();

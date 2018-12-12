@@ -18,7 +18,7 @@ public class CalcHandler extends EntityHandler {
         private static final CalcHandler INSTANCE = new CalcHandler();
     }
 
-    protected static CalcHandler instance(){
+    static CalcHandler instance(){
         return Holder.INSTANCE;
     }
 
