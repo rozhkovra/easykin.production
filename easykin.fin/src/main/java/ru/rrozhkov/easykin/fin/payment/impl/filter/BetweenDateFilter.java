@@ -12,7 +12,7 @@ public class BetweenDateFilter implements IFilter<IPayment> {
     private Date start;
     private Date end;
 
-    public BetweenDateFilter(Date start, Date end) {
+    protected BetweenDateFilter(Date start, Date end) {
         this.start = start;
         this.end = end;
     }

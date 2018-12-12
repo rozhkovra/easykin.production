@@ -17,8 +17,8 @@ import java.util.Collection;
 public class FinanceGUIFactory implements IModuleGUIFactory<IPayment> {
     private final static IGUIFactory guiFactory = GUIFactory.create();
 
-    public static class FinanceGUIFactoryHolder {
-        public static final FinanceGUIFactory INSTANCE = new FinanceGUIFactory();
+    private static class FinanceGUIFactoryHolder {
+        private static final FinanceGUIFactory INSTANCE = new FinanceGUIFactory();
     }
 
     public static FinanceGUIFactory instance(){

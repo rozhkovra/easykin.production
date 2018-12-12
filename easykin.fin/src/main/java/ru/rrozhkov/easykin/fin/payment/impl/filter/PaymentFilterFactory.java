@@ -7,8 +7,8 @@ import ru.rrozhkov.easykin.core.filter.IFilter;
 import java.util.Date;
 
 public class PaymentFilterFactory {
-	public static class PaymentFilterFactoryHolder {
-		public static final PaymentFilterFactory INSTANCE = new PaymentFilterFactory();
+	private static class PaymentFilterFactoryHolder {
+		private static final PaymentFilterFactory INSTANCE = new PaymentFilterFactory();
 	}
 
 	public static PaymentFilterFactory instance(){

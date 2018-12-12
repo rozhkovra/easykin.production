@@ -6,8 +6,8 @@ import ru.rrozhkov.easykin.core.convert.IEntityConverter;
  * Created by rrozhkov on 07.05.2018.
  */
 public class PaymentConverterFactory {
-    public static class PaymentConverterFactoryHolder {
-        public static final PaymentConverterFactory INSTANCE = new PaymentConverterFactory();
+    private static class PaymentConverterFactoryHolder {
+        private static final PaymentConverterFactory INSTANCE = new PaymentConverterFactory();
     }
 
     public static PaymentConverterFactory instance(){

@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.payment;
 
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.payment.service.impl.PaymentService;
 
 import java.util.Collection;
 
@@ -10,13 +11,13 @@ import java.util.Collection;
  */
 public class PaymentAdapter {
     private static final PaymentBeanFactory paymentBeanFactory = new PaymentBeanFactory();
+    private static final PaymentService paymentService = PaymentService.instance();
 
     public Collection<PaymentBean> payments() {
         Collection<PaymentBean> beans = CollectionUtil.create();
-        Collection<IPayment> payments = Module.finance();
-        int i =0;
+        Collection<IPayment> payments = paymentService.paymentsFact();
         for (IPayment peyment : payments) {
-            beans.add(paymentBeanFactory.paymentBean(++i,peyment));
+            beans.add(paymentBeanFactory.paymentBean(beans.size()+1,peyment));
         }
         return beans;
     }

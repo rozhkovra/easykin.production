@@ -3,21 +3,18 @@ package ru.rrozhkov.easykin.payment.gui;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
-import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentCategory;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
-import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.Component;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Date;
 
 
 public class PaymentForm extends Form {
@@ -156,17 +153,6 @@ public class PaymentForm extends Form {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-//		if (getRepeatCheckBox().isSelected()) {
-//			if (!validatePeriodic()) {
-//				return;
-//			}
-//			Period period = (Period)periodComboBox.getSelectedItem();
-//			Date untilDate = DateUtil.parse(untilDateField.getText());
-//			Collection<ITask> tasks = periodTaskBuilder.build(period, untilDate, task);
-//			taskService.createOrUpdate(tasks);
-//		} else {
-//			taskService.createOrUpdate(task);
-//		}
 		parent.refresh();
 	}
 }

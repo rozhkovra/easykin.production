@@ -14,12 +14,15 @@ import java.util.Collection;
 public class PaymentHandler extends EntityHandler {
     private static final PaymentConverterFactory paymentConverterFactory = PaymentConverterFactory.instance();
 
-    public static class Holder {
-        public static final PaymentHandler INSTANCE = new PaymentHandler();
+    private static class Holder {
+        private static final PaymentHandler INSTANCE = new PaymentHandler();
     }
 
     public static PaymentHandler instance(){
         return Holder.INSTANCE;
+    }
+
+    private PaymentHandler() {
     }
 
     private String selectForId = "SELECT "+getTableName()+".* FROM "+getTableName()
