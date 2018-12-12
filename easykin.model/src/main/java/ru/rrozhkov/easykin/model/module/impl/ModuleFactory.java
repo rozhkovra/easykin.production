@@ -7,8 +7,8 @@ import ru.rrozhkov.easykin.model.module.IPerson2Module;
  * Created by rrozhkov on 10.10.2018.
  */
 public class ModuleFactory {
-    public static class Holder {
-        public static final ModuleFactory INSTANCE = new ModuleFactory();
+    private static class Holder {
+        private static final ModuleFactory INSTANCE = new ModuleFactory();
     }
 
     public static ModuleFactory instance(){

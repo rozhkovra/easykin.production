@@ -10,8 +10,8 @@ import java.util.Date;
 import static ru.rrozhkov.easykin.model.fin.payment.PaymentCategory.*;
 
 public class PaymentFactory {
-	public static class Holder {
-		public static final PaymentFactory INSTANCE = new PaymentFactory();
+	private static class Holder {
+		private static final PaymentFactory INSTANCE = new PaymentFactory();
 	}
 
 	public static PaymentFactory instance(){

@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class ServiceFactory {
     private static final int VERSION = 2;
-    public static class Holder {
-        public static final ServiceFactory INSTANCE = new ServiceFactory();
+    private static class Holder {
+        private static final ServiceFactory INSTANCE = new ServiceFactory();
     }
 
     public static ServiceFactory instance(){

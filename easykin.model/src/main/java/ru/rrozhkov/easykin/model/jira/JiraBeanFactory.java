@@ -6,8 +6,8 @@ import java.util.Date;
  * Created by rrozhkov on 09.10.2018.
  */
 public class JiraBeanFactory {
-    public static class Holder {
-        public static final JiraBeanFactory INSTANCE = new JiraBeanFactory();
+    private static class Holder {
+        private static final JiraBeanFactory INSTANCE = new JiraBeanFactory();
     }
 
     public static JiraBeanFactory instance(){

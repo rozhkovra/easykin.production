@@ -7,12 +7,12 @@ import ru.rrozhkov.easykin.model.task.*;
 import java.util.Date;
 
 public class TaskFactory{
-	public static class TaskFactoryHolder {
-		public static final TaskFactory INSTANCE = new TaskFactory();
+	private static class Holder {
+		private static final TaskFactory INSTANCE = new TaskFactory();
 	}
 
 	public static TaskFactory instance(){
-		return TaskFactoryHolder.INSTANCE;
+		return Holder.INSTANCE;
 	}
 
 	private TaskFactory() {
