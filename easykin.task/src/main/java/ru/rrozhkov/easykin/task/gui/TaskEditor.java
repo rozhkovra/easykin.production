@@ -4,11 +4,11 @@ import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.task.gui.comment.CommentGUIFactory;
-import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.core.gui.GUIFactory;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IGUIFactory;
-import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
+import ru.rrozhkov.easykin.task.service.impl.TaskService;
+import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TaskEditor extends JPanel implements IGUIEditor{
-	private final static TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
+	private final static TaskService taskService = TaskServiceFactory.instance().task();
 	private final static TaskFactory taskFactory = TaskFactory.instance();
 	private final static IGUIFactory guiFactory = GUIFactory.create();
 	private final static TaskGUIFactory taskGUIFactory = TaskGUIFactory.instance();
@@ -76,7 +76,7 @@ public class TaskEditor extends JPanel implements IGUIEditor{
 
 	public void refresh() {
 		if(task!=null) {
-			task = taskBuilder.buildTask(task.getId());
+			task = taskService.task(task.getId());
 			fill();
 		}
 	}

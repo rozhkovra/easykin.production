@@ -15,12 +15,12 @@ public class ActivityHandler extends EntityHandler {
 			+" ORDER BY "+getTableName()+".ACTDATE desc";
 
 
-	public static class ActivityHandlerHolder {
+	public static class Holder {
 		public static final ActivityHandler INSTANCE = new ActivityHandler();
 	}
 
 	public static ActivityHandler instance(){
-		return ActivityHandlerHolder.INSTANCE;
+		return Holder.INSTANCE;
 	}
 
 	private ActivityHandler() {
@@ -45,7 +45,7 @@ public class ActivityHandler extends EntityHandler {
 				+ " TASKTYPE='#taskType#', NAME='#name#', RELEASETYPE='#releaseType#', DESC='#desc#' WHERE ID=#id#";
 	}
 
-	public Collection<IActivity> selectForPerson(int id) throws Exception {
+	public Collection<IActivity> selectForPerson(final int id) throws Exception {
 		return dbManager().select(selectForPerson.replace("#person#", String.valueOf(id)), getConverter());
 	}
 }

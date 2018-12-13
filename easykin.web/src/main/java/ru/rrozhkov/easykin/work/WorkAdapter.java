@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.work;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.model.work.IActivity;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.work.service.impl.ActivityService;
 
 import java.util.*;
@@ -13,10 +14,11 @@ import java.util.*;
 public class WorkAdapter {
     private static final WorkBeanFactory workBeanFactory = new WorkBeanFactory();
     private static final ActivityService activityService = ActivityService.instance();
+    private static final AuthManager authManager = AuthManager.instance();
 
     public Collection<ActivityBean> activities() {
         Collection<ActivityBean> beans = CollectionUtil.create();
-        Collection<IActivity> activities = activityService.activities();
+        Collection<IActivity> activities = activityService.activities(authManager.signedPerson());
         Map<Date, Integer> dayTime = new HashMap<Date, Integer>();
         for(IActivity activity : activities){
             int curTime = activity.getTime();
@@ -37,7 +39,7 @@ public class WorkAdapter {
     }
 
     public Collection<GroupActivityBean> groupActivities() {
-        Collection<IActivity> activities = activityService.activities();
+        Collection<IActivity> activities = activityService.activities(authManager.signedPerson());
         Map<String, Integer> activitiesMap = new HashMap<String, Integer>();
         for (IActivity activity : activities) {
             String key = activity.getTaskType()+" "+activity.getName();

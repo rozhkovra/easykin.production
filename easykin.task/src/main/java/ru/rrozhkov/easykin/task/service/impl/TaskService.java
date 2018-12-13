@@ -1,5 +1,6 @@
 package ru.rrozhkov.easykin.task.service.impl;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
@@ -9,7 +10,7 @@ import ru.rrozhkov.easykin.model.task.ITask2Payment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.model.task.util.TaskUtil;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
-import ru.rrozhkov.easykin.person.auth.AuthManager;
+import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
 import ru.rrozhkov.easykin.task.db.impl.Task2PaymentHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
@@ -17,6 +18,7 @@ import ru.rrozhkov.easykin.task.impl.TaskBuilder;
 import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -31,9 +33,9 @@ public class TaskService {
     private static final PaymentHandler paymentHandler = PaymentHandler.instance();
     private static final TaskHandler taskHandler = TaskHandlerFactory.instance().task();
     private static final TaskFactory taskFactory = TaskFactory.instance();
-    private static final AuthManager authManager = AuthManager.instance();
     private static final PaymentFactory paymentFactory = PaymentFactory.instance();
     private static final TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
+    final private static CommentHandler commentHandler = TaskHandlerFactory.instance().comment();
 
     private static class Holder {
         private static final TaskService INSTANCE = new TaskService();
@@ -46,11 +48,11 @@ public class TaskService {
     private TaskService() {
     }
 
-    public int createOrUpdate(ITask task){
+    public int createOrUpdate(final ITask task, final IPerson person){
         int taskId = task.getId();
         try{
             if (taskId == -1) {
-                taskId = create(task);
+                taskId = create(task, person);
             } else {
                 update(task);
             }
@@ -61,7 +63,7 @@ public class TaskService {
     }
 
 
-    public void close(ITask task) {
+    public void close(final ITask task) {
         if (task.getId()==-1) {
             return;
         }
@@ -72,16 +74,15 @@ public class TaskService {
         }
     }
 
-    public void createOrUpdate(Collection<ITask> tasks) {
+    public void createOrUpdate(final Collection<ITask> tasks ,final IPerson person) {
         for (ITask task : tasks) {
-            createOrUpdate(task);
+            createOrUpdate(task, person);
         }
     }
 
-    protected int create(ITask task) throws SQLException {
-        int personId = authManager.signedPerson().getId();
+    protected int create(final ITask task, final IPerson person) throws SQLException {
         int taskId = taskHandler.insert(task);
-        t2personHandler.insert(taskFactory.createTask2Person(-1, personId, taskId));
+        t2personHandler.insert(taskFactory.createTask2Person(-1, person.getId(), taskId));
         if(TaskUtil.withPayment(task)) {
             IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
             int paymentId = paymentHandler.insert(payment);
@@ -90,7 +91,7 @@ public class TaskService {
         return taskId;
     }
 
-    protected int update(ITask task) throws SQLException {
+    protected int update(final ITask task) throws SQLException {
         int taskId = task.getId();
         taskHandler.update(task);
         if(TaskUtil.withPayment(task)) {
@@ -104,13 +105,31 @@ public class TaskService {
         return taskId;
     }
 
-    public Collection tasks(){
-        Collection collection;
-        IPerson person = authManager.signedPerson();
-        if(person!=null)
-            collection = taskBuilder.build(person.getId());
-        else
-            collection = taskBuilder.build();
-        return collection;
+    public Collection tasks(final IPerson person){
+        try {
+            return taskBuilder.build(taskHandler.selectForPerson(person.getId()), commentHandler.selectForPerson(person.getId()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return CollectionUtil.create();
     }
+
+    public ITask task(final int id){
+        try {
+            return taskBuilder.buildTask(taskHandler.selectTask(id), commentHandler.selectForTask(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Collection<ITask> tasks(final TaskFilterBean bean){
+        try {
+            return taskBuilder.build(taskHandler.selectForFilter(bean), commentHandler.selectForPerson(bean.getPersonId()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return CollectionUtil.create();
+    }
+
 }

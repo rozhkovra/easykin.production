@@ -9,6 +9,7 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.impl.Period;
 import ru.rrozhkov.easykin.task.impl.PeriodTaskBuilder;
 import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
@@ -31,6 +32,7 @@ public class TaskForm extends Form {
 	private static final TaskService taskService = TaskServiceFactory.instance().task();
 	private static final CategoryService categoryService = TaskServiceFactory.instance().category();
 	private static final PeriodTaskBuilder periodTaskBuilder = TaskBuilderFactory.instance().periodTask();
+	private static final AuthManager authManager = AuthManager.instance();
 
 	private JTextField nameField;
 	private JTextField planDateField;
@@ -246,9 +248,9 @@ public class TaskForm extends Form {
 			Period period = (Period)periodComboBox.getSelectedItem();
 			Date untilDate = DateUtil.parse(untilDateField.getText());
 			Collection<ITask> tasks = periodTaskBuilder.build(period, untilDate, task);
-			taskService.createOrUpdate(tasks);
+			taskService.createOrUpdate(tasks, authManager.signedPerson());
 		} else {
-			taskService.createOrUpdate(task);
+			taskService.createOrUpdate(task, authManager.signedPerson());
 		}
 		parent.refresh();
 	}

@@ -5,6 +5,7 @@ import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
+import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.gui.TaskGUIFactory;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
@@ -22,9 +23,10 @@ public class Module {
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final IEntityConverter taskConverter = TaskConverterFactory.instance().task();
     private static final TaskService taskService = TaskServiceFactory.instance().task();
+    private static final AuthManager authManager = AuthManager.instance();
 
     public static Component createPanel(IGUIEditor parent){
-        return guiTaskFactory.createTablePanel(parent, taskService.tasks());
+        return guiTaskFactory.createTablePanel(parent, taskService.tasks(authManager.signedPerson()));
     }
     public static Component createEditor(IGUIEditor parent){
         ITask task = taskFactory.newTask();
@@ -38,6 +40,6 @@ public class Module {
     }
 
     public static Collection payments(){
-        return ((TaskConverter)taskConverter).payments(taskService.tasks());
+        return ((TaskConverter)taskConverter).payments(taskService.tasks(authManager.signedPerson()));
     }
 }

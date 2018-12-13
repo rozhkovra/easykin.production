@@ -1,5 +1,7 @@
 package ru.rrozhkov.easykin.task;
 
+import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
@@ -7,13 +9,9 @@ import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
-import ru.rrozhkov.easykin.task.impl.TaskBuilder;
-import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
-import ru.rrozhkov.easykin.core.collection.CollectionUtil;
-import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
 import java.util.Collection;
@@ -28,7 +26,6 @@ public class TaskAdapter {
     final private static AuthManager authManager = AuthManager.instance();
     final private static TaskService taskService = TaskServiceFactory.instance().task();
     final private static TaskFactory taskFactory = TaskFactory.instance();
-    final private static TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
     final private static TaskBeanFactory taskBeanFactory = TaskBeanFactory.instance();
 
     public Collection<TaskBean> toDoTasks() {
@@ -47,7 +44,7 @@ public class TaskAdapter {
     }
 
     private Collection<TaskBean> tasks(TaskFilterBean bean) {
-        Collection<ITask> tasks = taskBuilder.build(bean);
+        Collection<ITask> tasks = taskService.tasks(bean);
         Collection<TaskBean> taskBeans = CollectionUtil.create();
         int num = 0;
         for (ITask task : tasks) {
