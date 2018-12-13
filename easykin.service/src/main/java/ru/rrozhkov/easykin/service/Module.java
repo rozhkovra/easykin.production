@@ -24,7 +24,7 @@ public class Module {
             ServiceConverterFactory.instance().serviceCalcConverter();
 
     public static Component createPanel(IGUIEditor parent){
-        return calc2Factory.createTablePanel(parent, calcs());
+        return calc2Factory.createTablePanel(parent, calculationService.calcs());
     }
 
     public static Component createEditor(IGUIEditor parent, ICalculation calc){
@@ -36,10 +36,6 @@ public class Module {
     }
 
     public static Collection payments(){
-        return converter.convert(calcs());
-    }
-
-    private static Collection calcs(){
-        return calculationService.calcs();
+        return converter.convert(calculationService.calcs());
     }
 }

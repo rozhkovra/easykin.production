@@ -6,12 +6,12 @@ import ru.rrozhkov.easykin.core.convert.IEntityConverter;
  * Created by rrozhkov on 07.05.2018.
  */
 public class WorkConverterFactory {
-    public static class WorkConverterFactoryHolder {
-        public static final WorkConverterFactory INSTANCE = new WorkConverterFactory();
+    private static class Holder {
+        private static final WorkConverterFactory INSTANCE = new WorkConverterFactory();
     }
 
     public static WorkConverterFactory instance(){
-        return WorkConverterFactoryHolder.INSTANCE;
+        return Holder.INSTANCE;
     }
 
     private WorkConverterFactory() {

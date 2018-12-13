@@ -8,7 +8,6 @@ import ru.rrozhkov.easykin.jira.impl.TaskBuilder;
 import ru.rrozhkov.easykin.model.jira.JiraTask;
 
 import java.awt.Component;
-import java.util.Collection;
 
 /**
  * Created by rrozhkov on 8/14/2017.
@@ -18,7 +17,7 @@ public class Module {
     private static final TaskBuilder taskBuilder = JiraBuilderFactory.instance().task();
 
     public static Component createPanel(IGUIEditor parent){
-        return guiJiraFactory.createTablePanel(parent, tasks());
+        return guiJiraFactory.createTablePanel(parent, taskBuilder.tasks());
     }
     public static Component createEditor(IGUIEditor parent){
         return guiJiraFactory.createEditor(parent, null);
@@ -29,9 +28,4 @@ public class Module {
     public static Component createFilter(IGUIEditor parent){
         return guiJiraFactory.createFilter(parent);
     }
-
-    private static Collection tasks(){
-        return taskBuilder.tasks();
-    }
-
 }

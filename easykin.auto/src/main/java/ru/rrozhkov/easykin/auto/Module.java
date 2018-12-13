@@ -24,21 +24,15 @@ public class Module {
     private static final ServiceGUIFactory serviceGuiFactory = ServiceGUIFactory.instance();
 
     public static Component createPanel(IGUIEditor parent){
-        return new AutoPanel(parent, car(), services());
+        return new AutoPanel(parent, autoProvider.getSingleData(), autoProvider.getData());
     }
     public static Component createEditor(IGUIEditor parent, IService service){
         return serviceGuiFactory.createEditor(parent, service);
     }
     public static Component createEditor(IGUIEditor parent){
-        return serviceGuiFactory.createEditor(parent,null);
+        return serviceGuiFactory.createEditor(parent, null);
     }
     public static Collection payments(){
-        return converter.convert(services());
-    }
-    private static Collection services() {
-        return autoProvider.getData();
-    }
-    private static ICar car() {
-        return autoProvider.getSingleData();
+        return converter.convert(autoProvider.getData());
     }
 }

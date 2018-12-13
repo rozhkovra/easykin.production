@@ -7,7 +7,6 @@ import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.payment.service.impl.PaymentService;
 
 import java.awt.Component;
-import java.util.Collection;
 
 /**
  * Created by rrozhkov on 8/14/2017.
@@ -17,14 +16,10 @@ public class Module {
     private static IModuleGUIFactory financeGuiFactory = FinanceGUIFactory.instance();
 
     public static Component createPanel(IGUIEditor parent){
-        return financeGuiFactory.createTablePanel(parent, finance());
+        return financeGuiFactory.createTablePanel(parent, paymentService.paymentsPlan());
     }
 
     public static Component createEditor(IGUIEditor parent, IPayment payment){
         return financeGuiFactory.createEditor(parent,payment);
-    }
-
-    private static Collection finance(){
-        return paymentService.paymentsPlan();
     }
 }

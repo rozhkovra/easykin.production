@@ -1,18 +1,17 @@
 package ru.rrozhkov.easykin.task;
 
-import ru.rrozhkov.easykin.model.person.IPerson;
-import ru.rrozhkov.easykin.model.task.ITask;
-import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
-import ru.rrozhkov.easykin.person.auth.AuthManager;
-import ru.rrozhkov.easykin.task.gui.TaskGUIFactory;
-import ru.rrozhkov.easykin.task.impl.TaskBuilder;
-import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
-import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
-import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.easykin.core.convert.IEntityConverter;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
 import ru.rrozhkov.easykin.core.gui.IModuleGUIFactory;
+import ru.rrozhkov.easykin.model.task.ITask;
+import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
+import ru.rrozhkov.easykin.task.gui.TaskGUIFactory;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
+import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
+import ru.rrozhkov.easykin.task.service.impl.TaskService;
+import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Collection;
 
 /**
@@ -21,12 +20,11 @@ import java.util.Collection;
 public class Module {
     private static final IModuleGUIFactory guiTaskFactory = TaskGUIFactory.instance();
     private static final TaskFactory taskFactory = TaskFactory.instance();
-    private static final TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
-    private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
-    private static final AuthManager authManager = AuthManager.instance();
+    private static final IEntityConverter taskConverter = TaskConverterFactory.instance().task();
+    private static final TaskService taskService = TaskServiceFactory.instance().task();
 
     public static Component createPanel(IGUIEditor parent){
-        return guiTaskFactory.createTablePanel(parent, tasks());
+        return guiTaskFactory.createTablePanel(parent, taskService.tasks());
     }
     public static Component createEditor(IGUIEditor parent){
         ITask task = taskFactory.newTask();
@@ -39,17 +37,7 @@ public class Module {
         return guiTaskFactory.createFilter(parent);
     }
 
-    private static Collection tasks(){
-        Collection collection;
-        IPerson person = authManager.signedPerson();
-        if(person!=null)
-            collection = taskBuilder.build(person.getId());
-        else
-            collection = taskBuilder.build();
-        return collection;
-    }
-
     public static Collection payments(){
-        return ((TaskConverter)taskConverterFactory.task()).payments(tasks());
+        return ((TaskConverter)taskConverter).payments(taskService.tasks());
     }
 }

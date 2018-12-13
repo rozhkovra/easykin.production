@@ -17,12 +17,12 @@ public class ActivityBuilder {
     private static final ActivityHandler activityHandler = ActivityHandler.instance();
     private static final AuthManager authManager = AuthManager.instance();
 
-    public static class ActivityBuilderHolder {
-        public static final ActivityBuilder INSTANCE = new ActivityBuilder();
+    private static class Holder {
+        private static final ActivityBuilder INSTANCE = new ActivityBuilder();
     }
 
     public static ActivityBuilder instance(){
-        return ActivityBuilderHolder.INSTANCE;
+        return Holder.INSTANCE;
     }
 
     private ActivityBuilder() {

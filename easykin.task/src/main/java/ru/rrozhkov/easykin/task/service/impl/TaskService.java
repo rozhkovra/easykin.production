@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.task.service.impl;
 import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
+import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.ITask2Payment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
@@ -12,6 +13,8 @@ import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.db.impl.Task2PaymentHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandlerFactory;
+import ru.rrozhkov.easykin.task.impl.TaskBuilder;
+import ru.rrozhkov.easykin.task.impl.TaskBuilderFactory;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverter;
 import ru.rrozhkov.easykin.task.impl.convert.TaskConverterFactory;
 
@@ -30,6 +33,7 @@ public class TaskService {
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final AuthManager authManager = AuthManager.instance();
     private static final PaymentFactory paymentFactory = PaymentFactory.instance();
+    private static final TaskBuilder taskBuilder = TaskBuilderFactory.instance().task();
 
     private static class Holder {
         private static final TaskService INSTANCE = new TaskService();
@@ -98,5 +102,15 @@ public class TaskService {
             paymentHandler.update(payment);
         }
         return taskId;
+    }
+
+    public Collection tasks(){
+        Collection collection;
+        IPerson person = authManager.signedPerson();
+        if(person!=null)
+            collection = taskBuilder.build(person.getId());
+        else
+            collection = taskBuilder.build();
+        return collection;
     }
 }
