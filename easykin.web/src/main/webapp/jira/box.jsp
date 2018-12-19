@@ -29,7 +29,6 @@
         }
         if ("ON HOLD".equals(task.getStatus().toUpperCase())) {
             hold+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
-            boxCnt++;
         }
         if ("IN ANALYSIS".equals(task.getStatus().toUpperCase())) {
             analysis+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
@@ -41,11 +40,9 @@
         }
         if ("READY FOR CODE REVIEW".equals(task.getStatus().toUpperCase())) {
             rfcr+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
-            boxCnt++;
         }
         if ("READY FOR BUILD".equals(task.getStatus().toUpperCase())) {
             rfb+=" <a href='https://jira.mvideo.ru/jira/browse/"+task.getKey()+"'>"+task.getKey()+"</a>";
-            boxCnt++;
         }
 	}
 
