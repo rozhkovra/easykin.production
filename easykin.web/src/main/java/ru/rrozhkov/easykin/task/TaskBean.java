@@ -11,15 +11,15 @@ public class TaskBean {
     private String taskClass = "";
     private String dateClass = "";
     private String comments = "";
-    private String doneHtml = "";
+    private String taskCloseId = "";
 
-    public TaskBean(int num, ITask task, String taskClass, String dateClass, String comments, String doneHtml) {
+    public TaskBean(int num, ITask task, String taskClass, String dateClass, String comments, String taskCloseId) {
         this.num = num;
         this.task = task;
         this.taskClass = taskClass;
         this.dateClass = dateClass;
         this.comments = comments;
-        this.doneHtml = doneHtml;
+        this.taskCloseId = taskCloseId;
     }
 
     public int getNum() {
@@ -62,11 +62,11 @@ public class TaskBean {
         this.comments = comments;
     }
 
-    public String getDoneHtml() {
-        return doneHtml;
+    public String getTaskCloseId() {
+        return taskCloseId;
     }
 
-    public void setDoneHtml(String doneHtml) {
-        this.doneHtml = doneHtml;
+    public void setTaskCloseId(String taskCloseId) {
+        this.taskCloseId = taskCloseId;
     }
 }

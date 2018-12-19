@@ -33,7 +33,7 @@
 <td ><%=taskBean.getTask().getName()%><br/><span style="font-size:12px;"><%=taskBean.getComments()%></span></td>
 <td align="center"><span class="<%=taskBean.getDateClass()%>"><%=DateUtil.format(taskBean.getTask().getPlanDate())%></span></td>
 <td align="center"><%=taskBean.getTask().getCategory().getName()%></td>
-<td align="center"><%=taskBean.getDoneHtml()%></td>
+<td align="center"><button id="<%=taskBean.getTaskCloseId()%>" type="button" class="btn btn-block btn-sm btn-success">Выполнить</button></td>
 </tr>
 <%			
 	}

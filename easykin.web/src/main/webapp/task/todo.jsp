@@ -3,7 +3,6 @@
 <%@ page import="ru.rrozhkov.easykin.module.*"%>
 <%@ page import="ru.rrozhkov.easykin.task.*"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
-<!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
 <ul class="todo-list">
 <%
 	Collection<TaskBean> tasks = (Collection<TaskBean>)request.getAttribute("toDoTasks");
@@ -23,8 +22,7 @@
       <!--small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small-->
       <!-- General tools such as edit or delete-->
       <div class="tools">
-        <i class="fa fa-edit"></i>
-        <i class="fa fa-trash-o"></i>
+        <i class="fa fa-check" id="<%=taskBean.getTaskCloseId()%>"></i>
       </div>
     </li>
 <%

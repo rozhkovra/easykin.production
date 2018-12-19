@@ -1,9 +1,9 @@
 $( document ).ready(
 $(function () {
     $('#tasks').DataTable()
-    $('[id^=done]').click(
+    $('[id^=taskClose]').click(
         function(){
-          var id = $(this).attr('id').replace('done','');
+          var id = $(this).attr('id').replace('taskClose','');
           if (confirm("Выполнить задачу "+id+"?")) {
             $.post(
               "task/done.jsp",

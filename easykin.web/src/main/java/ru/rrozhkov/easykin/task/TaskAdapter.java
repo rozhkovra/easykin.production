@@ -51,7 +51,7 @@ public class TaskAdapter {
             String taskClass = "";
             String dateClass = "";
             String comments = "";
-            String doneHtml = "";
+            String taskCloseId = "";
             if(Status.CLOSE.equals(task.getStatus())){
                 if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
                     taskClass = "label bg-gray";
@@ -68,12 +68,12 @@ public class TaskAdapter {
                 if (new Date().getTime()>task.getPlanDate().getTime()) {
                     dateClass = "label bg-gray";
                 }
-                doneHtml = "<button id=\"done"+task.getId()+"\" type=\"button\" class=\"btn btn-block btn-sm btn-success\">Выполнить</button>";
+                taskCloseId = "taskClose"+task.getId();
             }
             for (IComment comment : task.comments()) {
                 comments += comment.getText()+" | ";
             }
-            taskBeans.add(taskBeanFactory.taskBean(++num,task,taskClass,dateClass,comments,doneHtml));
+            taskBeans.add(taskBeanFactory.taskBean(++num,task,taskClass,dateClass,comments,taskCloseId));
         }
         return taskBeans;
     }

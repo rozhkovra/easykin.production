@@ -14,7 +14,7 @@ public class TaskBeanFactory {
         return TaskBeanFactoryHolder.INSTANCE;
     }
 
-    public TaskBean taskBean(int num, ITask task, String taskClass, String dateClass, String comments, String doneHtml) {
-        return new TaskBean(num,task,taskClass,dateClass,comments,doneHtml);
+    public TaskBean taskBean(int num, ITask task, String taskClass, String dateClass, String comments, String taskCloseId) {
+        return new TaskBean(num,task,taskClass,dateClass,comments,taskCloseId);
     }
 }
