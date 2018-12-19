@@ -85,54 +85,6 @@
     }
 %>
 </div>
-<div class="row">
-<%
-    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.JIRA)) {
-%>
-    <div class="col-md-5">
-        <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Jira</h3>
-        </div>
-        <div class="box-body">
-            <jsp:include page="jira/index.jsp"/>
-        </div>
-        <!--/.box-body-->
-        <div class="box-footer clearfix no-border">
-            <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.JIRA)%>">Подробно</a>
-        </div>
-        </div>
-        <!--/.box-->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-7">
-<%
-    }
-    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.FIN)) {
-%>
-
-    <!-- TABLE: FINANCE -->
-    <div class="box box-info">
-    <div class="box-header with-border">
-      <h3 class="box-title">Финансы</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <div class="table-responsive">
-      <jsp:include page="fin/index.jsp"/>
-      </div>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-
-    </div>
-<%
-    }
-%>
-</div>
-<!-- /.row -->
 <%
     if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.SERVICE)) {
 %>
