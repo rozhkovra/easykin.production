@@ -43,47 +43,18 @@ public class TaskAdapter {
         return tasks;
     }
 
-    private Collection<TaskBean> tasks(TaskFilterBean bean) {
-        Collection<ITask> tasks = taskService.tasks(bean);
-        Collection<TaskBean> taskBeans = CollectionUtil.create();
-        int num = 0;
-        for (ITask task : tasks) {
-            String taskClass = "";
-            String dateClass = "";
-            String comments = "";
-            String taskCloseId = "";
-            if(Status.CLOSE.equals(task.getStatus())){
-                if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
-                    taskClass = "label bg-gray";
-                else
-                    taskClass = "label bg-green";
-            }else{
-                taskClass  = "";
-                if(Priority.IMPOTANT_FAST.equals(task.getPriority())){
-                    taskClass  = "label bg-yellow";
-                }
-                if(Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
-                    taskClass  = "label bg-blue";
-                }
-                if (new Date().getTime()>task.getPlanDate().getTime()) {
-                    dateClass = "label bg-gray";
-                }
-                taskCloseId = "taskClose"+task.getId();
-            }
-            for (IComment comment : task.comments()) {
-                comments += comment.getText()+" | ";
-            }
-            taskBeans.add(taskBeanFactory.taskBean(++num,task,taskClass,dateClass,comments,taskCloseId));
-        }
-        return taskBeans;
-    }
-
     public Collection<TaskBean> tasks(javax.servlet.http.HttpServletRequest request) {
-        TaskFilterBean bean = filter(request);
+        TaskFilterBean bean = extractFilter(request);
         return tasks(bean);
     }
 
-    public TaskFilterBean filter(javax.servlet.http.HttpServletRequest request) {
+    public TaskBean task(javax.servlet.http.HttpServletRequest request) {
+        int taskId = request.getParameter("taskId")!=null?Integer.valueOf(request.getParameter("taskId")):-1;
+        ITask task = taskService.task(taskId);
+        return createTaskBean(1, task);
+    }
+
+    public TaskFilterBean extractFilter(javax.servlet.http.HttpServletRequest request) {
         IPerson person = authManager.signedPerson();
         int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
         int statusId = request.getParameter("statusId")!=null?Integer.valueOf(request.getParameter("statusId")):-1;
@@ -98,5 +69,44 @@ public class TaskAdapter {
         ITask task = taskFactory.createTask(taskId, "", DateUtil.today(), DateUtil.today(), Priority.priority(Priority.SIMPLE)
                     , 1, "", null, Status.status(Status.OPEN));
         taskService.close(task);
+    }
+
+    private Collection<TaskBean> tasks(TaskFilterBean bean) {
+        Collection<ITask> tasks = taskService.tasks(bean);
+        Collection<TaskBean> taskBeans = CollectionUtil.create();
+        int num = 0;
+        for (ITask task : tasks) {
+            taskBeans.add(createTaskBean(++num, task));
+        }
+        return taskBeans;
+    }
+
+    private TaskBean createTaskBean(int num, ITask task) {
+        String taskClass = "";
+        String dateClass = "";
+        String comments = "";
+        String taskCloseId = "";
+        if(Status.CLOSE.equals(task.getStatus())){
+            if(task.getCloseDate().getTime()>task.getPlanDate().getTime())
+                taskClass = "label bg-gray";
+            else
+                taskClass = "label bg-green";
+        }else{
+            taskClass  = "";
+            if(Priority.IMPOTANT_FAST.equals(task.getPriority())){
+                taskClass  = "label bg-yellow";
+            }
+            if(Priority.IMPOTANT_NOFAST.equals(task.getPriority())){
+                taskClass  = "label bg-blue";
+            }
+            if (new Date().getTime()>task.getPlanDate().getTime()) {
+                dateClass = "label bg-gray";
+            }
+            taskCloseId = "taskClose"+task.getId();
+        }
+        for (IComment comment : task.comments()) {
+            comments += comment.getText()+" | ";
+        }
+        return taskBeanFactory.taskBean(num,task,taskClass,dateClass,comments,taskCloseId);
     }
 }

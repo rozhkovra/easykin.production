@@ -8,7 +8,7 @@
     UrlConfigurator urlConfigurator = new UrlConfigurator();
 	final AdapterFactory adapterFactory = new AdapterFactory();
 	final TaskAdapter taskAdapter = adapterFactory.task();
-	TaskFilterBean filter = taskAdapter.filter(request);
+	TaskFilterBean filter = taskAdapter.extractFilter(request);
 %>
 <h3 class="box-title">
 <span class="label"><a href="<%=urlConfigurator.getFilterUrlForPriority(request, session, -1)%>">Все</a></span>
