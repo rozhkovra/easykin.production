@@ -242,9 +242,6 @@ public class TaskForm extends Form {
 			return;
 		}
 		if (getRepeatCheckBox().isSelected()) {
-			if (!validatePeriodic()) {
-				return;
-			}
 			Period period = (Period)periodComboBox.getSelectedItem();
 			Date untilDate = DateUtil.parse(untilDateField.getText());
 			Collection<ITask> tasks = periodTaskBuilder.build(period, untilDate, task);
@@ -256,6 +253,9 @@ public class TaskForm extends Form {
 	}
 
 	protected boolean validateData() {
+		if (getRepeatCheckBox().isSelected()) {
+			return validatePeriodic();
+		}
 		return !"".equals(task.getName()) && DateUtil.parse(getPlanDateField().getText())!=null;
 	}
 

@@ -3,11 +3,13 @@ package ru.rrozhkov.easykin.payment.service.impl;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.filter.IFilter;
 import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.service.impl.EntityService;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.fin.payment.impl.filter.PaymentFilterFactory;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.module.ModuleManager;
+import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -17,9 +19,13 @@ import java.util.List;
 /**
  * Created by rrozhkov on 12.12.2018.
  */
-public class PaymentService {
+public class PaymentService extends EntityService {
     private static final ModuleManager moduleManager = ModuleManager.instance();
     private static final PaymentFilterFactory paymentFilterFactory = PaymentFilterFactory.instance();
+
+    private PaymentService() {
+        super(PaymentHandler.instance());
+    }
 
     private static class Holder {
         private static final PaymentService INSTANCE = new PaymentService();
@@ -27,9 +33,6 @@ public class PaymentService {
 
     public static PaymentService instance(){
         return Holder.INSTANCE;
-    }
-
-    private PaymentService() {
     }
 
     public Collection<IPayment> paymentsPlan() {

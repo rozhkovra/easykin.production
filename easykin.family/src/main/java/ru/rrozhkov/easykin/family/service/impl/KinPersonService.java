@@ -1,8 +1,9 @@
 package ru.rrozhkov.easykin.family.service.impl;
 
-import ru.rrozhkov.easykin.family.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.core.filter.IFilter;
 import ru.rrozhkov.easykin.core.filter.util.FilterUtil;
+import ru.rrozhkov.easykin.core.service.impl.EntityService;
+import ru.rrozhkov.easykin.family.db.impl.KinPersonHandler;
 import ru.rrozhkov.easykin.family.impl.filter.KinFilterFactory;
 import ru.rrozhkov.easykin.model.family.KinType;
 
@@ -11,34 +12,37 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 07.06.2018.
  */
-public class KinPersonService {
-    private static final KinPersonHandler kinPersonHandler = KinPersonHandler.instance();
+public class KinPersonService extends EntityService {
     private static final KinFilterFactory kinFilterFactory = KinFilterFactory.instance();
 
-    public static class KinPersonServiceHolder {
-        public static final KinPersonService INSTANCE = new KinPersonService();
+    private static class Holder {
+        private static final KinPersonService INSTANCE = new KinPersonService();
+    }
+
+    private KinPersonService() {
+        super(KinPersonHandler.instance());
     }
 
     public static KinPersonService instance(){
-        return KinPersonServiceHolder.INSTANCE;
+        return Holder.INSTANCE;
     }
 
-    public static Collection persons() {
+    public Collection persons() {
         Collection collection = null;
         try {
-            collection = kinPersonHandler.select();
+            collection = findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return collection;
     }
 
-    public static Collection kids() {
+    public Collection kids() {
         IFilter filter = kinFilterFactory.create(new KinType[]{KinType.SUN, KinType.DAUGHTER});
         return persons(filter);
     }
 
-    private static Collection persons(IFilter filter) {
+    private Collection persons(IFilter filter) {
         return FilterUtil.filter(persons(), filter);
     }
 }

@@ -3,6 +3,7 @@ package ru.rrozhkov.easykin.payment.gui;
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.gui.Form;
 import ru.rrozhkov.easykin.core.gui.IGUIEditor;
+import ru.rrozhkov.easykin.core.service.IEntityService;
 import ru.rrozhkov.easykin.core.util.DateUtil;
 import ru.rrozhkov.easykin.model.fin.Money;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
@@ -10,6 +11,7 @@ import ru.rrozhkov.easykin.model.fin.payment.PaymentCategory;
 import ru.rrozhkov.easykin.model.fin.payment.PaymentStatus;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
+import ru.rrozhkov.easykin.payment.service.impl.PaymentService;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -20,7 +22,7 @@ import java.sql.SQLException;
 public class PaymentForm extends Form {
 	private static final long serialVersionUID = 1L;
 	private static final PaymentFactory paymentFactory = PaymentFactory.instance();
-	private static final PaymentHandler paymentHandler = PaymentHandler.instance();
+	private static final IEntityService paymentService = PaymentService.instance();
 	private JTextField commentField;
 	private JTextField amountField;
 	private JTextField dateField;
@@ -148,11 +150,7 @@ public class PaymentForm extends Form {
 		if (!validateData()) {
 			return;
 		}
-		try {
-			paymentHandler.update(payment);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		paymentService.createOrUpdate(payment);
 		parent.refresh();
 	}
 }

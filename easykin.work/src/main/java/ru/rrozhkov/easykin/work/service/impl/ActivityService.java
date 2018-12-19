@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.work.service.impl;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.service.impl.EntityService;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.work.IActivity;
 import ru.rrozhkov.easykin.work.db.impl.ActivityHandler;
@@ -11,7 +12,7 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 06.06.2018.
  */
-public class ActivityService {
+public class ActivityService extends EntityService {
     private static final ActivityHandler activityHandler = ActivityHandler.instance();
     private static ActivityBuilder activityBuilder = ActivityBuilder.instance();
 
@@ -24,21 +25,7 @@ public class ActivityService {
     }
 
     private ActivityService() {
-    }
-
-    public int createOrUpdate(final IActivity activity){
-        int activityId = activity.getId();
-        try{
-            if(activityId==-1) {
-                activityId = activityHandler.insert(activity);
-            }else {
-                activityHandler.update(activity);
-            }
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-
-        return activityId;
+        super(activityHandler);
     }
 
     public Collection activities(final IPerson person) {

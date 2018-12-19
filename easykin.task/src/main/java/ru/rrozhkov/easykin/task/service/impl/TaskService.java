@@ -2,6 +2,7 @@ package ru.rrozhkov.easykin.task.service.impl;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
+import ru.rrozhkov.easykin.core.service.impl.EntityService;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.fin.payment.impl.PaymentFactory;
 import ru.rrozhkov.easykin.model.person.IPerson;
@@ -9,7 +10,7 @@ import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.ITask2Payment;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
 import ru.rrozhkov.easykin.model.task.util.TaskUtil;
-import ru.rrozhkov.easykin.payment.db.impl.PaymentHandler;
+import ru.rrozhkov.easykin.payment.service.impl.PaymentService;
 import ru.rrozhkov.easykin.task.db.impl.CommentHandler;
 import ru.rrozhkov.easykin.task.db.impl.Task2PaymentHandler;
 import ru.rrozhkov.easykin.task.db.impl.TaskHandler;
@@ -26,11 +27,11 @@ import java.util.Collection;
 /**
  * Created by rrozhkov on 3/6/2017.
  */
-public class TaskService {
+public class TaskService extends EntityService {
     private static final TaskConverterFactory taskConverterFactory = TaskConverterFactory.instance();
     private static final Task2PaymentHandler t2paymentHandler = TaskHandlerFactory.instance().task2Payment();
     private static final EntityHandler t2personHandler = TaskHandlerFactory.instance().task2Person();
-    private static final PaymentHandler paymentHandler = PaymentHandler.instance();
+    private static final PaymentService paymentService = PaymentService.instance();
     private static final TaskHandler taskHandler = TaskHandlerFactory.instance().task();
     private static final TaskFactory taskFactory = TaskFactory.instance();
     private static final PaymentFactory paymentFactory = PaymentFactory.instance();
@@ -46,6 +47,7 @@ public class TaskService {
     }
 
     private TaskService() {
+        super(taskHandler);
     }
 
     public int createOrUpdate(final ITask task, final IPerson person){
@@ -62,6 +64,11 @@ public class TaskService {
         return taskId;
     }
 
+    public void createOrUpdate(final Collection<ITask> tasks ,final IPerson person) {
+        for (ITask task : tasks) {
+            createOrUpdate(task, person);
+        }
+    }
 
     public void close(final ITask task) {
         if (task.getId()==-1) {
@@ -72,37 +79,6 @@ public class TaskService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-
-    public void createOrUpdate(final Collection<ITask> tasks ,final IPerson person) {
-        for (ITask task : tasks) {
-            createOrUpdate(task, person);
-        }
-    }
-
-    protected int create(final ITask task, final IPerson person) throws SQLException {
-        int taskId = taskHandler.insert(task);
-        t2personHandler.insert(taskFactory.createTask2Person(-1, person.getId(), taskId));
-        if(TaskUtil.withPayment(task)) {
-            IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
-            int paymentId = paymentHandler.insert(payment);
-            t2paymentHandler.insert(taskFactory.createTask2Payment(-1, paymentId, taskId));
-        }
-        return taskId;
-    }
-
-    protected int update(final ITask task) throws SQLException {
-        int taskId = task.getId();
-        taskHandler.update(task);
-        if(TaskUtil.withPayment(task)) {
-            ITask2Payment t2p = t2paymentHandler.selectForTask(taskId);
-            int paymentId = t2p.getPaymentId();
-            IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
-            payment = paymentFactory.createPayment(paymentId, payment.getCategory(), payment.getComment(),
-                        payment.getAmount(), payment.getDate(), payment.getStatus());
-            paymentHandler.update(payment);
-        }
-        return taskId;
     }
 
     public Collection tasks(final IPerson person){
@@ -132,4 +108,28 @@ public class TaskService {
         return CollectionUtil.create();
     }
 
+    protected int create(final ITask task, final IPerson person) throws SQLException {
+        int taskId = taskHandler.insert(task);
+        t2personHandler.insert(taskFactory.createTask2Person(-1, person.getId(), taskId));
+        if(TaskUtil.withPayment(task)) {
+            IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
+            int paymentId = paymentService.createOrUpdate(payment);
+            t2paymentHandler.insert(taskFactory.createTask2Payment(-1, paymentId, taskId));
+        }
+        return taskId;
+    }
+
+    protected int update(final ITask task) throws SQLException {
+        int taskId = task.getId();
+        taskHandler.update(task);
+        if(TaskUtil.withPayment(task)) {
+            ITask2Payment t2p = t2paymentHandler.selectForTask(taskId);
+            int paymentId = t2p.getPaymentId();
+            IPayment payment = ((TaskConverter)taskConverterFactory.task()).payment(task);
+            payment = paymentFactory.createPayment(paymentId, payment.getCategory(), payment.getComment(),
+                    payment.getAmount(), payment.getDate(), payment.getStatus());
+            paymentService.createOrUpdate(payment);
+        }
+        return taskId;
+    }
 }
