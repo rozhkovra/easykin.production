@@ -22,9 +22,10 @@ import java.util.List;
 public class PaymentService extends EntityService {
     private static final ModuleManager moduleManager = ModuleManager.instance();
     private static final PaymentFilterFactory paymentFilterFactory = PaymentFilterFactory.instance();
+    private static final PaymentHandler paymentHandler = PaymentHandler.instance();
 
     private PaymentService() {
-        super(PaymentHandler.instance());
+        super(paymentHandler);
     }
 
     private static class Holder {
@@ -41,6 +42,15 @@ public class PaymentService extends EntityService {
 
     public Collection<IPayment> paymentsFact() {
         return payments(paymentFilterFactory.status(PaymentStatus.FACT));
+    }
+
+    public IPayment payment(int id) {
+        try {
+            return paymentHandler.selectForId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private Collection<IPayment> payments(IFilter filter) {

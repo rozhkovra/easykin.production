@@ -70,7 +70,8 @@ public class EasyKinServlet extends HttpServlet {
         if (SubModule.VIEW.equals(subModule)) {
             if (Module.TASK.equals(module) || Module.FAMILY.equals(module)) {
                 final TaskAdapter taskAdapter = adapterFactory.task();
-                req.setAttribute("viewBean", taskAdapter.task(req));
+                req.setAttribute("taskBean", taskAdapter.task(req));
+                req.setAttribute("paymentBean", taskAdapter.payment(req));
             }
         }
         if (Module.FIN.equals(module)) {

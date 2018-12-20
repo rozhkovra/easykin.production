@@ -18,4 +18,5 @@ public class TaskServiceFactory {
     public CategoryService category() {return CategoryService.instance();}
     public CommentService comment() {return CommentService.instance();}
     public TaskService task() {return TaskService.instance();}
+    public Task2PaymentService task2Payment() {return Task2PaymentService.instance();}
 }

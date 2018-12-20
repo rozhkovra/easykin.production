@@ -2,15 +2,19 @@ package ru.rrozhkov.easykin.task;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
 import ru.rrozhkov.easykin.core.util.DateUtil;
+import ru.rrozhkov.easykin.model.fin.payment.IPayment;
 import ru.rrozhkov.easykin.model.person.IPerson;
 import ru.rrozhkov.easykin.model.task.IComment;
 import ru.rrozhkov.easykin.model.task.ITask;
 import ru.rrozhkov.easykin.model.task.Priority;
 import ru.rrozhkov.easykin.model.task.Status;
 import ru.rrozhkov.easykin.model.task.impl.TaskFactory;
+import ru.rrozhkov.easykin.payment.PaymentBean;
+import ru.rrozhkov.easykin.payment.PaymentBeanFactory;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterBean;
 import ru.rrozhkov.easykin.task.impl.filter.TaskFilterFactory;
+import ru.rrozhkov.easykin.task.service.impl.Task2PaymentService;
 import ru.rrozhkov.easykin.task.service.impl.TaskService;
 import ru.rrozhkov.easykin.task.service.impl.TaskServiceFactory;
 
@@ -25,8 +29,10 @@ public class TaskAdapter {
     final private static TaskFilterFactory taskFilterFactory = TaskFilterFactory.instance();
     final private static AuthManager authManager = AuthManager.instance();
     final private static TaskService taskService = TaskServiceFactory.instance().task();
+    final private static Task2PaymentService task2PaymentService = TaskServiceFactory.instance().task2Payment();
     final private static TaskFactory taskFactory = TaskFactory.instance();
     final private static TaskBeanFactory taskBeanFactory = TaskBeanFactory.instance();
+    private static final PaymentBeanFactory paymentBeanFactory = new PaymentBeanFactory();
 
     public Collection<TaskBean> toDoTasks() {
         IPerson person = authManager.signedPerson();
@@ -53,6 +59,13 @@ public class TaskAdapter {
         ITask task = taskService.task(taskId);
         return createTaskBean(1, task);
     }
+
+    public PaymentBean payment(javax.servlet.http.HttpServletRequest request) {
+        int taskId = request.getParameter("taskId")!=null?Integer.valueOf(request.getParameter("taskId")):-1;
+        IPayment payment = task2PaymentService.paymentForTask(taskId);
+        return paymentBeanFactory.paymentBean(1, payment);
+    }
+
 
     public TaskFilterBean extractFilter(javax.servlet.http.HttpServletRequest request) {
         IPerson person = authManager.signedPerson();
