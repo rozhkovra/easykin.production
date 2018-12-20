@@ -50,7 +50,7 @@
 <br/>
 <b>Сумма</b>: <%=payment.getAmount()%>
 <br/>
-<%=payment.getStatus().isPlan()?"Не оплачено":"Оплачен"%>
+<%=payment.getStatus().isPlan()&&task.getStatus().isOpen()?"Не оплачено":"Оплачен"%>
 <%
     }
 %>
