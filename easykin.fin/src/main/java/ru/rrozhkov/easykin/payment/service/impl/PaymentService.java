@@ -37,11 +37,23 @@ public class PaymentService extends EntityService {
     }
 
     public Collection<IPayment> paymentsPlan() {
-        return payments(paymentFilterFactory.status(PaymentStatus.PLAN));
+        Collection<IPayment> collection = payments(paymentFilterFactory.status(PaymentStatus.PLAN));
+        Collections.sort((List) collection, new Comparator<IPayment>() {
+            public int compare(IPayment o1, IPayment o2) {
+                return DateUtil.formatSql(o1.getDate()).compareTo(DateUtil.formatSql(o2.getDate()));
+            }
+        });
+        return collection;
     }
 
     public Collection<IPayment> paymentsFact() {
-        return payments(paymentFilterFactory.status(PaymentStatus.FACT));
+        Collection<IPayment> collection = payments(paymentFilterFactory.status(PaymentStatus.FACT));
+        Collections.sort((List) collection, new Comparator<IPayment>() {
+            public int compare(IPayment o1, IPayment o2) {
+                return DateUtil.formatSql(o2.getDate()).compareTo(DateUtil.formatSql(o1.getDate()));
+            }
+        });
+        return collection;
     }
 
     public IPayment payment(int id) {
@@ -65,12 +77,6 @@ public class PaymentService extends EntityService {
                 collection.addAll(payments);
             }
         }
-
-        Collections.sort((List) collection, new Comparator<IPayment>() {
-            public int compare(IPayment o1, IPayment o2) {
-                return DateUtil.formatSql(o2.getDate()).compareTo(DateUtil.formatSql(o1.getDate()));
-            }
-        });
         return collection;
     }
 }
