@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exe4j version="4.6" transformSequenceNumber="1">
-  <directoryPresets config="F:/temp/easykin.production/easykin.fatclient/src/main/resources/icon" />
+  <directoryPresets config="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/resources/easykin.resources/16.0.0" />
   <application name="EasyKin" distributionSourceDir="F:/temp/easykin.production/easykin.fatclient/exe">
     <languages>
       <principalLanguage id="en" customLocalizationFile="" />
@@ -35,6 +35,7 @@
       <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/module/easykin.module/16.0.0/easykin.module-16.0.0.jar" failOnError="false" />
       <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/person/easykin.person/16.0.0/easykin.person-16.0.0.jar" failOnError="false" />
       <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/work/easykin.work/16.0.0/easykin.work-16.0.0.jar" failOnError="false" />
+      <archive location="F:/temp/easykin.production/.m2/repository/ru/rrozhkov/easykin/resources/easykin.resources/16.0.0/easykin.resources-16.0.0.jar" failOnError="false" />
     </classPath>
     <nativeLibraryDirectories />
   </java>
