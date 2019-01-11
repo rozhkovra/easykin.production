@@ -4,14 +4,14 @@
   <groupId>ru.rrozhkov.easykin.module</groupId>
   <artifactId>easykin.module</artifactId>
   <packaging>jar</packaging>
-  <version>15.0.0</version>
+  <version>16.0.0</version>
   <name>easykin.module</name>
   <url>http://maven.apache.org</url>
 
   <parent>
     <groupId>ru.rrozhkov.easykin</groupId>
     <artifactId>easykin.production</artifactId>
-    <version>15.0.0</version>
+    <version>16.0.0</version>
   </parent>
 
   <dependencies>
