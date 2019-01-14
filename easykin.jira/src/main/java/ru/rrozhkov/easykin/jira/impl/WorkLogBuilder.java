@@ -9,7 +9,7 @@ import java.util.Collection;
  * Created by rrozhkov on 19.09.2018.
  */
 public class WorkLogBuilder extends JiraBuilder<JiraWorkLog> {
-    public static final String USER_WORKLOG = "https://jira.mvideo.ru/jira/rest/api/latest/search?jql=worklogDate%3E%272018-01-01%27%20AND%20worklogAuthor=%27lux_rozhkov%27&fields=worklog";
+    public static final String USER_WORKLOG = "https://jira.mvideo.ru/jira/rest/api/latest/search?jql=worklogDate%3E%272018-01-01%27%20AND%20worklogAuthor=%27lux_rozhkov%27&fields=worklog,summary";
 
     private static class Holder {
         private static final WorkLogBuilder INSTANCE = new WorkLogBuilder();

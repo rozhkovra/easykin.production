@@ -8,10 +8,12 @@
 <section class="content">
 <div class="row">
     <jsp:include page="task/box.jsp"/>
-    <jsp:include page="work/mvideo/box.jsp"/>
+    <!--jsp:include page="work/mvideo/box.jsp"/-->
+    <jsp:include page="jira/worklog/box.jsp"/>
     <jsp:include page="service/box.jsp"/>
     <jsp:include page="fin/box.jsp"/>
     <jsp:include page="jira/box.jsp"/>
+
 </div>
 <div class="row">
 <%
@@ -70,13 +72,13 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
-      <jsp:include page="work/mvideo/short.jsp"/>
+      <jsp:include page="jira/worklog.jsp"/>
       </div>
       <!-- /.table-responsive -->
     </div>
     <!-- /.box-body -->
     <div class="box-footer clearfix no-border">
-        <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.WORK)%>">Подробно</a>
+        <a href="<%=urlConfigurator.getFilterUrlForModule(request, session, ru.rrozhkov.easykin.module.Module.JIRA, ru.rrozhkov.easykin.module.SubModule.WORKLOG)%>"class="small-box-footer">Подробно</a>
     </div>
     </div>
     <!-- /.box -->
