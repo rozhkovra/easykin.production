@@ -36,6 +36,10 @@ public class WebModuleManager {
             if (Module.FAMILY.equals(module)) {
                 module = Module.TASK;
             }
+            if (Module.JIRA.equals(module)) {
+                module = Module.JIRA+"/"+subModule();
+            }
+
             return new StringBuilder(module).append("/alert.jsp").toString();
         }
         return "alert.jsp";
