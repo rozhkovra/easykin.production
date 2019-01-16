@@ -60,7 +60,7 @@
 <!-- /.col -->
 <%
     }
-    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.WORK)) {
+    if (moduleManager.isActive(ru.rrozhkov.easykin.module.Module.JIRA)) {
 %>
     <div class="col-md-7">
 
