@@ -16,9 +16,9 @@ import java.util.Collection;
  * Created by rrozhkov on 09.10.2018.
  */
 public class JiraBuilder<T> {
-    private static final Credentials credentials = JiraAuthManager.credentials();
+    protected static final Credentials credentials = JiraAuthManager.credentials();
 
-    private IConverter<JSONObject, T> converter;
+    protected IConverter<JSONObject, T> converter;
     private String url;
 
     protected JiraBuilder(String url, IConverter converter) {

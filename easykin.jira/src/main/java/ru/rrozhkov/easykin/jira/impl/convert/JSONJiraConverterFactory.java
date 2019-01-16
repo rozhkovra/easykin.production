@@ -46,10 +46,8 @@ public class JSONJiraConverterFactory {
             public Collection<JiraWorkLog> convert(JSONObject jsonobject) {
                 Collection<JiraWorkLog> worklogsList = CollectionUtil.create();
                 String key = jsonobject.getString("key");
-                JSONObject fields = jsonobject.getJSONObject("fields");
-                JSONObject worklog = fields.getJSONObject("worklog");
-                String name = fields.getString("summary");
-                JSONArray worklogs = worklog.getJSONArray("worklogs");
+                String name = jsonobject.getString("summary");
+                JSONArray worklogs = jsonobject.getJSONArray("worklogs");
                 for (Object obj : worklogs) {
                     JSONObject worklogEntry = (JSONObject) obj;
                     JSONObject author = worklogEntry.getJSONObject("author");
