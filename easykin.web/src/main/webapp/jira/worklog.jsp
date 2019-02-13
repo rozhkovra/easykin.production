@@ -22,7 +22,7 @@ for(JiraWorkLogBean bean : activities){
 <td ><%=bean.getNum()%></td>
 <td ><span class="<%=bean.getDateClass()%>"><%=DateUtil.format(bean.getWorkLog().getDate())%></span></td>
 <td align="right"><%=bean.getWorkLog().getTime()%></td>
-<td align="center;"><%=bean.getWorkLog().getName()%></td>
+<td align="center;"><a href='https://jira.mvideo.ru/jira/browse/<%=bean.getWorkLog().getName()%>'><%=bean.getWorkLog().getName()%></a></td>
 <td align="center;"><%=bean.getWorkLog().getDesc()%></td>
 </tr>
 <%
