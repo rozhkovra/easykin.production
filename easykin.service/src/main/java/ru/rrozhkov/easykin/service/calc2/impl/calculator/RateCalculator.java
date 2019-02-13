@@ -25,6 +25,10 @@ public class RateCalculator extends ServiceCalculator {
         RateBean bean = (RateBean) getCalcBean();
         RateType rateType = typeResolver.rate(bean.getType());
         IRate iRate = ReadingRateAdapter.create(bean.getRates()).getRateByType(rateType);
+        if (iRate == null) {
+            System.out.println("Rate is null for type " + rateType);
+            return new ServiceResult(Money.valueOf(0));
+        }
         return new ServiceResult((Money)iRate.getValue());
     }
 }
