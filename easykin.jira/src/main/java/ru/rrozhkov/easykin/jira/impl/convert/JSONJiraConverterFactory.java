@@ -53,7 +53,7 @@ public class JSONJiraConverterFactory {
                     JSONObject author = worklogEntry.getJSONObject("author");
                     String username = ((UsernamePasswordCredentials) credentials).getUserName();
                     if (username.equals(author.getString("name"))) {
-                        String comment = "".equals(worklogEntry.getString("comment"))?name:worklogEntry.getString("comment");
+                        String comment = name + " " + worklogEntry.getString("comment");
                         Date date = DateUtil.parseJSON(worklogEntry.getString("started"));
                         int time = worklogEntry.getInt("timeSpentSeconds") / 3600;
                         System.out.println(key + "\t" + comment + "\t" + worklogEntry.getString("started") + "\t" + time);
