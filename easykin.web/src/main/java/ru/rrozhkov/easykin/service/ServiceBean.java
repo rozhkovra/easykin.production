@@ -20,6 +20,7 @@ public class ServiceBean {
     private Money intercom;
     private Money house;
     private Money repair;
+    private Money garbage;
     private Money itog;
     private Money noPaid;
     private String tdStyle;
@@ -41,6 +42,29 @@ public class ServiceBean {
         this.intercom = intercom;
         this.house = house;
         this.repair = repair;
+        this.itog = itog;
+        this.noPaid = noPaid;
+        this.tdStyle = tdStyle;
+        this.serviceClass = serviceClass;
+    }
+
+    public ServiceBean(int num, String name, Date date, Money water, Money hotWater,
+                       Money electricity, Money gaz, Money heating, Money antenna,
+                       Money intercom, Money house, Money repair, Money garbage, Money itog, Money noPaid,
+                       String tdStyle, String serviceClass) {
+        this.num = num;
+        this.name = name;
+        this.date = date;
+        this.water = water;
+        this.hotWater = hotWater;
+        this.electricity = electricity;
+        this.gaz = gaz;
+        this.heating = heating;
+        this.antenna = antenna;
+        this.intercom = intercom;
+        this.house = house;
+        this.repair = repair;
+        this.garbage = garbage;
         this.itog = itog;
         this.noPaid = noPaid;
         this.tdStyle = tdStyle;
@@ -141,6 +165,14 @@ public class ServiceBean {
 
     public void setRepair(Money repair) {
         this.repair = repair;
+    }
+
+    public Money getGarbage() {
+        return garbage;
+    }
+
+    public void setGarbage(Money garbage) {
+        this.garbage = garbage;
     }
 
     public Money getItog() {

@@ -42,7 +42,13 @@ public class ServiceTableModel extends TableModel{
                 return ServiceCalcUtil.getCalcByType(calc, CalculationType.HOUSE).getAmount().toString();
             case 10:
                 return ServiceCalcUtil.getCalcByType(calc, CalculationType.REPAIR).getAmount().toString();
-            case 11:
+            case 11: {
+                if (ServiceCalcUtil.getCalcByType(calc, CalculationType.GARBAGE)!=null)
+                    return ServiceCalcUtil.getCalcByType(calc, CalculationType.GARBAGE).getAmount().toString();
+                else
+                    return "";
+            }
+            case 12:
                 return ServiceCalcUtil.getSum(calc)+(!ServiceCalcUtil.getNoPaidSum(calc).free()?" ("+ServiceCalcUtil.getNoPaidSum(calc)+")":"");
         }
         return "";

@@ -28,15 +28,16 @@ public class ServiceCalcTableStyle extends TableStyle<ServiceCalc>  {
 			put(8,CalculationType.INTERCOM);
 			put(9,CalculationType.HOUSE);
 			put(10,CalculationType.REPAIR);
+			put(11,CalculationType.GARBAGE);
 		}
 	};
 	public int[] getColumnAlignment() {
 		return new int[]{JLabel.LEFT,JLabel.CENTER,JLabel.RIGHT
-				,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT};
+				,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT,JLabel.RIGHT};
 	}
 	
 	public String[] getColumnNames() {
-		return new String[]{"Период","Дата", "Вода", "Гор.вода", "Свет", "Газ", "Отопление", "Антенна", "Домофон", "Квартплата", "Кап.ремонт", "Итого"};
+		return new String[]{"Период","Дата", "Вода", "Гор.вода", "Свет", "Газ", "Отопление", "Антенна", "Домофон", "Квартплата", "Кап.ремонт", "Вывоз ТКО", "Итого"};
 	}
 	
 	public void setColumnStyles(JTable table){
@@ -63,8 +64,10 @@ public class ServiceCalcTableStyle extends TableStyle<ServiceCalc>  {
 	    table.getColumnModel().getColumn(9).setMaxWidth(100);
 	    table.getColumnModel().getColumn(10).setMinWidth(70);
 	    table.getColumnModel().getColumn(10).setMaxWidth(100);
-		table.getColumnModel().getColumn(11).setMinWidth(150);
-		table.getColumnModel().getColumn(11).setMaxWidth(150);
+		table.getColumnModel().getColumn(11).setMinWidth(70);
+		table.getColumnModel().getColumn(11).setMaxWidth(100);
+		table.getColumnModel().getColumn(12).setMinWidth(150);
+		table.getColumnModel().getColumn(12).setMaxWidth(150);
 	}
 	
 	@Override

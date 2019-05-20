@@ -52,7 +52,7 @@ public class ServiceCalc extends Calculation {
 	public boolean isPaid() {
 		boolean isPaid = !beans.isEmpty();
 		for(ICalculation calc : beans){
-			if(!calc.isPaid())
+			if(!calc.isPaid() && calc.getAmount().getValue() > 0)
 				isPaid = false;
 		}
 		return isPaid;

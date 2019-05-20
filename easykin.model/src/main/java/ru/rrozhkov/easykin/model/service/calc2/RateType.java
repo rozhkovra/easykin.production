@@ -12,6 +12,7 @@ public enum RateType{
     ANTENNA("Антенна"),
     INTERCOM("Домофон"),
     REPAIR("Кап.ремонт"),
+    GARBAGE("Вывоз ТКО"),
     HOUSE("Квартплата"),
     HEATING("Отопление");
 
@@ -34,6 +35,7 @@ public enum RateType{
     public boolean isHeating() {return this==HEATING;}
     public boolean isRepair() {return this==REPAIR;}
     public boolean isHouse() {return this==HOUSE;}
+    public boolean isGarbage() {return this==GARBAGE;}
 
 
     public static RateType type(String type) {
@@ -57,7 +59,8 @@ public enum RateType{
             return HOUSE;
         else if(HEATING.toString().equals(type))
             return HEATING;
-
+        else if(GARBAGE.toString().equals(type))
+            return GARBAGE;
         return null;
     }
 }

@@ -31,6 +31,14 @@ public class ServiceFactory {
                 , house, repair, itog, noPaid, tdStyle, serviceClass);
     }
 
+    public ServiceBean serviceBean(int num, String name, Date date, Money water, Money hotWater,
+                                   Money electricity, Money gaz, Money heating, Money antenna,
+                                   Money intercom, Money house, Money repair, Money garbage, Money itog, Money noPaid,
+                                   String tdStyle, String serviceClass) {
+        return new ServiceBean(num, name, date, water, hotWater, electricity, gaz, heating, antenna, intercom
+                , house, repair, garbage, itog, noPaid, tdStyle, serviceClass);
+    }
+
     public IConverter<ServiceCalc, ServiceBean> calc2BeanConverter() {
         return new IConverter<ServiceCalc, ServiceBean>() {
             public ServiceBean convert(ServiceCalc entry) {
@@ -46,6 +54,7 @@ public class ServiceFactory {
                         , ServiceCalcUtil.getCalcByType(entry, CalculationType.INTERCOM).getAmount()
                         , ServiceCalcUtil.getCalcByType(entry, CalculationType.HOUSE).getAmount()
                         , ServiceCalcUtil.getCalcByType(entry, CalculationType.REPAIR).getAmount()
+                        , ServiceCalcUtil.getCalcByType(entry, CalculationType.GARBAGE)!=null?ServiceCalcUtil.getCalcByType(entry, CalculationType.GARBAGE).getAmount():Money.valueOf(0)
                         , ServiceCalcUtil.getSum(entry)
                         , ServiceCalcUtil.getNoPaidSum(entry)
                         , ""

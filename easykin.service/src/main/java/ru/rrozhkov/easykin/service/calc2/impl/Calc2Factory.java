@@ -64,6 +64,7 @@ public class Calc2Factory {
                         , createRateCalc(CalculationType.ANTENNA, newReading, rates)
                         , createRateCalc(CalculationType.INTERCOM, newReading, rates)
                         , createRateCalc(CalculationType.HOUSE, newReading, rates)
+                        , createRateCalc(CalculationType.GARBAGE, newReading, rates)
                 )
         );
     }

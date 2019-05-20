@@ -19,6 +19,7 @@
 <th>Домофон</th>
 <th>Квартплата</th>
 <th>Кап.ремонт</th>
+<th>Вывоз ТКО</th>
 <th>Итого</th>
 </tr>
 </thead>
@@ -41,6 +42,7 @@
 <td align="center"><%=FormatUtil.formatMoney(service.getIntercom())%></td>
 <td align="center"><%=FormatUtil.formatMoney(service.getHouse())%></td>
 <td align="center"><%=FormatUtil.formatMoney(service.getRepair())%></td>
+<td align="center"><%=FormatUtil.formatMoney(service.getGarbage())%></td>
 <td style="<%=service.getTdStyle()%>text-align:right;"><%=FormatUtil.formatMoney(service.getItog())+(service.getNoPaid().free()?"":"/"+FormatUtil.formatMoney(service.getNoPaid()))%></td>
 </tr>
 <%

@@ -10,6 +10,7 @@ public enum CalculationType {
 	HOTWATER("Горячая вода"),
 	HOUSE("Квартплата"),
 	REPAIR("Кап.ремонт"),
+	GARBAGE("Вывоз ТКО"),
 	ALL("Все");
 	
     private final String name;       
@@ -49,6 +50,9 @@ public enum CalculationType {
 	public boolean isRepair() {
 		return this.equals(REPAIR);
 	}
+	public boolean isGarbage() {
+		return this.equals(GARBAGE);
+	}
 	public boolean isAll() {
 		return this.equals(ALL);
 	}
@@ -72,7 +76,8 @@ public enum CalculationType {
 			return HOUSE;
 		else if(REPAIR.toString().equals(type))
 			return REPAIR;
-
+		else if(GARBAGE.toString().equals(type))
+			return GARBAGE;
 		return null;
 	}
 }

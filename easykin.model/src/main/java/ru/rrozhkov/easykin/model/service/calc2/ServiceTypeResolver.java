@@ -19,6 +19,7 @@ public class ServiceTypeResolver {
             put(CalculationType.HOTWATER, RateType.HOTWATER);
             put(CalculationType.HOUSE, RateType.HOUSE);
             put(CalculationType.REPAIR, RateType.REPAIR);
+            put(CalculationType.GARBAGE, RateType.GARBAGE);
         }
     };
 
