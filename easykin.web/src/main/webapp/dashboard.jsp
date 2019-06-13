@@ -26,7 +26,7 @@
 <div class="box-header">
   <i class="ion ion-clipboard"></i>
   <h3 class="box-title">Задачи</h3>
-
+<jsp:include page="/task/quickadd.jsp"/>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
