@@ -4,14 +4,8 @@
 
     <groupId>ru.rrozhkov.easykin</groupId>
     <artifactId>easykin.production</artifactId>
-    <version>16.0.0</version>
+    <version>17.0.0</version>
     <packaging>pom</packaging>
-
-    <dependencyManagement>
-        <dependencies>
-
-        </dependencies>
-    </dependencyManagement>
 
     <modules>
         <module>easykin.auto</module>

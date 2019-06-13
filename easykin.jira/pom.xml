@@ -4,13 +4,13 @@
   <groupId>ru.rrozhkov.easykin.jira</groupId>
   <artifactId>easykin.jira</artifactId>
   <name>easykin.jira</name>
-  <version>16.0.0</version>
+  <version>17.0.0</version>
   <url>http://maven.apache.org</url>
 
   <parent>
     <artifactId>easykin.production</artifactId>
     <groupId>ru.rrozhkov.easykin</groupId>
-    <version>16.0.0</version>
+    <version>17.0.0</version>
   </parent>
 
   <dependencies>
