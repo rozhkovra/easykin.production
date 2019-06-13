@@ -122,4 +122,13 @@ public class TaskAdapter {
         }
         return taskBeanFactory.taskBean(num,task,taskClass,dateClass,comments,taskCloseId);
     }
+
+    public void add(javax.servlet.http.HttpServletRequest request) {
+        int taskId = -1;
+        String taskName = request.getParameter("taskName")!=null?request.getParameter("taskName"):"";
+        int categoryId = request.getParameter("categoryId")!=null?Integer.valueOf(request.getParameter("categoryId")):-1;
+        ITask task = taskFactory.createTask(taskId, taskName, DateUtil.today(), DateUtil.today(), Priority.priority(Priority.SIMPLE)
+                , categoryId, "", null, Status.status(Status.OPEN));
+        taskService.createOrUpdate(task, authManager.signedPerson());
+    }
 }

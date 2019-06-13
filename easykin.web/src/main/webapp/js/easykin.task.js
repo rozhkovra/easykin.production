@@ -6,7 +6,7 @@ $(function () {
           var id = $(this).attr('id').replace('taskClose','');
           if (confirm("Выполнить задачу "+id+"?")) {
             $.post(
-              "task/done.jsp",
+              "task/executor/done.jsp",
               {
                 taskId: id
               }
@@ -32,6 +32,19 @@ $(function () {
           $('#fromDate').val(start.format('DD.MM.YYYY'));
           $('#toDate').val(end.format('DD.MM.YYYY'));
           $('#taskFilter').submit();
+        }
+    )
+
+    $('[id^=taskAdd]').click(
+        function(){
+          if (confirm("Добавить задачу?")) {
+            $.post(
+              "task/executor/add.jsp",
+               $.param($('[id=formTaskAdd]').serializeArray())
+            ).done(function() { location.reload(); })
+               .fail(function(data) { alert("Ошибка выполнения"); })
+               .always(function() { alert("Задача добавлена."); });
+           }
         }
     )
 })

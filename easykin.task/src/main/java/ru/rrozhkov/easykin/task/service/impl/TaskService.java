@@ -1,6 +1,7 @@
 package ru.rrozhkov.easykin.task.service.impl;
 
 import ru.rrozhkov.easykin.core.collection.CollectionUtil;
+import ru.rrozhkov.easykin.core.db.IEntity;
 import ru.rrozhkov.easykin.core.db.impl.EntityHandler;
 import ru.rrozhkov.easykin.core.service.impl.EntityService;
 import ru.rrozhkov.easykin.model.fin.payment.IPayment;
@@ -48,6 +49,11 @@ public class TaskService extends EntityService {
 
     private TaskService() {
         super(taskHandler);
+    }
+
+    @Override
+    public int createOrUpdate(IEntity entity) {
+        throw new UnsupportedOperationException();
     }
 
     public int createOrUpdate(final ITask task, final IPerson person){
