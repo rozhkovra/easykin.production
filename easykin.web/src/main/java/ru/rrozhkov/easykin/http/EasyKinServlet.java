@@ -10,6 +10,7 @@ import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.person.auth.AuthManager;
 import ru.rrozhkov.easykin.service.ServiceAdapter;
 import ru.rrozhkov.easykin.task.TaskAdapter;
+import ru.rrozhkov.easykin.task.category.CategoryAdapter;
 import ru.rrozhkov.easykin.work.WorkAdapter;
 
 import javax.servlet.ServletException;
@@ -90,6 +91,8 @@ public class EasyKinServlet extends HttpServlet {
             final TaskAdapter taskAdapter = adapterFactory.task();
             req.setAttribute("tasks", taskAdapter.tasks(req));
             req.setAttribute("toDoTasks", taskAdapter.toDoTasks());
+            final CategoryAdapter categoryAdapter = adapterFactory.category();
+            req.setAttribute("categories", categoryAdapter.categories());
         }
         System.out.println(new Date().getTime() - start.getTime());
         if (Module.SERVICE.equals(module)) {
@@ -128,6 +131,8 @@ public class EasyKinServlet extends HttpServlet {
             final TaskAdapter taskAdapter = adapterFactory.task();
             req.setAttribute("tasks", taskAdapter.toDoTasks());
             req.setAttribute("toDoTasks", taskAdapter.toDoTasks());
+            final CategoryAdapter categoryAdapter = adapterFactory.category();
+            req.setAttribute("categories", categoryAdapter.categories());
             System.out.println(new Date().getTime() - start.getTime());
             start = new Date();
         }
