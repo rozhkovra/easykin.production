@@ -5,6 +5,7 @@ import ru.rrozhkov.easykin.jira.JiraAdapter;
 import ru.rrozhkov.easykin.payment.PaymentAdapter;
 import ru.rrozhkov.easykin.service.ServiceAdapter;
 import ru.rrozhkov.easykin.task.TaskAdapter;
+import ru.rrozhkov.easykin.task.category.CategoryAdapter;
 import ru.rrozhkov.easykin.work.WorkAdapter;
 
 /**
@@ -28,5 +29,8 @@ public class AdapterFactory {
     }
     public JiraAdapter jira() {
         return new JiraAdapter();
+    }
+    public CategoryAdapter category() {
+        return new CategoryAdapter();
     }
 }
