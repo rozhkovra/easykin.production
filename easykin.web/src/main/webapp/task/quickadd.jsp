@@ -8,7 +8,7 @@
 	Collection<CategoryBean> categories = (Collection<CategoryBean>)request.getAttribute("categories");
 %>
 <form id="formTaskAdd">
-Desc: <input id="taskName" name="taskName"/> Cat: <select class="form-control select2" style="width: 20%;" id="categoryId" name="categoryId">
+Desc: <input id="taskName" name="taskName"/> Cat: <select class="form-control select2" style="width: 35%;display: inline-block;" id="categoryId" name="categoryId">
 <%
     for (CategoryBean bean : categories) {
 %>
