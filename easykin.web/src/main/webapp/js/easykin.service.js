@@ -21,24 +21,24 @@ $(function () {
         },
 */
         {
-          label               : '2018',
+          label               : '2019',
           fillColor           : '#00a65a',
           strokeColor         : '#00a65a',
           pointColor          : '#00a65a',
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [4760.06, 4779.48, 4900.75, 4967.82, 4707.71, 4967.82, 4482.05, 5019.84, 4754.35, 4752.53, 4827.94, 5026.65]
+           data                : [4234.87, 4484.0, 4490.87, 4643.52, 4526.66, 4681.90, 4658.37, 4281.35, 3953.67, 3775.75, 4553.83, 4422.95]
         },
          {
-           label               : '2019',
+           label               : '2020',
            fillColor           : 'rgba(60,141,188,0.9)',
            strokeColor         : 'rgba(60,141,188,0.8)',
            pointColor          : '#3b8bba',
            pointStrokeColor    : 'rgba(60,141,188,1)',
            pointHighlightFill  : '#fff',
            pointHighlightStroke: 'rgba(60,141,188,1)',
-           data                : [4234.87, 4484.0, 4490.87, 4643.52, 4526.66, 4681.90, 4658.37, 4281.35, 3953.67, 3775.75, 4553.83, 4422.95]
+           data                : [4757.70, 4759.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
          }
 
       ]
